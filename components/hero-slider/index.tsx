@@ -21,25 +21,49 @@ export function HeroSlider() {
   const destinations: Destination[] = React.useMemo(() => [
     {
       id: 1,
-      title: "NORAVANK",
+      title: "INDONESIA",
       description:
-        "Discover the 13th-century Noravank monastery, a masterpiece of medieval Armenian architecture nestled in a narrow gorge. Marvel at its stunning red cliffs and intricate stone carvings that tell stories of Armenia's rich spiritual heritage.",
+        "As the largest archipelagic country in the world, Indonesia is blessed with so many different people, cultures, customs, traditions, artworks, food, animals, plants, landscapes, and everything that made it almost like 100 (or even 200) countries melted beautifully into one.",
       backgroundImage: images.heroNoravank,
       cardImage: images.tourNoravank,
     },
     {
       id: 2,
-      title: "GARNI TEMPLE",
+      title: "THAILAND",
       description:
-        "Experience the only standing Greco-Roman colonnaded building in Armenia, the Temple of Garni. Built in the 1st century AD, this pagan temple stands as a symbol of Armenia's classical heritage, offering breathtaking views of the Azat River Gorge.",
+        "Thailand is a Southeast Asian country known for tropical beaches, opulent royal palaces, ancient ruins and ornate temples displaying figures of Buddha. A fascinating mix of traditional and modern, bustling cities and peaceful temples.",
       backgroundImage: images.heroGarni,
       cardImage: images.tourGarni,
     },
     {
       id: 3,
-      title: "LAKE SEVAN",
+      title: "BALI",
       description:
-        "Explore the jewel of Armenia's natural beauty, Lake Sevan. This stunning alpine lake, one of the largest freshwater high-altitude lakes in the world, is surrounded by ancient monasteries and offers spectacular views of the Armenian highlands.",
+        "Bali is an Indonesian island known for its forested volcanic mountains, iconic rice paddies, beaches and coral reefs. The island is home to religious sites such as cliffside Uluwatu Temple. To the south, the beachside city of Kuta has lively bars.",
+      backgroundImage: images.heroSevan,
+      cardImage: images.tourSevan,
+    },
+    {
+      id: 4,
+      title: "SINGAPORE",
+      description:
+        "Singapore is a sunny, tropical island in Southeast Asia, off the southern tip of the Malay Peninsula. Singapore is a young, vibrant, cosmopolitan city that's focused on technology, innovation and creative culture.",
+      backgroundImage: images.heroNoravank,
+      cardImage: images.tourNoravank,
+    },
+    {
+      id: 5,
+      title: "VIETNAM",
+      description:
+        "Vietnam is a Southeast Asian country known for its beaches, rivers, Buddhist pagodas and bustling cities. A land of staggering natural beauty and cultural complexities, of dynamic megacities and hill-tribe villages.",
+      backgroundImage: images.heroGarni,
+      cardImage: images.tourGarni,
+    },
+    {
+      id: 6,
+      title: "MALAYSIA",
+      description:
+        "Malaysia is a Southeast Asian country occupying parts of the Malay Peninsula and the island of Borneo. It's known for its beaches, rainforests and mix of Malay, Chinese, Indian and European cultural influences.",
       backgroundImage: images.heroSevan,
       cardImage: images.tourSevan,
     },
@@ -53,6 +77,16 @@ export function HeroSlider() {
     }, 5000);
 
     return () => clearInterval(timer);
+  }, [destinations.length]);
+
+  const handlePrevSlide = React.useCallback(() => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + destinations.length) % destinations.length);
+  }, [destinations.length]);
+
+  const handleNextSlide = React.useCallback(() => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % destinations.length);
   }, [destinations.length]);
 
   const slideVariants = {
@@ -94,59 +128,80 @@ export function HeroSlider() {
           animate="center"
           exit="exit"
           transition={{
-            opacity: { duration: 0.8 },
-            filter: { duration: 0.8 },
-            scale: { duration: 0.8 }
+            opacity: { duration: 1.2 },
+            filter: { duration: 1.2 },
+            scale: { duration: 1.5, ease: "easeInOut" }
           }}
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url(${destinations[currentIndex].backgroundImage})`,
           }}
         >
-          <motion.div 
-            className="absolute inset-0 bg-black/40"
-            initial={{ backdropFilter: "blur(0px)" }}
-            animate={{ backdropFilter: "blur(0px)" }}
-            exit={{ backdropFilter: "blur(4px)" }}
-            transition={{ duration: 0.8 }}
-          />
+          <div className="absolute inset-0 bg-black/50" />
         </motion.div>
       </AnimatePresence>
 
       {/* Content Section */}
       <div className="relative z-10 flex h-full">
-        {/* Left Progress Bar */}
-        <div className="absolute left-12 top-1/2 -translate-y-1/2 flex flex-col space-y-6">
-          {destinations.map((_, index) => (
-            <motion.button
-              key={index}
-              onClick={() => {
-                const newDirection = index > currentIndex ? 1 : -1;
-                setDirection(newDirection);
-                setCurrentIndex(index);
-              }}
-              className={`h-12 w-12 rounded-full border-2 relative ${
-                index === currentIndex ? "border-white bg-white/30" : "border-white/50 hover:border-white/80"
-              }`}
-              whileHover={{ scale: 1.1 }}
-            >
-              <span className="absolute left-16 top-1/2 -translate-y-1/2 text-white/80 text-xs">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-            </motion.button>
-          ))}
+        {/* Left Navigation Line */}
+        <div className="absolute left-8 h-full flex flex-col items-center">
+          {/* Vertical Line */}
+          <div className="absolute h-[50%] top-[25%] w-[1px] bg-white/20" />
+          
+          {/* Progress Bar */}
+          <div className="absolute top-1/2 -translate-y-1/2 flex flex-col space-y-8">
+            {destinations.map((_, index) => (
+              <motion.button
+                key={index}
+                onClick={() => {
+                  const newDirection = index > currentIndex ? 1 : -1;
+                  setDirection(newDirection);
+                  setCurrentIndex(index);
+                }}
+                className="relative group z-10 flex items-center justify-center w-6 h-6"
+              >
+                <motion.div
+                  initial={false}
+                  animate={{
+                    width: index === currentIndex ? 24 : 6,
+                    height: index === currentIndex ? 24 : 6,
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="relative flex items-center justify-center"
+                >
+                  <div className={`rounded-full ${
+                    index === currentIndex 
+                      ? "bg-white w-full h-full flex items-center justify-center text-[10px] font-medium" 
+                      : "bg-white/40 w-full h-full group-hover:bg-white/60"
+                  } transition-colors duration-300`}>
+                    {index === currentIndex && String(index + 1).padStart(2, '0')}
+                  </div>
+                  {index === currentIndex && (
+                    <div className="absolute -inset-0.5 border border-white/20 rounded-full" />
+                  )}
+                </motion.div>
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Side Counter */}
+          <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -rotate-90 origin-center transform text-sm font-medium tracking-wider whitespace-nowrap">
+            <span className="text-white/80">{String(currentIndex + 1).padStart(2, '0')}</span>
+            <span className="text-white/40 mx-1">/</span>
+            <span className="text-white/40">{String(destinations.length).padStart(2, '0')}</span>
+          </div>
         </div>
 
         {/* Main Content */}
-        <div className="grid h-full w-full grid-cols-1 lg:grid-cols-2 px-8 lg:px-16">
+        <div className="grid h-full w-full grid-cols-1 lg:grid-cols-[1fr,400px] px-8 lg:px-16">
           {/* Text Area */}
-          <div className="flex flex-col justify-center space-y-6 lg:ml-24">
+          <div className="flex flex-col justify-center space-y-6 lg:ml-16">
             <motion.h1
               key={destinations[currentIndex].title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-5xl font-bold text-white lg:text-8xl"
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-6xl font-bold text-white lg:text-8xl tracking-wide"
             >
               {destinations[currentIndex].title}
             </motion.h1>
@@ -154,47 +209,152 @@ export function HeroSlider() {
               key={destinations[currentIndex].description}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-lg text-white/80 leading-relaxed max-w-xl"
             >
               {destinations[currentIndex].description}
             </motion.p>
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="w-fit rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700 transition-colors duration-300"
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Explore
-              <ChevronRight className="ml-2 inline h-5 w-5" />
-            </motion.button>
+              <button className="group flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg transition-colors duration-300">
+                <span>Explore</span>
+                <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </motion.div>
           </div>
 
           {/* Carousel Section */}
-          <div className="relative flex items-center justify-center">
-            {[-1, 0, 1].map((offset) => {
-              const index =
-                (currentIndex + offset + destinations.length) % destinations.length;
-              return (
-                <motion.div
-                  key={index}
-                  className="absolute w-64 h-96 bg-gray-800 rounded-xl overflow-hidden"
-                  animate={{
-                    scale: offset === 0 ? 1 : 0.8,
-                    opacity: offset === 0 ? 1 : 0.5,
-                    zIndex: offset === 0 ? 2 : 1,
-                    x: offset * 200,
-                  }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <img
-                    src={destinations[index].cardImage}
-                    alt={destinations[index].title}
-                    className="h-full w-full object-cover"
-                  />
-                </motion.div>
-              );
-            })}
+          <div className="relative flex items-center justify-end">
+            <div className="relative w-[1000px] h-[450px]">
+              {[0, 1, 2].map((offset) => {
+                const index = (currentIndex + offset) % destinations.length;
+                
+                return (
+                  <motion.div
+                    key={`slide-${index}`}
+                    className="absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl"
+                    style={{ 
+                      originX: 0.5,
+                      originY: 0.5,
+                    }}
+                    animate={{
+                      x: offset === 0 ? 0 : offset === 1 ? 260 : 520,
+                      opacity: 1,
+                      zIndex: 1,
+                      scale: 1,
+                    }}
+                    exit={{
+                      x: -100,
+                      opacity: 0,
+                      scale: 0.95,
+                      transition: { 
+                        duration: 0.5,
+                        ease: [0.32, 0.72, 0, 1]
+                      }
+                    }}
+                    transition={{
+                      duration: 0.6,
+                      ease: [0.32, 0.72, 0, 1]
+                    }}
+                  >
+                    <div className="relative w-full h-full group cursor-pointer">
+                      <img
+                        src={destinations[index].cardImage}
+                        alt={destinations[index].title}
+                        className="h-full w-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      <div className="absolute top-3 right-3">
+                        <button 
+                          className="w-7 h-7 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                          }}
+                        >
+                          <motion.div
+                            whileHover={{ scale: 1.2 }}
+                            className="w-3.5 h-3.5 border-[1.5px] border-white rounded"
+                          />
+                        </button>
+                      </div>
+                      <motion.div 
+                        className="absolute bottom-0 left-0 right-0 p-3"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        <div className="flex items-center space-x-1 mb-1">
+                          {[...Array(5)].map((_, i) => (
+                            <div key={i} className="w-1 h-1 rounded-full bg-white/60" />
+                          ))}
+                        </div>
+                        <h3 className="text-white text-sm font-medium tracking-wide">
+                          {destinations[index].title}
+                        </h3>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+
+              {/* Exiting Card */}
+              <AnimatePresence mode="wait">
+                {direction === 1 && (
+                  <motion.div
+                    key="exit-card"
+                    className="absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl"
+                    initial={{ x: 0, opacity: 1, scale: 1 }}
+                    animate={{ 
+                      x: -100,
+                      opacity: 0,
+                      scale: 0.95,
+                      transition: { 
+                        duration: 0.5,
+                        ease: [0.32, 0.72, 0, 1]
+                      }
+                    }}
+                    style={{
+                      zIndex: 0
+                    }}
+                  >
+                    <div className="relative w-full h-full">
+                      <img
+                        src={destinations[(currentIndex - 1 + destinations.length) % destinations.length].cardImage}
+                        alt={destinations[(currentIndex - 1 + destinations.length) % destinations.length].title}
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            
+            {/* Navigation Buttons */}
+            <div className="absolute left-[300px] bottom-20 flex space-x-4">
+              <button
+                onClick={() => {
+                  setDirection(-1);
+                  setCurrentIndex((prev) => (prev === 0 ? destinations.length - 1 : prev - 1));
+                }}
+                className="group h-12 w-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors"
+              >
+                <ChevronLeft className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
+              </button>
+              <button
+                onClick={() => {
+                  setDirection(1);
+                  setCurrentIndex((prev) => (prev === destinations.length - 1 ? 0 : prev + 1));
+                }}
+                className="group h-12 w-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors"
+              >
+                <ChevronRight className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
