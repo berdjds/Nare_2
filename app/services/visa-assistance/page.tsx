@@ -18,7 +18,6 @@ import {
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/hooks/use-language';
-import { useImages } from '@/hooks/use-images';
 
 interface ServiceIconProps {
   icon: LucideIcon;
@@ -84,7 +83,6 @@ const services: ServiceItem[] = [
 export default function VisaAssistance() {
   const { toast } = useToast();
   const { t } = useLanguage();
-  const { images } = useImages();
 
   const handleConsultation = () => {
     toast({
@@ -95,9 +93,9 @@ export default function VisaAssistance() {
 
   return (
     <div className="min-h-screen">
-      <section className="page-hero-section">
+      <section className="relative h-[40vh] flex items-center justify-center">
         <Image
-          src={images.serviceVisa}
+          src="https://images.unsplash.com/photo-1554224155-1696413565d3"
           alt="Visa Assistance"
           fill
           className="object-cover"

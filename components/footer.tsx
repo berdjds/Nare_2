@@ -54,23 +54,23 @@ const titleVariants = {
 };
 
 const socialLinks = [
-  { Icon: Facebook, href: 'https://www.facebook.com/Nare.travel.and.tours/', color: '#1877f2', label: 'Facebook' },
-  { Icon: Instagram, href: 'https://www.instagram.com/nare_travel/', color: '#e4405f', label: 'Instagram' },
-  { Icon: Linkedin, href: 'https://www.linkedin.com/company/105172290/', color: '#0A66C2', label: 'LinkedIn' }
+  { Icon: Facebook, href: '#', color: '#1877f2', label: 'Facebook' },
+  { Icon: Instagram, href: '#', color: '#e4405f', label: 'Instagram' },
+  { Icon: Linkedin, href: '#', color: '#0A66C2', label: 'LinkedIn' }
 ];
 
 const tourTypes = [
-  { icon: Globe, label: 'Cultural Tours', href: '/armenia-tours/cultural' },
-  { icon: Wine, label: 'Wine Tours', href: '/armenia-tours/wine' },
-  { icon: Mountain, label: 'Adventure Tours', href: '/armenia-tours/adventure' },
-  { icon: Building, label: 'City Tours', href: '/armenia-tours/daily' }
+  { icon: Globe, label: 'Cultural Tours', href: '/tours/cultural' },
+  { icon: Wine, label: 'Wine Tours', href: '/tours/wine' },
+  { icon: Mountain, label: 'Adventure Tours', href: '/tours/adventure' },
+  { icon: Building, label: 'City Tours', href: '/tours/city' }
 ];
 
 const services = [
-  { icon: Calendar, label: 'Tour Planning', href: '/services' },
-  { icon: Users, label: 'Group Tours', href: '/services/outgoing-packages' },
+  { icon: Calendar, label: 'Tour Planning', href: '/services/planning' },
+  { icon: Users, label: 'Group Tours', href: '/services/groups' },
   { icon: Car, label: 'Transportation', href: '/services/transport' },
-  { icon: Utensils, label: 'Food Tours', href: '/services/visa-assistance' }
+  { icon: Utensils, label: 'Food Tours', href: '/services/food' }
 ];
 
 const FooterColumn = ({ title, children }: { title: string | JSX.Element; children: React.ReactNode }) => (
@@ -251,7 +251,7 @@ export function Footer() {
         </div>
 
         {/* Noise texture overlay */}
-        <div className="absolute inset-0 bg-[url('/noise.webp')] opacity-[0.15] mix-blend-soft-light" />
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.15] mix-blend-soft-light" />
         
         {/* Glass effect overlay */}
         <div className="absolute inset-0">
@@ -357,19 +357,12 @@ export function Footer() {
           <FooterColumn title={<FooterTitle>Contact Us</FooterTitle>}>
             <motion.div 
               variants={listVariants}
-              className="space-y-1"
+              className="space-y-4"
             >
               {[
-                { Icon: Map, text: 'Teryan St 105/1, Citadel Business Center, Yerevan, Armenia' },
-                {
-                  Icon: Phone,
-                  isMultiLine: true,
-                  lines: [
-                    { label: 'Office:', value: '+374-10-545046', href: 'tel:+37410545046' },
-                    { label: 'Mobile:', value: '+374-91-005046', href: 'tel:+37491005046' }
-                  ]
-                },
-                { Icon: Mail, text: 'info@nare.am', href: 'mailto:info@nare.am' }
+                { Icon: Map, text: '123 Travel Street, Yerevan, Armenia' },
+                { Icon: Phone, text: '+374 XX XXX XXX' },
+                { Icon: Mail, text: 'info@naretravel.com' }
               ].map((contact, index) => (
                 <motion.div
                   key={index}
@@ -383,24 +376,7 @@ export function Footer() {
                   <div className="contact-icon-wrapper">
                     <contact.Icon className="w-5 h-5" />
                   </div>
-                  {contact.isMultiLine ? (
-                    <div className="flex flex-col">
-                      {contact.lines.map((line, lineIndex) => (
-                        <div key={lineIndex} className="flex items-center mb-0.5 last:mb-0">
-                          <span className="text-sm font-medium mr-1">{line.label}</span>
-                          <a href={line.href} className="hover:text-blue-400 transition-colors">
-                            {line.value}
-                          </a>
-                        </div>
-                      ))}
-                    </div>
-                  ) : contact.href ? (
-                    <a href={contact.href} className="hover:text-blue-400 transition-colors">
-                      <span>{contact.text}</span>
-                    </a>
-                  ) : (
-                    <span>{contact.text}</span>
-                  )}
+                  <span>{contact.text}</span>
                 </motion.div>
               ))}
             </motion.div>

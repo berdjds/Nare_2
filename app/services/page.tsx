@@ -31,21 +31,21 @@ const services: ServiceItem[] = [
     description: 'International travel packages to Dubai, Sharm El Sheikh, Maldives, and more',
     icon: Plane,
     href: '/services/outgoing-packages',
-    image: '/images/services/flights-professional.webp'
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05'
   },
   {
     title: 'Flight Tickets',
     description: 'Book your flights with our professional assistance',
     icon: Plane,
     href: '/services/air-tickets',
-    image: '/images/services/flights-professional.webp'
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05'
   },
   {
     title: 'Visa Services',
     description: 'USA and Schengen tourist visa assistance',
     icon: Building2,
     href: '/services/visa-assistance',
-    image: '/images/services/mice-professional.webp'
+    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c'
   }
 ];
 

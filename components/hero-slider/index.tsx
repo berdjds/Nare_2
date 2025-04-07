@@ -4,55 +4,66 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useImages } from "@/hooks/use-images";
-import { useLanguage } from "@/hooks/use-language";
 
 interface Destination {
   id: number;
-  key: string;
+  title: string;
+  description: string;
   backgroundImage: string;
   cardImage: string;
 }
 
 export function HeroSlider() {
   const { images } = useImages();
-  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [direction, setDirection] = React.useState(0);
 
   const destinations: Destination[] = React.useMemo(() => [
     {
       id: 1,
-      key: "sharm",
+      title: "INDONESIA",
+      description:
+        "As the largest archipelagic country in the world, Indonesia is blessed with so many different people, cultures, customs, traditions, artworks, food, animals, plants, landscapes, and everything that made it almost like 100 (or even 200) countries melted beautifully into one.",
       backgroundImage: images.heroNoravank,
       cardImage: images.tourNoravank,
     },
     {
       id: 2,
-      key: "dubai",
+      title: "THAILAND",
+      description:
+        "Thailand is a Southeast Asian country known for tropical beaches, opulent royal palaces, ancient ruins and ornate temples displaying figures of Buddha. A fascinating mix of traditional and modern, bustling cities and peaceful temples.",
       backgroundImage: images.heroGarni,
       cardImage: images.tourGarni,
     },
     {
       id: 3,
-      key: "tunisia",
+      title: "BALI",
+      description:
+        "Bali is an Indonesian island known for its forested volcanic mountains, iconic rice paddies, beaches and coral reefs. The island is home to religious sites such as cliffside Uluwatu Temple. To the south, the beachside city of Kuta has lively bars.",
       backgroundImage: images.heroSevan,
       cardImage: images.tourSevan,
     },
     {
       id: 4,
-      key: "cyprus",
+      title: "SINGAPORE",
+      description:
+        "Singapore is a sunny, tropical island in Southeast Asia, off the southern tip of the Malay Peninsula. Singapore is a young, vibrant, cosmopolitan city that's focused on technology, innovation and creative culture.",
       backgroundImage: images.heroNoravank,
       cardImage: images.tourNoravank,
     },
     {
       id: 5,
-      key: "abudhabi",
+      title: "VIETNAM",
+      description:
+        "Vietnam is a Southeast Asian country known for its beaches, rivers, Buddhist pagodas and bustling cities. A land of staggering natural beauty and cultural complexities, of dynamic megacities and hill-tribe villages.",
       backgroundImage: images.heroGarni,
       cardImage: images.tourGarni,
     },
     {
       id: 6,
-      key: "zanzibar",
+      title: "MALAYSIA",
+      description:
+        "Malaysia is a Southeast Asian country occupying parts of the Malay Peninsula and the island of Borneo. It's known for its beaches, rainforests and mix of Malay, Chinese, Indian and European cultural influences.",
       backgroundImage: images.heroSevan,
       cardImage: images.tourSevan,
     },
@@ -186,24 +197,22 @@ export function HeroSlider() {
           {/* Text Area */}
           <div className="flex flex-col justify-center space-y-6 lg:ml-16">
             <motion.h1
-              key={`title-${currentIndex}`}
+              key={destinations[currentIndex].title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter"
+              className="text-6xl font-bold text-white lg:text-8xl tracking-wide"
             >
-              {t(`home.destinations.${destinations[currentIndex].key}.title`)}
+              {destinations[currentIndex].title}
             </motion.h1>
             <motion.p
-              key={`description-${currentIndex}`}
+              key={destinations[currentIndex].description}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="text-lg text-white/80 max-w-2xl"
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-lg text-white/80 leading-relaxed max-w-xl"
             >
-              {t(`home.destinations.${destinations[currentIndex].key}.description`)}
+              {destinations[currentIndex].description}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -254,7 +263,7 @@ export function HeroSlider() {
                     <div className="relative w-full h-full group cursor-pointer">
                       <img
                         src={destinations[index].cardImage}
-                        alt={t(`home.destinations.${destinations[index].key}.title`)}
+                        alt={destinations[index].title}
                         className="h-full w-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -284,7 +293,7 @@ export function HeroSlider() {
                           ))}
                         </div>
                         <h3 className="text-white text-sm font-medium tracking-wide">
-                          {t(`home.destinations.${destinations[index].key}.title`)}
+                          {destinations[index].title}
                         </h3>
                       </motion.div>
                     </div>
@@ -315,7 +324,7 @@ export function HeroSlider() {
                     <div className="relative w-full h-full">
                       <img
                         src={destinations[(currentIndex - 1 + destinations.length) % destinations.length].cardImage}
-                        alt={t(`home.destinations.${destinations[(currentIndex - 1 + destinations.length) % destinations.length].key}.title`)}
+                        alt={destinations[(currentIndex - 1 + destinations.length) % destinations.length].title}
                         className="h-full w-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
