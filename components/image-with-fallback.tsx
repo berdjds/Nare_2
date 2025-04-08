@@ -1,32 +1,20 @@
 "use client";
 
+import Image, { ImageProps } from 'next/image';
 import { useState } from 'react';
-import Image from 'next/image';
 import { images } from '@/lib/images';
 import { useImages } from '@/hooks/use-images';
 
-interface ImageWithFallbackProps {
+export interface ImageWithFallbackProps extends Omit<ImageProps, 'src'> {
   src: string;
   fallbackKey: keyof typeof images;
-  alt: string;
-  className?: string;
-  fill?: boolean;
-  width?: number;
-  height?: number;
-  priority?: boolean;
-  sizes?: string;
 }
 
 export function ImageWithFallback({
   src,
   fallbackKey,
   alt,
-  className,
-  fill,
-  width,
-  height,
-  priority = false,
-  sizes,
+  ...props
 }: ImageWithFallbackProps) {
   const [error, setError] = useState(false);
   const { getImageUrl } = useImages();
@@ -35,15 +23,12 @@ export function ImageWithFallback({
     setError(true);
   };
 
-  const imageProps = {
-    src: error ? getImageUrl(fallbackKey) : src,
-    alt,
-    className,
-    onError: handleError,
-    priority,
-    sizes,
-    ...(fill ? { fill: true } : { width, height }),
-  };
-
-  return <Image {...imageProps} />;
+  return (
+    <Image
+      src={error ? getImageUrl(fallbackKey) : src}
+      alt={alt}
+      onError={handleError}
+      {...props}
+    />
+  );
 }

@@ -1,0 +1,16 @@
+{
+  "name": "Filarche Travel",
+  "short_name": "Filarche",
+  "description": "Professional travel services, DMC, MICE, and tour packages",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
