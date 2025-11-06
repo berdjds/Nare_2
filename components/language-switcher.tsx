@@ -58,12 +58,19 @@ export function LanguageSwitcher() {
 }
 
 function getFlagEmoji(langCode: string): string {
-  const flags: { code: string; label: string; flag: string }[] = [
-    { code: 'en', label: 'English', flag: '🇬🇧' },
-    { code: 'hy', label: 'Հայերեն', flag: '🇦🇲' },
-    { code: 'ru', label: 'Русский', flag: '🇷🇺' },
-    { code: 'ar', label: 'العربية', flag: '🇦🇪' },
-  ];
-  const flag = flags.find((flag) => flag.code === langCode);
-  return flag?.flag || '🌐';
+  const flags: Record<string, string> = {
+    'en': '🇬🇧',
+    'hy': '🇦🇲',
+    'ru': '🇷🇺',
+    'ar': '🇦🇪',
+  };
+  
+  // Return flag emoji with fallback to country code badge if emoji not supported
+  const flag = flags[langCode];
+  if (flag) {
+    return flag;
+  }
+  
+  // Fallback to uppercase code if flag emoji not available
+  return langCode.toUpperCase();
 }
