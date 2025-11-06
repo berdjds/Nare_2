@@ -21,15 +21,9 @@ git checkout 1-AI
 npm install
 ```
 
-### **Step 3: Create Data Directory**
-The `data/` folder stores all your content (translations, settings, etc.)
+**Note:** This automatically creates data files with defaults!
 
-```bash
-# Create data folder if it doesn't exist
-mkdir -p data
-```
-
-### **Step 4: Configure Admin Access**
+### **Step 3: Configure Admin Access**
 
 **Default Admin Credentials:**
 - Username: `admin`
@@ -39,7 +33,7 @@ mkdir -p data
 
 Edit `lib/auth.ts` to change default credentials.
 
-### **Step 5: Configure DeepSeek API (Optional)**
+### **Step 4: Configure DeepSeek API (Optional)**
 
 If you want AI translation features:
 
@@ -52,7 +46,7 @@ If you want AI translation features:
 
 **Note:** API key is stored in `data/settings.json` (not in git for security)
 
-### **Step 6: Run Development Server**
+### **Step 5: Run Development Server**
 ```bash
 npm run dev
 ```
