@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1762200607013",
+    "title": "test",
+    "titleHy": "փորձարկում",
+    "titleRu": "тест",
+    "description": "test",
+    "descriptionHy": "փորձարկում",
+    "descriptionRu": "тест",
+    "route": "Yerevan - Dubai",
+    "airline": "Multiple options",
+    "ticketType": "Round-trip",
+    "price": 75000,
+    "image": "/images/uploads/licensed-image-1762200663093.webp",
+    "isActive": true,
+    "order": 0,
+    "titleAr": "اختبار",
+    "descriptionAr": "اختبار"
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1762025650060",
+    "title": "Yerevan - Armenia",
+    "description": "Yerevan, the capital of Armenia, is one of the world’s oldest continuously inhabited cities, founded in 782 BC. It’s known for its pink tuff stone architecture, vibrant culture, and views of Mount Ararat.",
+    "backgroundImage": "/images/uploads/licensed-image-1762025726214.webp",
+    "cardImage": "/images/uploads/licensed-image-1762025741648.webp",
+    "order": 0,
+    "titleHy": "Երևան",
+    "titleRu": "Ереван",
+    "descriptionHy": "Երևան քաղաք",
+    "descriptionRu": "Ереван, столица Армении, — один из древнейших непрерывно населённых городов мира, основанный в 782 году до нашей эры. Он славится архитектурой из розового туфа, яркой культурой и видами на гору Арарат.",
+    "titleAr": "يريفان - أرمينيا",
+    "descriptionAr": "يريفان، عاصمة أرمينيا، هي إحدى أقدم المدن المأهولة باستمرار في العالم، حيث تأسست عام 782 قبل الميلاد. تشتهر بهندستها المعمارية من حجر التوف الوردي، وثقافتها النابضة بالحياة، وإطلالاتها على جبل أرارات."
+  },
+  {
+    "id": "1762198782277",
+    "title": "Keghard - Armenia",
+    "titleHy": "փորձարկում",
+    "titleRu": "тест",
+    "description": "Keghard Monastery, located in Armenia’s Kotayk province, is a UNESCO World Heritage Site carved partly into rock. Founded in the 4th century, it’s renowned for its ancient chapels, sacred relics, and stunning mountain scenery.",
+    "descriptionHy": "փորձարկում",
+    "descriptionRu": "тест",
+    "backgroundImage": "/images/uploads/khor-virap-1762223575733.webp",
+    "cardImage": "/images/uploads/khor-virap-1762223666025.webp",
+    "order": 1,
+    "isActive": true,
+    "titleAr": "كغارد - أرمينيا",
+    "descriptionAr": "دير كيغارد، الواقع في محافظة كوتايك الأرمينية، هو موقع تراث عالمي لليونسكو منحوت جزئياً في الصخر. تأسس في القرن الرابع، ويشتهر بكنائسه القديمة وذخائره المقدسة ومشاهد الجبال الخلابة."
+  },
+  {
+    "id": "1762417081884",
+    "title": "Discover Dubai’s Wonders!",
+    "titleHy": "Բացահայտե՛ք Դուբայի Հրաշքները",
+    "titleRu": "Откройте чудеса Дубая!",
+    "description": "Experience the magic of Dubai from golden deserts and dazzling skylines to world-class attractions and unforgettable adventures.",
+    "descriptionHy": "Զգեք Դուբայի կախարդանքը՝ ոսկե անապատներից և շողշողացող երկնաքերներից մինչև համաշխարհային դասի տեսարժան վայրերն ու անմոռանալի արկածները։",
+    "descriptionRu": "Погрузитесь в магию Дубая — от золотых пустынь и сверкающих небоскребов до мировых достопримечательностей и незабываемых приключений.",
+    "backgroundImage": "/images/uploads/dubai-united-arab-emirates-burj-khalifa-top-1762417191362.webp",
+    "cardImage": "/images/uploads/dubai-united-arab-emirates-burj-khalifa-top-1762417199583.webp",
+    "order": 2,
+    "isActive": true,
+    "titleAr": "اكتشف عجائب دبي!",
+    "descriptionAr": "استمتع بسحر دبي من الصحاري الذهبية والأفق المبهر إلى المعالم العالمية والمغامرات التي لا تُنسى."
+  }
+]

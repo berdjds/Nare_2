@@ -1,0 +1,36 @@
+[
+  {
+    "id": "1762197950449",
+    "title": "test",
+    "titleHy": "փորձարկում",
+    "titleRu": "тест",
+    "description": "test",
+    "descriptionHy": "փորձարկում",
+    "descriptionRu": "тест",
+    "duration": "",
+    "groupSize": "",
+    "price": 0,
+    "image": "/images/uploads/noravank-1762225264726.webp",
+    "destination": "daily",
+    "isActive": true,
+    "titleAr": "اختبار",
+    "descriptionAr": "اختبار"
+  },
+  {
+    "id": "1762198125968",
+    "title": "test",
+    "titleHy": "փորձարկում",
+    "titleRu": "тест",
+    "description": "yesy",
+    "descriptionHy": "այո",
+    "descriptionRu": "да",
+    "duration": "",
+    "groupSize": "",
+    "price": 0,
+    "image": "/images/uploads/dilijan-1762225276374.webp",
+    "destination": "daily",
+    "isActive": true,
+    "titleAr": "اختبار",
+    "descriptionAr": "نعم"
+  }
+]

@@ -1,0 +1,3381 @@
+[
+  {
+    "name": "about",
+    "entries": [
+      {
+        "key": "about.hero.subtitle",
+        "en": "Crafting unforgettable travel experiences since 2014",
+        "hy": "Ստեղծում ենք անմոռանալի ճամփորդական փորձառություններ 2014 թվականից",
+        "ru": "Создаем незабываемые путешествия с 2014 года",
+        "section": "about",
+        "ar": "نصنع تجارب سفر لا تُنسى منذ ٢٠١٤"
+      },
+      {
+        "key": "about.hero.title",
+        "en": "Our Journey",
+        "hy": "Մեր Ճանապարհը",
+        "ru": "Наш Путь",
+        "section": "about",
+        "ar": "رحلتنا"
+      },
+      {
+        "key": "about.stats.customer support",
+        "en": "Customer Support",
+        "hy": "Հաճախորդների Սպասարկում",
+        "ru": "Поддержка Клиентов",
+        "section": "about",
+        "ar": "دعم العملاء"
+      },
+      {
+        "key": "about.stats.destinations",
+        "en": "Destinations",
+        "hy": "Ուղղություններ",
+        "ru": "Направлений",
+        "section": "about",
+        "ar": "الوجهات"
+      },
+      {
+        "key": "about.stats.happy travelers",
+        "en": "Happy Travelers",
+        "hy": "Գոհ Ճանապարհորդներ",
+        "ru": "Довольных Путешественников",
+        "section": "about",
+        "ar": "مسافرون سعداء"
+      },
+      {
+        "key": "about.stats.years experience",
+        "en": "Years Experience",
+        "hy": "Տարվա Փորձ",
+        "ru": "Лет Опыта",
+        "section": "about",
+        "ar": "سنوات من الخبرة"
+      },
+      {
+        "key": "about.story.content",
+        "en": "Founded in 2014, Nare Travel and Tours has grown from a small local agency to one of Armenia's leading travel companies. We began with a simple mission: to share Armenia's rich cultural heritage with the world while providing exceptional travel experiences. Today, we're proud to serve thousands of travelers each year, offering both local and international travel solutions with the same dedication to quality and personal attention that has been our hallmark since day one.",
+        "hy": "Հիմնադրված 2014 թվականին, Նարե Թրավել ընդ Թուրսը փոքր տեղական գործակալությունից վերածվել է Հայաստանի առաջատար ճամփորդական ընկերություններից մեկի։ Մենք սկսեցինք պարզ առաքելությամբ՝ կիսել Հայաստանի հարուստ մշակութային ժառանգությունը աշխարհի հետ՝ միաժամանակ առաջարկելով բացառիկ ճամփորդական փորձառություններ։ Այսօր մենք հպարտությամբ սպասարկում ենք հազարավոր ճանապարհորդների՝ առաջարկելով և՛ տեղական, և՛ միջազգային ճամփորդական լուծումներ, նույն նվիրվածությամբ որակին և անձնական ուշադրությանը, որը մեր առանձնահատկությունն է եղել սկզբից ի վեր։",
+        "ru": "Основанная в 2014 году, компания Наре Трэвел энд Турс выросла из небольшого местного агентства в одну из ведущих туристических компаний Армении. Мы начали с простой миссии: поделиться богатым культурным наследием Армении с миром, предоставляя исключительные туристические возможности. Сегодня мы с гордостью обслуживаем тысячи путешественников каждый год, предлагая как местные, так и международные туристические решения с той же преданностью качеству и личному вниманию, которые были нашей отличительной чертой с самого начала.",
+        "section": "about",
+        "ar": "تأسست شركة ناري للسياحة والسفر في عام 2014، ونمت من وكالة محلية صغيرة إلى واحدة من أبرز شركات السفر في أرمينيا. بدأنا بمهمة بسيطة: مشاركة التراث الثقافي الثري لأرمينيا مع العالم مع تقديم تجارب سفر استثنائية. اليوم، نفخر بخدمة آلاف المسافرين سنوياً، حيث نقدم حلول السفر المحلية والدولية بنفس التزامنا بالجودة والاهتمام الشخصي الذي كان سمة مميزة لنا منذ اليوم الأول."
+      },
+      {
+        "key": "about.story.title",
+        "en": "Our Story",
+        "hy": "Մեր Պատմությունը",
+        "ru": "Наша История",
+        "section": "about",
+        "ar": "قصتنا"
+      },
+      {
+        "key": "about.team.subtitle",
+        "en": "Dedicated professionals committed to making your travel dreams come true",
+        "hy": "Նվիրված մասնագետներ, ովքեր պատրաստ են իրականացնել Ձեր ճամփորդական երազանքները",
+        "ru": "Преданные профессионалы, готовые воплотить в жизнь ваши мечты о путешествиях",
+        "section": "about",
+        "ar": "محترفون مخلصون ملتزمون بتحقيق أحلام سفرك"
+      },
+      {
+        "key": "about.team.title",
+        "en": "Meet Our Team",
+        "hy": "Ծանոթացեք Մեր Թիմին",
+        "ru": "Познакомьтесь с Нашей Командой",
+        "section": "about",
+        "ar": "تعرف على فريقنا"
+      }
+    ]
+  },
+  {
+    "name": "airTickets",
+    "entries": [
+      {
+        "key": "airTickets.common.airline",
+        "en": "Airline",
+        "hy": "Ավիաընկերություն",
+        "ru": "Авиакомпания",
+        "section": "airTickets",
+        "ar": "الخطوط الجوية"
+      },
+      {
+        "key": "airTickets.common.bookNow",
+        "en": "Book Now",
+        "hy": "Ամրագրել",
+        "ru": "Забронировать",
+        "section": "airTickets",
+        "ar": "احجز الآن"
+      },
+      {
+        "key": "airTickets.common.currency",
+        "en": "$",
+        "hy": "֏",
+        "ru": "₽",
+        "section": "airTickets",
+        "ar": "$"
+      },
+      {
+        "key": "airTickets.common.destination",
+        "en": "Destination",
+        "hy": "Ուղղություն",
+        "ru": "Направление",
+        "section": "airTickets",
+        "ar": "الوجهة"
+      },
+      {
+        "key": "airTickets.common.duration",
+        "en": "Duration",
+        "hy": "Տևողություն",
+        "ru": "Длительность",
+        "section": "airTickets",
+        "ar": "المدة"
+      },
+      {
+        "key": "airTickets.cta.button",
+        "en": "Request Quote",
+        "hy": "Ստանալ Գնառաջարկ",
+        "ru": "Запросить Цену",
+        "section": "airTickets",
+        "ar": "اطلب عرض سعر"
+      },
+      {
+        "key": "airTickets.cta.subtitle",
+        "en": "Contact us to get the best rates and routes",
+        "hy": "Կապվեք մեզ հետ լավագույն սակագները և երթուղիները ստանալու համար",
+        "ru": "Свяжитесь с нами для получения лучших тарифов и маршрутов",
+        "section": "airTickets",
+        "ar": "اتصل بنا للحصول على أفضل الأسعار والمسارات"
+      },
+      {
+        "key": "airTickets.cta.title",
+        "en": "Ready to Book?",
+        "hy": "Պատրա՞ստ եք Ամրագրել",
+        "ru": "Готовы Забронировать?",
+        "section": "airTickets",
+        "ar": "هل أنت مستعد للحجز؟"
+      },
+      {
+        "key": "airTickets.features.security.description",
+        "en": "Protected transactions and guaranteed reservations",
+        "hy": "Պաշտպանված գործարքներ և երաշխավորված ամրագրումներ",
+        "ru": "Защищенные транзакции и гарантированное бронирование",
+        "section": "airTickets",
+        "ar": "معاملات محمية وحجوزات مضمونة"
+      },
+      {
+        "key": "airTickets.features.security.title",
+        "en": "Secure Payments",
+        "hy": "Անվտանգ Վճարումներ",
+        "ru": "Безопасные Платежи",
+        "section": "airTickets",
+        "ar": "مدفوعات آمنة"
+      },
+      {
+        "key": "airTickets.features.service.description",
+        "en": "Individual approach for each client",
+        "hy": "Անհատական մոտեցում յուրաքանչյուր հաճախորդի",
+        "ru": "Индивидуальный подход к каждому клиенту",
+        "section": "airTickets",
+        "ar": "نهج فردي لكل عميل"
+      },
+      {
+        "key": "airTickets.features.service.title",
+        "en": "Personal Service",
+        "hy": "Անհատական Սպասարկում",
+        "ru": "Персональный Сервис",
+        "section": "airTickets",
+        "ar": "خدمة شخصية"
+      },
+      {
+        "key": "airTickets.features.support.description",
+        "en": "Our team is available around the clock to assist with your booking",
+        "hy": "Մեր թիմը հասանելի է օրը 24 ժամ՝ օգնելու Ձեր ամրագրման հարցում",
+        "ru": "Наша команда доступна 24/7 для помощи с бронированием",
+        "section": "airTickets",
+        "ar": "فريقنا متاح على مدار الساعة لمساعدتك في حجز تذكرتك"
+      },
+      {
+        "key": "airTickets.features.support.title",
+        "en": "24/7 Support",
+        "hy": "24/7 Աջակցություն",
+        "ru": "Круглосуточная Поддержка",
+        "section": "airTickets",
+        "ar": "دعم على مدار الساعة"
+      },
+      {
+        "key": "airTickets.hero.subtitle",
+        "en": "Book your flights with confidence through our professional service",
+        "hy": "Ամրագրեք ձեր թռիչքները վստահաբար մեր պրոֆեսիոնալ ծառայության միջոցով",
+        "ru": "Бронируйте авиабилеты с уверенностью через наш профессиональный сервис",
+        "section": "airTickets",
+        "ar": "احجز رحلاتك الجوية بثقة من خلال خدمتنا الاحترافية"
+      },
+      {
+        "key": "airTickets.hero.title",
+        "en": "Air Ticket Services",
+        "hy": "Ավիատոմսերի Ծառայություններ",
+        "ru": "Авиабилеты",
+        "section": "airTickets",
+        "ar": "خدمات تذاكر الطيران"
+      },
+      {
+        "key": "airTickets.tickets.business.description",
+        "en": "Enhanced comfort and premium service",
+        "hy": "Բարձրակարգ հարմարավետություն և պրեմիում սպասարկում",
+        "ru": "Повышенный комфорт и премиальный сервис",
+        "section": "airTickets",
+        "ar": "راحة محسّنة وخدمة متميزة"
+      },
+      {
+        "key": "airTickets.tickets.business.from",
+        "en": "from",
+        "hy": "սկսած",
+        "ru": "от",
+        "section": "airTickets",
+        "ar": "من"
+      },
+      {
+        "key": "airTickets.tickets.business.title",
+        "en": "Business Class",
+        "hy": "Բիզնես Կարգ",
+        "ru": "Бизнес Класс",
+        "section": "airTickets",
+        "ar": "درجة رجال الأعمال"
+      },
+      {
+        "key": "airTickets.tickets.economy.description",
+        "en": "Affordable rates for comfortable travel",
+        "hy": "Մատչելի գներ հարմարավետ ճամփորդության համար",
+        "ru": "Доступные тарифы для комфортного путешествия",
+        "section": "airTickets",
+        "ar": "أسعار معقولة للسفر المريح"
+      },
+      {
+        "key": "airTickets.tickets.economy.from",
+        "en": "from",
+        "hy": "սկսած",
+        "ru": "от",
+        "section": "airTickets",
+        "ar": "من"
+      },
+      {
+        "key": "airTickets.tickets.economy.title",
+        "en": "Economy Class",
+        "hy": "Էկոնոմ Կարգ",
+        "ru": "Эконом Класс",
+        "section": "airTickets",
+        "ar": "الدرجة الاقتصادية"
+      },
+      {
+        "key": "airTickets.tickets.group.description",
+        "en": "Special rates for group travel",
+        "hy": "Հատուկ գներ խմբային ճամփորդությունների համար",
+        "ru": "Специальные тарифы для групповых путешествий",
+        "section": "airTickets",
+        "ar": "أسعار خاصة للسفر الجماعي"
+      },
+      {
+        "key": "airTickets.tickets.group.from",
+        "en": "from",
+        "hy": "սկսած",
+        "ru": "от",
+        "section": "airTickets",
+        "ar": "من"
+      },
+      {
+        "key": "airTickets.tickets.group.title",
+        "en": "Group Tickets",
+        "hy": "Խմբային Տոմսեր",
+        "ru": "Групповые Билеты",
+        "section": "airTickets",
+        "ar": "تذاكر المجموعات"
+      },
+      {
+        "key": "airTickets.toast.description",
+        "en": "We'll get back to you with flight options shortly.",
+        "hy": "Մենք շուտով կապ կհաստատենք Ձեզ հետ թռիչքների տարբերակներով։",
+        "ru": "Мы скоро свяжемся с вами с вариантами перелетов.",
+        "section": "airTickets",
+        "ar": "سنعود إليك بخيارات الرحلات قريبًا."
+      },
+      {
+        "key": "airTickets.toast.title",
+        "en": "Request Received",
+        "hy": "Հարցումն Ընդունված է",
+        "ru": "Запрос Получен",
+        "section": "airTickets",
+        "ar": "تم استلام طلبك"
+      }
+    ]
+  },
+  {
+    "name": "armeniaTours",
+    "entries": [
+      {
+        "key": "armeniaTours.categories.adventure.description",
+        "en": "Hiking, camping, and outdoor activities",
+        "hy": "Արշավներ, քեմփինգ և բացօթյա միջոցառումներ",
+        "ru": "Походы, кемпинг и активный отдых",
+        "section": "armeniaTours",
+        "ar": "رحلات المشي والتخييم والأنشطة الخارجية"
+      },
+      {
+        "key": "armeniaTours.categories.adventure.duration",
+        "en": "Various",
+        "hy": "Տարբեր",
+        "ru": "Разные",
+        "section": "armeniaTours",
+        "ar": "متنوع"
+      },
+      {
+        "key": "armeniaTours.categories.adventure.groupSize",
+        "en": "4-10 people",
+        "hy": "4-10 մարդ",
+        "ru": "4-10 человек",
+        "section": "armeniaTours",
+        "ar": "4-10 أشخاص"
+      },
+      {
+        "key": "armeniaTours.categories.adventure.locations",
+        "en": "Mountains & trails",
+        "hy": "Լեռներ և արահետներ",
+        "ru": "Горы и тропы",
+        "section": "armeniaTours",
+        "ar": "الجبال والمسارات"
+      },
+      {
+        "key": "armeniaTours.categories.adventure.title",
+        "en": "Adventure Tours",
+        "hy": "Արկածային Տուրեր",
+        "ru": "Приключенческие Туры",
+        "section": "armeniaTours",
+        "ar": "جولات المغامرة"
+      },
+      {
+        "key": "armeniaTours.categories.cultural.description",
+        "en": "Deep dive into Armenian heritage and traditions",
+        "hy": "Խորը ուսումնասիրություն հայկական ժառանգության և ավանդույթների",
+        "ru": "Глубокое погружение в армянское наследие и традиции",
+        "section": "armeniaTours",
+        "ar": "انغمس في أعماق التراث والتقاليد الأرمنية"
+      },
+      {
+        "key": "armeniaTours.categories.cultural.duration",
+        "en": "3-5 days",
+        "hy": "3-5 օր",
+        "ru": "3-5 дней",
+        "section": "armeniaTours",
+        "ar": "3-5 أيام"
+      },
+      {
+        "key": "armeniaTours.categories.cultural.groupSize",
+        "en": "2-15 people",
+        "hy": "2-15 մարդ",
+        "ru": "2-15 человек",
+        "section": "armeniaTours",
+        "ar": "2-15 شخصًا"
+      },
+      {
+        "key": "armeniaTours.categories.cultural.locations",
+        "en": "Historical sites",
+        "hy": "Պատմական վայրեր",
+        "ru": "Исторические места",
+        "section": "armeniaTours",
+        "ar": "المواقع التاريخية"
+      },
+      {
+        "key": "armeniaTours.categories.cultural.title",
+        "en": "Cultural Tours",
+        "hy": "Մշակութային Տուրեր",
+        "ru": "Культурные Туры",
+        "section": "armeniaTours",
+        "ar": "جولات ثقافية"
+      },
+      {
+        "key": "armeniaTours.categories.daily.description",
+        "en": "Explore Armenia's highlights in one-day excursions",
+        "hy": "Բացահայտեք Հայաստանի գլխավոր վայրերը մեկօրյա էքսկուրսիաներով",
+        "ru": "Изучите достопримечательности Армении в однодневных экскурсиях",
+        "section": "armeniaTours",
+        "ar": "اكتشف أبرز معالم أرمينيا في رحلات يومية"
+      },
+      {
+        "key": "armeniaTours.categories.daily.duration",
+        "en": "8-12 hours",
+        "hy": "8-12 ժամ",
+        "ru": "8-12 часов",
+        "section": "armeniaTours",
+        "ar": "8-12 ساعة"
+      },
+      {
+        "key": "armeniaTours.categories.daily.groupSize",
+        "en": "1-15 people",
+        "hy": "1-15 մարդ",
+        "ru": "1-15 человек",
+        "section": "armeniaTours",
+        "ar": "1-15 شخصًا"
+      },
+      {
+        "key": "armeniaTours.categories.daily.locations",
+        "en": "1-3 sites",
+        "hy": "1-3 վայր",
+        "ru": "1-3 места",
+        "section": "armeniaTours",
+        "ar": "1-3 مواقع"
+      },
+      {
+        "key": "armeniaTours.categories.daily.title",
+        "en": "Daily Tours",
+        "hy": "Օրական Տուրեր",
+        "ru": "Однодневные Туры",
+        "section": "armeniaTours",
+        "ar": "جولات يومية"
+      },
+      {
+        "key": "armeniaTours.categories.multi_day.description",
+        "en": "Comprehensive tours covering multiple destinations",
+        "hy": "Համապարփակ տուրեր՝ ընդգրկելով բազմաթիվ վայրեր",
+        "ru": "Комплексные туры, охватывающие несколько направлений",
+        "section": "armeniaTours",
+        "ar": "جولات شاملة تغطي وجهات متعددة"
+      },
+      {
+        "key": "armeniaTours.categories.multi_day.duration",
+        "en": "2-7 days",
+        "hy": "2-7 օր",
+        "ru": "2-7 дней",
+        "section": "armeniaTours",
+        "ar": "2-7 أيام"
+      },
+      {
+        "key": "armeniaTours.categories.multi_day.groupSize",
+        "en": "2-12 people",
+        "hy": "2-12 մարդ",
+        "ru": "2-12 человек",
+        "section": "armeniaTours",
+        "ar": "2-12 شخصًا"
+      },
+      {
+        "key": "armeniaTours.categories.multi_day.locations",
+        "en": "Multiple regions",
+        "hy": "Տարբեր մարզեր",
+        "ru": "Разные регионы",
+        "section": "armeniaTours",
+        "ar": "مناطق متعددة"
+      },
+      {
+        "key": "armeniaTours.categories.multi_day.title",
+        "en": "Multi-Day Tours",
+        "hy": "Բազմօրյա Տուրեր",
+        "ru": "Многодневные Туры",
+        "section": "armeniaTours",
+        "ar": "جولات متعددة الأيام"
+      },
+      {
+        "key": "armeniaTours.categories.subtitle",
+        "en": "Choose from our carefully crafted tour experiences",
+        "hy": "Ընտրեք մեր մանրակրկիտ մշակված տուրերից",
+        "ru": "Выберите из наших тщательно продуманных туров",
+        "section": "armeniaTours",
+        "ar": "اختر من بين تجاربنا السياحية المصممة بعناية"
+      },
+      {
+        "key": "armeniaTours.categories.title",
+        "en": "Tour Categories",
+        "hy": "Տուրերի Կատեգորիաներ",
+        "ru": "Категории Туров",
+        "section": "armeniaTours",
+        "ar": "فئات الجولات"
+      },
+      {
+        "key": "armeniaTours.cta.button",
+        "en": "Contact Us Now",
+        "hy": "Կապվեք Մեզ Հետ",
+        "ru": "Связаться с Нами",
+        "section": "armeniaTours",
+        "ar": "اتصل بنا الآن"
+      },
+      {
+        "key": "armeniaTours.cta.subtitle",
+        "en": "Let us help you create the perfect itinerary for your visit to Armenia",
+        "hy": "Թույլ տվեք մեզ օգնել Ձեզ ստեղծել կատարյալ երթուղի Հայաստան այցելության համար",
+        "ru": "Позвольте нам помочь вам создать идеальный маршрут для вашего визита в Армению",
+        "section": "armeniaTours",
+        "ar": "دعنا نساعدك في وضع برنامج مثالي لزيارتك إلى أرمينيا"
+      },
+      {
+        "key": "armeniaTours.cta.title",
+        "en": "Plan Your Armenian Adventure",
+        "hy": "Պլանավորեք Ձեր Հայկական Արկածը",
+        "ru": "Спланируйте Свое Армянское Приключение",
+        "section": "armeniaTours",
+        "ar": "خطط لمغامرتك في أرمينيا"
+      },
+      {
+        "key": "armeniaTours.hero.subtitle",
+        "en": "Experience the rich history and stunning landscapes of our ancient land",
+        "hy": "Զգացեք մեր հնագույն երկրի հարուստ պատմությունն ու հիասքանչ բնությունը",
+        "ru": "Почувствуйте богатую историю и захватывающие пейзажи нашей древней земли",
+        "section": "armeniaTours",
+        "ar": "استمتع بالتاريخ الغني والمناظر الطبيعية الخلابة لأرضنا العريقة"
+      },
+      {
+        "key": "armeniaTours.hero.title",
+        "en": "Discover Armenia",
+        "hy": "Բացահայտեք Հայաստանը",
+        "ru": "Откройте для Себя Армению",
+        "section": "armeniaTours",
+        "ar": "اكتشف أرمينيا"
+      },
+      {
+        "key": "armeniaTours.tours.adventureDescription",
+        "en": "Experience thrilling outdoor activities in Armenia's stunning natural landscapes",
+        "hy": "Զգացեք հուզիչ բացօթյա միջոցառումներ Հայաստանի հիասքանչ բնական լանդշաֆտներում",
+        "ru": "Испытайте захватывающие активности на открытом воздухе в потрясающих природных ландшафтах Армении",
+        "section": "armeniaTours",
+        "ar": "استمتع بأنشطة خارجية مثيرة في المناظر الطبيعية الخلابة لأرمينيا"
+      },
+      {
+        "key": "armeniaTours.tours.adventureTitle",
+        "en": "Adventure Tours",
+        "hy": "Արկածային Տուրեր",
+        "ru": "Приключенческие Туры",
+        "section": "armeniaTours",
+        "ar": "جولات المغامرة"
+      },
+      {
+        "key": "armeniaTours.tours.culturalDescription",
+        "en": "Immerse yourself in Armenia's rich history, traditions, and heritage sites",
+        "hy": "Ընկղմվեք Հայաստանի հարուստ պատմության, ավանդույթների և ժառանգության վայրերում",
+        "ru": "Погрузитесь в богатую историю, традиции и исторические места Армении",
+        "section": "armeniaTours",
+        "ar": "انغمس في تاريخ أرمينيا الغني وتقاليدها ومواقعها التراثية"
+      },
+      {
+        "key": "armeniaTours.tours.culturalTitle",
+        "en": "Cultural Tours",
+        "hy": "Մշակութային Տուրեր",
+        "ru": "Культурные Туры",
+        "section": "armeniaTours",
+        "ar": "جولات ثقافية"
+      },
+      {
+        "key": "armeniaTours.tours.dailyDescription",
+        "en": "Explore Armenia's most beautiful destinations in one-day guided excursions",
+        "hy": "Բացահայտեք Հայաստանի ամենագեղեցիկ վայրերը մեկօրյա էքսկուրսիաներով",
+        "ru": "Изучите самые красивые места Армении в однодневных экскурсиях с гидом",
+        "section": "armeniaTours",
+        "ar": "استكشف أجمل الوجهات في أرمينيا عبر رحلات يومية مرشدة"
+      },
+      {
+        "key": "armeniaTours.tours.dailyTitle",
+        "en": "Daily Tours in Armenia",
+        "hy": "Օրական Տուրեր Հայաստանում",
+        "ru": "Однодневные Туры по Армении",
+        "section": "armeniaTours",
+        "ar": "جولات يومية في أرمينيا"
+      }
+    ]
+  },
+  {
+    "name": "b2b",
+    "entries": [
+      {
+        "key": "b2b.cta.button",
+        "en": "Get in Touch",
+        "hy": "Կապվել Մեզ Հետ",
+        "ru": "Свяжитесь с Нами",
+        "section": "b2b",
+        "ar": "تواصل معنا"
+      },
+      {
+        "key": "b2b.cta.subtitle",
+        "en": "Let's discuss how we can support your business needs",
+        "hy": "Եկեք քննարկենք, թե ինչպես կարող ենք աջակցել ձեր բիզնեսին",
+        "ru": "Давайте обсудим, как мы можем поддержать ваш бизнес",
+        "section": "b2b",
+        "ar": "لنتحدث عن كيفية دعم احتياجات عملك"
+      },
+      {
+        "key": "b2b.cta.title",
+        "en": "Ready to Elevate Your Business Travel?",
+        "hy": "Պատրա՞ստ եք Բարձրացնել Ձեր Բիզնես Ճամփորդությունները",
+        "ru": "Готовы Улучшить Ваши Деловые Поездки?",
+        "section": "b2b",
+        "ar": "هل أنت مستعد لرفع مستوى سفرك للعمل؟"
+      },
+      {
+        "key": "b2b.dmc.cta.button",
+        "en": "Contact DMC Team",
+        "hy": "Կապվել DMC Թիմի Հետ",
+        "ru": "Свяжитесь с DMC Командой",
+        "section": "b2b",
+        "ar": "تواصل مع فريق DMC"
+      },
+      {
+        "key": "b2b.dmc.cta.subtitle",
+        "en": "Join our network of travel partners and provide your clients with exceptional experiences in Armenia and Georgia.",
+        "hy": "Միացեք մեր ճամփորդական գործընկերների ցանցին և առաջարկեք Ձեր հաճախորդներին բացառիկ փորձառություններ Հայաստանում և Վրաստանում։",
+        "ru": "Присоединитесь к нашей сети туристических партнеров и предоставляйте вашим клиентам исключительный опыт в Армении и Грузии.",
+        "section": "b2b",
+        "ar": "انضم إلى شبكة شركائنا في السفر ووفر لعملائك تجارب استثنائية في أرمينيا وجورجيا."
+      },
+      {
+        "key": "b2b.dmc.cta.title",
+        "en": "Partner With Us",
+        "hy": "Դարձեք Մեր Գործընկերը",
+        "ru": "Станьте Нашим Партнером",
+        "section": "b2b",
+        "ar": "تعاون معنا"
+      },
+      {
+        "key": "b2b.dmc.features.network.description",
+        "en": "International partnerships and connections",
+        "hy": "Միջազգային գործընկերություններ և կապեր",
+        "ru": "Международные партнерства и связи",
+        "section": "b2b",
+        "ar": "شراكات وروابط دولية"
+      },
+      {
+        "key": "b2b.dmc.features.network.title",
+        "en": "Global Network",
+        "hy": "Գլոբալ Ցանց",
+        "ru": "Глобальная Сеть",
+        "section": "b2b",
+        "ar": "شبكتنا العالمية"
+      },
+      {
+        "key": "b2b.dmc.features.security.description",
+        "en": "Licensed and insured services",
+        "hy": "Լիցենզավորված և ապահովագրված ծառայություններ",
+        "ru": "Лицензированные и застрахованные услуги",
+        "section": "b2b",
+        "ar": "خدمات مرخصة ومؤمنة"
+      },
+      {
+        "key": "b2b.dmc.features.security.title",
+        "en": "Secure Operations",
+        "hy": "Անվտանգ Գործունեություն",
+        "ru": "Безопасность Операций",
+        "section": "b2b",
+        "ar": "عمليات آمنة"
+      },
+      {
+        "key": "b2b.dmc.features.subtitle",
+        "en": "Experience excellence in destination management",
+        "hy": "Փորձեք գերազանցությունը տուրիստական կառավարման մեջ",
+        "ru": "Испытайте превосходство в управлении дестинациями",
+        "section": "b2b",
+        "ar": "استمتع بالتميز في إدارة الوجهات السياحية"
+      },
+      {
+        "key": "b2b.dmc.features.support.description",
+        "en": "Round-the-clock assistance for your clients",
+        "hy": "Շուրջօրյա օգնություն Ձեր հաճախորդներին",
+        "ru": "Круглосуточная помощь вашим клиентам",
+        "section": "b2b",
+        "ar": "دعم على مدار الساعة لعملائك"
+      },
+      {
+        "key": "b2b.dmc.features.support.title",
+        "en": "24/7 Support",
+        "hy": "24/7 Աջակցություն",
+        "ru": "24/7 Поддержка",
+        "section": "b2b",
+        "ar": "دعم على مدار الساعة"
+      },
+      {
+        "key": "b2b.dmc.features.team.description",
+        "en": "Experienced multilingual staff",
+        "hy": "Փորձառու բազմալեզու անձնակազմ",
+        "ru": "Опытный многоязычный персонал",
+        "section": "b2b",
+        "ar": "طاقم عمل متعدد اللغات ذو خبرة واسعة"
+      },
+      {
+        "key": "b2b.dmc.features.team.title",
+        "en": "Professional Team",
+        "hy": "Պրոֆեսիոնալ Թիմ",
+        "ru": "Профессиональная Команда",
+        "section": "b2b",
+        "ar": "فريق محترف"
+      },
+      {
+        "key": "b2b.dmc.features.title",
+        "en": "Why Choose Us",
+        "hy": "Ինչու Ընտրել Մեզ",
+        "ru": "Почему Выбирают Нас",
+        "section": "b2b",
+        "ar": "لماذا تختارنا"
+      },
+      {
+        "key": "b2b.dmc.hero.subtitle",
+        "en": "Your trusted Destination Management Company in Armenia and Georgia",
+        "hy": "Ձեր վստահելի տուրիստական կառավարման ընկերությունը Հայաստանում և Վրաստանում",
+        "ru": "Ваша надежная компания по управлению дестинациями в Армении и Грузии",
+        "section": "b2b",
+        "ar": "شريكك الموثوق في إدارة الوجهات السياحية في أرمينيا وجورجيا"
+      },
+      {
+        "key": "b2b.dmc.hero.title",
+        "en": "DMC Services",
+        "hy": "DMC Ծառայություններ",
+        "ru": "DMC Услуги",
+        "section": "b2b",
+        "ar": "خدمات مدير الوجهات"
+      },
+      {
+        "key": "b2b.dmc.services.corporate.description",
+        "en": "Specialized services for business travelers",
+        "hy": "Մասնագիտացված ծառայություններ բիզնես ճամփորդների համար",
+        "ru": "Специализированные услуги для бизнес-путешественников",
+        "section": "b2b",
+        "ar": "خدمات متخصصة للمسافرين رجال الأعمال"
+      },
+      {
+        "key": "b2b.dmc.services.corporate.title",
+        "en": "Corporate Solutions",
+        "hy": "Կորպորատիվ Լուծումներ",
+        "ru": "Корпоративные Решения",
+        "section": "b2b",
+        "ar": "حلول الشركات"
+      },
+      {
+        "key": "b2b.dmc.services.ground.description",
+        "en": "Complete ground transportation and logistics management",
+        "hy": "Ամբողջական տրանսպորտային և լոգիստիկ կառավարում",
+        "ru": "Полное управление наземным транспортом и логистикой",
+        "section": "b2b",
+        "ar": "إدارة كاملة لخدمات النقل البري والخدمات اللوجستية"
+      },
+      {
+        "key": "b2b.dmc.services.ground.title",
+        "en": "Ground Handling",
+        "hy": "Գետնային Սպասարկում",
+        "ru": "Наземное Обслуживание",
+        "section": "b2b",
+        "ar": "خدمات الأرضية"
+      },
+      {
+        "key": "b2b.dmc.services.hotels.description",
+        "en": "Access to premium accommodations across Armenia and Georgia",
+        "hy": "Հայաստանի և Վրաստանի լավագույն հյուրանոցների հասանելիություն",
+        "ru": "Доступ к премиальным отелям в Армении и Грузии",
+        "section": "b2b",
+        "ar": "الوصول إلى أماكن إقامة فاخرة في أرمينيا وجورجيا"
+      },
+      {
+        "key": "b2b.dmc.services.hotels.title",
+        "en": "Hotel Partnerships",
+        "hy": "Հյուրանոցային Գործընկերություններ",
+        "ru": "Отельные Партнерства",
+        "section": "b2b",
+        "ar": "شراكات الفنادق"
+      },
+      {
+        "key": "b2b.dmc.services.local.description",
+        "en": "In-depth knowledge of destinations and attractions",
+        "hy": "Ուղղությունների և տեսարժան վայրերի խորը իմացություն",
+        "ru": "Глубокое знание направлений и достопримечательностей",
+        "section": "b2b",
+        "ar": "معرفة متعمقة بالوجهات والمعالم السياحية"
+      },
+      {
+        "key": "b2b.dmc.services.local.title",
+        "en": "Local Expertise",
+        "hy": "Տեղական Փորձառություն",
+        "ru": "Локальная Экспертиза",
+        "section": "b2b",
+        "ar": "الخبرة المحلية"
+      },
+      {
+        "key": "b2b.dmc.services.subtitle",
+        "en": "Comprehensive destination management solutions for travel agencies and tour operators",
+        "hy": "Համապարփակ տուրիստական կառավարման լուծումներ տուրիստական գործակալությունների և օպերատորների համար",
+        "ru": "Комплексные решения по управлению дестинациями для турагентств и туроператоров",
+        "section": "b2b",
+        "ar": "حلول شاملة لإدارة الوجهات لوكالات السفر وشركات السياحة"
+      },
+      {
+        "key": "b2b.dmc.services.title",
+        "en": "Core Services",
+        "hy": "Հիմնական Ծառայություններ",
+        "ru": "Основные Услуги",
+        "section": "b2b",
+        "ar": "الخدمات الأساسية"
+      },
+      {
+        "key": "b2b.dmc.toast.description",
+        "en": "Our DMC team will contact you shortly.",
+        "hy": "Մեր DMC թիմը շուտով կապ կհաստատի Ձեզ հետ։",
+        "ru": "Наша DMC команда свяжется с вами в ближайшее время.",
+        "section": "b2b",
+        "ar": "سيقوم فريق الـ DMC الخاص بنا بالتواصل معك قريبًا."
+      },
+      {
+        "key": "b2b.dmc.toast.title",
+        "en": "Request Received",
+        "hy": "Հարցումն Ընդունված է",
+        "ru": "Запрос Получен",
+        "section": "b2b",
+        "ar": "تم استلام الطلب"
+      },
+      {
+        "key": "b2b.hero.cta",
+        "en": "Contact Us",
+        "hy": "Կապվել Մեզ Հետ",
+        "ru": "Связаться с Нами",
+        "section": "b2b",
+        "ar": "اتصل بنا"
+      },
+      {
+        "key": "b2b.hero.subtitle",
+        "en": "Professional MICE and DMC services for your business needs",
+        "hy": "Պրոֆեսիոնալ MICE և DMC ծառայություններ ձեր բիզնեսի համար",
+        "ru": "Профессиональные услуги MICE и DMC для вашего бизнеса",
+        "section": "b2b",
+        "ar": "خدمات MICE وDMC الاحترافية لتلبية احتياجات أعمالك"
+      },
+      {
+        "key": "b2b.hero.title",
+        "en": "B2B Travel Solutions",
+        "hy": "B2B Ճամփորդական Լուծումներ",
+        "ru": "B2B Туристические Решения",
+        "section": "b2b",
+        "ar": "حلول السفر للشركات"
+      },
+      {
+        "key": "b2b.mice.capabilities.activities.description",
+        "en": "Team building and cultural experiences",
+        "hy": "Թիմային և մշակութային փորձառություններ",
+        "ru": "Тимбилдинг и культурный опыт",
+        "section": "b2b",
+        "ar": "أنشطة بناء الفريق والتجارب الثقافية"
+      },
+      {
+        "key": "b2b.mice.capabilities.activities.title",
+        "en": "Local Activities",
+        "hy": "Տեղական Միջոցառումներ",
+        "ru": "Локальные Активности",
+        "section": "b2b",
+        "ar": "الأنشطة المحلية"
+      },
+      {
+        "key": "b2b.mice.capabilities.catering.description",
+        "en": "High-quality food and beverage options",
+        "hy": "Բարձրորակ սննդի և ըմպելիքների տարբերակներ",
+        "ru": "Качественные услуги питания и напитков",
+        "section": "b2b",
+        "ar": "خيارات طعام وشراب عالية الجودة"
+      },
+      {
+        "key": "b2b.mice.capabilities.catering.title",
+        "en": "Catering Services",
+        "hy": "Քեյթրինգ Ծառայություններ",
+        "ru": "Кейтеринг",
+        "section": "b2b",
+        "ar": "خدمات التموين"
+      },
+      {
+        "key": "b2b.mice.capabilities.standards.description",
+        "en": "International level service delivery",
+        "hy": "Միջազգային մակարդակի ծառայությունների մատուցում",
+        "ru": "Сервис международного уровня",
+        "section": "b2b",
+        "ar": "تقديم خدمات بمستوى عالمي"
+      },
+      {
+        "key": "b2b.mice.capabilities.standards.title",
+        "en": "Global Standards",
+        "hy": "Միջազգային Ստանդարտներ",
+        "ru": "Мировые Стандарты",
+        "section": "b2b",
+        "ar": "المعايير العالمية"
+      },
+      {
+        "key": "b2b.mice.capabilities.subtitle",
+        "en": "Comprehensive solutions for successful corporate events",
+        "hy": "Համապարփակ լուծումներ հաջող կորպորատիվ միջոցառումների համար",
+        "ru": "Комплексные решения для успешных корпоративных мероприятий",
+        "section": "b2b",
+        "ar": "حلول شاملة لتنظيم فعاليات الشركات الناجحة"
+      },
+      {
+        "key": "b2b.mice.capabilities.title",
+        "en": "Our Capabilities",
+        "hy": "Մեր Հնարավորությունները",
+        "ru": "Наши Возможности",
+        "section": "b2b",
+        "ar": "إمكاناتنا"
+      },
+      {
+        "key": "b2b.mice.capabilities.venue.description",
+        "en": "Access to premium venues across Armenia",
+        "hy": "Հայաստանի լավագույն վայրերի հասանելիություն",
+        "ru": "Доступ к премиальным площадкам по всей Армении",
+        "section": "b2b",
+        "ar": "الوصول إلى أماكن فاخرة في جميع أنحاء أرمينيا"
+      },
+      {
+        "key": "b2b.mice.capabilities.venue.title",
+        "en": "Venue Selection",
+        "hy": "Վայրերի Ընտրություն",
+        "ru": "Подбор Площадок",
+        "section": "b2b",
+        "ar": "اختيار المكان"
+      },
+      {
+        "key": "b2b.mice.cta.button",
+        "en": "Contact MICE Team",
+        "hy": "Կապվել MICE Թիմի Հետ",
+        "ru": "Свяжитесь с MICE Командой",
+        "section": "b2b",
+        "ar": "تواصل مع فريق الفعاليات"
+      },
+      {
+        "key": "b2b.mice.cta.subtitle",
+        "en": "Let our experienced team help you create an unforgettable corporate event in Armenia. Contact us for a customized proposal.",
+        "hy": "Թույլ տվեք մեր փորձառու թիմին օգնել Ձեզ ստեղծել անմոռանալի կորպորատիվ միջոցառում Հայաստանում։ Կապվեք մեզ հետ անհատական առաջարկի համար։",
+        "ru": "Позвольте нашей опытной команде помочь вам создать незабываемое корпоративное мероприятие в Армении. Свяжитесь с нами для индивидуального предложения.",
+        "section": "b2b",
+        "ar": "دع فريقنا الخبير يساعدك في تنظيم فعالية شركات لا تُنسى في أرمينيا. اتصل بنا للحصول على عرض مخصص."
+      },
+      {
+        "key": "b2b.mice.cta.title",
+        "en": "Ready to Plan Your Event?",
+        "hy": "Պատրա՞ստ եք Պլանավորել Ձեր Միջոցառումը",
+        "ru": "Готовы Планировать Ваше Мероприятие?",
+        "section": "b2b",
+        "ar": "هل أنت مستعد لتخطيط فعاليتك؟"
+      },
+      {
+        "key": "b2b.mice.hero.subtitle",
+        "en": "Professional Meetings, Incentives, Conferences, and Events solutions",
+        "hy": "Պրոֆեսիոնալ հանդիպումների, խթանիչ ճամփորդությունների, կոնֆերանսների և միջոցառումների լուծումներ",
+        "ru": "Профессиональные решения для встреч, поощрительных поездок, конференций и мероприятий",
+        "section": "b2b",
+        "ar": "حلول احترافية للاجتماعات والحوافز والمؤتمرات والفعاليات"
+      },
+      {
+        "key": "b2b.mice.hero.title",
+        "en": "MICE Services",
+        "hy": "MICE Ծառայություններ",
+        "ru": "MICE Услуги",
+        "section": "b2b",
+        "ar": "خدمات الفعاليات والمؤتمرات"
+      },
+      {
+        "key": "b2b.mice.services.conferences.description",
+        "en": "Full-scale conference management",
+        "hy": "Ֆուլ-սկեյլ կոնֆերանսների կառավարում",
+        "ru": "Полное управление конференциями",
+        "section": "b2b",
+        "ar": "إدارة المؤتمرات الشاملة"
+      },
+      {
+        "key": "b2b.mice.services.conferences.title",
+        "en": "Conferences",
+        "hy": "Կոնֆերանսներ",
+        "ru": "Конференции",
+        "section": "b2b",
+        "ar": "المؤتمرات"
+      },
+      {
+        "key": "b2b.mice.services.events.description",
+        "en": "Corporate event planning and execution",
+        "hy": "Կորպորատիվ միջոցառումների պլանավորում և իրականացում",
+        "ru": "Планирование и проведение корпоративных мероприятий",
+        "section": "b2b",
+        "ar": "تخطيط وتنفيذ الفعاليات المؤسسية"
+      },
+      {
+        "key": "b2b.mice.services.events.title",
+        "en": "Events",
+        "hy": "Միջոցառումներ",
+        "ru": "Мероприятия",
+        "section": "b2b",
+        "ar": "الفعاليات"
+      },
+      {
+        "key": "b2b.mice.services.incentives.description",
+        "en": "Rewarding travel programs for teams",
+        "hy": "Պարգևատրող ճամփորդական ծրագրեր թիմերի համար",
+        "ru": "Поощрительные программы для команд",
+        "section": "b2b",
+        "ar": "برامج سفر مكافأة للفرق"
+      },
+      {
+        "key": "b2b.mice.services.incentives.title",
+        "en": "Incentives",
+        "hy": "Խթանիչ Ծրագրեր",
+        "ru": "Инсентив",
+        "section": "b2b",
+        "ar": "الحوافز"
+      },
+      {
+        "key": "b2b.mice.services.meetings.description",
+        "en": "Professional meeting spaces and coordination",
+        "hy": "Պրոֆեսիոնալ հանդիպումների տարածքներ և համակարգում",
+        "ru": "Профессиональные площадки и координация встреч",
+        "section": "b2b",
+        "ar": "مساحات اجتماعات احترافية وتنسيق متكامل"
+      },
+      {
+        "key": "b2b.mice.services.meetings.title",
+        "en": "Meetings",
+        "hy": "Հանդիպումներ",
+        "ru": "Встречи",
+        "section": "b2b",
+        "ar": "اجتماعات"
+      },
+      {
+        "key": "b2b.mice.services.title",
+        "en": "Our MICE Services",
+        "hy": "Մեր MICE Ծառայությունները",
+        "ru": "Наши MICE Услуги",
+        "section": "b2b",
+        "ar": "خدماتنا للمؤتمرات والحوافز"
+      },
+      {
+        "key": "b2b.mice.toast.description",
+        "en": "Our MICE team will contact you shortly.",
+        "hy": "Մեր MICE թիմը շուտով կապ կհաստատի Ձեզ հետ։",
+        "ru": "Наша MICE команда свяжется с вами в ближайшее время.",
+        "section": "b2b",
+        "ar": "سيتواصل فريق المؤتمرات والحوافز معك قريبًا."
+      },
+      {
+        "key": "b2b.mice.toast.title",
+        "en": "Request Received",
+        "hy": "Հարցումն Ընդունված է",
+        "ru": "Запрос Получен",
+        "section": "b2b",
+        "ar": "تم استلام الطلب"
+      },
+      {
+        "key": "b2b.services.corporate travel.description",
+        "en": "Efficient business travel management services",
+        "hy": "Արդյունավետ բիզնես ճամփորդությունների կառավարում",
+        "ru": "Эффективное управление деловыми поездками",
+        "section": "b2b",
+        "ar": "خدمات فعالة لإدارة السفر للشركات"
+      },
+      {
+        "key": "b2b.services.corporate travel.title",
+        "en": "Corporate Travel",
+        "hy": "Կորպորատիվ Ճամփորդություն",
+        "ru": "Корпоративные Поездки",
+        "section": "b2b",
+        "ar": "سفر الشركات"
+      },
+      {
+        "key": "b2b.services.dmc services.description",
+        "en": "Comprehensive Destination Management Company services in Armenia",
+        "hy": "Համապարփակ տուրիստական կառավարում Հայաստանում",
+        "ru": "Комплексные услуги управления дестинациями в Армении",
+        "section": "b2b",
+        "ar": "خدمات شاملة لشركة إدارة الوجهات في أرمينيا"
+      },
+      {
+        "key": "b2b.services.dmc services.title",
+        "en": "DMC Services",
+        "hy": "DMC Ծառայություններ",
+        "ru": "DMC Услуги",
+        "section": "b2b",
+        "ar": "خدمات مدير الوجهات"
+      },
+      {
+        "key": "b2b.services.group bookings.description",
+        "en": "Specialized services for large group travel",
+        "hy": "Մասնագիտացված ծառայություններ մեծ խմբերի համար",
+        "ru": "Специализированные услуги для больших групп",
+        "section": "b2b",
+        "ar": "خدمات متخصصة لرحلات المجموعات الكبيرة"
+      },
+      {
+        "key": "b2b.services.group bookings.title",
+        "en": "Group Bookings",
+        "hy": "Խմբային Ամրագրումներ",
+        "ru": "Групповые Бронирования",
+        "section": "b2b",
+        "ar": "حجوزات المجموعات"
+      },
+      {
+        "key": "b2b.services.mice solutions.description",
+        "en": "Complete MICE event planning and management",
+        "hy": "Միջազգային մակարդակի ծառայությունների մատուցում",
+        "ru": "Полное планирование и управление MICE мероприятиями",
+        "section": "b2b",
+        "ar": "التخطيط والإدارة الشاملة لفعاليات MICE"
+      },
+      {
+        "key": "b2b.services.mice solutions.title",
+        "en": "MICE Solutions",
+        "hy": "MICE Լուծումներ",
+        "ru": "MICE Решения",
+        "section": "b2b",
+        "ar": "حلول الفعالات والحوافز"
+      },
+      {
+        "key": "b2b.services.subtitle",
+        "en": "Comprehensive solutions for business travel and events",
+        "hy": "Համապարփակ լուծումներ բիզնես ճամփորդությունների և միջոցառումների համար",
+        "ru": "Комплексные решения для деловых поездок и мероприятий",
+        "section": "b2b",
+        "ar": "حلول شاملة لرحلات العمل والفعاليات"
+      },
+      {
+        "key": "b2b.services.title",
+        "en": "Our B2B Services",
+        "hy": "Մեր B2B Ծառայությունները",
+        "ru": "Наши B2B Услуги",
+        "section": "b2b",
+        "ar": "خدماتنا للشركات"
+      },
+      {
+        "key": "b2b.whyChooseUs.experience.description",
+        "en": "Professional service since 2014",
+        "hy": "Պրոֆեսիոնալ ծառայություն 2014 թվականից",
+        "ru": "Профессиональный сервис с 2014 года",
+        "section": "b2b",
+        "ar": "خدمات احترافية منذ عام ٢٠١٤"
+      },
+      {
+        "key": "b2b.whyChooseUs.experience.title",
+        "en": "Years of Experience",
+        "hy": "Տարիների Փորձ",
+        "ru": "Годы Опыта",
+        "section": "b2b",
+        "ar": "سنوات من الخبرة"
+      },
+      {
+        "key": "b2b.whyChooseUs.global.description",
+        "en": "Worldwide partnerships and connections",
+        "hy": "Համաշխարհային գործընկերություններ",
+        "ru": "Международные партнерства",
+        "section": "b2b",
+        "ar": "شراكات واتصالات عالمية"
+      },
+      {
+        "key": "b2b.whyChooseUs.global.title",
+        "en": "Global Network",
+        "hy": "Գլոբալ Ցանց",
+        "ru": "Глобальная Сеть",
+        "section": "b2b",
+        "ar": "شبكة عالمية"
+      },
+      {
+        "key": "b2b.whyChooseUs.local.description",
+        "en": "Deep knowledge of Armenian market",
+        "hy": "Հայկական շուկայի խորը իմացություն",
+        "ru": "Глубокое знание армянского рынка",
+        "section": "b2b",
+        "ar": "معرفة عميقة بالسوق الأرميني"
+      },
+      {
+        "key": "b2b.whyChooseUs.local.title",
+        "en": "Local Expertise",
+        "hy": "Տեղական Փորձառություն",
+        "ru": "Локальная Экспертиза",
+        "section": "b2b",
+        "ar": "الخبرة المحلية"
+      },
+      {
+        "key": "b2b.whyChooseUs.professional.description",
+        "en": "Dedicated B2B specialists",
+        "hy": "Նվիրված B2B մասնագետներ",
+        "ru": "Преданные B2B специалисты",
+        "section": "b2b",
+        "ar": "متخصصون متميزون في قطاع الأعمال"
+      },
+      {
+        "key": "b2b.whyChooseUs.professional.title",
+        "en": "Professional Team",
+        "hy": "Պրոֆեսիոնալ Թիմ",
+        "ru": "Профессиональная Команда",
+        "section": "b2b",
+        "ar": "فريق محترف"
+      },
+      {
+        "key": "b2b.whyChooseUs.subtitle",
+        "en": "Our advantages in business travel services",
+        "hy": "Մեր առավելությունները բիզնես ճամփորդությունների ոլորտում",
+        "ru": "Наши преимущества в сфере делового туризма",
+        "section": "b2b",
+        "ar": "مزايا خدماتنا في السفر للعمل"
+      },
+      {
+        "key": "b2b.whyChooseUs.title",
+        "en": "Why Choose Us",
+        "hy": "Ինչու Ընտրել Մեզ",
+        "ru": "Почему Выбирают Нас",
+        "section": "b2b",
+        "ar": "لماذا تختارنا"
+      }
+    ]
+  },
+  {
+    "name": "contact",
+    "entries": [
+      {
+        "key": "contact.form.email",
+        "en": "Email Address",
+        "hy": "Էլ․ փոստի հասցե",
+        "ru": "Адрес эл. почты",
+        "section": "contact",
+        "ar": "البريد الإلكتروني"
+      },
+      {
+        "key": "contact.form.message",
+        "en": "Your Message",
+        "hy": "Ձեր հաղորդագրությունը",
+        "ru": "Ваше сообщение",
+        "section": "contact",
+        "ar": "رسالتك"
+      },
+      {
+        "key": "contact.form.name",
+        "en": "Your Name",
+        "hy": "Ձեր անունը",
+        "ru": "Ваше имя",
+        "section": "contact",
+        "ar": "اسمك"
+      },
+      {
+        "key": "contact.form.send",
+        "en": "Send Message",
+        "hy": "Ուղարկել",
+        "ru": "Отправить",
+        "section": "contact",
+        "ar": "إرسال الرسالة"
+      },
+      {
+        "key": "contact.form.sending",
+        "en": "Sending...",
+        "hy": "Ուղարկվում է...",
+        "ru": "Отправка...",
+        "section": "contact",
+        "ar": "جاري الإرسال..."
+      },
+      {
+        "key": "contact.form.subject",
+        "en": "Subject",
+        "hy": "Թեմա",
+        "ru": "Тема",
+        "section": "contact",
+        "ar": "الموضوع"
+      },
+      {
+        "key": "contact.form.success.message",
+        "en": "Thank you for your message. We'll get back to you soon!",
+        "hy": "Շնորհակալություն Ձեր հաղորդագրության համար։ Մենք շուտով կպատասխանենք Ձեզ։",
+        "ru": "Спасибо за ваше сообщение. Мы скоро свяжемся с вами!",
+        "section": "contact",
+        "ar": "شكرًا لك على رسالتك. سنتواصل معك قريبًا!"
+      },
+      {
+        "key": "contact.form.success.title",
+        "en": "Message Sent",
+        "hy": "Հաղորդագրությունն ուղարկված է",
+        "ru": "Сообщение отправлено",
+        "section": "contact",
+        "ar": "تم إرسال الرسالة"
+      },
+      {
+        "key": "contact.form.title",
+        "en": "Send us a Message",
+        "hy": "Ուղարկեք մեզ նամակ",
+        "ru": "Отправьте нам сообщение",
+        "section": "contact",
+        "ar": "أرسل لنا رسالة"
+      },
+      {
+        "key": "contact.hero.subtitle",
+        "en": "Get in touch with us for any questions or travel arrangements",
+        "hy": "Կապվեք մեզ հետ ցանկացած հարցերի կամ ճամփորդական պայմանավորվածությունների համար",
+        "ru": "Свяжитесь с нами по любым вопросам или организации путешествий",
+        "section": "contact",
+        "ar": "تواصل معنا لأي استفسارات أو ترتيبات سفر"
+      },
+      {
+        "key": "contact.hero.title",
+        "en": "Contact Us",
+        "hy": "Կապ Մեզ Հետ",
+        "ru": "Свяжитесь с Нами",
+        "section": "contact",
+        "ar": "تواصل معنا"
+      },
+      {
+        "key": "contact.info.address.title",
+        "en": "Address",
+        "hy": "Հասցե",
+        "ru": "Адрес",
+        "section": "contact",
+        "ar": "العنوان"
+      },
+      {
+        "key": "contact.info.email.title",
+        "en": "Email",
+        "hy": "Էլ․ փոստ",
+        "ru": "Эл. почта",
+        "section": "contact",
+        "ar": "البريد الإلكتروني"
+      },
+      {
+        "key": "contact.info.phone.title",
+        "en": "Phone",
+        "hy": "Հեռախոս",
+        "ru": "Телефон",
+        "section": "contact",
+        "ar": "الهاتف"
+      },
+      {
+        "key": "contact.office.description",
+        "en": "Visit us at our office in the heart of Yerevan. We're located in the Citadel Business Center, easily accessible from the city center.",
+        "hy": "Այցելեք մեր գրասենյակ Երևանի սրտում։ Մենք գտնվում ենք Սիթադել Բիզնես Կենտրոնում, հեշտ հասանելի քաղաքի կենտրոնից։",
+        "ru": "Посетите наш офис в центре Еревана. Мы находимся в Бизнес Центре Цитадель, легко доступном из центра города.",
+        "section": "contact",
+        "ar": "زُرونا في مكتبنا في قلب يريفان. نحن موجودون في مركز سيتادل للأعمال، ويمكن الوصول إلينا بسهولة من وسط المدينة."
+      },
+      {
+        "key": "contact.office.hours.title",
+        "en": "Working Hours",
+        "hy": "Աշխատանքային Ժամեր",
+        "ru": "Часы Работы",
+        "section": "contact",
+        "ar": "ساعات العمل"
+      },
+      {
+        "key": "contact.office.hours.weekdays",
+        "en": "Monday - Friday: 9:00 AM - 6:00 PM",
+        "hy": "Երկուշաբթի - Ուրբաթ: 9:00 - 18:00",
+        "ru": "Понедельник - Пятница: 9:00 - 18:00",
+        "section": "contact",
+        "ar": "الإثنين - الجمعة: 9:00 صباحاً - 6:00 مساءً"
+      },
+      {
+        "key": "contact.office.hours.weekend",
+        "en": "Saturday - Sunday: Closed",
+        "hy": "Շաբաթ - Կիրակի: Փակ է",
+        "ru": "Суббота - Воскресенье: Закрыто",
+        "section": "contact",
+        "ar": "السبت - الأحد: مغلق"
+      },
+      {
+        "key": "contact.office.title",
+        "en": "Our Office",
+        "hy": "Մեր Գրասենյակը",
+        "ru": "Наш Офис",
+        "section": "contact",
+        "ar": "مكتبنا"
+      }
+    ]
+  },
+  {
+    "name": "booking",
+    "entries": [
+      {
+        "key": "booking.dialog.title",
+        "en": "Book Your Experience",
+        "hy": "Ամրագրեք Ձեր Փորձառությունը",
+        "ru": "Забронируйте Ваше Путешествие",
+        "section": "booking",
+        "ar": "احجز تجربتك"
+      },
+      {
+        "key": "booking.dialog.description",
+        "en": "Fill in your details and we'll get back to you with confirmation",
+        "hy": "Լրացրեք Ձեր տվյալները և մենք կապ կհաստատենք Ձեզ հետ հաստատման համար",
+        "ru": "Заполните ваши данные и мы свяжемся с вами для подтверждения",
+        "section": "booking",
+        "ar": "املأ بياناتك وسنتواصل معك للتأكيد"
+      },
+      {
+        "key": "booking.form.name",
+        "en": "Full Name",
+        "hy": "Անուն Ազգանուն",
+        "ru": "Полное Имя",
+        "section": "booking",
+        "ar": "الاسم الكامل"
+      },
+      {
+        "key": "booking.form.email",
+        "en": "Email Address",
+        "hy": "Էլ. Հասցե",
+        "ru": "Электронная Почта",
+        "section": "booking",
+        "ar": "البريد الإلكتروني"
+      },
+      {
+        "key": "booking.form.date",
+        "en": "Preferred Date",
+        "hy": "Նախընտրելի Ամսաթիվ",
+        "ru": "Предпочтительная Дата",
+        "section": "booking",
+        "ar": "التاريخ المفضل"
+      },
+      {
+        "key": "booking.form.pickDate",
+        "en": "Pick a date",
+        "hy": "Ընտրեք ամսաթիվ",
+        "ru": "Выберите дату",
+        "section": "booking",
+        "ar": "اختر تاريخاً"
+      },
+      {
+        "key": "booking.form.confirm",
+        "en": "Confirm Booking",
+        "hy": "Հաստատել Ամրագրումը",
+        "ru": "Подтвердить Бронирование",
+        "section": "booking",
+        "ar": "تأكيد الحجز"
+      },
+      {
+        "key": "booking.success.title",
+        "en": "Booking Request Received!",
+        "hy": "Ամրագրման Հարցումն Ընդունված է!",
+        "ru": "Запрос на Бронирование Получен!",
+        "section": "booking",
+        "ar": "تم استلام طلب الحجز!"
+      },
+      {
+        "key": "booking.success.message",
+        "en": "Thank you! We'll contact you shortly to confirm your booking.",
+        "hy": "Շնորհակալություն! Մենք շուտով կկապվենք Ձեզ հետ՝ հաստատելու Ձեր ամրագրումը։",
+        "ru": "Спасибо! Мы скоро свяжемся с вами для подтверждения бронирования.",
+        "section": "booking",
+        "ar": "شكراً لك! سنتواصل معك قريباً لتأكيد حجزك."
+      }
+    ]
+  },
+  {
+    "name": "cta",
+    "entries": [
+      {
+        "key": "cta.bookNow",
+        "en": "Book Now",
+        "hy": "Ամրագրել",
+        "ru": "Забронировать",
+        "section": "cta",
+        "ar": "احجز الآن"
+      },
+      {
+        "key": "cta.contactUs",
+        "en": "Contact Us",
+        "hy": "Կապ Հաստատել",
+        "ru": "Связаться",
+        "section": "cta",
+        "ar": "اتصل بنا"
+      },
+      {
+        "key": "cta.learnMore",
+        "en": "Learn More",
+        "hy": "Իմանալ Ավելին",
+        "ru": "Узнать Больше",
+        "section": "cta",
+        "ar": "اعرف المزيد"
+      }
+    ]
+  },
+  {
+    "name": "footer",
+    "entries": [
+      {
+        "key": "footer.contactInfo.address",
+        "en": "Teryan St 105/1, Citadel Business Center • Yerevan, Armenia",
+        "hy": "Տերյան փ․ 105/1, Սիթադել Բիզնես Կենտրոն • Երևան, Հայաստան",
+        "ru": "ул. Теряна 105/1, Бизнес Центр Цитадель • Ереван, Армения",
+        "section": "footer",
+        "ar": "شارع تريان ١٠٥/١، مركز سيتادل للأعمال • يريفان، أرمينيا"
+      },
+      {
+        "key": "footer.contactInfo.email",
+        "en": "info@nare.am",
+        "hy": "info@nare.am",
+        "ru": "info@nare.am",
+        "section": "footer",
+        "ar": "info@nare.am"
+      },
+      {
+        "key": "footer.contactInfo.phone1",
+        "en": "+374-10-545046",
+        "hy": "+374-10-545046",
+        "ru": "+374-10-545046",
+        "section": "footer",
+        "ar": "+374-10-545046"
+      },
+      {
+        "key": "footer.contactInfo.phone2",
+        "en": "+374-91-005046",
+        "hy": "+374-91-005046",
+        "ru": "+374-91-005046",
+        "section": "footer",
+        "ar": "+374-91-005046"
+      },
+      {
+        "key": "footer.contactInfo.title",
+        "en": "Contact Information",
+        "hy": "Կոնտակտային Տվյալներ",
+        "ru": "Контактная Информация",
+        "section": "footer",
+        "ar": "معلومات التواصل"
+      },
+      {
+        "key": "footer.copyright",
+        "en": "Nare Travel and Tours. All rights reserved.",
+        "hy": "Նարե Թրավել ընդ Թուրս։ Բոլոր իրավունքները պաշտպանված են։",
+        "ru": "Наре Трэвел энд Турс. Все права защищены.",
+        "section": "footer",
+        "ar": "جميع الحقوق محفوظة"
+      },
+      {
+        "key": "footer.description",
+        "en": "Your trusted partner for local and international travel services, offering comprehensive solutions for both leisure and business travelers since 2014.",
+        "hy": "Ձեր վստահելի գործընկերը տեղական և միջազգային ճամփորդությունների համար, առաջարկելով համապարփակ լուծումներ ինչպես հանգստի, այնպես էլ բիզնես ճամփորդների համար 2014 թվականից։",
+        "ru": "Ваш надежный партнер в сфере местных и международных путешествий, предлагающий комплексные решения как для отдыха, так и для бизнес-путешественников с 2014 года.",
+        "section": "footer",
+        "ar": "شريكك الموثوق لخدمات السفر المحلية والدولية، نقدم حلولاً شاملة لكل من المسافرين للترفيه وأعمال منذ عام ٢٠١٤."
+      },
+      {
+        "key": "footer.privacyPolicy",
+        "en": "Privacy Policy",
+        "hy": "Գաղտնիության Քաղաքականություն",
+        "ru": "Политика Конфиденциальности",
+        "section": "footer",
+        "ar": "سياسة الخصوصية"
+      },
+      {
+        "key": "footer.quickLinks.about",
+        "en": "About Us",
+        "hy": "Մեր Մասին",
+        "ru": "О Нас",
+        "section": "footer",
+        "ar": "من نحن"
+      },
+      {
+        "key": "footer.quickLinks.contact",
+        "en": "Contact Us",
+        "hy": "Կապ Մեզ Հետ",
+        "ru": "Связаться с Нами",
+        "section": "footer",
+        "ar": "اتصل بنا"
+      },
+      {
+        "key": "footer.quickLinks.services",
+        "en": "Our Services",
+        "hy": "Մեր Ծառայությունները",
+        "ru": "Наши Услуги",
+        "section": "footer",
+        "ar": "خدماتنا"
+      },
+      {
+        "key": "footer.quickLinks.title",
+        "en": "Quick Links",
+        "hy": "Արագ Հղումներ",
+        "ru": "Быстрые Ссылки",
+        "section": "footer",
+        "ar": "روابط سريعة"
+      },
+      {
+        "key": "footer.quickLinks.tours",
+        "en": "Armenia Tours",
+        "hy": "Տուրեր Հայաստանում",
+        "ru": "Туры по Армении",
+        "section": "footer",
+        "ar": "جولات أرمينيا"
+      },
+      {
+        "key": "footer.terms",
+        "en": "Terms & Conditions",
+        "hy": "Պայմաններ և Դրույթներ",
+        "ru": "Условия и Положения",
+        "section": "footer",
+        "ar": "الشروط والأحكام"
+      }
+    ]
+  },
+  {
+    "name": "home",
+    "entries": [
+      {
+        "key": "home.destinations.abudhabi.description",
+        "en": "Abu Dhabi is the capital of the United Arab Emirates. It sits off the mainland on an island in the Persian Gulf. Its focus on culture is showcased in the Sheikh Zayed Grand Mosque, with its white marble domes and the vast Sheikh Zayed National Museum.",
+        "hy": "Աբու Դաբին Արաբական Միացյալ Էմիրությունների մայրաքաղաքն է։ Այն գտնվում է մայրցամաքից դուրս Պարսից ծոցի կղզում։ Նրա ուշադրությունը մշակույթի վրա ցուցադրված է Շեյխ Զայեդի Մեծ մզկիթում՝ իր սպիտակ մարմարե գմբեթներով և ընդարձակ Շեյխ Զայեդի Ազգային թանգարանում։",
+        "ru": "Абу-Даби — столица Объединенных Арабских Эмиратов. Он расположен на острове в Персидском заливе. Его акцент на культуре проявляется в мечети Шейха Зайеда, с ее белыми мраморными куполами и огромным музеем Шейха Зайеда.",
+        "section": "home",
+        "ar": "أبوظبي هي عاصمة دولة الإمارات العربية المتحدة. تقع قبالة البر الرئيسي على جزيرة في الخليج العربي. ويبرز تركيزها على الثقافة في مسجد الشيخ زايد الكبير بقبابه الرخامية البيضاء ومتحف الشيخ زايد الوطني الواسع."
+      },
+      {
+        "key": "home.destinations.abudhabi.title",
+        "en": "ABU DHABI",
+        "hy": "ԱԲՈՒ ԴԱԲԻ",
+        "ru": "АБУ-ДАБИ",
+        "section": "home",
+        "ar": "أبو ظبي"
+      },
+      {
+        "key": "home.destinations.bali.description",
+        "en": "Bali is an Indonesian island known for its forested volcanic mountains, iconic rice paddies, beaches and coral reefs. The island is home to religious sites such as cliffside Uluwatu Temple.",
+        "hy": "Բալին Ինդոնեզիական կղզի է, հայտնի իր անտառածածկ հրաբխային լեռներով, բնորոշ բրնձի դաշտերով, լողափերով և մարջանի խութերով։ Կղզին հայտնի է կրոնական վայրերով, ինչպիսին է Ուլուվատու տաճարը։ Հարավում, Կուտա ծովափնյա քաղաքն ունի աշխույժ բարեր։",
+        "ru": "Бали — индонезийский остров, известный своими лесистыми вулканическими горами, культовыми рисовыми полями, пляжами и коралловыми рифами.",
+        "section": "home",
+        "ar": "بالي هي جزيرة إندونيسية تشتهر بجبالها البركانية المكسوة بالغابات، ومدرجات الأرز الشهيرة، والشواطئ والشعاب المرجانية. تضم الجزيرة مواقع دينية مثل معبد أولوواتو المطل على المنحدرات."
+      },
+      {
+        "key": "home.destinations.bali.title",
+        "en": "BALI",
+        "hy": "ԲԱԼԻ",
+        "ru": "БАЛИ",
+        "section": "home",
+        "ar": "بالي"
+      },
+      {
+        "key": "home.destinations.cyprus.description",
+        "en": "Cyprus is an island country in the Eastern Mediterranean. The third largest and third most populous island in the Mediterranean, it is known for its beaches, ancient ruins, and stunning landscapes. Its rich culture reflects Greek, Turkish, and Middle Eastern influences.",
+        "hy": "Կիպրոսը կղզի-պետություն է Արևելյան Միջերկրական ծովում։ Միջերկրական ծովի երրորդ ամենամեծ և երրորդ ամենամարդաշատ կղզին, այն հայտնի է իր լողափերով, հին ավերակներով և գեղատեսիլ բնատեսարաններով։ Նրա հարուստ մշակույթը արտացոլում է հունական, թուրքական և մերձավորարևելյան ազդեցությունները։",
+        "ru": "Кипр — островное государство в Восточном Средиземноморье. Третий по величине и третье по населению остров в Средиземном море, он известен своими пляжами, древними руинами и потрясающими пейзажами. Его богатая культура отражает греческие, турецкие и ближневосточные влияния.",
+        "section": "home",
+        "ar": "قبرص هي دولة جزيرة في شرق البحر المتوسط. تُعد ثالث أكبر وأكثر الجزر سكانًا في البحر المتوسط، وتشتهر بشواطئها وآثارها القديمة ومناظرها الطبيعية الخلابة. تعكس ثقافتها الغنية تأثيرات يونانية وتركية وشرق أوسطية."
+      },
+      {
+        "key": "home.destinations.cyprus.title",
+        "en": "CYPRUS",
+        "hy": "ԿԻՊՐՈՍ",
+        "ru": "КИПР",
+        "section": "home",
+        "ar": "قبرص"
+      },
+      {
+        "key": "home.destinations.dubai.description",
+        "en": "Dubai is a city and emirate in the United Arab Emirates known for luxury shopping, ultramodern architecture and a lively nightlife scene. Burj Khalifa, an 830m-tall tower, dominates the skyscraper-filled skyline. At its foot lies Dubai Fountain, with jets and lights choreographed to music.",
+        "hy": "Դուբայը Արաբական Միացյալ Էմիրությունների քաղաք և էմիրություն է, որը հայտնի է շքեղ առևտրի, գերարդիական ճարտարապետության և աշխույժ գիշերային կյանքի տեսարաններով։ Բուրջ Խալիֆան՝ 830 մետր բարձրությամբ աշտարակը, գերիշխում է երկնաքերերով լի հորիզոնը։ Նրա ստորոտում գտնվում է Դուբայի շատրվանը, որի ջրային շիթերը և լույսերը համաձայնեցված են երաժշտության հետ։",
+        "ru": "Дубай — город и эмират в Объединенных Арабских Эмиратах, известный своим роскошным шопингом, ультрасовременной архитектурой и оживленной ночной жизнью. Бурдж Халифа, 830-метровая башня, доминирует над небоскребами. У ее подножия находится Дубайский фонтан, с водяными струями и огнями, синхронизированными с музыкой.",
+        "section": "home",
+        "ar": "دبي هي مدينة وإمارة في الإمارات العربية المتحدة تشتهر بالتسوق الفاخر، والهندسة المعمارية فائقة الحداثة، ومشهد الحياة الليلية النابض بالحياة. ويُهيمن برج خليفة، الذي يبلغ ارتفاعه 830 متراً، على الأفق المليء بناطحات السحاب. وتقع نافورة دبي عند سفحه، حيث تتناغم نفاثات المياه والأضواء مع الموسيقى."
+      },
+      {
+        "key": "home.destinations.dubai.title",
+        "en": "DUBAI",
+        "hy": "ԴՈՒԲԱՅ",
+        "ru": "ДУБАЙ",
+        "section": "home",
+        "ar": "دبي"
+      },
+      {
+        "key": "home.destinations.indonesia.description",
+        "en": "Indonesia is a Southeast Asian nation made up of thousands of volcanic islands, home to hundreds of ethnic groups speaking many different languages.",
+        "hy": "Լինելով աշխարհում ամենամեծ արշիպելագային երկրը, Ինդոնեզիան օրհնված է այնքան տարբեր մարդկանցով, մշակույթներով, սովորույթներով, ավանդույթներով, արվեստի գործերով, սննդով, կենդանիներով, բույսերով, լանդշաֆտներով, և ամեն ինչով, որը այն դարձրել է համարյա 100 (կամ նույնիսկ 200) երկրների գեղեցիկ միաձուլում։",
+        "ru": "Индонезия — страна в Юго-Восточной Азии, состоящая из тысяч вулканических островов, где проживают сотни этнических групп, говорящих на разных языках.",
+        "section": "home",
+        "ar": "إندونيسيا هي دولة في جنوب شرق آسيا تتألف من آلاف الجزر البركانية، وتضم مئات المجموعات العرقية التي تتحدث العديد من اللغات المختلفة."
+      },
+      {
+        "key": "home.destinations.indonesia.title",
+        "en": "INDONESIA",
+        "hy": "ԻՆԴՈՆԵԶԻԱ",
+        "ru": "ИНДОНЕЗИЯ",
+        "section": "home",
+        "ar": "إندونيسيا"
+      },
+      {
+        "key": "home.destinations.malaysia.description",
+        "en": "Malaysia is a Southeast Asian country occupying parts of the Malay Peninsula and the island of Borneo. It's known for its beaches, rainforests and mix of Malay, Chinese, Indian and European cultural influences.",
+        "hy": "Մալայզիան հարավարևելյան ասիական երկիր է, որը զբաղեցնում է Մալայական թերակղզու և Բորնեո կղզու մի մասը։ Այն հայտնի է իր լողափերով, անձրևային անտառներով և մալայական, չինական, հնդկական և եվրոպական մշակութային ազդեցությունների խառնուրդով։",
+        "ru": "Малайзия — страна Юго-Восточной Азии, занимающая части Малайского полуострова и остров Борнео.",
+        "section": "home",
+        "ar": "ماليزيا هي دولة في جنوب شرق آسيا تحتل أجزاء من شبه جزيرة الملايو وجزيرة بورنيو. تشتهر بشواطئها وغاباتها المطيرة ومزيجها الثقافي الفريد الذي يجمع بين التأثيرات المالاوية والصينية والهندية والأوروبية."
+      },
+      {
+        "key": "home.destinations.malaysia.title",
+        "en": "MALAYSIA",
+        "hy": "ՄԱԼԱՅԶԻԱ",
+        "ru": "МАЛАЙЗИЯ",
+        "section": "home",
+        "ar": "ماليزيا"
+      },
+      {
+        "key": "home.destinations.sharm.description",
+        "en": "Sharm El Sheikh is an Egyptian resort town between the desert of the Sinai Peninsula and the Red Sea. It's known for its sheltered sandy beaches, clear waters and coral reefs. Naama Bay, with a palm tree-lined promenade, is filled with bars and restaurants.",
+        "hy": "Շարմ Էլ Շեյխը Եգիպտոսի առողջարանային քաղաք է, որը գտնվում է Սինայի թերակղզու անապատի և Կարմիր ծովի միջև։ Այն հայտնի է իր ծովափնյա ավազոտ պլյաժներով, մաքուր ջրերով և մարջանային խութերով։ Նաամա ծովածոցը, որը շրջապատված է արմավենիներով, լի է բարերով և ռեստորաններով։",
+        "ru": "Шарм Эль Шейх — египетский курортный город между пустыней Синайского полуострова и Красным морем. Он известен своими защищенными песчаными пляжами, чистыми водами и коралловыми рифами. В заливе Наама, с пальмовой аллеей, полно баров и ресторанов.",
+        "section": "home",
+        "ar": "شرم الشيخ هي مدينة منتجع مصرية تقع بين صحراء شبه جزيرة سيناء والبحر الأحمر. تشتهر بشواطئها الرملية المحمية ومياهها الصافية والشعاب المرجانية. وتحتوي خليج نعمة، مع ممشاه المصفوف بأشجار النخيل، على العديد من الحانات والمطاعم."
+      },
+      {
+        "key": "home.destinations.sharm.title",
+        "en": "SHARM EL SHEIKH",
+        "hy": "ՇԱՐՄ ԷԼ ՇԵՅԽ",
+        "ru": "ШАРМ ЭЛЬ ШЕЙХ",
+        "section": "home",
+        "ar": "شرم الشيخ"
+      },
+      {
+        "key": "home.destinations.singapore.description",
+        "en": "Singapore is a city-state in Southeast Asia. It's known for its gleaming skyscrapers, world-class public transportation, safe streets, and diverse culture.",
+        "hy": "Սինգապուրը արևոտ, արևադարձային կղզի է Հարավարևելյան Ասիայում, Մալայական թերակղզու հարավային ծայրին։ Սինգապուրը երիտասարդ, աշխույժ, կոսմոպոլիտ քաղաք է, որը կենտրոնացած է տեխնոլոգիաների, նորարարության և ստեղծարար մշակույթի վրա։",
+        "ru": "Сингапур — город-государство в Юго-Восточной Азии, известный своими сверкающими небоскребами, мировым классом общественного транспорта, безопасными улицами и разнообразной культурой.",
+        "section": "home",
+        "ar": "سنغافورة هي دولة-مدينة في جنوب شرق آسيا. تشتهر بناطحات السحاب اللامعة، ووسائل النقل العام العالمية المستوى، وشوارعها الآمنة، وثقافتها المتنوعة."
+      },
+      {
+        "key": "home.destinations.singapore.title",
+        "en": "SINGAPORE",
+        "hy": "ՍԻՆԳԱՊՈՒՐ",
+        "ru": "СИНГАПУР",
+        "section": "home",
+        "ar": "سنغافورة"
+      },
+      {
+        "key": "home.destinations.thailand.description",
+        "en": "Thailand is a Southeast Asian country. It's known for tropical beaches, opulent royal palaces, ancient ruins and ornate temples displaying figures of Buddha.",
+        "hy": "Թայլանդը հարավարևելյան ասիական երկիր է, հայտնի իր արևադարձային լողափերով, շքեղ թագավորական պալատներով, հնադարյան ավերակներով և զարդարված տաճարներով, որոնք ցուցադրում են Բուդդայի կերպարները։ Ավանդականի և ժամանակակիցի, աղմկոտ քաղաքների և խաղաղ տաճարների հետաքրքիր խառնուրդ։",
+        "ru": "Таиланд — страна Юго-Восточной Азии, известная своими тропическими пляжами, роскошными королевскими дворцами, древними руинами и украшенными храмами с изображениями Будды.",
+        "section": "home",
+        "ar": "تايلاند هي دولة في جنوب شرق آسيا تشتهر بشواطئها الاستوائية وقصورها الملكية الفاخرة وآثارها القديمة ومعابدها المزخورة التي تعرض تماثيل بوذا."
+      },
+      {
+        "key": "home.destinations.thailand.title",
+        "en": "THAILAND",
+        "hy": "ԹԱՅԼԱՆԴ",
+        "ru": "ТАИЛАНД",
+        "section": "home",
+        "ar": "تايلاند"
+      },
+      {
+        "key": "home.destinations.tunisia.description",
+        "en": "Tunisia is a North African country bordering the Mediterranean Sea and Sahara Desert. Its diverse landscape encompasses ancient ruins, sunny beaches, and vast Saharan dunes. The northernmost country in Africa, it offers a unique blend of Arab and Mediterranean influences.",
+        "hy": "Թունիսը Հյուսիսային Աֆրիկայի երկիր է, որը սահմանակից է Միջերկրական ծովին և Սահարա անապատին։ Նրա բազմազան լանդշաֆտը ներառում է հին ավերակներ, արևոտ լողափեր և ընդարձակ Սահարայի դիւնաներ։ Աֆրիկայի ամենահյուսիսային երկիրը, այն առաջարկում է արաբական և միջերկրածովյան ազդեցությունների յուրահատուկ խառնուրդ։",
+        "ru": "Тунис — страна в Северной Африке, граничащая с Средиземным морем и пустыней Сахара. Ее разнообразный ландшафт включает в себя древние руины, солнечные пляжи и обширные песчаные дюны. Как североафриканская страна, она предлагает уникальную смесь арабских и средиземноморских влияний.",
+        "section": "home",
+        "ar": "تونس هي دولة شمال أفريقية تطل على البحر الأبيض المتوسط وتحدها صحراء الصحراء الكبرى. تضم تضاريسها المتنوعة آثارًا قديمة وشواطئ مشمسة وكثبان صحراوية شاسعة. كونها أقصى دولة شمالاً في أفريقيا، تقدم تونس مزيجًا فريدًا من التأثيرات العربية والمتوسطية."
+      },
+      {
+        "key": "home.destinations.tunisia.title",
+        "en": "TUNISIA",
+        "hy": "ԹՈՒՆԻՍ",
+        "ru": "ТУНИС",
+        "section": "home",
+        "ar": "تونس"
+      },
+      {
+        "key": "home.destinations.vietnam.description",
+        "en": "Vietnam is a Southeast Asian country on the South China Sea known for its beaches, rivers, Buddhist pagodas and bustling cities.",
+        "hy": "Վիետնամը հարավարևելյան ասիական երկիր է, հայտնի իր լողափերով, գետերով, բուդդայական պագոդաներով և աղմկոտ քաղաքներով։ Ապշեցուցիչ բնական գեղեցկության և մշակութային բարդությունների, դինամիկ մեգաքաղաքների և լեռնային ցեղերի գյուղերի երկիր։",
+        "ru": "Вьетнам — страна Юго-Восточной Азии, известная своими пляжами, реками, буддийскими пагодами и оживленными городами.",
+        "section": "home",
+        "ar": "فيتنام هي دولة في جنوب شرق آسيا على بحر الصين الجنوبي، تشتهر بشواطئها وأنهارها ومعابدها البوذية ومدنها الصاخبة."
+      },
+      {
+        "key": "home.destinations.vietnam.title",
+        "en": "VIETNAM",
+        "hy": "ՎԻԵՏՆԱՄ",
+        "ru": "ВЬЕТНАМ",
+        "section": "home",
+        "ar": "فيتنام"
+      },
+      {
+        "key": "home.destinations.zanzibar.description",
+        "en": "Zanzibar is a Tanzanian archipelago off the coast of East Africa. Its main island, Unguja, is characterized by beaches, coral reefs and its historic center, Stone Town. A UNESCO World Heritage Site, Stone Town has a fascinating mix of Swahili, Arab, Persian, Indian and European influences.",
+        "hy": "Զանզիբարը տանզանիական արշիպելագ է Արևելյան Աֆրիկայի ափին։ Նրա հիմնական կղզին՝ Ունգուջան, բնութագրվում է լողափերով, մարջանային խութերով և իր պատմական կենտրոնով՝ Քարե քաղաքով։ ՅՈՒՆԵՍԿՕ-ի Համաշխարհային ժառանգության վայր, Քարե քաղաքն ունի սվահիլիական, արաբական, պարսկական, հնդկական և եվրոպական ազդեցությունների հետաքրքիր խառնուրդ։",
+        "ru": "Занзибар — танзанийский архипелаг у восточного побережья Африки. Его главный остров, Унгуя, характеризуется пляжами, коралловыми рифами и его историческим центром, Каменным городом. Объект Всемирного наследия ЮНЕСКО, Каменный город имеет интересную смесь свахилийских, арабских, персидских, индийских и европейских влияний.",
+        "section": "home",
+        "ar": "زنجبار هي أرخبيل تنزاني قبالة ساحل شرق أفريقيا. وتتميز جزيرتها الرئيسية، أونغوجا، بشواطئها وشعابها المرجانية ومركزها التاريخي، ستون تاون. وهي موقع تراث عالمي لليونسكو، وتتمتع ستون تاون بمزيج رائع من التأثيرات السواحلية والعربية والفارسية والهندية والأوروبية."
+      },
+      {
+        "key": "home.destinations.zanzibar.title",
+        "en": "ZANZIBAR",
+        "hy": "ԶԱՆԶԻԲԱՐ",
+        "ru": "ЗАНЗИБАР",
+        "section": "home",
+        "ar": "زنجبار"
+      },
+      {
+        "key": "home.dmc.badge",
+        "en": "B2B SERVICES",
+        "hy": "B2B ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐ",
+        "ru": "B2B УСЛУГИ",
+        "ar": "خدمات B2B",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.cta.directContact",
+        "en": "Direct B2B Contact",
+        "hy": "Ուղղակի B2B Կապ",
+        "ru": "Прямой B2B Контакт",
+        "ar": "اتصال B2B مباشر",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.cta.requestQuote",
+        "en": "Request Quote",
+        "hy": "Պահանջել Գնահատական",
+        "ru": "Запросить Цену",
+        "ar": "طلب عرض سعر",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.cta.subtitle",
+        "en": "Join 500+ travel agencies and tour operators who trust Nare Travel for their Armenia operations",
+        "hy": "Միացեք 500+ ճամփորդական գործակալություններին և տուրօպերատորներին, որոնք վստահում են Նարե Թրավելին իրենց Հայաստանի գործառնությունների համար",
+        "ru": "Присоединяйтесь к 500+ туристическим агентствам и туроператорам, которые доверяют Nare Travel для своих операций в Армении",
+        "ar": "انضم إلى أكثر من 500 وكالة سفر ومشغل سياحي يثقون في Nare Travel لعملياتهم في أرمينيا",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.cta.title",
+        "en": "Partner With Us",
+        "hy": "Դարձեք Մեր Գործընկերը",
+        "ru": "Станьте Нашим Партнером",
+        "ar": "شراكة معنا",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.cta.viewServices",
+        "en": "View DMC Services",
+        "hy": "Դիտել DMC Ծառայությունները",
+        "ru": "Посмотреть DMC Услуги",
+        "ar": "عرض خدمات DMC",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.corporate.description",
+        "en": "Business travel solutions and VIP services",
+        "hy": "Բիզնես ճամփորդության լուծումներ և VIP ծառայություններ",
+        "ru": "Решения для деловых поездок и VIP услуги",
+        "ar": "حلول السفر التجاري وخدمات VIP",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.corporate.title",
+        "en": "Corporate Travel",
+        "hy": "Կորպորատիվ Ճամփորդություն",
+        "ru": "Корпоративные Поездки",
+        "ar": "السفر الشركات",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.dmcService.description",
+        "en": "Complete ground handling and logistics in Armenia",
+        "hy": "Ամբողջական գետնային սպասարկում և լոգիստիկա Հայաստանում",
+        "ru": "Полное наземное обслуживание и логистика в Армении",
+        "ar": "خدمات أرضية ولوجستية كاملة في أرمينيا",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.dmcService.title",
+        "en": "Destination Management",
+        "hy": "Տուրիստական Կառավարում",
+        "ru": "Управление Дестинациями",
+        "ar": "إدارة الوجهات",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.groups.description",
+        "en": "Customized group packages for travel agencies",
+        "hy": "Անհատականացված խմբային փաթեթներ ճամփորդական գործակալությունների համար",
+        "ru": "Индивидуальные групповые пакеты для туристических агентств",
+        "ar": "باقات جماعية مخصصة لوكالات السفر",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.groups.title",
+        "en": "Group Tours",
+        "hy": "Խմբային Տուրեր",
+        "ru": "Групповые Туры",
+        "ar": "جولات جماعية",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.mice.description",
+        "en": "Meetings, Incentives, Conferences & Events management",
+        "hy": "Հանդիպումներ, խրախուսումներ, կոնֆերանսներ և միջոցառումների կազմակերպում",
+        "ru": "Организация встреч, поощрений, конференций и мероприятий",
+        "ar": "إدارة الاجتماعات والحوافز والمؤتمرات والفعاليات",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.mice.title",
+        "en": "MICE Services",
+        "hy": "MICE Ծառայություններ",
+        "ru": "MICE Услуги",
+        "ar": "خدمات MICE",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.quality.description",
+        "en": "Licensed DMC with 10+ years of experience",
+        "hy": "Լիցենզավորված DMC 10+ տարվա փորձով",
+        "ru": "Лицензированная DMC с опытом более 10 лет",
+        "ar": "DMC مرخص مع أكثر من 10 سنوات من الخبرة",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.quality.title",
+        "en": "Quality Guaranteed",
+        "hy": "Որակի Երաշխիք",
+        "ru": "Гарантия Качества",
+        "ar": "جودة مضمونة",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.support.description",
+        "en": "Dedicated account manager and emergency assistance",
+        "hy": "Նվիրված հաշվի մենեջեր և արտակարգ օգնություն",
+        "ru": "Персональный менеджер и экстренная помощь",
+        "ar": "مدير حساب مخصص ومساعدة طوارئ",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.services.support.title",
+        "en": "24/7 Support",
+        "hy": "24/7 Աջակցություն",
+        "ru": "24/7 Поддержка",
+        "ar": "دعم 24/7",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.stats.guests",
+        "en": "Guests Handled",
+        "hy": "Սպասարկված Հյուրեր",
+        "ru": "Обслужено Гостей",
+        "ar": "الضيوف الذين تمت خدمتهم",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.stats.partners",
+        "en": "Partner Agencies",
+        "hy": "Գործընկեր Գործակալություններ",
+        "ru": "Партнерские Агентства",
+        "ar": "الوكالات الشريكة",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.stats.satisfaction",
+        "en": "Client Satisfaction",
+        "hy": "Հաճախորդների Գոհունակություն",
+        "ru": "Удовлетворенность Клиентов",
+        "ar": "رضا العملاء",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.stats.support",
+        "en": "On-Ground Support",
+        "hy": "Գետնային Աջակցություն",
+        "ru": "Наземная Поддержка",
+        "ar": "دعم أرضي",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.subtitle",
+        "en": "Your reliable partner for destination management, MICE, and ground handling services in Armenia",
+        "hy": "Ձեր վստահելի գործընկերը տուրիստական կառավարման, MICE և գետնային սպասարկման ծառայությունների համար Հայաստանում",
+        "ru": "Ваш надежный партнер по управлению дестинациями, MICE и наземному обслуживанию в Армении",
+        "ar": "شريكك الموثوق في إدارة الوجهات وخدمات MICE والخدمات الأرضية في أرمينيا",
+        "section": "home"
+      },
+      {
+        "key": "home.dmc.title",
+        "en": "Professional DMC Services in Armenia",
+        "hy": "Պրոֆեսիոնալ DMC Ծառայություններ Հայաստանում",
+        "ru": "Профессиональные DMC Услуги в Армении",
+        "ar": "خدمات DMC المهنية في أرمينيا",
+        "section": "home"
+      },
+      {
+        "key": "home.features.experience.description",
+        "en": "Visa assistance, tickets, and 24/7 support included",
+        "hy": "Վիզայի օգնություն, տոմսեր և 24/7 աջակցություն ներառված",
+        "ru": "Помощь с визой, билетами и поддержка 24/7",
+        "section": "home",
+        "ar": "مساعدة في التأشيرة، التذاكر، ودعم على مدار الساعة"
+      },
+      {
+        "key": "home.features.experience.title",
+        "en": "Hassle-Free Service",
+        "hy": "Անխնա Ծառայություն",
+        "ru": "Удобный Сервис",
+        "section": "home",
+        "ar": "خدمة خالية من المتاعب"
+      },
+      {
+        "key": "home.features.explore.description",
+        "en": "Native Armenian guides with deep knowledge of history and culture",
+        "hy": "Տեղաբնիկ հայ ուղեկցորդներ պատմության և մշակույթի խորը գիտելիքներով",
+        "ru": "Местные армянские гиды с глубокими знаниями истории и культуры",
+        "section": "home",
+        "ar": "مرشدون أرمن محليون يتمتعون بمعرفة عميقة بالتاريخ والثقافة"
+      },
+      {
+        "key": "home.features.explore.title",
+        "en": "Expert Local Guides",
+        "hy": "Փորձագետ Տեղական Ուղեկցորդներ",
+        "ru": "Эксперт Местные Гиды",
+        "section": "home",
+        "ar": "مرشدون محليون خبراء"
+      },
+      {
+        "key": "home.features.plan.description",
+        "en": "Tailored tours for every budget and travel style",
+        "hy": "Հարմարեցված տուրեր յուրաքանչյուր բյուջեի և ճամփորդության ոճի համար",
+        "ru": "Индивидуальные туры для любого бюджета и стиля путешествий",
+        "section": "home",
+        "ar": "جولات مصممة خصيصاً لكل ميزانية وأسلوب سفر"
+      },
+      {
+        "key": "home.features.plan.title",
+        "en": "Custom Itineraries",
+        "hy": "Անհատական Երթուղիներ",
+        "ru": "Индивидуальные Маршруты",
+        "section": "home",
+        "ar": "برامج مخصصة"
+      },
+      {
+        "key": "home.features.subtitle",
+        "en": "Your trusted partner for Armenian adventures and international tours",
+        "hy": "Ձեր վստահելի գործընկերը հայկական արկածների և միջազգային տուրերի համար",
+        "ru": "Ваш надежный партнер для армянских приключений и международных туров",
+        "section": "home",
+        "ar": "شريكك الموثوق للمغامرات الأرمنية والجولات الدولية"
+      },
+      {
+        "key": "home.features.title",
+        "en": "Why Choose Nare Travel",
+        "hy": "Ինչու Ընտրել Նարե Թրավել",
+        "ru": "Почему Выбрать Nare Travel",
+        "section": "home",
+        "ar": "لماذا تختار Nare Travel"
+      },
+      {
+        "key": "home.reviews.subtitle",
+        "en": "Read reviews from our satisfied customers",
+        "hy": "Կարդացեք մեր գոհ հաճախորդների կարծիքները",
+        "ru": "Прочитайте отзывы наших довольных клиентов",
+        "section": "home",
+        "ar": "اقرأ آراء عملائنا الراضين"
+      },
+      {
+        "key": "home.reviews.title",
+        "en": "What Our Clients Say",
+        "hy": "Հաճախորդների Կարծիքները",
+        "ru": "Отзывы Клиентов",
+        "section": "home",
+        "ar": "ماذا يقول عملاؤنا"
+      },
+      {
+        "key": "home.services.b2b.description",
+        "en": "Professional travel solutions for businesses",
+        "hy": "Պրոֆեսիոնալ ճամփորդական լուծումներ բիզնեսի համար",
+        "ru": "Профессиональные туристические решения для бизнеса",
+        "section": "home",
+        "ar": "حلول سفر احترافية للشركات"
+      },
+      {
+        "key": "home.services.b2b.title",
+        "en": "B2B Services",
+        "hy": "B2B Ծառայություններ",
+        "ru": "B2B Услуги",
+        "section": "home",
+        "ar": "خدمات B2B"
+      },
+      {
+        "key": "home.services.business.description",
+        "en": "Professional travel solutions for businesses",
+        "hy": "Պրոֆեսիոնալ ճամփորդական լուծումներ բիզնեսի համար",
+        "ru": "Профессиональные туристические решения для бизнеса",
+        "section": "home",
+        "ar": "حلول سفر احترافية للشركات"
+      },
+      {
+        "key": "home.services.business.title",
+        "en": "Business Travel",
+        "hy": "Բիզնես Ճամփորդություն",
+        "ru": "Бизнес-Путешествия",
+        "section": "home",
+        "ar": "رحلات العمل"
+      },
+      {
+        "key": "home.services.daily.description",
+        "en": "Discover Armenia's most beautiful destinations",
+        "hy": "Բացահայտեք Հայաստանի ամենագեղեցիկ վայրերը",
+        "ru": "Изучите самые красивые места Армении",
+        "section": "home",
+        "ar": "اكتشف أجمل الوجهات في أرمينيا"
+      },
+      {
+        "key": "home.services.daily.title",
+        "en": "Daily Tours",
+        "hy": "Օրական Տուրեր",
+        "ru": "Однодневные Туры",
+        "section": "home",
+        "ar": "جولات يومية"
+      },
+      {
+        "key": "home.services.international.description",
+        "en": "Explore worldwide destinations",
+        "hy": "Հետազոտեք աշխարհի տարբեր վայրեր",
+        "ru": "Исследуйте направления по всему миру",
+        "section": "home",
+        "ar": "اكتشف وجهات حول العالم"
+      },
+      {
+        "key": "home.services.international.title",
+        "en": "International Travel",
+        "hy": "Միջազգային Ճամփորդություն",
+        "ru": "Международные Путешествия",
+        "section": "home",
+        "ar": "السفر الدولي"
+      },
+      {
+        "key": "home.services.subtitle",
+        "en": "Experience excellence in travel with our dedicated services",
+        "hy": "Փորձառու ճամփորդական ծառայություններ",
+        "ru": "Профессиональные туристические услуги",
+        "section": "home",
+        "ar": "استمتع بالتميز في السفر مع خدماتنا المخصصة"
+      },
+      {
+        "key": "home.services.title",
+        "en": "Our Services",
+        "hy": "Մեր Ծառայությունները",
+        "ru": "Наши Услуги",
+        "section": "home",
+        "ar": "خدماتنا"
+      },
+      {
+        "key": "home.slider.0.cta",
+        "en": "Explore Tours",
+        "hy": "Դիտել Տուրերը",
+        "ru": "Смотреть Туры",
+        "section": "home",
+        "ar": "اكتشف الجولات"
+      },
+      {
+        "key": "home.slider.0.subtitle",
+        "en": "Experience the rich history and stunning landscapes",
+        "hy": "Զգացեք հարուստ պատմությունը և հիասքանչ բնությունը",
+        "ru": "Почувствуйте богатую историю и захватывающие пейзажи",
+        "section": "home",
+        "ar": "استمتع بالتاريخ الغني والمناظر الطبيعية الخلابة"
+      },
+      {
+        "key": "home.slider.0.title",
+        "en": "Discover Armenia's Beauty",
+        "hy": "Բացահայտեք Հայաստանի Գեղեցկությունը",
+        "ru": "Откройте для Себя Красоту Армении",
+        "section": "home",
+        "ar": "اكتشفوا جمال أرمينيا"
+      },
+      {
+        "key": "home.slider.1.cta",
+        "en": "View Packages",
+        "hy": "Դիտել Փաթեթները",
+        "ru": "Смотреть Пакеты",
+        "section": "home",
+        "ar": "عرض الباقات"
+      },
+      {
+        "key": "home.slider.1.subtitle",
+        "en": "Your gateway to worldwide destinations",
+        "hy": "Ձեր դարպասը դեպի համաշխարհային ուղղություններ",
+        "ru": "Ваш путь к мировым направлениям",
+        "section": "home",
+        "ar": "بوابتك إلى وجهات العالم"
+      },
+      {
+        "key": "home.slider.1.title",
+        "en": "International Travel Packages",
+        "hy": "Միջազգային Ճամփորդական Փաթեթներ",
+        "ru": "Международные Туристические Пакеты",
+        "section": "home",
+        "ar": "باقات السفر الدولية"
+      },
+      {
+        "key": "home.slider.2.cta",
+        "en": "Learn More",
+        "hy": "Իմանալ Ավելին",
+        "ru": "Узнать Больше",
+        "section": "home",
+        "ar": "اعرف المزيد"
+      },
+      {
+        "key": "home.slider.2.subtitle",
+        "en": "Professional MICE and DMC services",
+        "hy": "Պրոֆեսիոնալ MICE և DMC ծառայություններ",
+        "ru": "Профессиональные услуги MICE и DMC",
+        "section": "home",
+        "ar": "خدمات احترافية للمؤتمرات والحوافز وخدمات إدارة الوجهات"
+      },
+      {
+        "key": "home.slider.2.title",
+        "en": "Business Travel Solutions",
+        "hy": "Բիզնես Ճամփորդության Լուծումներ",
+        "ru": "Решения для Бизнес-Путешествий",
+        "section": "home",
+        "ar": "حلول السفر للعمل"
+      },
+      {
+        "key": "home.trustBadges.cancellation",
+        "en": "Free",
+        "hy": "Անվճար",
+        "ru": "Бесплатно",
+        "ar": "مجاني",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.cancellationSubtext",
+        "en": "Cancellation",
+        "hy": "Չեղարկում",
+        "ru": "Отмена",
+        "ar": "إلغاء",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.experience",
+        "en": "10+ Years",
+        "hy": "10+ Տարի",
+        "ru": "10+ Лет",
+        "ar": "+10 سنوات",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.experienceSubtext",
+        "en": "Experience",
+        "hy": "Փորձ",
+        "ru": "Опыта",
+        "ar": "من الخبرة",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.licensed",
+        "en": "Licensed",
+        "hy": "Լիցենզավորված",
+        "ru": "Лицензированы",
+        "ar": "مرخص",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.licensedSubtext",
+        "en": "& Insured",
+        "hy": "և Ապահովագրված",
+        "ru": "И Застрахованы",
+        "ar": "ومؤمن",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.rating",
+        "en": "4.8/5 Rating",
+        "hy": "4.8/5 Գնահատական",
+        "ru": "4.8/5 Рейтинг",
+        "ar": "تقييم 4.8/5",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.ratingSubtext",
+        "en": "500+ Reviews",
+        "hy": "500+ Ակնարկներ",
+        "ru": "500+ Отзывов",
+        "ar": "أكثر من 500 تقييم",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.support",
+        "en": "24/7",
+        "hy": "24/7",
+        "ru": "24/7",
+        "ar": "24/7",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.supportSubtext",
+        "en": "Support",
+        "hy": "Աջակցություն",
+        "ru": "Поддержка",
+        "ar": "دعم",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.travelers",
+        "en": "10,000+",
+        "hy": "10,000+",
+        "ru": "10,000+",
+        "ar": "+10,000",
+        "section": "home"
+      },
+      {
+        "key": "home.trustBadges.travelersSubtext",
+        "en": "Happy Travelers",
+        "hy": "Գոհ Ճանապարհորդներ",
+        "ru": "Довольных Путешественников",
+        "ar": "مسافرون سعداء",
+        "section": "home"
+      },
+      {
+        "key": "home.urgencyBanner.message",
+        "en": "Book by December 31st and save 15% on all Armenia tours",
+        "hy": "Ամրագրեք մինչև դեկտեմբերի 31-ը և խնայեք 15% բոլոր Հայաստանի տուրերի վրա",
+        "ru": "Забронируйте до 31 декабря и сэкономьте 15% на все туры по Армении",
+        "ar": "احجز قبل 31 ديسمبر ووفر 15٪ على جميع جولات أرمينيا",
+        "section": "home"
+      },
+      {
+        "key": "home.urgencyBanner.title",
+        "en": "Limited Time Offer!",
+        "hy": "Սահմանափակ Ժամանակ Առաջարկ!",
+        "ru": "Ограниченное Предложение!",
+        "ar": "عرض لفترة محدودة!",
+        "section": "home"
+      },
+      {
+        "key": "home.whatsapp.message",
+        "en": "Hi! I'm interested in booking a tour with Nare Travel.",
+        "hy": "Բարև! Հետաքրքրված եմ տուր ամրագրել Նարե Թրավելի հետ։",
+        "ru": "Здравствуйте! Я заинтересован в бронировании тура с Nare Travel.",
+        "ar": "مرحباً! أنا مهتم بحجز جولة مع Nare Travel.",
+        "section": "home"
+      },
+      {
+        "key": "home.whatsapp.tooltip",
+        "en": "Chat with us on WhatsApp",
+        "hy": "Զրուցեք մեզ հետ WhatsApp-ում",
+        "ru": "Напишите нам в WhatsApp",
+        "ar": "تحدث معنا على واتساب",
+        "section": "home"
+      },
+      {
+        "key": "home.whyChooseUs.bestValue.description",
+        "en": "Competitive prices and quality service",
+        "hy": "Մրցունակ գներ և որակյալ ծառայություն",
+        "ru": "Конкурентные цены и качественный сервис",
+        "section": "home",
+        "ar": "أسعار تنافسية وخدمة عالية الجودة"
+      },
+      {
+        "key": "home.whyChooseUs.bestValue.title",
+        "en": "Best Value",
+        "hy": "Լավագույն Արժեք",
+        "ru": "Лучшая Ценность",
+        "section": "home",
+        "ar": "أفضل قيمة"
+      },
+      {
+        "key": "home.whyChooseUs.expertTeam.description",
+        "en": "Professional travel consultants at your service",
+        "hy": "Պրոֆեսիոնալ ճամփորդական խորհրդատուներ",
+        "ru": "Профессиональные туристические консультанты",
+        "section": "home",
+        "ar": "استشاريو سفر محترفون في خدمتكم"
+      },
+      {
+        "key": "home.whyChooseUs.expertTeam.title",
+        "en": "Expert Team",
+        "hy": "Փորձառու Թիմ",
+        "ru": "Опытная Команда",
+        "section": "home",
+        "ar": "فريق الخبراء"
+      },
+      {
+        "key": "home.whyChooseUs.globalNetwork.description",
+        "en": "Worldwide partnerships and connections",
+        "hy": "Համաշխարհային գործընկերություններ",
+        "ru": "Международные партнерства",
+        "section": "home",
+        "ar": "شراكات واتصالات عالمية"
+      },
+      {
+        "key": "home.whyChooseUs.globalNetwork.title",
+        "en": "Global Network",
+        "hy": "Գլոբալ Ցանց",
+        "ru": "Глобальная Сеть",
+        "section": "home",
+        "ar": "شبكة عالمية"
+      },
+      {
+        "key": "home.whyChooseUs.securePayments.description",
+        "en": "Safe and protected transactions",
+        "hy": "Ապահով և պաշտպանված գործարքներ",
+        "ru": "Защищенные транзакции",
+        "section": "home",
+        "ar": "معاملات آمنة ومحمية"
+      },
+      {
+        "key": "home.whyChooseUs.securePayments.title",
+        "en": "Secure Payments",
+        "hy": "Անվտանգ Վճարումներ",
+        "ru": "Безопасные Платежи",
+        "section": "home",
+        "ar": "مدفوعات آمنة"
+      },
+      {
+        "key": "home.whyChooseUs.subtitle",
+        "en": "Experience excellence in travel with our dedicated services",
+        "hy": "Փորձառու ճամփորդական ծառայություններ մեր նվիրված թիմի կողմից",
+        "ru": "Профессиональные туристические услуги от нашей преданной команды",
+        "section": "home",
+        "ar": "استمتع بالتميز في السفر مع خدماتنا المخصصة"
+      },
+      {
+        "key": "home.whyChooseUs.title",
+        "en": "Why Choose Us",
+        "hy": "Ինչու Ընտրել Մեզ",
+        "ru": "Почему Выбирают Нас",
+        "section": "home",
+        "ar": "لماذا تختارنا"
+      }
+    ]
+  },
+  {
+    "name": "menu",
+    "entries": [
+      {
+        "key": "menu.about",
+        "en": "About",
+        "hy": "Մեր Մասին",
+        "ru": "О Нас",
+        "section": "menu",
+        "ar": "من نحن"
+      },
+      {
+        "key": "menu.adventureTours",
+        "en": "Adventure Tours",
+        "hy": "Արկածային Տուրեր",
+        "ru": "Приключенческие Туры",
+        "section": "menu",
+        "ar": "جولات المغامرات"
+      },
+      {
+        "key": "menu.adventureToursDesc",
+        "en": "Hiking, camping, and outdoor activities",
+        "hy": "Արշավներ, քեմփինգ և բացօթյա միջոցառումներ",
+        "ru": "Походы, кемпинг и активный отдых",
+        "section": "menu",
+        "ar": "رحلات المشي والتخييم والأنشطة الخارجية"
+      },
+      {
+        "key": "menu.armeniaTours",
+        "en": "Armenia Tours",
+        "hy": "Տուրեր Հայաստանում",
+        "ru": "Туры по Армении",
+        "section": "menu",
+        "ar": "جولات أرمينيا"
+      },
+      {
+        "key": "menu.b2bServices",
+        "en": "B2B Services",
+        "hy": "B2B Ծառայություններ",
+        "ru": "B2B Услуги",
+        "section": "menu",
+        "ar": "خدمات B2B"
+      },
+      {
+        "key": "menu.contact",
+        "en": "Contact",
+        "hy": "Կապ",
+        "ru": "Контакты",
+        "section": "menu",
+        "ar": "اتصل بنا"
+      },
+      {
+        "key": "menu.culturalTours",
+        "en": "Cultural Tours",
+        "hy": "Մշակութային Տուրեր",
+        "ru": "Культурные Туры",
+        "section": "menu",
+        "ar": "الجولات الثقافية"
+      },
+      {
+        "key": "menu.culturalToursDesc",
+        "en": "Experience Armenian history and traditions",
+        "hy": "Ճանաչեք հայկական պատմությունն ու ավանդույթները",
+        "ru": "Познакомьтесь с армянской историей и традициями",
+        "section": "menu",
+        "ar": "استكشف تاريخ أرمينيا وتقاليدها"
+      },
+      {
+        "key": "menu.dailyTours",
+        "en": "Daily Tours",
+        "hy": "Օրական Տուրեր",
+        "ru": "Однодневные Туры",
+        "section": "menu",
+        "ar": "جولات يومية"
+      },
+      {
+        "key": "menu.dailyToursDesc",
+        "en": "Discover Armenia with our guided daily tours",
+        "hy": "Բացահայտեք Հայաստանը մեր էքսկուրսավարների հետ",
+        "ru": "Изучите Армению с нашими гидами",
+        "section": "menu",
+        "ar": "اكتشف أرمينيا مع جولاتنا اليومية المصحوبة بمرشدين"
+      },
+      {
+        "key": "menu.dmcServices",
+        "en": "DMC Services",
+        "hy": "DMC Ծառայություններ",
+        "ru": "DMC Услуги",
+        "section": "menu",
+        "ar": "خدمات DMC"
+      },
+      {
+        "key": "menu.dmcServicesDesc",
+        "en": "Comprehensive destination management for Armenia and Georgia",
+        "hy": "Համապարփակ տուրիստական կառավարում Հայաստանում և Վրաստանում",
+        "ru": "Комплексное туристическое обслуживание в Армении и Грузии",
+        "section": "menu",
+        "ar": "إدارة وجهات شاملة لأرمينيا وجورجيا"
+      },
+      {
+        "key": "menu.flightTickets",
+        "en": "Flight Tickets",
+        "hy": "Ավիատոմսեր",
+        "ru": "Авиабилеты",
+        "section": "menu",
+        "ar": "تذاكر الطيران"
+      },
+      {
+        "key": "menu.flightTicketsDesc",
+        "en": "Book your flights with our professional assistance",
+        "hy": "Ամրագրեք ձեր թռիչքները մեր մասնագետների օգնությամբ",
+        "ru": "Бронируйте авиабилеты с помощью наших специалистов",
+        "section": "menu",
+        "ar": "احجز رحلاتك الجوية بمساعدة محترفينا"
+      },
+      {
+        "key": "menu.home",
+        "en": "Home",
+        "hy": "Գլխավոր",
+        "ru": "Главная",
+        "section": "menu",
+        "ar": "الرئيسية"
+      },
+      {
+        "key": "menu.miceServices",
+        "en": "MICE Services",
+        "hy": "MICE Ծառայություններ",
+        "ru": "MICE Услуги",
+        "section": "menu",
+        "ar": "خدمات الفعاليات والمؤتمرات"
+      },
+      {
+        "key": "menu.miceServicesDesc",
+        "en": "Meetings, incentives, conferences, and exhibitions",
+        "hy": "Հանդիպումներ, խթանիչ ճամփորդություններ, կոնֆերանսներ և ցուցահանդեսներ",
+        "ru": "Встречи, поощрительные поездки, конференции и выставки",
+        "section": "menu",
+        "ar": "اجتماعات، برامج الحوافز، مؤتمرات، ومعارض"
+      },
+      {
+        "key": "menu.services",
+        "en": "Services",
+        "hy": "Ծառայություններ",
+        "ru": "Услуги",
+        "section": "menu",
+        "ar": "الخدمات"
+      },
+      {
+        "key": "menu.tourPackages",
+        "en": "Tour Packages",
+        "hy": "Տուր Փաթեթներ",
+        "ru": "Турпакеты",
+        "section": "menu",
+        "ar": "باقات الرحلات"
+      },
+      {
+        "key": "menu.tourPackagesDesc",
+        "en": "International travel packages to Dubai, Sharm El Sheikh, Maldives, and more",
+        "hy": "Միջազգային տուր փաթեթներ դեպի Դուբայ, Շարմ Էլ Շեյխ, Մալդիվներ և այլն",
+        "ru": "Международные турпакеты в Дубай, Шарм-эль-Шейх, Мальдивы и другие направления",
+        "section": "menu",
+        "ar": "باقات سفر دولية إلى دبي، شرم الشيخ، المالديف، والمزيد"
+      },
+      {
+        "key": "menu.visaServices",
+        "en": "Visa Services",
+        "hy": "Վիզաների Ծառայություններ",
+        "ru": "Визовые Услуги",
+        "section": "menu",
+        "ar": "خدمات التأشيرات"
+      },
+      {
+        "key": "menu.visaServicesDesc",
+        "en": "USA and Schengen tourist visa assistance",
+        "hy": "ԱՄՆ և Շենգեն տուրիստական վիզաների աջակցություն",
+        "ru": "Помощь в получении туристических виз США и Шенгена",
+        "section": "menu",
+        "ar": "المساعدة في الحصول على تأشيرة سياحية للولايات المتحدة ومنطقة شنغن"
+      }
+    ]
+  },
+  {
+    "name": "privacy",
+    "entries": [
+      {
+        "key": "privacy.hero.subtitle",
+        "en": "How we collect, use, and protect your information",
+        "hy": "Ինչպես ենք մենք հավաքում և պաշտպանում ձեր տեղեկատվությունը",
+        "ru": "Как мы собираем, используем и защищаем вашу информацию",
+        "section": "privacy",
+        "ar": "كيف نجمع معلوماتك ونستخدمها ونحميها"
+      },
+      {
+        "key": "privacy.hero.title",
+        "en": "Privacy Policy",
+        "hy": "Գաղտնիության Քաղաքականություն",
+        "ru": "Политика конфиденциальности",
+        "section": "privacy",
+        "ar": "سياسة الخصوصية"
+      },
+      {
+        "key": "privacy.intro",
+        "en": "Nare Travel (\"we,\" \"our,\" or \"us\") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Nare Travel.",
+        "hy": "Nare Travel-ը նվիրված է ձեր գաղտնիության պաշտպանությանը:",
+        "ru": "Nare Travel (\"мы\", \"наш\" или \"нас\") стремится защищать вашу конфиденциальность. Эта Политика конфиденциальности объясняет, как ваша личная информация собирается, используется и раскрывается компанией Nare Travel.",
+        "section": "privacy",
+        "ar": "تلتزم ناري ترافل (\"نحن\" أو \"خاصتنا\") بحماية خصوصيتك. تشرح سياسة الخصوصية هذه كيفية جمع معلوماتك الشخصية واستخدامها والإفصاح عنها من قبل ناري ترافل."
+      },
+      {
+        "key": "privacy.lastUpdated",
+        "en": "Last updated",
+        "hy": "Վերջին թարմացումը",
+        "ru": "Последнее обновление",
+        "section": "privacy",
+        "ar": "آخر تحديث"
+      },
+      {
+        "key": "privacy.policy",
+        "en": "Privacy Policy",
+        "hy": "Գաղտնիության Քաղաքականություն",
+        "ru": "Политика конфиденциальности",
+        "section": "privacy",
+        "ar": "سياسة الخصوصية"
+      },
+      {
+        "key": "privacy.sections.changes.intro",
+        "en": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.",
+        "hy": "Մենք կարող ենք ժամանակ առ ժամանակ թարմացնել Գաղտնիության քաղաքականությունը: Ցանկացած փոփոխության մասին ձեզ կտեղեկացնենք՝ այս էջում տեղադրելով նոր Գաղտնիության քաղաքականությունը:",
+        "ru": "Мы можем время от времени обновлять данную Политику конфиденциальности. Мы уведомим вас о любых изменениях, разместив новую версию Политики конфиденциальности на этой странице.",
+        "section": "privacy",
+        "ar": "قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. وسنخطرك بأي تغييرات من خلال نشر سياسة الخصوصية الجديدة على هذه الصفحة."
+      },
+      {
+        "key": "privacy.sections.changes.title",
+        "en": "Changes to This Privacy Policy",
+        "hy": "Այս Գաղտնիության Քաղաքականության Փոփոխությունները",
+        "ru": "Изменения в Политике конфиденциальности",
+        "section": "privacy",
+        "ar": "التعديلات على سياسة الخصوصية"
+      },
+      {
+        "key": "privacy.sections.collect.intro",
+        "en": "We collect information that you provide directly to us, such as when you:",
+        "hy": "Մենք հավաքում ենք տեղեկատվություն, որը դուք տրամադրում եք մեզ:",
+        "ru": "Мы собираем информацию, которую вы предоставляете нам напрямую, например, когда вы:",
+        "section": "privacy",
+        "ar": "نقوم بجمع المعلومات التي تقدمها لنا مباشرة، مثل عندما:"
+      },
+      {
+        "key": "privacy.sections.collect.title",
+        "en": "Information We Collect",
+        "hy": "Տեղեկատվություն, որը մենք հավաքում ենք",
+        "ru": "Информация, которую мы собираем",
+        "section": "privacy",
+        "ar": "المعلومات التي نجمعها"
+      },
+      {
+        "key": "privacy.sections.collect.typesIntro",
+        "en": "The types of information we may collect include:",
+        "hy": "Մենք կարող ենք հավաքել տեղեկատվության հետևյալ տեսակները.",
+        "ru": "Мы можем собирать следующие виды информации:",
+        "section": "privacy",
+        "ar": "تشمل أنواع المعلومات التي قد نجمعها ما يلي:"
+      },
+      {
+        "key": "privacy.sections.contact.address",
+        "en": "Address",
+        "hy": "Հասցե",
+        "ru": "Адрес",
+        "section": "privacy",
+        "ar": "العنوان"
+      },
+      {
+        "key": "privacy.sections.contact.email",
+        "en": "Email",
+        "hy": "Էլ. փոստ",
+        "ru": "Электронная почта",
+        "section": "privacy",
+        "ar": "البريد الإلكتروني"
+      },
+      {
+        "key": "privacy.sections.contact.intro",
+        "en": "If you have any questions about this Privacy Policy, please contact us at:",
+        "hy": "Եթե այս Գաղտնիության քաղաքականության վերաբերյալ հարցեր ունեք, խնդրում ենք կապվել մեզ հետ հետևյալ հասցեով՝",
+        "ru": "Если у вас есть вопросы о нашей Политике конфиденциальности, свяжитесь с нами:",
+        "section": "privacy",
+        "ar": "إذا كان لديك أي استفسار حول سياسة الخصوصية هذه، يُرجى التواصل معنا على:"
+      },
+      {
+        "key": "privacy.sections.contact.phone",
+        "en": "Phone",
+        "hy": "Հեռախոս",
+        "ru": "Телефон",
+        "section": "privacy",
+        "ar": "هاتف"
+      },
+      {
+        "key": "privacy.sections.contact.title",
+        "en": "Contact Us",
+        "hy": "Կապ մեզ հետ",
+        "ru": "Свяжитесь с нами",
+        "section": "privacy",
+        "ar": "اتصل بنا"
+      },
+      {
+        "key": "privacy.sections.rights.intro",
+        "en": "Depending on your location, you may have certain rights regarding your personal information, including:",
+        "hy": "Կախված ձեր գտնվելու վայրից, դուք կարող եք ունենալ որոշակի իրավունքներ ձեր անձնական տվյալների վերաբերյալ, այդ թվում՝",
+        "ru": "В зависимости от вашего местоположения, у вас могут быть определенные права в отношении вашей личной информации, включая:",
+        "section": "privacy",
+        "ar": "بناءً على موقعك، قد يكون لديك حقوق معينة تتعلق بمعلوماتك الشخصية، بما في ذلك:"
+      },
+      {
+        "key": "privacy.sections.rights.title",
+        "en": "Your Rights",
+        "hy": "Ձեր իրավունքները",
+        "ru": "Ваши права",
+        "section": "privacy",
+        "ar": "حقوقك"
+      },
+      {
+        "key": "privacy.sections.security.intro",
+        "en": "We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction.",
+        "hy": "Մենք կիրառում ենք համապատասխան անվտանգության միջոցներ՝ ձեր անձնական տեղեկությունները չարտոնված մուտքից, փոփոխությունից, բացահայտումից կամ ոչնչացումից պաշտպանելու համար:",
+        "ru": "Мы применяем соответствующие меры безопасности для защиты вашей личной информации от несанкционированного доступа, изменения, раскрытия или уничтожения.",
+        "section": "privacy",
+        "ar": "نحن ننفذ إجراءات أمنية مناسبة لحماية معلوماتك الشخصية من الوصول غير المصرح به، أو التعديل، أو الإفصاح، أو الإتلاف."
+      },
+      {
+        "key": "privacy.sections.security.title",
+        "en": "Data Security",
+        "hy": "Տվյալների անվտանգություն",
+        "ru": "Безопасность данных",
+        "section": "privacy",
+        "ar": "أمان البيانات"
+      },
+      {
+        "key": "privacy.sections.share.intro",
+        "en": "We may share your information with:",
+        "hy": "Ձեր տեղեկությունները կարող ենք տրամադրել հետևյալ կողմերին.",
+        "ru": "Мы можем передавать вашу информацию:",
+        "section": "privacy",
+        "ar": "قد نشارك معلوماتك مع:"
+      },
+      {
+        "key": "privacy.sections.share.title",
+        "en": "Information Sharing",
+        "hy": "Տեղեկատվության փոխանակում",
+        "ru": "Обмен информацией",
+        "section": "privacy",
+        "ar": "مشاركة المعلومات"
+      },
+      {
+        "key": "privacy.sections.use.intro",
+        "en": "We use the information we collect to:",
+        "hy": "Մենք օգտագործում ենք հավաքած տեղեկատվությունը՝",
+        "ru": "Мы используем собранную информацию для:",
+        "section": "privacy",
+        "ar": "نستخدم المعلومات التي نجمعها من أجل:"
+      },
+      {
+        "key": "privacy.sections.use.title",
+        "en": "How We Use Your Information",
+        "hy": "Ինչպես ենք մենք օգտագործում ձեր տվյալները",
+        "ru": "Как мы используем вашу информацию",
+        "section": "privacy",
+        "ar": "كيف نستخدم معلوماتك"
+      }
+    ]
+  },
+  {
+    "name": "services",
+    "entries": [
+      {
+        "key": "services.business.description",
+        "en": "Professional travel solutions for businesses",
+        "hy": "Պրոֆեսիոնալ ճամփորդական լուծումներ բիզնեսի համար",
+        "ru": "Профессиональные туристические решения для бизнеса",
+        "section": "services",
+        "ar": "حلول سفر احترافية للشركات"
+      },
+      {
+        "key": "services.business.title",
+        "en": "Business Travel",
+        "hy": "Բիզնես Ճամփորդություն",
+        "ru": "Бизнес-Путешествия",
+        "section": "services",
+        "ar": "رحلات العمل"
+      },
+      {
+        "key": "services.flight_tickets.description",
+        "en": "Book your flights with our professional assistance",
+        "hy": "Ամրագրեք ձեր թռիչքները մեր մասնագետների օգնությամբ",
+        "ru": "Бронируйте авиабилеты с помощью наших специалистов",
+        "section": "services",
+        "ar": "احجز رحلاتك الجوية بمساعدة احترافية منّا"
+      },
+      {
+        "key": "services.flight_tickets.title",
+        "en": "Flight Tickets",
+        "hy": "Ավիատոմսեր",
+        "ru": "Авиабилеты",
+        "section": "services",
+        "ar": "تذاكر الطيران"
+      },
+      {
+        "key": "services.outgoingPackages.hero.subtitle",
+        "en": "Explore the world with our carefully curated travel experiences",
+        "hy": "Ուսումնասիրեք աշխարհը մեր մանրակրկիտ կազմակերպված ճամփորդական փորձառություններով",
+        "ru": "Исследуйте мир с нашими тщательно подобранными туристическими программами",
+        "section": "services",
+        "ar": "استكشف العالم مع تجارب السفر المختارة بعناية"
+      },
+      {
+        "key": "services.outgoingPackages.hero.title",
+        "en": "International Tour Packages",
+        "hy": "Միջազգային Տուրիստական Փաթեթներ",
+        "ru": "Международные Туристические Пакеты",
+        "section": "services",
+        "ar": "باقات السفر الدولية"
+      },
+      {
+        "key": "services.subtitle",
+        "en": "Comprehensive travel solutions for all your needs",
+        "hy": "Համապարփակ ճամփորդական լուծումներ Ձեր բոլոր կարիքների համար",
+        "ru": "Комплексные туристические решения для всех ваших потребностей",
+        "section": "services",
+        "ar": "حلول سفر شاملة تلبي جميع احتياجاتك"
+      },
+      {
+        "key": "services.title",
+        "en": "Our Services",
+        "hy": "Մեր Ծառայությունները",
+        "ru": "Наши Услуги",
+        "section": "services",
+        "ar": "خدماتنا"
+      },
+      {
+        "key": "services.tour_packages.description",
+        "en": "International travel packages to Dubai, Sharm El Sheikh, Maldives, and more",
+        "hy": "Միջազգային տուր փաթեթներ դեպի Դուբայ, Շարմ Էլ Շեյխ, Մալդիվներ և այլն",
+        "ru": "Международные турпакеты в Дубай, Шарм-эль-Шейх, Мальдивы и другие направления",
+        "section": "services",
+        "ar": "باقات سفر دولية إلى دبي، شرم الشيخ، المالديف، والمزيد"
+      },
+      {
+        "key": "services.tour_packages.title",
+        "en": "Tour Packages",
+        "hy": "Տուր Փաթեթներ",
+        "ru": "Турпакеты",
+        "section": "services",
+        "ar": "باقات الرحلات السياحية"
+      },
+      {
+        "key": "services.visa_services.description",
+        "en": "USA and Schengen tourist visa assistance",
+        "hy": "ԱՄՆ և Շենգեն տուրիստական վիզաների աջակցություն",
+        "ru": "Помощь в получении туристических виз США и Шенгена",
+        "section": "services",
+        "ar": "المساعدة في الحصول على تأشيرة سياحية للولايات المتحدة ومنطقة شنغن"
+      },
+      {
+        "key": "services.visa_services.title",
+        "en": "Visa Services",
+        "hy": "Վիզաների Ծառայություններ",
+        "ru": "Визовые Услуги",
+        "section": "services",
+        "ar": "خدمات التأشيرات"
+      }
+    ]
+  },
+  {
+    "name": "terms",
+    "entries": [
+      {
+        "key": "terms.hero.subtitle",
+        "en": "Please review our terms and conditions",
+        "hy": "Խնդրում ենք ծանոթանալ մեր պայմաններին",
+        "ru": "Пожалуйста, ознакомьтесь с нашими условиями",
+        "section": "terms",
+        "ar": "يرجى مراجعة الشروط والأحكام"
+      },
+      {
+        "key": "terms.hero.title",
+        "en": "Terms of Service",
+        "hy": "Պայմաններ և Դրույթներ",
+        "ru": "Условия использования",
+        "section": "terms",
+        "ar": "شروط الخدمة"
+      },
+      {
+        "key": "terms.intro",
+        "en": "Welcome to Nare Travel. By accessing our website, making a booking, or using our services, you agree to these Terms of Service (\"Terms\"). Please read them carefully.",
+        "hy": "Բարի գալուստ Nare Travel: Մեր կայք այցելելով, ամրագրում կատարելով կամ մեր ծառայություններն օգտագործելով՝ Դուք համաձայնում եք Ծառայությունների պայմաններին («Պայմաններ»): Խնդրում ենք ուշադիր կարդալ դրանք:",
+        "ru": "Добро пожаловать в Nare Travel. Используя наш сайт, оформляя бронирование или пользуясь нашими услугами, вы соглашаетесь с настоящими Условиями обслуживания («Условия»). Пожалуйста, внимательно ознакомьтесь с ними.",
+        "section": "terms",
+        "ar": "مرحبًا بكم في Nare Travel. من خلال الوصول إلى موقعنا الإلكتروني، أو إجراء حجز، أو استخدام خدماتنا، فإنك توافق على شروط الخدمة هذه (\"الشروط\"). يرجى قراءتها بعناية."
+      },
+      {
+        "key": "terms.lastUpdated",
+        "en": "Last updated",
+        "hy": "Վերջին թարմացումը",
+        "ru": "Последнее обновление",
+        "section": "terms",
+        "ar": "آخر تحديث"
+      },
+      {
+        "key": "terms.sections.acceptance.content",
+        "en": "By accessing or using our services, you agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, please do not use our services.",
+        "hy": "Մեր ծառայություններին դիմելով կամ օգտագործելով դրանք՝ Դուք համաձայն եք պարտավորվել այս Պայմաններին և Մեր Գաղտնիության քաղաքականությանը: Եթե Դուք չեք համաձայն այս Պայմաններին, խնդրում ենք չօգտագործել մեր ծառայությունները:",
+        "ru": "Используя наши услуги, вы соглашаетесь соблюдать данные Условия и нашу Политику конфиденциальности. Если вы не согласны с этими Условиями, пожалуйста, не используйте наши услуги.",
+        "section": "terms",
+        "ar": "باستخدامك لخدماتنا أو الوصول إليها، فإنك توافق على الالتزام بهذه الشروط وسياسة الخصوصية الخاصة بنا. إذا كنت لا توافق على هذه الشروط، يُرجى عدم استخدام خدماتنا."
+      },
+      {
+        "key": "terms.sections.acceptance.title",
+        "en": "Acceptance of Terms",
+        "hy": "Ընդունման պայմաններ",
+        "ru": "Принятие условий",
+        "section": "terms",
+        "ar": "قبول الشروط"
+      },
+      {
+        "key": "terms.sections.booking.intro",
+        "en": "When you make a booking through Nare Travel:",
+        "hy": "Երբ ամրագրում եք Nare Travel-ի միջոցով՝",
+        "ru": "Когда вы бронируете через Nare Travel:",
+        "section": "terms",
+        "ar": "عند إجراء حجز عبر Nare Travel:"
+      },
+      {
+        "key": "terms.sections.booking.title",
+        "en": "Booking and Reservations",
+        "hy": "Ամրագրումներ և վերապահումներ",
+        "ru": "Бронирование и резервирование",
+        "section": "terms",
+        "ar": "الحجوزات والاستفسارات"
+      },
+      {
+        "key": "terms.sections.cancellations.intro",
+        "en": "Our cancellation and refund policies:",
+        "hy": "Մեր չեղարկման և փոխհատուցման կանոնները՝",
+        "ru": "Наши правила отмены и возврата средств:",
+        "section": "terms",
+        "ar": "سياسات الإلغاء والاسترداد لدينا:"
+      },
+      {
+        "key": "terms.sections.cancellations.title",
+        "en": "Cancellations and Refunds",
+        "hy": "Չեղարկումներ և վերադարձ",
+        "ru": "Отмена и возврат средств",
+        "section": "terms",
+        "ar": "الإلغاءات والمبالغ المستردة"
+      },
+      {
+        "key": "terms.sections.changes.content",
+        "en": "We may modify these Terms at any time. Your continued use of our services after any changes constitutes acceptance of the modified Terms.",
+        "hy": "Մենք կարող ենք փոփոխել այս Պայմանները ցանկացած պահի: Ծառայությունների մեր շարունակական օգտագործումը փոփոխություններից հետո համարվում է փոփոխված Պայմանների ընդունում:",
+        "ru": "Мы можем изменять данные Условия в любое время. Продолжая пользоваться нашими услугами после внесения изменений, вы принимаете обновлённые Условия.",
+        "section": "terms",
+        "ar": "قد نقوم بتعديل هذه الشروط في أي وقت. واستمرارك في استخدام خدماتنا بعد أي تغييرات يُعتبر قبولاً للشروط المعدلة."
+      },
+      {
+        "key": "terms.sections.changes.title",
+        "en": "Changes to Terms",
+        "hy": "Պայմանների փոփոխություններ",
+        "ru": "Изменения условий",
+        "section": "terms",
+        "ar": "التعديلات على الشروط"
+      },
+      {
+        "key": "terms.sections.contact.address",
+        "en": "Address",
+        "hy": "Հասցե",
+        "ru": "Адрес",
+        "section": "terms",
+        "ar": "العنوان"
+      },
+      {
+        "key": "terms.sections.contact.content",
+        "en": "If you have any questions about these Terms, please contact us at:",
+        "hy": "Եթե այս Պայմանների վերաբերյալ հարցեր ունեք, խնդրում ենք կապվել մեզ հետ հետևյալ հասցեով՝",
+        "ru": "Если у вас есть вопросы по этим Условиям, свяжитесь с нами по адресу:",
+        "section": "terms",
+        "ar": "إذا كان لديك أي استفسار حول هذه الشروط، يُرجى التواصل معنا على:"
+      },
+      {
+        "key": "terms.sections.contact.email",
+        "en": "Email",
+        "hy": "Էլ․ փոստ",
+        "ru": "Электронная почта",
+        "section": "terms",
+        "ar": "البريد الإلكتروني"
+      },
+      {
+        "key": "terms.sections.contact.phone",
+        "en": "Phone",
+        "hy": "Հեռախոս",
+        "ru": "Телефон",
+        "section": "terms",
+        "ar": "هاتف"
+      },
+      {
+        "key": "terms.sections.contact.title",
+        "en": "Contact Us",
+        "hy": "Կապ մեզ հետ",
+        "ru": "Свяжитесь с нами",
+        "section": "terms",
+        "ar": "اتصل بنا"
+      },
+      {
+        "key": "terms.sections.governing.content",
+        "en": "These Terms shall be governed by and construed in accordance with the laws of Armenia, without regard to its conflict of law provisions.",
+        "hy": "Այս Կանոնները կարգավորվում և մեկնաբանվում են Հայաստանի Հանրապետության օրենքներին համապատասխան՝ առանց հաշվի առնելու դրանց իրավական հակասությունների դրույթները։",
+        "ru": "Настоящие Условия регулируются и толкуются в соответствии с законодательством Армении, без учета норм о коллизии законов.",
+        "section": "terms",
+        "ar": "يُحكم هذه الشروط وتُفسر وفقًا لقوانين أرمينيا، دون الأخذ بالاعتبار أحكام تنازع القوانين فيها."
+      },
+      {
+        "key": "terms.sections.governing.title",
+        "en": "Governing Law",
+        "hy": "Կարգավորող իրավունք",
+        "ru": "Применимое право",
+        "section": "terms",
+        "ar": "القانون المنظم"
+      },
+      {
+        "key": "terms.sections.intellectual.content",
+        "en": "All content on our website, including text, graphics, logos, images, and software, is the property of Nare Travel or our licensors and is protected by copyright and other intellectual property laws.",
+        "hy": "Մեր կայքի ողջ բովանդակությունը, ներառյալ տեքստը, գրաֆիկան, լոգոները, պատկերները և ծրագրային ապահովումը, Nare Travel-ի կամ մեր լիցենզավորողների սեփականությունն է և պաշտպանված է հեղինակային իրավունքի և այլ մտավոր սեփականության օրենքներով:",
+        "ru": "Весь контент на нашем сайте, включая тексты, графику, логотипы, изображения и программное обеспечение, является собственностью Nare Travel или наших лицензиаров и защищен законами об авторском праве и других правах интеллектуальной собственности.",
+        "section": "terms",
+        "ar": "جميع المحتويات على موقعنا الإلكتروني، بما في ذلك النصوص والرسومات والشعارات والصور والبرمجيات، هي ملك لشركة Nare Travel أو المرخصين لدينا ومحمية بموجب قوانين حقوق النشر والملكية الفكرية الأخرى."
+      },
+      {
+        "key": "terms.sections.intellectual.title",
+        "en": "Intellectual Property",
+        "hy": "Ինտելեկտուալ սեփականություն",
+        "ru": "Интеллектуальная собственность",
+        "section": "terms",
+        "ar": "الملكية الفكرية"
+      },
+      {
+        "key": "terms.sections.limitation.content",
+        "en": "Nare Travel:",
+        "hy": "Նարե Թրավել:",
+        "ru": "Nare Travel:",
+        "section": "terms",
+        "ar": "نير ترافل:"
+      },
+      {
+        "key": "terms.sections.limitation.title",
+        "en": "Limitation of Liability",
+        "hy": "Պատասխանատվության սահմանափակում",
+        "ru": "Ограничение ответственности",
+        "section": "terms",
+        "ar": "حدود المسؤولية"
+      },
+      {
+        "key": "terms.sections.payment.intro",
+        "en": "Payment terms:",
+        "hy": "Վճարման պայմաններ.",
+        "ru": "Условия оплаты:",
+        "section": "terms",
+        "ar": "شروط الدفع:"
+      },
+      {
+        "key": "terms.sections.payment.title",
+        "en": "Payment and Fees",
+        "hy": "Վճարումներ և միջնորդավճարներ",
+        "ru": "Оплата и сборы",
+        "section": "terms",
+        "ar": "الدفع والرسوم"
+      },
+      {
+        "key": "terms.title",
+        "en": "Terms of Service",
+        "hy": "Պայմաններ և Դրույթներ",
+        "ru": "Условия использования",
+        "section": "terms",
+        "ar": "شروط الخدمة"
+      }
+    ]
+  },
+  {
+    "name": "visaAssistance",
+    "entries": [
+      {
+        "key": "services.visaAssistance.hero.title",
+        "en": "Visa Assistance Services",
+        "hy": "Վիզայի Աջակցության Ծառայություններ",
+        "ru": "Услуги Визовой Поддержки",
+        "ar": "خدمات المساعدة في التأشيرات",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.hero.subtitle",
+        "en": "Professional support for your visa application process",
+        "hy": "Պրոֆեսիոնալ աջակցություն ձեր վիզայի դիմումի գործընթացում",
+        "ru": "Профессиональная поддержка в процессе подачи заявления на визу",
+        "ar": "دعم احترافي لعملية طلب التأشيرة الخاصة بك",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.types.title",
+        "en": "Visa Types We Handle",
+        "hy": "Վիզաների Տեսակներ, Որոնք Մենք Մշակում Ենք",
+        "ru": "Типы Виз, Которые Мы Обрабатываем",
+        "ar": "أنواع التأشيرات التي نتعامل معها",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.types.subtitle",
+        "en": "Expert assistance for various visa categories",
+        "hy": "Փորձագիտական օգնություն տարբեր վիզաների կատեգորիաների համար",
+        "ru": "Экспертная помощь для различных категорий виз",
+        "ar": "مساعدة خبيرة لفئات التأشيرات المختلفة",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.types.schengen.title",
+        "en": "Schengen Visa",
+        "hy": "Շենգենյան Վիզա",
+        "ru": "Шенгенская Виза",
+        "ar": "تأشيرة شنغن",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.types.schengen.description",
+        "en": "Travel to European Union countries",
+        "hy": "Ճանապարհորդություն Եվրոպական Միության երկրներ",
+        "ru": "Путешествия в страны Европейского Союза",
+        "ar": "السفر إلى دول الاتحاد الأوروبي",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.types.usTourist.title",
+        "en": "US Tourist Visa",
+        "hy": "ԱՄՆ Զբոսաշրջային Վիզա",
+        "ru": "Туристическая Виза США",
+        "ar": "تأشيرة سياحية أمريكية",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.types.usTourist.description",
+        "en": "Visit the United States",
+        "hy": "Այցելել Միացյալ Նահանգներ",
+        "ru": "Посетить Соединенные Штаты",
+        "ar": "زيارة الولايات المتحدة",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.types.business.title",
+        "en": "Business Visa",
+        "hy": "Բիզնես Վիզա",
+        "ru": "Бизнес Виза",
+        "ar": "تأشيرة عمل",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.types.business.description",
+        "en": "For business travel purposes",
+        "hy": "Բիզնես ճանապարհորդության նպատակներով",
+        "ru": "Для деловых поездок",
+        "ar": "لأغراض السفر التجاري",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.types.student.title",
+        "en": "Student Visa",
+        "hy": "Ուսանողական Վիզա",
+        "ru": "Студенческая Виза",
+        "ar": "تأشيرة طالب",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.types.student.description",
+        "en": "Study abroad opportunities",
+        "hy": "Արտասահմանում ուսման հնարավորություններ",
+        "ru": "Возможности обучения за рубежом",
+        "ar": "فرص الدراسة في الخارج",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.services.title",
+        "en": "Our Services",
+        "hy": "Մեր Ծառայությունները",
+        "ru": "Наши Услуги",
+        "ar": "خدماتنا",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.services.subtitle",
+        "en": "Comprehensive visa application support",
+        "hy": "Համապարփակ վիզայի դիմումի աջակցություն",
+        "ru": "Комплексная поддержка при подаче заявления на визу",
+        "ar": "دعم شامل لطلب التأشيرة",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.services.documentReview.title",
+        "en": "Document Review",
+        "hy": "Փաստաթղթերի Վերանայում",
+        "ru": "Проверка Документов",
+        "ar": "مراجعة المستندات",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.services.documentReview.description",
+        "en": "Expert review of your visa application documents",
+        "hy": "Փորձագիտական ստուգում ձեր վիզայի դիմումի փաստաթղթերի",
+        "ru": "Экспертная проверка документов для визы",
+        "ar": "مراجعة خبيرة لمستندات طلب التأشيرة الخاصة بك",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.services.applicationSupport.title",
+        "en": "Application Support",
+        "hy": "Դիմումի Աջակցություն",
+        "ru": "Поддержка Заявления",
+        "ar": "دعم التطبيق",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.services.applicationSupport.description",
+        "en": "Assistance with filling out visa applications",
+        "hy": "Օգնություն վիզայի դիմումների լրացման մեջ",
+        "ru": "Помощь в заполнении заявлений на визу",
+        "ar": "المساعدة في ملء طلبات التأشيرة",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.services.appointmentBooking.title",
+        "en": "Appointment Booking",
+        "hy": "Հանդիպման Ամրագրում",
+        "ru": "Запись на Прием",
+        "ar": "حجز موعد",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.services.appointmentBooking.description",
+        "en": "Embassy/consulate appointment scheduling",
+        "hy": "Դեսպանատան/հյուպատոսարանի հանդիպման ժամանակացույցի կազմում",
+        "ru": "Запись на прием в посольство/консульство",
+        "ar": "جدولة موعد السفارة / القنصلية",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.services.fastProcessing.title",
+        "en": "Fast Processing",
+        "hy": "Արագ Մշակում",
+        "ru": "Быстрая Обработка",
+        "ar": "معالجة سريعة",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.services.fastProcessing.description",
+        "en": "Expedited visa processing when possible",
+        "hy": "Արագացված վիզայի մշակում, երբ հնարավոր է",
+        "ru": "Ускоренная обработка визы, когда это возможно",
+        "ar": "معالجة تأشيرة معجلة عند الإمكان",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.cta.title",
+        "en": "Ready to Apply?",
+        "hy": "Պատրա՞ստ եք Դիմել",
+        "ru": "Готовы Подать Заявку?",
+        "ar": "هل أنت مستعد للتقديم؟",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.cta.subtitle",
+        "en": "Get professional assistance with your visa application. Our experts will guide you through the entire process.",
+        "hy": "Ստացեք պրոֆեսիոնալ օգնություն ձեր վիզայի դիմումի համար։ Մեր փորձագետները կուղեկցեն ձեզ ամբողջ գործընթացի ընթացքում։",
+        "ru": "Получите профессиональную помощь с вашей визовой заявкой. Наши эксперты проведут вас через весь процесс.",
+        "ar": "احصل على مساعدة احترافية في طلب التأشيرة الخاص بك. سيرشدك خبراؤنا خلال العملية بأكملها.",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.cta.button",
+        "en": "Request Consultation",
+        "hy": "Խնդրել Խորհրդատվություն",
+        "ru": "Запросить Консультацию",
+        "ar": "طلب استشارة",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.toast.title",
+        "en": "Request Received",
+        "hy": "Հարցումը Ստացվել է",
+        "ru": "Запрос Получен",
+        "ar": "تم استلام الطلب",
+        "section": "visaAssistance"
+      },
+      {
+        "key": "services.visaAssistance.toast.description",
+        "en": "Our visa specialist will contact you shortly.",
+        "hy": "Մեր վիզայի մասնագետը շուտով կկապվի ձեզ հետ։",
+        "ru": "Наш специалист по визам скоро свяжется с вами.",
+        "ar": "سيتصل بك أخصائي التأشيرات لدينا قريباً.",
+        "section": "visaAssistance"
+      }
+    ]
+  },
+  {
+    "name": "contactInfo",
+    "entries": [
+      {
+        "key": "contact.info.email",
+        "en": "Email",
+        "hy": "Էլ․ փոստ",
+        "ru": "Эл. почта",
+        "ar": "البريد الإلكتروني",
+        "section": "contactInfo"
+      },
+      {
+        "key": "contact.info.phone",
+        "en": "Phone",
+        "hy": "Հեռախոս",
+        "ru": "Телефон",
+        "ar": "الهاتف",
+        "section": "contactInfo"
+      },
+      {
+        "key": "contact.info.location",
+        "en": "Location",
+        "hy": "Գտնվելու Վայրը",
+        "ru": "Местоположение",
+        "ar": "الموقع",
+        "section": "contactInfo"
+      },
+      {
+        "key": "contact.info.officeHours",
+        "en": "Office Hours",
+        "hy": "Աշխատանքային Ժամեր",
+        "ru": "Часы Работы",
+        "ar": "ساعات العمل",
+        "section": "contactInfo"
+      },
+      {
+        "key": "contact.info.loading",
+        "en": "Loading contact information...",
+        "hy": "Կոնտակտային տեղեկատվության բեռնում...",
+        "ru": "Загрузка контактной информации...",
+        "ar": "جاري تحميل معلومات الاتصال...",
+        "section": "contactInfo"
+      },
+      {
+        "key": "contact.info.notAvailable",
+        "en": "Contact information not available.",
+        "hy": "Կոնտակտային տեղեկատվությունը հասանելի չէ։",
+        "ru": "Контактная информация недоступна.",
+        "ar": "معلومات الاتصال غير متوفرة.",
+        "section": "contactInfo"
+      }
+    ]
+  }
+]
