@@ -78,7 +78,7 @@ export function PageBanner({ pageId, fallbackTitle, fallbackSubtitle, fallbackIm
       className="relative h-[400px] w-full overflow-hidden bg-gradient-to-r from-primary/90 to-primary/70"
       aria-labelledby="page-banner-title"
     >
-      {banner.backgroundImage && (
+      {banner?.backgroundImage && (
         <Image
           src={banner.backgroundImage}
           alt=""
