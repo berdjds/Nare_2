@@ -108,14 +108,14 @@ export function useTranslation(options: UseTranslationOptions = {}) {
       }
       
       options.onError?.(targetLang, errorMsg);
-      return null;
+      return {} as Record<string, string>;
     } finally {
       setTranslating(false);
     }
   }, [showToasts, options]);
 
   /**
-   * Translate multiple fields to multiple languages in parallel (RECOMMENDED)
+   * Translate all fields to all supported languages in parallel (RECOMMENDED)
    */
   const translateParallel = useCallback(async (
     fields: Record<string, string>,
