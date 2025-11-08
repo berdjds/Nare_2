@@ -69,6 +69,7 @@ export default function ArticlesManager() {
   const [generating, setGenerating] = useState(false);
   const [translating, setTranslating] = useState(false);
   const [fetchingSuggestions, setFetchingSuggestions] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [mode, setMode] = useState<'list' | 'create' | 'edit' | 'ai'>('list');
 
   // New article form state
@@ -262,6 +263,7 @@ export default function ArticlesManager() {
   };
 
   const saveArticle = async () => {
+    setSaving(true);
     try {
       let finalFormData = { ...formData };
 
@@ -335,6 +337,8 @@ export default function ArticlesManager() {
     } catch (error) {
       console.error('Error saving article:', error);
       toast.error('Failed to save article');
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -359,6 +363,7 @@ export default function ArticlesManager() {
   const updateArticle = async () => {
     if (!selectedArticle) return;
 
+    setSaving(true);
     try {
       let finalFormData = { ...formData };
 
@@ -435,6 +440,8 @@ export default function ArticlesManager() {
     } catch (error) {
       console.error('Error updating article:', error);
       toast.error('Failed to update article');
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -768,12 +775,21 @@ export default function ArticlesManager() {
 
             {/* Actions */}
             <div className="flex gap-2 justify-end">
-              <Button variant="outline" onClick={() => { setMode('list'); setSelectedArticle(null); resetForm(); }}>
+              <Button variant="outline" onClick={() => { setMode('list'); setSelectedArticle(null); resetForm(); }} disabled={saving}>
                 Cancel
               </Button>
-              <Button onClick={mode === 'edit' ? updateArticle : saveArticle}>
-                <Save className="w-4 h-4 mr-2" />
-                {mode === 'edit' ? 'Update Article' : 'Save Article'}
+              <Button onClick={mode === 'edit' ? updateArticle : saveArticle} disabled={saving}>
+                {saving ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    {mode === 'edit' ? 'Updating...' : 'Saving...'}
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-4 h-4 mr-2" />
+                    {mode === 'edit' ? 'Update Article' : 'Save Article'}
+                  </>
+                )}
               </Button>
             </div>
           </CardContent>
