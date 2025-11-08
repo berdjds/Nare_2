@@ -3,26 +3,17 @@ import { writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 import sharp from 'sharp';
-import { validateAdminSession } from '@/lib/auth';
 
 // Maximum file size: 10MB
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
 export async function POST(request: NextRequest) {
   try {
-    // Check authentication
-    const token = request.cookies.get('admin_token')?.value;
-    if (!token) {
+    // Check authentication using admin_session cookie
+    const adminSession = request.cookies.get('admin_session')?.value;
+    if (adminSession !== 'authenticated') {
       return NextResponse.json(
         { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    const user = validateAdminSession(token);
-    if (!user) {
-      return NextResponse.json(
-        { error: 'Invalid session' },
         { status: 401 }
       );
     }

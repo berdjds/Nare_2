@@ -31,6 +31,7 @@ import {
   Loader2
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { ImageUpload } from '@/components/admin/image-upload';
 
 interface Article {
   id: string;
@@ -573,17 +574,12 @@ export default function ArticlesManager() {
 
             {/* Media */}
             <div className="space-y-4">
-              <div>
-                <Label className="flex items-center gap-2">
-                  <ImageIcon className="w-4 h-4" />
-                  Image URL (optional)
-                </Label>
-                <Input
-                  value={formData.imageUrl}
-                  onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                  placeholder="https://example.com/image.jpg"
-                />
-              </div>
+              <ImageUpload
+                value={formData.imageUrl}
+                onChange={(url) => setFormData({ ...formData, imageUrl: url })}
+                label="Article Featured Image (optional)"
+                recommendedSize={{ width: 1200, height: 630 }}
+              />
               <div>
                 <Label className="flex items-center gap-2">
                   <Youtube className="w-4 h-4" />
