@@ -44,7 +44,7 @@ export function useTranslation(options: UseTranslationOptions = {}) {
     setProgress(prev => ({ ...prev, [targetLang]: 'translating' }));
 
     try {
-      const result = await translateSingleText(text, targetLang);
+      const result = await translateSingle(text, targetLang);
       
       setProgress(prev => ({ ...prev, [targetLang]: 'completed' }));
       
@@ -75,18 +75,18 @@ export function useTranslation(options: UseTranslationOptions = {}) {
    */
   const translateMultipleFields = useCallback(async (
     fields: Record<string, string>,
-    targetLang: SupportedLanguage
-  ): Promise<Record<string, string> | null> => {
+    targetLang: SupportedLanguage,
+    options: UseTranslationOptions = {}
+  ): Promise<Record<string, string>> => {
     const hasContent = Object.values(fields).some(v => v);
     
     if (!hasContent) {
       if (showToasts) toast.error('No content to translate');
-      return null;
+      return {} as Record<string, string>;
     }
 
-    setTranslating(true);
     setProgress(prev => ({ ...prev, [targetLang]: 'translating' }));
-
+    
     try {
       const result = await translateFields(fields, targetLang);
       
@@ -98,8 +98,8 @@ export function useTranslation(options: UseTranslationOptions = {}) {
       
       options.onSuccess?.(targetLang);
       return result;
-    } catch (error: any) {
-      const errorMsg = error.message || 'Translation failed';
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : 'Translation failed';
       
       setProgress(prev => ({ ...prev, [targetLang]: 'error' }));
       
