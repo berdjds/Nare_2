@@ -134,7 +134,7 @@ export default function CulturalTours() {
             })}
           </div>
         )}
-      </section>
+      </div>
     </div>
     </>
   );

@@ -134,7 +134,7 @@ export default function AdventureTours() {
             })}
           </div>
         )}
-      </section>
+      </div>
     </div>
     </>
   );
