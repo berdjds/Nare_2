@@ -363,7 +363,13 @@ export default function ArticlesManager() {
   };
 
   const updateArticle = async () => {
-    if (!selectedArticle) return;
+    if (!selectedArticle) {
+      toast.error('No article selected');
+      return;
+    }
+
+    console.log('Updating article:', selectedArticle.id);
+    console.log('Selected article:', selectedArticle);
 
     setSaving(true);
     try {
@@ -423,6 +429,9 @@ export default function ArticlesManager() {
           ? new Date().toISOString()
           : selectedArticle.publishedAt,
       };
+
+      console.log('Sending PUT to:', `/api/articles/${selectedArticle.id}`);
+      console.log('Article data:', articleData);
 
       const response = await fetch(`/api/articles/${selectedArticle.id}`, {
         method: 'PUT',
