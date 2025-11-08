@@ -69,7 +69,7 @@ export default function ArticlesManager() {
   const [generating, setGenerating] = useState(false);
   const [translating, setTranslating] = useState(false);
   const [fetchingSuggestions, setFetchingSuggestions] = useState(false);
-  const [mode, setMode] = useState<'list' | 'edit' | 'create' | 'ai'>('list');
+  const [mode, setMode] = useState<'list' | 'create' | 'edit' | 'ai'>('list');
 
   // New article form state
   const [formData, setFormData] = useState({
