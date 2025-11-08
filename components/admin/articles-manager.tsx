@@ -263,6 +263,8 @@ export default function ArticlesManager() {
 
   const saveArticle = async () => {
     try {
+      let finalFormData = { ...formData };
+
       // Auto-translate missing languages before saving
       const needsTranslation: Array<'hy' | 'ru' | 'ar'> = [];
       
@@ -274,20 +276,46 @@ export default function ArticlesManager() {
         toast.info(`Auto-translating to ${needsTranslation.length} language(s)...`);
         
         for (const lang of needsTranslation) {
-          await translateArticle(lang);
+          try {
+            const response = await fetch('/api/ai/translate-article', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                content: {
+                  title: formData.title.en,
+                  excerpt: formData.excerpt.en,
+                  content: formData.content.en,
+                },
+                targetLang: lang,
+              }),
+            });
+
+            if (response.ok) {
+              const translated = await response.json();
+              
+              finalFormData = {
+                ...finalFormData,
+                title: { ...finalFormData.title, [lang]: translated.title },
+                excerpt: { ...finalFormData.excerpt, [lang]: translated.excerpt },
+                content: { ...finalFormData.content, [lang]: translated.content },
+              };
+
+              const langNames = { hy: 'Armenian', ru: 'Russian', ar: 'Arabic' };
+              toast.success(`Translated to ${langNames[lang]}!`);
+            }
+          } catch (error) {
+            console.error(`Error translating to ${lang}:`, error);
+          }
         }
-        
-        // Wait a bit for state to update
-        await new Promise(resolve => setTimeout(resolve, 500));
       }
 
-      const tagsArray = formData.tags.split(',').map(t => t.trim()).filter(Boolean);
+      const tagsArray = finalFormData.tags.split(',').map(t => t.trim()).filter(Boolean);
       
       const articleData = {
-        ...formData,
+        ...finalFormData,
         tags: tagsArray,
-        slug: formData.title.en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
-        publishedAt: formData.status === 'published' ? new Date().toISOString() : undefined,
+        slug: finalFormData.title.en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+        publishedAt: finalFormData.status === 'published' ? new Date().toISOString() : undefined,
       };
 
       const response = await fetch('/api/articles', {
@@ -332,6 +360,8 @@ export default function ArticlesManager() {
     if (!selectedArticle) return;
 
     try {
+      let finalFormData = { ...formData };
+
       // Auto-translate missing languages before updating
       const needsTranslation: Array<'hy' | 'ru' | 'ar'> = [];
       
@@ -343,20 +373,46 @@ export default function ArticlesManager() {
         toast.info(`Auto-translating to ${needsTranslation.length} language(s)...`);
         
         for (const lang of needsTranslation) {
-          await translateArticle(lang);
+          try {
+            const response = await fetch('/api/ai/translate-article', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                content: {
+                  title: formData.title.en,
+                  excerpt: formData.excerpt.en,
+                  content: formData.content.en,
+                },
+                targetLang: lang,
+              }),
+            });
+
+            if (response.ok) {
+              const translated = await response.json();
+              
+              finalFormData = {
+                ...finalFormData,
+                title: { ...finalFormData.title, [lang]: translated.title },
+                excerpt: { ...finalFormData.excerpt, [lang]: translated.excerpt },
+                content: { ...finalFormData.content, [lang]: translated.content },
+              };
+
+              const langNames = { hy: 'Armenian', ru: 'Russian', ar: 'Arabic' };
+              toast.success(`Translated to ${langNames[lang]}!`);
+            }
+          } catch (error) {
+            console.error(`Error translating to ${lang}:`, error);
+          }
         }
-        
-        // Wait a bit for state to update
-        await new Promise(resolve => setTimeout(resolve, 500));
       }
 
-      const tagsArray = formData.tags.split(',').map(t => t.trim()).filter(Boolean);
+      const tagsArray = finalFormData.tags.split(',').map(t => t.trim()).filter(Boolean);
       
       const articleData = {
-        ...formData,
+        ...finalFormData,
         tags: tagsArray,
-        slug: formData.title.en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
-        publishedAt: formData.status === 'published' && !selectedArticle.publishedAt
+        slug: finalFormData.title.en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+        publishedAt: finalFormData.status === 'published' && !selectedArticle.publishedAt
           ? new Date().toISOString()
           : selectedArticle.publishedAt,
       };
