@@ -2,17 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Plus, Edit, Trash2, Eye, EyeOff, Globe, Zap, Save, X } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, Save, X, Zap } from 'lucide-react';
 import { toast } from 'sonner';
-import { AIAssistButton } from './ai-assist-button';
-import { useTranslation } from '@/hooks/use-translation';
+import { TranslationTabs } from './translation-tabs';
 
 interface HotNewsBanner {
   id: string;
@@ -46,9 +42,6 @@ export default function HotNewsManager() {
     message: { en: '', hy: '', ru: '', ar: '' },
   });
 
-  // Use unified translation service
-  const { translating, translateParallel } = useTranslation();
-
   useEffect(() => {
     loadBanners();
   }, []);
@@ -75,76 +68,6 @@ export default function HotNewsManager() {
       message: { en: '', hy: '', ru: '', ar: '' },
     });
     setSelectedBanner(null);
-  };
-
-  const translateBanner = async (targetLang: 'hy' | 'ru' | 'ar') => {
-    if (!formData.title.en || !formData.message.en) {
-      toast.error('Please fill English title and message first');
-      return;
-    }
-
-    try {
-      // Use unified translation service with parallel translation
-      const fields = {
-        title: formData.title.en,
-        message: formData.message.en,
-      };
-
-      const results = await translateParallel(fields, [targetLang]);
-
-      if (results && results[targetLang]) {
-        const translatedTitle = results[targetLang].title || '';
-        const translatedMessage = results[targetLang].message || '';
-        
-        setFormData(prev => ({
-          ...prev,
-          title: { ...prev.title, [targetLang]: translatedTitle },
-          message: { ...prev.message, [targetLang]: translatedMessage },
-        }));
-      } else {
-        toast.error('Translation returned no results');
-      }
-    } catch (error: any) {
-      console.error('Error translating:', error);
-      toast.error(error.message || 'Failed to translate');
-    }
-  };
-
-  const translateAllLanguages = async () => {
-    if (!formData.title.en || !formData.message.en) {
-      toast.error('Please fill English title and message first');
-      return;
-    }
-
-    try {
-      // Use unified translation service to translate all languages in parallel
-      const fields = {
-        title: formData.title.en,
-        message: formData.message.en,
-      };
-
-      const results = await translateParallel(fields, ['hy', 'ru', 'ar']);
-
-      // Apply all translations at once
-      setFormData(prev => ({
-        ...prev,
-        title: {
-          ...prev.title,
-          hy: results.hy?.title || prev.title.hy,
-          ru: results.ru?.title || prev.title.ru,
-          ar: results.ar?.title || prev.title.ar,
-        },
-        message: {
-          ...prev.message,
-          hy: results.hy?.message || prev.message.hy,
-          ru: results.ru?.message || prev.message.ru,
-          ar: results.ar?.message || prev.message.ar,
-        },
-      }));
-    } catch (error: any) {
-      console.error('Error translating:', error);
-      toast.error(error.message || 'Failed to translate all languages');
-    }
   };
 
   const saveBanner = async () => {
@@ -356,115 +279,39 @@ export default function HotNewsManager() {
           />
         </div>
 
-        {/* Translate All Languages Button */}
-        <div className="flex items-center justify-between p-4 border rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50">
-          <div>
-            <Label>Auto-Translate to All Languages</Label>
-            <p className="text-sm text-gray-500">Translate title and message to Armenian, Russian, and Arabic at once</p>
-          </div>
-          <Button
-            variant="default"
-            size="sm"
-            onClick={translateAllLanguages}
-            disabled={translating || !formData.title.en || !formData.message.en}
-          >
-            <Zap className="w-4 h-4 mr-2" />
-            {translating ? 'Translating...' : 'Translate All'}
-          </Button>
-        </div>
+        {/* Title with Translation */}
+        <TranslationTabs
+          fieldName="Title"
+          englishValue={formData.title.en}
+          armenianValue={formData.title.hy}
+          russianValue={formData.title.ru}
+          arabicValue={formData.title.ar}
+          onEnglishChange={(value) => setFormData({ ...formData, title: { ...formData.title, en: value } })}
+          onArmenianChange={(value) => setFormData({ ...formData, title: { ...formData.title, hy: value } })}
+          onRussianChange={(value) => setFormData({ ...formData, title: { ...formData.title, ru: value } })}
+          onArabicChange={(value) => setFormData({ ...formData, title: { ...formData.title, ar: value } })}
+          context="Hot news banner title"
+          enableAIAssist={true}
+        />
 
-        {/* Language Tabs */}
-        <Tabs defaultValue="en" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="en">English</TabsTrigger>
-            <TabsTrigger value="hy">Armenian</TabsTrigger>
-            <TabsTrigger value="ru">Russian</TabsTrigger>
-            <TabsTrigger value="ar">Arabic</TabsTrigger>
-          </TabsList>
-
-          {(['en', 'hy', 'ru', 'ar'] as const).map((lang) => (
-            <TabsContent key={lang} value={lang} className="space-y-4">
-              {lang !== 'en' && (
-                <div className="flex justify-end">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => translateBanner(lang)}
-                    disabled={translating || !formData.title.en}
-                  >
-                    <Globe className="w-4 h-4 mr-2" />
-                    {translating ? 'Translating...' : `AI Translate to ${lang.toUpperCase()}`}
-                  </Button>
-                </div>
-              )}
-              
-              <div className="space-y-2">
-                <Label>Title</Label>
-                <Input
-                  value={formData.title[lang]}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    title: { ...formData.title, [lang]: e.target.value }
-                  })}
-                  placeholder="Limited Time Offer!"
-                  dir={lang === 'ar' ? 'rtl' : 'ltr'}
-                />
-                {lang === 'en' && (
-                  <AIAssistButton
-                    type="rephrase"
-                    currentValue={formData.title.en}
-                    fieldType="Title"
-                    context="Hot news banner title"
-                    onGenerated={(text) => setFormData({
-                      ...formData,
-                      title: { ...formData.title, en: text }
-                    })}
-                  />
-                )}
-              </div>
-              
-              <div className="space-y-2">
-                <Label>Message</Label>
-                <Textarea
-                  value={formData.message[lang]}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    message: { ...formData.message, [lang]: e.target.value }
-                  })}
-                  placeholder="Book by December 31st and save 15%"
-                  rows={3}
-                  dir={lang === 'ar' ? 'rtl' : 'ltr'}
-                />
-                {lang === 'en' && (
-                  <div className="flex gap-2">
-                    <AIAssistButton
-                      type="rephrase"
-                      currentValue={formData.message.en}
-                      fieldType="Message"
-                      context="Hot news promotional message"
-                      onGenerated={(text) => setFormData({
-                        ...formData,
-                        message: { ...formData.message, en: text }
-                      })}
-                    />
-                    <AIAssistButton
-                      type="generate"
-                      currentValue={formData.message.en}
-                      titleValue={formData.title.en}
-                      fieldType="Message"
-                      context="Hot news promotional message"
-                      onGenerated={(text) => setFormData({
-                        ...formData,
-                        message: { ...formData.message, en: text }
-                      })}
-                      disabled={!formData.title.en}
-                    />
-                  </div>
-                )}
-              </div>
-            </TabsContent>
-          ))}
-        </Tabs>
+        {/* Message with Translation */}
+        <TranslationTabs
+          fieldName="Message"
+          englishValue={formData.message.en}
+          armenianValue={formData.message.hy}
+          russianValue={formData.message.ru}
+          arabicValue={formData.message.ar}
+          onEnglishChange={(value) => setFormData({ ...formData, message: { ...formData.message, en: value } })}
+          onArmenianChange={(value) => setFormData({ ...formData, message: { ...formData.message, hy: value } })}
+          onRussianChange={(value) => setFormData({ ...formData, message: { ...formData.message, ru: value } })}
+          onArabicChange={(value) => setFormData({ ...formData, message: { ...formData.message, ar: value } })}
+          multiline
+          rows={3}
+          context="Hot news promotional message"
+          enableAIAssist={true}
+          canGenerateFromTitle={true}
+          titleValue={formData.title.en}
+        />
 
         {/* Actions */}
         <div className="flex gap-2 justify-end">
