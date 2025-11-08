@@ -35,9 +35,7 @@ export default function InsightsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [loading, setLoading] = useState(true);
-  const { currentLanguage } = useLanguage();
-
-  const { t } = useLanguage();
+  const { currentLanguage, t } = useLanguage();
 
   const categories = [
     { value: 'all', key: 'insights.category.all' },
