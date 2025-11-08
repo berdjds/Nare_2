@@ -98,11 +98,18 @@ export default function ArticlesManager() {
       const response = await fetch('/api/articles');
       if (response.ok) {
         const data = await response.json();
-        setArticles(data);
+        
+        // Sort by newest first for admin view too
+        const sortedArticles = data.sort((a: Article, b: Article) => {
+          const dateA = new Date(a.publishedAt || a.createdAt).getTime();
+          const dateB = new Date(b.publishedAt || b.createdAt).getTime();
+          return dateB - dateA; // Newest first
+        });
+        
+        setArticles(sortedArticles);
       }
     } catch (error) {
-      console.error('Failed to load articles:', error);
-      toast.error('Failed to load articles');
+      console.error('Error loading articles:', error);
     } finally {
       setLoading(false);
     }
