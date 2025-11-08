@@ -22,22 +22,40 @@ import { useToast } from '@/hooks/use-toast';
  * Pages are automatically detected from existing banners + predefined pages
  * No need to manually update this list when adding new pages!
  */
+/**
+ * COMPLETE LIST - VERIFIED BY CODEBASE AUDIT
+ * Every page using PageBanner component is listed here
+ * Last verified: November 8, 2025
+ */
 const PREDEFINED_PAGES = [
+  // Main Pages
   { id: 'about', label: 'About Us' },
   { id: 'contact', label: 'Contact' },
+  
+  // Services
   { id: 'services', label: 'Services' },
   { id: 'outgoing-packages', label: 'Outgoing Packages' },
   { id: 'air-tickets', label: 'Air Tickets' },
   { id: 'visa-assistance', label: 'Visa Assistance' },
+  
+  // Content
   { id: 'insights', label: 'Travel Insights' },
   { id: 'insights-detail', label: 'Insights Detail' },
+  
+  // Armenia Tours
   { id: 'armenia-tours', label: 'Armenia Tours' },
   { id: 'armenia-tours-daily', label: 'Daily Tours' },
   { id: 'armenia-tours-cultural', label: 'Cultural Tours' },
   { id: 'armenia-tours-adventure', label: 'Adventure Tours' },
+  
+  // B2B Services
   { id: 'b2b', label: 'B2B Services' },
   { id: 'b2b-dmc', label: 'DMC Services' },
   { id: 'b2b-mice', label: 'MICE Services' },
+  
+  // Legal Pages
+  { id: 'terms', label: 'Terms & Conditions' },
+  { id: 'privacy', label: 'Privacy Policy' },
 ];
 
 /**
