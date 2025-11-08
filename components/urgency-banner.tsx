@@ -65,59 +65,66 @@ export function UrgencyBanner() {
   const message = currentBanner.message[currentLanguage] || currentBanner.message.en;
 
   return (
-    <div className="sticky top-20 z-40">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentBanner.id}
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 50 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg"
-        >
-          <div className="container">
-            <div className="flex items-center justify-between py-3 px-4">
-              <div className="flex items-center gap-3 flex-1">
-                <Zap className="w-5 h-5 animate-pulse" />
-                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-                  <span className="font-bold text-sm sm:text-base">
-                    {title}
-                  </span>
-                  <span className="text-xs sm:text-sm">
-                    {message}
-                  </span>
+    <div className="sticky top-20 z-40 overflow-hidden bg-gradient-to-r from-orange-500 to-red-500">
+      <div className="relative">
+        <AnimatePresence initial={false} mode="wait">
+          <motion.div
+            key={currentBanner.id}
+            initial={{ x: 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 0 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 300,
+              damping: 30,
+              duration: 0.3
+            }}
+            className="text-white shadow-lg"
+          >
+            <div className="container">
+              <div className="flex items-center justify-between py-3 px-4">
+                <div className="flex items-center gap-3 flex-1">
+                  <Zap className="w-5 h-5 animate-pulse" />
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                    <span className="font-bold text-sm sm:text-base">
+                      {title}
+                    </span>
+                    <span className="text-xs sm:text-sm">
+                      {message}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 ml-4 flex-shrink-0">
+                  {/* Pagination dots */}
+                  {visibleBanners.length > 1 && (
+                    <div className="flex gap-1">
+                      {visibleBanners.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentIndex(index)}
+                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            index === currentIndex 
+                              ? 'bg-white w-4' 
+                              : 'bg-white/50 hover:bg-white/70'
+                          }`}
+                          aria-label={`Go to banner ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                  <button
+                    onClick={() => closeBanner(currentBanner.id)}
+                    className="p-1 hover:bg-white/20 rounded-full transition-colors duration-200"
+                    aria-label="Close banner"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
                 </div>
               </div>
-              <div className="flex items-center gap-2 ml-4 flex-shrink-0">
-                {/* Pagination dots */}
-                {visibleBanners.length > 1 && (
-                  <div className="flex gap-1">
-                    {visibleBanners.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentIndex(index)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          index === currentIndex 
-                            ? 'bg-white w-4' 
-                            : 'bg-white/50 hover:bg-white/70'
-                        }`}
-                        aria-label={`Go to banner ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
-                <button
-                  onClick={() => closeBanner(currentBanner.id)}
-                  className="p-1 hover:bg-white/20 rounded-full transition-colors duration-200"
-                  aria-label="Close banner"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
             </div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
