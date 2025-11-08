@@ -22,7 +22,8 @@ import {
   Shield,
   MessageSquare,
   Mail,
-  Newspaper
+  Newspaper,
+  Zap
 } from 'lucide-react';
 import HeroSlidesManager from '@/components/admin/hero-slides-manager';
 import TourPackagesManager from '@/components/admin/tour-packages-manager';
@@ -38,6 +39,7 @@ import UsersManager from '@/components/admin/users-manager';
 import InquiriesManager from '@/components/admin/inquiries-manager';
 import EmailSettings from '@/components/admin/email-settings';
 import ArticlesManager from '@/components/admin/articles-manager';
+import BannerManager from '@/components/admin/banner-manager';
 import { getCurrentUser, canAccessConfiguration } from '@/lib/admin-users';
 
 export default function AdminDashboard() {
@@ -212,6 +214,13 @@ export default function AdminDashboard() {
                         <Mail className="h-6 w-6" />
                         <span className="text-xs font-semibold">Email</span>
                       </TabsTrigger>
+                      <TabsTrigger 
+                        value="hotnews" 
+                        className="flex flex-col items-center gap-2 py-4 px-4 rounded-xl border-2 border-gray-200 bg-white data-[state=active]:border-blue-600 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-50 data-[state=active]:to-orange-50 data-[state=active]:text-blue-700 data-[state=active]:shadow-md hover:border-blue-400 hover:shadow-sm transition-all duration-200"
+                      >
+                        <Zap className="h-6 w-6" />
+                        <span className="text-xs font-semibold">Hot News</span>
+                      </TabsTrigger>
                     </TabsList>
                   </div>
                 )}
@@ -284,6 +293,12 @@ export default function AdminDashboard() {
           {canAccessConfig && (
             <TabsContent value="email">
               <EmailSettings />
+            </TabsContent>
+          )}
+
+          {canAccessConfig && (
+            <TabsContent value="hotnews">
+              <BannerManager />
             </TabsContent>
           )}
         </Tabs>
