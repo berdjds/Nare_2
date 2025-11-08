@@ -200,10 +200,12 @@ export default function ArticlesManager() {
         title: { en: result.title, hy: '', ru: '', ar: '' },
         excerpt: { en: result.excerpt, hy: '', ru: '', ar: '' },
         content: { en: result.content, hy: '', ru: '', ar: '' },
+        category: result.category || formData.category,
+        tags: result.tags ? result.tags.join(', ') : formData.tags,
         author: 'AI Generated',
       });
 
-      toast.success('Article generated! Now translate to other languages.');
+      toast.success('Article generated with category and tags! Now translate to other languages.');
       setCustomTopic(''); // Clear topic after generation
     } catch (error: any) {
       console.error('Error generating article:', error);
@@ -507,7 +509,7 @@ export default function ArticlesManager() {
                   )}
                 </Button>
                 <p className="text-xs text-gray-600">
-                  AI will create a 400-600 word professional article in English. You can then translate it to other languages.
+                  AI will create a 400-600 word professional article in English with automatic category and tags. You can then translate it to other languages.
                 </p>
               </CardContent>
             </Card>

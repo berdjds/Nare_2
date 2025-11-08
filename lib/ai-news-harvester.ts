@@ -182,38 +182,36 @@ Write the article in English. Return ONLY the article content, no titles or extr
 export async function generateArticleFromTopic(
   apiKey: string,
   topic: string,
-  category: string,
-  additionalNotes?: string
-): Promise<{ title: string; content: string; excerpt: string }> {
-  try {
-    const prompt = `Create a professional travel blog article about: "${topic}"
+  category: string
+): Promise<{ title: string; excerpt: string; content: string; category: string; tags: string[] }> {
+  const prompt = `You are a professional travel content writer specializing in Armenia and Georgia tourism.
 
-Category: ${category}
-${additionalNotes ? `Additional Notes: ${additionalNotes}` : ''}
+Write a comprehensive, engaging article about: "${topic}"
+
+Suggested Category: ${category}
 
 Requirements:
-1. Generate an engaging title
-2. Write 400-600 words
-3. Warm, professional, upbeat tone
-4. Include practical tourist information
-5. Highlight cultural aspects
-6. SEO-friendly
-7. Add a compelling 2-3 sentence excerpt
+- Title: Catchy and SEO-friendly (60-80 characters)
+- Excerpt: Compelling 2-3 sentence summary (150-200 characters)
+- Content: Well-structured article (400-600 words)
+- Tone: Professional, upbeat, and tourist-friendly
+- Style: Informative yet engaging
+- Include practical information where relevant
+- Use vivid descriptions
+- Structure: Introduction, body paragraphs, conclusion
+- Category: Choose the most appropriate from: news, events, culture, food-drinks, destinations
+- Tags: Generate 4-6 relevant keywords (lowercase, single words or short phrases)
 
-Return ONLY valid JSON in this format:
+Return ONLY a JSON object with this exact structure:
 {
   "title": "Article title here",
-  "excerpt": "Brief 2-3 sentence summary",
-  "content": "Full article content here"
-}`;
+  "excerpt": "Brief summary here",
+  "content": "Full article content here with proper paragraphs",
+  "category": "most appropriate category",
+  "tags": ["tag1", "tag2", "tag3", "tag4"]
+}
 
-    const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
+No markdown, no code blocks, just the raw JSON.`;
         model: 'deepseek-chat',
         messages: [
           {
