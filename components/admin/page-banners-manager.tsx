@@ -137,6 +137,11 @@ export default function PageBannersManager() {
     setIsDialogOpen(true);
   };
 
+  const renderForm = (banner: PageBanner, allBanners: PageBanner[]) => {
+    setEditingBanner(banner);
+    setIsDialogOpen(true);
+  };
+
   const handleEditBanner = (banner: PageBanner) => {
     setEditingBanner(banner);
     setIsDialogOpen(true);
@@ -239,10 +244,9 @@ export default function PageBannersManager() {
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
-                          {PAGE_OPTIONS.find(p => p.id === banner.pageId)?.label || banner.pageId}
+                          {getAllPageOptions(banners).find(p => p.id === banner.pageId)?.label || banner.pageId}
                         </span>
-                      </div>
-                      <h4 className="font-semibold text-lg">{banner.title}</h4>
+                      </div>                      <h4 className="font-semibold text-lg">{banner.title}</h4>
                       <p className="text-sm text-gray-600 mt-1">{banner.subtitle}</p>
                       
                       {/* Translation Status */}
@@ -294,14 +298,9 @@ export default function PageBannersManager() {
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>
-              {editingBanner?.id && banners.find(b => b.id === editingBanner.id)
-                ? 'Edit Page Banner'
-                : 'Add New Page Banner'}
-            </DialogTitle>
+            <DialogTitle>{editingBanner.id ? 'Edit Banner' : 'Add New Page Banner'}</DialogTitle>
           </DialogHeader>
-          {editingBanner && (
-            <BannerForm
+          {renderForm(editingBanner, banners)}
               banner={editingBanner}
               existingPages={banners.map(b => b.pageId)}
               onSave={handleSave}
@@ -459,7 +458,7 @@ function BannerForm({ banner: initialBanner, existingPages, onSave, onCancel }: 
             <SelectValue placeholder="Select a page" />
           </SelectTrigger>
           <SelectContent>
-            {getAllPageOptions(banners).map(option => (
+            {getAllPageOptions(allBanners).map(option => (
               <SelectItem key={option.id} value={option.id}>
                 {option.label}
               </SelectItem>
