@@ -572,6 +572,7 @@ function PackageForm({ pkg: initialPkg, onSave, onCancel }: PackageFormProps) {
         onRussianChange={(value) => updateField('titleRu', value)}
         onArabicChange={(value) => updateField('titleAr', value)}
         context="Outgoing tour package title"
+        enableAIAssist={true}
       />
 
       {/* Description with Translation */}
@@ -588,6 +589,9 @@ function PackageForm({ pkg: initialPkg, onSave, onCancel }: PackageFormProps) {
         multiline
         rows={3}
         context="Outgoing tour package description"
+        enableAIAssist={true}
+        canGenerateFromTitle={true}
+        titleValue={pkg.title}
       />
 
       {/* Other Fields */}

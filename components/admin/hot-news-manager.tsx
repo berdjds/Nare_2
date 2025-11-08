@@ -11,6 +11,7 @@ import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Plus, Edit, Trash2, Eye, EyeOff, Globe, Zap, Save, X } from 'lucide-react';
 import { toast } from 'sonner';
+import { AIAssistButton } from './ai-assist-button';
 
 interface HotNewsBanner {
   id: string;
@@ -347,7 +348,7 @@ export default function HotNewsManager() {
                 </div>
               )}
               
-              <div>
+              <div className="space-y-2">
                 <Label>Title</Label>
                 <Input
                   value={formData.title[lang]}
@@ -358,9 +359,21 @@ export default function HotNewsManager() {
                   placeholder="Limited Time Offer!"
                   dir={lang === 'ar' ? 'rtl' : 'ltr'}
                 />
+                {lang === 'en' && (
+                  <AIAssistButton
+                    type="rephrase"
+                    currentValue={formData.title.en}
+                    fieldType="Title"
+                    context="Hot news banner title"
+                    onGenerated={(text) => setFormData({
+                      ...formData,
+                      title: { ...formData.title, en: text }
+                    })}
+                  />
+                )}
               </div>
               
-              <div>
+              <div className="space-y-2">
                 <Label>Message</Label>
                 <Textarea
                   value={formData.message[lang]}
@@ -372,6 +385,32 @@ export default function HotNewsManager() {
                   rows={3}
                   dir={lang === 'ar' ? 'rtl' : 'ltr'}
                 />
+                {lang === 'en' && (
+                  <div className="flex gap-2">
+                    <AIAssistButton
+                      type="rephrase"
+                      currentValue={formData.message.en}
+                      fieldType="Message"
+                      context="Hot news promotional message"
+                      onGenerated={(text) => setFormData({
+                        ...formData,
+                        message: { ...formData.message, en: text }
+                      })}
+                    />
+                    <AIAssistButton
+                      type="generate"
+                      currentValue={formData.message.en}
+                      titleValue={formData.title.en}
+                      fieldType="Message"
+                      context="Hot news promotional message"
+                      onGenerated={(text) => setFormData({
+                        ...formData,
+                        message: { ...formData.message, en: text }
+                      })}
+                      disabled={!formData.title.en}
+                    />
+                  </div>
+                )}
               </div>
             </TabsContent>
           ))}

@@ -497,6 +497,7 @@ function BannerForm({ banner: initialBanner, allBanners, onSave, onCancel }: Ban
         onRussianChange={(value) => updateField('titleRu', value)}
         onArabicChange={(value) => updateField('titleAr', value)}
         context="Page hero title"
+        enableAIAssist={true}
       />
 
       {/* Subtitle with Translation */}
@@ -513,6 +514,9 @@ function BannerForm({ banner: initialBanner, allBanners, onSave, onCancel }: Ban
         multiline
         rows={3}
         context="Page hero subtitle/description"
+        enableAIAssist={true}
+        canGenerateFromTitle={true}
+        titleValue={banner.title}
       />
 
       {/* Background Image Upload */}

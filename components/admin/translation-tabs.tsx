@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Languages, Loader2, Sparkles } from 'lucide-react';
+import { Languages, Loader2, Sparkles, Wand2, FileText } from 'lucide-react';
 
 interface TranslationTabsProps {
   englishValue: string;
@@ -21,6 +21,10 @@ interface TranslationTabsProps {
   multiline?: boolean;
   rows?: number;
   context?: string;
+  // AI Content Assistance Props
+  enableAIAssist?: boolean;
+  canGenerateFromTitle?: boolean;
+  titleValue?: string;
 }
 
 export function TranslationTabs({
@@ -36,8 +40,12 @@ export function TranslationTabs({
   multiline = false,
   rows = 3,
   context,
+  enableAIAssist = false,
+  canGenerateFromTitle = false,
+  titleValue = '',
 }: TranslationTabsProps) {
   const [translating, setTranslating] = useState<'hy' | 'ru' | 'ar' | null>(null);
+  const [aiAssisting, setAiAssisting] = useState<'rephrase' | 'generate' | null>(null);
   const [error, setError] = useState<string>('');
 
   const translateField = async (targetLang: 'hy' | 'ru' | 'ar') => {
@@ -81,6 +89,86 @@ export function TranslationTabs({
     }
   };
 
+  const rephraseContent = async () => {
+    if (!englishValue) {
+      setError('Please enter text first');
+      return;
+    }
+
+    setAiAssisting('rephrase');
+    setError('');
+
+    try {
+      const response = await fetch('/api/ai/content-assist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'rephrase',
+          text: englishValue,
+          context: context || `Field: ${fieldName}`,
+          fieldType: fieldName,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Rephrasing failed');
+      }
+
+      const data = await response.json();
+      onEnglishChange(data.generatedText);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setAiAssisting(null);
+    }
+  };
+
+  const generateContent = async () => {
+    if (!titleValue) {
+      setError('Please enter a title first');
+      return;
+    }
+
+    setAiAssisting('generate');
+    setError('');
+
+    try {
+      // Determine action based on field name
+      let action: 'generate_description' | 'generate_subtitle' | 'generate_message' = 'generate_description';
+      
+      const fieldLower = fieldName.toLowerCase();
+      if (fieldLower.includes('subtitle')) {
+        action = 'generate_subtitle';
+      } else if (fieldLower.includes('message')) {
+        action = 'generate_message';
+      }
+
+      const response = await fetch('/api/ai/content-assist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action,
+          text: titleValue,
+          context: context || `Generate ${fieldName} based on title`,
+          fieldType: fieldName,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Content generation failed');
+      }
+
+      const data = await response.json();
+      onEnglishChange(data.generatedText);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setAiAssisting(null);
+    }
+  };
+
   const InputComponent = multiline ? Textarea : Input;
 
   return (
@@ -113,12 +201,65 @@ export function TranslationTabs({
         </TabsList>
 
         <TabsContent value="en" className="space-y-2">
-          <InputComponent
-            value={englishValue}
-            onChange={(e) => onEnglishChange(e.target.value)}
-            placeholder={`Enter ${fieldName.toLowerCase()} in English...`}
-            {...(multiline ? { rows } : {})}
-          />
+          <div className="space-y-2">
+            <InputComponent
+              value={englishValue}
+              onChange={(e) => onEnglishChange(e.target.value)}
+              placeholder={`Enter ${fieldName.toLowerCase()} in English...`}
+              {...(multiline ? { rows } : {})}
+            />
+            
+            {/* AI Assistance Buttons */}
+            {enableAIAssist && (
+              <div className="flex gap-2">
+                {/* Rephrase Button */}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={rephraseContent}
+                  disabled={!englishValue || aiAssisting === 'rephrase'}
+                  className="text-xs"
+                >
+                  {aiAssisting === 'rephrase' ? (
+                    <>
+                      <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+                      Rephrasing...
+                    </>
+                  ) : (
+                    <>
+                      <Wand2 className="h-3 w-3 mr-1" />
+                      AI Rephrase
+                    </>
+                  )}
+                </Button>
+
+                {/* Generate from Title Button */}
+                {canGenerateFromTitle && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={generateContent}
+                    disabled={!titleValue || aiAssisting === 'generate'}
+                    className="text-xs"
+                  >
+                    {aiAssisting === 'generate' ? (
+                      <>
+                        <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+                        Generating...
+                      </>
+                    ) : (
+                      <>
+                        <FileText className="h-3 w-3 mr-1" />
+                        AI Generate from Title
+                      </>
+                    )}
+                  </Button>
+                )}
+              </div>
+            )}
+          </div>
           <p className="text-xs text-gray-500">
             Default language. AI will translate to other languages from this.
           </p>

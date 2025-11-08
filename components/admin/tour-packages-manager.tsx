@@ -512,6 +512,7 @@ function TourForm({ tour: initialTour, onSave, onCancel }: TourFormProps) {
         onRussianChange={(value) => updateField('titleRu', value)}
         onArabicChange={(value) => updateField('titleAr', value)}
         context="Tour package title"
+        enableAIAssist={true}
       />
 
       {/* Description with Translation */}
@@ -528,6 +529,9 @@ function TourForm({ tour: initialTour, onSave, onCancel }: TourFormProps) {
         multiline
         rows={3}
         context="Tour package description"
+        enableAIAssist={true}
+        canGenerateFromTitle={true}
+        titleValue={tour.title}
       />
 
       {/* Other Fields */}

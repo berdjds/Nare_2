@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Switch } from '@/components/ui/switch';
 import { Save, Eye, EyeOff, Zap } from 'lucide-react';
 import { toast } from 'sonner';
+import { AIAssistButton } from './ai-assist-button';
 
 interface BannerConfig {
   isActive: boolean;
@@ -155,7 +156,7 @@ export default function BannerManager() {
           <CardTitle>🇬🇧 English</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div>
+          <div className="space-y-2">
             <Label htmlFor="title-en">Title</Label>
             <Input
               id="title-en"
@@ -166,8 +167,18 @@ export default function BannerManager() {
               })}
               placeholder="Limited Time Offer!"
             />
+            <AIAssistButton
+              type="rephrase"
+              currentValue={config.title.en}
+              fieldType="Title"
+              context="Notification banner title"
+              onGenerated={(text) => setConfig({
+                ...config,
+                title: { ...config.title, en: text }
+              })}
+            />
           </div>
-          <div>
+          <div className="space-y-2">
             <Label htmlFor="message-en">Message</Label>
             <Textarea
               id="message-en"
@@ -179,6 +190,30 @@ export default function BannerManager() {
               placeholder="Book by December 31st and save 15%..."
               rows={3}
             />
+            <div className="flex gap-2">
+              <AIAssistButton
+                type="rephrase"
+                currentValue={config.message.en}
+                fieldType="Message"
+                context="Notification banner promotional message"
+                onGenerated={(text) => setConfig({
+                  ...config,
+                  message: { ...config.message, en: text }
+                })}
+              />
+              <AIAssistButton
+                type="generate"
+                currentValue={config.message.en}
+                titleValue={config.title.en}
+                fieldType="Message"
+                context="Notification banner promotional message"
+                onGenerated={(text) => setConfig({
+                  ...config,
+                  message: { ...config.message, en: text }
+                })}
+                disabled={!config.title.en}
+              />
+            </div>
           </div>
         </CardContent>
       </Card>

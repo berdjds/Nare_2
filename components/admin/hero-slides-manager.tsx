@@ -512,6 +512,7 @@ function SlideForm({ slide: initialSlide, onSave, onCancel }: SlideFormProps) {
         onRussianChange={(value) => updateField('titleRu', value)}
         onArabicChange={(value) => updateField('titleAr', value)}
         context="Hero slide title for main homepage banner"
+        enableAIAssist={true}
       />
 
       {/* Description with Translation */}
@@ -528,6 +529,9 @@ function SlideForm({ slide: initialSlide, onSave, onCancel }: SlideFormProps) {
         multiline
         rows={3}
         context="Hero slide description for main homepage banner"
+        enableAIAssist={true}
+        canGenerateFromTitle={true}
+        titleValue={slide.title}
       />
 
       {/* Images */}

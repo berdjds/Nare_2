@@ -495,6 +495,7 @@ function TicketForm({ ticket: initialTicket, onSave, onCancel }: TicketFormProps
         onRussianChange={(value) => updateField('titleRu', value)}
         onArabicChange={(value) => updateField('titleAr', value)}
         context="Air ticket offer title"
+        enableAIAssist={true}
       />
 
       {/* Description with Translation */}
@@ -511,6 +512,9 @@ function TicketForm({ ticket: initialTicket, onSave, onCancel }: TicketFormProps
         multiline
         rows={3}
         context="Air ticket offer description"
+        enableAIAssist={true}
+        canGenerateFromTitle={true}
+        titleValue={ticket.title}
       />
 
       {/* Other Fields */}
