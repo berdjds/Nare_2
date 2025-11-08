@@ -68,27 +68,6 @@ export default function VisaAssistance() {
       <PageBanner pageId="visa-assistance" />
       
       <div className="min-h-screen">
-      <section className="page-hero-section">
-        <Image
-          src={images.serviceVisa}
-          alt="Visa Assistance"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative container mx-auto px-4 text-center text-white"
-        >
-          <h1 className="text-4xl font-bold mb-4">{t('services.visaAssistance.hero.title')}</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            {t('services.visaAssistance.hero.subtitle')}
-          </p>
-        </motion.div>
-      </section>
-
       <section className="container mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

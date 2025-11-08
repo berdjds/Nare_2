@@ -127,18 +127,8 @@ export default function InsightsPage() {
       <PageBanner pageId="insights" />
       
       <div className="min-h-screen py-20">
-        {/* Header */}
-        <div className="container mb-12">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              {t('insights.title')}
-            </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {t('insights.subtitle')}
-            </p>
-          </div>
-
         {/* Search and Filters */}
+        <div className="container mb-12">
         <div className="max-w-4xl mx-auto mb-8 space-y-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
