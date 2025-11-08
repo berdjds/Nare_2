@@ -68,10 +68,11 @@ export function BookNowButton({
       } else {
         throw new Error(result.error || 'Failed to submit');
       }
-    } catch (error: any) {
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to submit request. Please try again.";
       toast({
         title: "❌ Error",
-        description: error.message || "Failed to submit request. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     }

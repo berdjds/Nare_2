@@ -276,8 +276,9 @@ No markdown, no code blocks, just the raw JSON.`;
       category: parsed.category || category,
       tags: parsed.tags || []
     };
-  } catch (error: any) {
-    throw new Error(`Failed to generate article: ${error.message}`);
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    throw new Error(`Failed to generate article: ${errorMessage}`);
   }
 }
 

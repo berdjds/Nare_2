@@ -52,10 +52,11 @@ export async function PUT(
     }
 
     return NextResponse.json(article);
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error updating article:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Failed to update article';
     return NextResponse.json({ 
-      error: error.message || 'Failed to update article',
+      error: errorMessage,
       details: process.env.NODE_ENV === 'development' ? error.stack : undefined
     }, { status: 500 });
   }

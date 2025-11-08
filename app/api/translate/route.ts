@@ -67,10 +67,11 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error('Translation API error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Translation failed';
     return NextResponse.json(
-      { error: error.message || 'Translation failed' },
+      { error: errorMessage },
       { status: 500 }
     );
   }

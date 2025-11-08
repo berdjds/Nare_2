@@ -49,10 +49,11 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(result);
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error generating article:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Failed to generate article';
     return NextResponse.json(
-      { error: error.message || 'Failed to generate article' },
+      { error: errorMessage },
       { status: 500 }
     );
   }

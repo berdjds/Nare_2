@@ -74,11 +74,12 @@ Rules:
     return {
       translatedText,
     };
-  } catch (error: any) {
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Translation failed';
     console.error('AI Translation error:', error);
     return {
       translatedText: '',
-      error: error.message || 'Translation failed',
+      error: errorMessage,
     };
   }
 }

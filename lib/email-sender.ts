@@ -243,7 +243,8 @@ export async function sendEmail(
     
     const data = await response.json();
     return { success: response.ok, error: data.error };
-  } catch (error: any) {
-    return { success: false, error: error.message };
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Email send failed';
+    return { success: false, error: errorMessage };
   }
 }

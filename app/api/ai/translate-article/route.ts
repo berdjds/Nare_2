@@ -29,10 +29,11 @@ export async function POST(request: NextRequest) {
     const translated = await translateArticleContent(apiKey, content, targetLang);
 
     return NextResponse.json(translated);
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error translating article:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Failed to translate article';
     return NextResponse.json(
-      { error: error.message || 'Failed to translate article' },
+      { error: errorMessage },
       { status: 500 }
     );
   }

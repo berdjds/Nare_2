@@ -113,8 +113,8 @@ export async function translateFieldsParallel(
       options?.onSuccess?.(lang, JSON.stringify(translated));
       
       return { lang, translated };
-    } catch (error: any) {
-      const errorMessage = error.message || 'Translation failed';
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Translation failed';
       
       // Notify error but don't fail entire operation
       options?.onProgress?.({ language: lang, status: 'error', error: errorMessage });

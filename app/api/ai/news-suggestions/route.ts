@@ -22,10 +22,11 @@ export async function POST(request: NextRequest) {
     const suggestions = await fetchNewsSuggestions(apiKey);
 
     return NextResponse.json({ suggestions });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error fetching news suggestions:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Failed to fetch news suggestions';
     return NextResponse.json(
-      { error: error.message || 'Failed to fetch news suggestions' },
+      { error: errorMessage },
       { status: 500 }
     );
   }

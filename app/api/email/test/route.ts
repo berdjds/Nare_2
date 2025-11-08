@@ -52,12 +52,13 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Test email sent successfully! Check your inbox.'
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Email test error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Failed to send test email';
     return NextResponse.json(
       { 
         success: false,
-        error: error.message || 'Email test failed',
+        error: errorMessage,
         details: error.code || 'Unknown error'
       },
       { status: 500 }
