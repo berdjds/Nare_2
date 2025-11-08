@@ -9,6 +9,7 @@ import { useLanguage } from '@/hooks/use-language';
 import { useImages } from '@/hooks/use-images';
 import { BookNowButton } from '@/components/book-now-button';
 import { getLocalizedTourPackage } from '@/lib/localization-helper';
+import { PageBanner } from '@/components/page-banner';
 
 interface Tour {
   id: string;
@@ -57,7 +58,11 @@ export default function AdventureTours() {
   }, []);
 
   return (
-    <div>
+    <>
+      {/* Page Banner - Managed in Admin > Page Banners */}
+      <PageBanner pageId="armenia-tours-adventure" />
+      
+      <div className="min-h-screen py-20">
       <section className="page-hero-section">
         <Image
           src={images.adventureHiking}
@@ -152,5 +157,6 @@ export default function AdventureTours() {
         )}
       </section>
     </div>
+    </>
   );
 }

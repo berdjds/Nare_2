@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Building2, Users2, CalendarRange, Globe2, Briefcase, Building, Plane, Hotel } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
 import { useImages } from '@/hooks/use-images';
+import { PageBanner } from '@/components/page-banner';
 
 interface ServiceItem {
   icon: React.ElementType;
@@ -87,7 +88,11 @@ export default function B2BPage() {
   const { getImageUrl } = useImages();
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
+      {/* Page Banner - Managed in Admin > Page Banners */}
+      <PageBanner pageId="b2b" />
+      
+      <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="page-hero-section">
         <Image
@@ -239,5 +244,6 @@ export default function B2BPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

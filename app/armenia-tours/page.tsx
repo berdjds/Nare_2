@@ -9,6 +9,7 @@ import { Clock, Users, MapPin } from 'lucide-react';
 import { BookNowButton } from '@/components/book-now-button';
 import { useLanguage } from '@/hooks/use-language';
 import { useImages } from '@/hooks/use-images';
+import { PageBanner } from '@/components/page-banner';
 
 interface TourCategory {
   id: string;
@@ -59,9 +60,13 @@ export default function ArmeniaTours() {
   const { getImageUrl } = useImages();
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="hero-section">
+    <>
+      {/* Page Banner - Managed in Admin > Page Banners */}
+      <PageBanner pageId="armenia-tours" />
+      
+      <div className="flex flex-col min-h-screen">
+        {/* Hero Section */}
+        <section className="hero-section">
         <Image
           src={getImageUrl('heroArmeniaMain')}
           alt={t('armeniaTours.hero.title')}
@@ -185,5 +190,6 @@ export default function ArmeniaTours() {
         </div>
       </section>
     </div>
+    </>
   );
 }

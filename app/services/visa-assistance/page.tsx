@@ -19,6 +19,7 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/hooks/use-language';
 import { useImages } from '@/hooks/use-images';
+import { PageBanner } from '@/components/page-banner';
 
 interface ServiceIconProps {
   icon: LucideIcon;
@@ -62,7 +63,11 @@ export default function VisaAssistance() {
   };
 
   return (
-    <div className="min-h-screen">
+    <>
+      {/* Page Banner - Managed in Admin > Page Banners */}
+      <PageBanner pageId="visa-assistance" />
+      
+      <div className="min-h-screen">
       <section className="page-hero-section">
         <Image
           src={images.serviceVisa}
@@ -165,5 +170,6 @@ export default function VisaAssistance() {
         </motion.div>
       </section>
     </div>
+    </>
   );
 }
