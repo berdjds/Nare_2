@@ -59,7 +59,20 @@ export default function InsightsPage() {
       const response = await fetch('/api/articles');
       if (response.ok) {
         const data = await response.json();
-        setArticles(data);
+        
+        // Filter to only show published articles for visitors
+        const publishedArticles = data.filter((article: Article & { status: string }) => 
+          article.status === 'published'
+        );
+        
+        // Sort by newest first (publishedAt or createdAt)
+        const sortedArticles = publishedArticles.sort((a: Article, b: Article) => {
+          const dateA = new Date(a.publishedAt || a.createdAt).getTime();
+          const dateB = new Date(b.publishedAt || b.createdAt).getTime();
+          return dateB - dateA; // Newest first
+        });
+        
+        setArticles(sortedArticles);
       }
     } catch (error) {
       console.error('Failed to load articles:', error);
