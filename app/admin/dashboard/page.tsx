@@ -39,7 +39,7 @@ import UsersManager from '@/components/admin/users-manager';
 import InquiriesManager from '@/components/admin/inquiries-manager';
 import EmailSettings from '@/components/admin/email-settings';
 import ArticlesManager from '@/components/admin/articles-manager';
-import BannerManager from '@/components/admin/banner-manager';
+import HotNewsManager from '@/components/admin/hot-news-manager';
 import { getCurrentUser, canAccessConfiguration } from '@/lib/admin-users';
 
 export default function AdminDashboard() {
@@ -253,7 +253,7 @@ export default function AdminDashboard() {
           </TabsContent>
 
           <TabsContent value="hotnews">
-            <BannerManager />
+            <HotNewsManager />
           </TabsContent>
 
           <TabsContent value="inquiries">
