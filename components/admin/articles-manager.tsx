@@ -84,6 +84,9 @@ export default function ArticlesManager() {
     sourceUrl: '',
   });
 
+  // Topic for AI generation
+  const [customTopic, setCustomTopic] = useState('');
+
   useEffect(() => {
     loadArticles();
   }, []);
@@ -166,8 +169,10 @@ export default function ArticlesManager() {
   };
 
   const generateFromTopic = async () => {
-    const topic = prompt('Enter the topic you want an article about:');
-    if (!topic) return;
+    if (!customTopic.trim()) {
+      toast.error('Please enter a topic first');
+      return;
+    }
 
     setGenerating(true);
     try {
@@ -177,7 +182,7 @@ export default function ArticlesManager() {
         body: JSON.stringify({
           type: 'topic',
           data: {
-            topic,
+            topic: customTopic,
             category: formData.category,
           },
         }),
@@ -199,7 +204,7 @@ export default function ArticlesManager() {
       });
 
       toast.success('Article generated! Now translate to other languages.');
-      setMode('create');
+      setCustomTopic(''); // Clear topic after generation
     } catch (error: any) {
       console.error('Error generating article:', error);
       toast.error(error.message || 'Failed to generate article');
@@ -472,21 +477,40 @@ export default function ArticlesManager() {
               </div>
             </div>
 
-            {/* AI Generation */}
-            <div className="flex gap-2">
-              <Button
-                onClick={generateFromTopic}
-                disabled={generating}
-                variant="outline"
-                size="sm"
-              >
-                {generating ? (
-                  <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Generating...</>
-                ) : (
-                  <><Sparkles className="w-4 h-4 mr-2" />Generate from Topic</>
-                )}
-              </Button>
-            </div>
+            {/* AI Generation from Custom Topic */}
+            <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
+              <CardContent className="p-4 space-y-3">
+                <div className="flex items-center gap-2 text-purple-700 font-medium">
+                  <Sparkles className="w-4 h-4" />
+                  <span>Generate Article with AI</span>
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-sm">Enter your topic or idea:</Label>
+                  <Textarea
+                    value={customTopic}
+                    onChange={(e) => setCustomTopic(e.target.value)}
+                    placeholder="Example: Traditional Armenian lavash bread making, Dilijan national park hiking trails, Best time to visit Lake Sevan..."
+                    rows={3}
+                    className="bg-white"
+                  />
+                </div>
+                <Button
+                  onClick={generateFromTopic}
+                  disabled={generating || !customTopic.trim()}
+                  className="w-full"
+                  variant="default"
+                >
+                  {generating ? (
+                    <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Generating Article...</>
+                  ) : (
+                    <><Sparkles className="w-4 h-4 mr-2" />Generate Article</>
+                  )}
+                </Button>
+                <p className="text-xs text-gray-600">
+                  AI will create a 400-600 word professional article in English. You can then translate it to other languages.
+                </p>
+              </CardContent>
+            </Card>
 
             {/* Content Tabs */}
             <Tabs defaultValue="en">
