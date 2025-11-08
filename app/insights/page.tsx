@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { PageBanner } from '@/components/page-banner';
 import Link from 'next/link';
 import { 
   Search, 
@@ -120,17 +121,21 @@ export default function InsightsPage() {
   }
 
   return (
-    <div className="min-h-screen py-20">
-      {/* Header */}
-      <div className="container mb-12">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            {t('insights.title')}
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            {t('insights.subtitle')}
-          </p>
-        </div>
+    <>
+      {/* Page Banner - Managed in Admin > Page Banners */}
+      <PageBanner pageId="insights" />
+      
+      <div className="min-h-screen py-20">
+        {/* Header */}
+        <div className="container mb-12">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              {t('insights.title')}
+            </h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {t('insights.subtitle')}
+            </p>
+          </div>
 
         {/* Search and Filters */}
         <div className="max-w-4xl mx-auto mb-8 space-y-4">
@@ -233,5 +238,6 @@ export default function InsightsPage() {
         )}
       </div>
     </div>
+    </>
   );
 }

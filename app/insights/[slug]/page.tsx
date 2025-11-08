@@ -6,6 +6,7 @@ import { useLanguage } from '@/hooks/use-language';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { PageBanner } from '@/components/page-banner';
 import { 
   Calendar, 
   User, 
@@ -111,20 +112,24 @@ export default function ArticlePage() {
   }
 
   return (
-    <div className="min-h-screen py-20" dir={isRTL ? 'rtl' : 'ltr'}>
-      <div className="container max-w-4xl">
-        {/* Back Button */}
-        <Button 
-          variant="ghost" 
-          onClick={() => router.push('/insights')}
-          className="mb-8"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          {currentLanguage === 'en' && 'Back to Insights'}
-          {currentLanguage === 'hy' && 'Վերադառնալ'}
-          {currentLanguage === 'ru' && 'Назад'}
-          {currentLanguage === 'ar' && 'العودة'}
-        </Button>
+    <>
+      {/* Page Banner - Managed in Admin > Page Banners */}
+      <PageBanner pageId="insights-detail" />
+      
+      <div className="min-h-screen py-20" dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className="container max-w-4xl">
+          {/* Back Button */}
+          <Button 
+            variant="ghost" 
+            onClick={() => router.push('/insights')}
+            className="mb-8"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {currentLanguage === 'en' && 'Back to Insights'}
+            {currentLanguage === 'hy' && 'Վերադառնալ'}
+            {currentLanguage === 'ru' && 'Назад'}
+            {currentLanguage === 'ar' && 'العودة'}
+          </Button>
 
         {/* Article Header */}
         <div className="mb-8">
@@ -244,5 +249,6 @@ export default function ArticlePage() {
         </Card>
       </div>
     </div>
+    </>
   );
 }
