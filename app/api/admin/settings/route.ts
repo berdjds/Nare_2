@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { validateAdminSession } from '@/lib/auth';
 import { readSettings, writeSettings, validateApiKey } from '@/lib/settings-storage';
 
 // GET settings
 export async function GET(request: NextRequest) {
   try {
     // Check authentication
-    const token = request.cookies.get('admin_token')?.value;
-    if (!token || !validateAdminSession(token)) {
+    const adminSession = request.cookies.get('admin_session')?.value;
+    if (adminSession !== 'authenticated') {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
@@ -35,8 +34,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     // Check authentication
-    const token = request.cookies.get('admin_token')?.value;
-    if (!token || !validateAdminSession(token)) {
+    const adminSession = request.cookies.get('admin_session')?.value;
+    if (adminSession !== 'authenticated') {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
