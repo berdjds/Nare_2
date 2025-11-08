@@ -212,6 +212,15 @@ Return ONLY a JSON object with this exact structure:
 }
 
 No markdown, no code blocks, just the raw JSON.`;
+
+  try {
+    const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
         model: 'deepseek-chat',
         messages: [
           {
@@ -233,15 +242,19 @@ No markdown, no code blocks, just the raw JSON.`;
     }
 
     const data = await response.json();
-    const content = data.choices[0]?.message?.content;
+    const content = data.choices[0].message.content;
 
-    // Parse JSON response
-    const jsonMatch = content.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
-      throw new Error('Failed to parse JSON from response');
-    }
-
-    return JSON.parse(jsonMatch[0]);
+    // Clean and parse JSON
+    const cleanedContent = content.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+    const result = JSON.parse(cleanedContent);
+    
+    return {
+      title: result.title,
+      excerpt: result.excerpt,
+      content: result.content,
+      category: result.category || category,
+      tags: result.tags || [],
+    };
   } catch (error) {
     console.error('Error generating article from topic:', error);
     throw error;
