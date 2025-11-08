@@ -327,16 +327,18 @@ export default function ArticlesManager() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to save article');
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        console.error('Save failed:', errorData);
+        throw new Error(errorData.error || `Server error: ${response.status}`);
       }
 
       toast.success('Article saved successfully!');
       await loadArticles();
       setMode('list');
       resetForm();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error saving article:', error);
-      toast.error('Failed to save article');
+      toast.error(error.message || 'Failed to save article');
     } finally {
       setSaving(false);
     }
@@ -429,7 +431,9 @@ export default function ArticlesManager() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to update article');
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        console.error('Update failed:', errorData);
+        throw new Error(errorData.error || `Server error: ${response.status}`);
       }
 
       toast.success('Article updated successfully!');
@@ -437,9 +441,9 @@ export default function ArticlesManager() {
       setMode('list');
       setSelectedArticle(null);
       resetForm();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error updating article:', error);
-      toast.error('Failed to update article');
+      toast.error(error.message || 'Failed to update article');
     } finally {
       setSaving(false);
     }
