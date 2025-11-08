@@ -64,27 +64,6 @@ export default function CulturalTours() {
       
       <div className="min-h-screen py-20">
       <div className="container mx-auto px-4 py-16">
-        <Image
-          src={images.culturalMonastery}
-          alt={t('armeniaTours.tours.culturalTitle')}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative container text-center text-white"
-        >
-          <h1 className="text-4xl font-bold mb-4">{t('armeniaTours.tours.culturalTitle')}</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            {t('armeniaTours.tours.culturalDescription')}
-          </p>
-        </motion.div>
-      </section>
-
-      <section className="container py-12">
         {loading ? (
           <div className="text-center py-12">
             <p className="text-lg text-gray-600">Loading tours...</p>

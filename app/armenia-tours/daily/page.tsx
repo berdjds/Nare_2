@@ -134,7 +134,7 @@ export default function DailyTours() {
             })}
           </div>
         )}
-      </section>
+      </div>
     </div>
     </>
   );
