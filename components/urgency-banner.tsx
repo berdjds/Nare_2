@@ -25,6 +25,7 @@ interface HotNewsBanner {
 export function UrgencyBanner() {
   const [banners, setBanners] = useState<HotNewsBanner[]>([]);
   const [closedBanners, setClosedBanners] = useState<Set<string>>(new Set());
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { currentLanguage } = useLanguage();
 
   useEffect(() => {
@@ -35,55 +36,87 @@ export function UrgencyBanner() {
       .catch(err => console.error('Failed to load hot news:', err));
   }, []);
 
+  const visibleBanners = banners.filter(banner => !closedBanners.has(banner.id));
+
+  // Auto-rotate through banners
+  useEffect(() => {
+    if (visibleBanners.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % visibleBanners.length);
+    }, 5000); // Change banner every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [visibleBanners.length]);
+
   const closeBanner = (id: string) => {
     setClosedBanners(prev => new Set(prev).add(id));
+    // Reset index if current banner is closed
+    if (visibleBanners[currentIndex]?.id === id) {
+      setCurrentIndex(0);
+    }
   };
-
-  const visibleBanners = banners.filter(banner => !closedBanners.has(banner.id));
 
   if (visibleBanners.length === 0) return null;
 
+  const currentBanner = visibleBanners[currentIndex];
+
+  const title = currentBanner.title[currentLanguage] || currentBanner.title.en;
+  const message = currentBanner.message[currentLanguage] || currentBanner.message.en;
+
   return (
     <div className="sticky top-20 z-40">
-      <AnimatePresence>
-        {visibleBanners.map((banner, index) => {
-          const title = banner.title[currentLanguage] || banner.title.en;
-          const message = banner.message[currentLanguage] || banner.message.en;
-
-          return (
-            <motion.div
-              key={banner.id}
-              initial={{ y: -100 }}
-              animate={{ y: 0 }}
-              exit={{ y: -100 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg"
-            >
-              <div className="container">
-                <div className="flex items-center justify-between py-3 px-4">
-                  <div className="flex items-center gap-3 flex-1">
-                    <Zap className="w-5 h-5 animate-pulse" />
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-                      <span className="font-bold text-sm sm:text-base">
-                        {title}
-                      </span>
-                      <span className="text-xs sm:text-sm">
-                        {message}
-                      </span>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => closeBanner(banner.id)}
-                    className="ml-4 p-1 hover:bg-white/20 rounded-full transition-colors duration-200 flex-shrink-0"
-                    aria-label="Close banner"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentBanner.id}
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg"
+        >
+          <div className="container">
+            <div className="flex items-center justify-between py-3 px-4">
+              <div className="flex items-center gap-3 flex-1">
+                <Zap className="w-5 h-5 animate-pulse" />
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                  <span className="font-bold text-sm sm:text-base">
+                    {title}
+                  </span>
+                  <span className="text-xs sm:text-sm">
+                    {message}
+                  </span>
                 </div>
               </div>
-            </motion.div>
-          );
-        })}
+              <div className="flex items-center gap-2 ml-4 flex-shrink-0">
+                {/* Pagination dots */}
+                {visibleBanners.length > 1 && (
+                  <div className="flex gap-1">
+                    {visibleBanners.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === currentIndex 
+                            ? 'bg-white w-4' 
+                            : 'bg-white/50 hover:bg-white/70'
+                        }`}
+                        aria-label={`Go to banner ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+                <button
+                  onClick={() => closeBanner(currentBanner.id)}
+                  className="p-1 hover:bg-white/20 rounded-full transition-colors duration-200"
+                  aria-label="Close banner"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </AnimatePresence>
     </div>
   );
