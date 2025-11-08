@@ -103,7 +103,7 @@ export default function AdminDashboard() {
                     <div className="h-1 w-8 bg-gradient-to-r from-orange-500 to-blue-600 rounded-full"></div>
                     <p className="text-xs font-bold text-gray-700 uppercase tracking-wider">Content Management</p>
                   </div>
-                  <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3 h-auto bg-transparent p-0">
+                  <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3 h-auto bg-transparent p-0">
                     <TabsTrigger 
                       value="hero" 
                       className="flex flex-col items-center gap-2 py-4 px-4 rounded-xl border-2 border-gray-200 bg-white data-[state=active]:border-orange-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-orange-50 data-[state=active]:to-blue-50 data-[state=active]:text-orange-700 data-[state=active]:shadow-md hover:border-orange-300 hover:shadow-sm transition-all duration-200"
@@ -145,6 +145,13 @@ export default function AdminDashboard() {
                     >
                       <Layout className="h-6 w-6" />
                       <span className="text-xs font-semibold">Page Banners</span>
+                    </TabsTrigger>
+                    <TabsTrigger 
+                      value="hotnews" 
+                      className="flex flex-col items-center gap-2 py-4 px-4 rounded-xl border-2 border-gray-200 bg-white data-[state=active]:border-orange-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-orange-50 data-[state=active]:to-blue-50 data-[state=active]:text-orange-700 data-[state=active]:shadow-md hover:border-orange-300 hover:shadow-sm transition-all duration-200"
+                    >
+                      <Zap className="h-6 w-6" />
+                      <span className="text-xs font-semibold">Hot News</span>
                     </TabsTrigger>
                     <TabsTrigger 
                       value="inquiries" 
@@ -214,13 +221,6 @@ export default function AdminDashboard() {
                         <Mail className="h-6 w-6" />
                         <span className="text-xs font-semibold">Email</span>
                       </TabsTrigger>
-                      <TabsTrigger 
-                        value="hotnews" 
-                        className="flex flex-col items-center gap-2 py-4 px-4 rounded-xl border-2 border-gray-200 bg-white data-[state=active]:border-blue-600 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-50 data-[state=active]:to-orange-50 data-[state=active]:text-blue-700 data-[state=active]:shadow-md hover:border-blue-400 hover:shadow-sm transition-all duration-200"
-                      >
-                        <Zap className="h-6 w-6" />
-                        <span className="text-xs font-semibold">Hot News</span>
-                      </TabsTrigger>
                     </TabsList>
                   </div>
                 )}
@@ -250,6 +250,10 @@ export default function AdminDashboard() {
 
           <TabsContent value="banners">
             <PageBannersManager />
+          </TabsContent>
+
+          <TabsContent value="hotnews">
+            <BannerManager />
           </TabsContent>
 
           <TabsContent value="inquiries">
@@ -293,12 +297,6 @@ export default function AdminDashboard() {
           {canAccessConfig && (
             <TabsContent value="email">
               <EmailSettings />
-            </TabsContent>
-          )}
-
-          {canAccessConfig && (
-            <TabsContent value="hotnews">
-              <BannerManager />
             </TabsContent>
           )}
         </Tabs>
