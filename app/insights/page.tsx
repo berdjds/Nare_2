@@ -60,19 +60,20 @@ export default function InsightsPage() {
       if (response.ok) {
         const data = await response.json();
         
-        // Filter to only show published articles for visitors
-        const publishedArticles = data.filter((article: Article & { status: string }) => 
-          article.status === 'published'
-        );
+        // API already filters published articles for non-admin users
+        // But we filter again as extra safety + sort for consistency
+        const publishedArticles = data
+          .filter((article: Article & { status: string }) => 
+            article.status === 'published'
+          )
+          .sort((a: Article, b: Article) => {
+            // Sort by newest first (publishedAt or createdAt)
+            const dateA = new Date(a.publishedAt || a.createdAt).getTime();
+            const dateB = new Date(b.publishedAt || b.createdAt).getTime();
+            return dateB - dateA; // Newest first
+          });
         
-        // Sort by newest first (publishedAt or createdAt)
-        const sortedArticles = publishedArticles.sort((a: Article, b: Article) => {
-          const dateA = new Date(a.publishedAt || a.createdAt).getTime();
-          const dateB = new Date(b.publishedAt || b.createdAt).getTime();
-          return dateB - dateA; // Newest first
-        });
-        
-        setArticles(sortedArticles);
+        setArticles(publishedArticles);
       }
     } catch (error) {
       console.error('Failed to load articles:', error);
