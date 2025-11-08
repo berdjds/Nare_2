@@ -383,9 +383,10 @@ export default function ArticlesManager() {
       if (formData.content.en && !formData.content.ar) needsTranslation.push('ar');
 
       if (needsTranslation.length > 0) {
-        toast.info(`Auto-translating to ${needsTranslation.length} language(s)...`);
+        toast.info(`Auto-translating to ${needsTranslation.length} language(s) in parallel...`);
         
-        for (const lang of needsTranslation) {
+        // Translate all languages in parallel for speed
+        const translationPromises = needsTranslation.map(async (lang) => {
           try {
             const response = await fetch('/api/ai/translate-article', {
               method: 'POST',
@@ -402,21 +403,30 @@ export default function ArticlesManager() {
 
             if (response.ok) {
               const translated = await response.json();
-              
-              finalFormData = {
-                ...finalFormData,
-                title: { ...finalFormData.title, [lang]: translated.title },
-                excerpt: { ...finalFormData.excerpt, [lang]: translated.excerpt },
-                content: { ...finalFormData.content, [lang]: translated.content },
-              };
-
               const langNames = { hy: 'Armenian', ru: 'Russian', ar: 'Arabic' };
-              toast.success(`Translated to ${langNames[lang]}!`);
+              toast.success(`Translated to ${langNames[lang as keyof typeof langNames]}!`);
+              return { lang, translated };
             }
           } catch (error) {
             console.error(`Error translating to ${lang}:`, error);
           }
-        }
+          return null;
+        });
+
+        // Wait for all translations to complete
+        const results = await Promise.all(translationPromises);
+        
+        // Apply all translations
+        results.forEach(result => {
+          if (result) {
+            finalFormData = {
+              ...finalFormData,
+              title: { ...finalFormData.title, [result.lang]: result.translated.title },
+              excerpt: { ...finalFormData.excerpt, [result.lang]: result.translated.excerpt },
+              content: { ...finalFormData.content, [result.lang]: result.translated.content },
+            };
+          }
+        });
       }
 
       const tagsArray = finalFormData.tags.split(',').map(t => t.trim()).filter(Boolean);
