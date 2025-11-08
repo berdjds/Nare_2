@@ -41,16 +41,24 @@ export async function PUT(
     }
 
     const updates = await request.json();
+    console.log('Updating article:', params.id, 'with updates:', JSON.stringify(updates).substring(0, 200));
+    
     const article = await updateArticle(params.id, updates);
 
     if (!article) {
+      console.error('Article not found for update:', params.id);
       return NextResponse.json({ error: 'Article not found' }, { status: 404 });
     }
 
+    console.log('Article updated successfully:', params.id);
     return NextResponse.json(article);
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error updating article:', error);
-    return NextResponse.json({ error: 'Failed to update article' }, { status: 500 });
+    console.error('Error stack:', error.stack);
+    return NextResponse.json({ 
+      error: error.message || 'Failed to update article',
+      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    }, { status: 500 });
   }
 }
 
