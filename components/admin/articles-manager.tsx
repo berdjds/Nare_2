@@ -263,6 +263,24 @@ export default function ArticlesManager() {
 
   const saveArticle = async () => {
     try {
+      // Auto-translate missing languages before saving
+      const needsTranslation: Array<'hy' | 'ru' | 'ar'> = [];
+      
+      if (formData.content.en && !formData.content.hy) needsTranslation.push('hy');
+      if (formData.content.en && !formData.content.ru) needsTranslation.push('ru');
+      if (formData.content.en && !formData.content.ar) needsTranslation.push('ar');
+
+      if (needsTranslation.length > 0) {
+        toast.info(`Auto-translating to ${needsTranslation.length} language(s)...`);
+        
+        for (const lang of needsTranslation) {
+          await translateArticle(lang);
+        }
+        
+        // Wait a bit for state to update
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+
       const tagsArray = formData.tags.split(',').map(t => t.trim()).filter(Boolean);
       
       const articleData = {
@@ -314,6 +332,24 @@ export default function ArticlesManager() {
     if (!selectedArticle) return;
 
     try {
+      // Auto-translate missing languages before updating
+      const needsTranslation: Array<'hy' | 'ru' | 'ar'> = [];
+      
+      if (formData.content.en && !formData.content.hy) needsTranslation.push('hy');
+      if (formData.content.en && !formData.content.ru) needsTranslation.push('ru');
+      if (formData.content.en && !formData.content.ar) needsTranslation.push('ar');
+
+      if (needsTranslation.length > 0) {
+        toast.info(`Auto-translating to ${needsTranslation.length} language(s)...`);
+        
+        for (const lang of needsTranslation) {
+          await translateArticle(lang);
+        }
+        
+        // Wait a bit for state to update
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+
       const tagsArray = formData.tags.split(',').map(t => t.trim()).filter(Boolean);
       
       const articleData = {
