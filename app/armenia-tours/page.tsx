@@ -65,35 +65,6 @@ export default function ArmeniaTours() {
       <PageBanner pageId="armenia-tours" />
       
       <div className="flex flex-col min-h-screen">
-        {/* Hero Section */}
-        <section className="hero-section">
-        <Image
-          src={getImageUrl('heroArmeniaMain')}
-          alt={t('armeniaTours.hero.title')}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="max-w-3xl text-white mx-auto text-center"
-            >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                {t('armeniaTours.hero.title')}
-              </h1>
-              <p className="text-xl md:text-2xl mb-8">
-                {t('armeniaTours.hero.subtitle')}
-              </p>
-              <BookNowButton variant="secondary" size="lg" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Tour Categories */}
       <section className="py-16 md:py-24">
         <div className="container">
