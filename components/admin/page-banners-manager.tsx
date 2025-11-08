@@ -137,11 +137,6 @@ export default function PageBannersManager() {
     setIsDialogOpen(true);
   };
 
-  const renderForm = (banner: PageBanner, allBanners: PageBanner[]) => {
-    setEditingBanner(banner);
-    setIsDialogOpen(true);
-  };
-
   const handleEditBanner = (banner: PageBanner) => {
     setEditingBanner(banner);
     setIsDialogOpen(true);
@@ -298,11 +293,14 @@ export default function PageBannersManager() {
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>{editingBanner.id ? 'Edit Banner' : 'Add New Page Banner'}</DialogTitle>
+            <DialogTitle>
+              {editingBanner?.id ? 'Edit Banner' : 'Add New Page Banner'}
+            </DialogTitle>
           </DialogHeader>
-          {renderForm(editingBanner, banners)}
+          {editingBanner && (
+            <BannerForm
               banner={editingBanner}
-              existingPages={banners.map(b => b.pageId)}
+              allBanners={banners}
               onSave={handleSave}
               onCancel={() => {
                 setIsDialogOpen(false);
@@ -319,12 +317,12 @@ export default function PageBannersManager() {
 // Banner Form Component
 interface BannerFormProps {
   banner: PageBanner;
-  existingPages: string[];
+  allBanners: PageBanner[];
   onSave: (banner: PageBanner) => void;
   onCancel: () => void;
 }
 
-function BannerForm({ banner: initialBanner, existingPages, onSave, onCancel }: BannerFormProps) {
+function BannerForm({ banner: initialBanner, allBanners, onSave, onCancel }: BannerFormProps) {
   const [banner, setBanner] = useState(initialBanner);
   const [autoTranslating, setAutoTranslating] = useState(false);
   const { toast } = useToast();
