@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getCurrentUser } from '@/lib/admin-users';
 import { readArticles, createArticle, getPublishedArticles } from '@/lib/articles-storage';
 
 // GET /api/articles - Public (returns published) or Admin (returns all)
 export async function GET(request: NextRequest) {
   try {
-    const user = getCurrentUser();
-    const isAdmin = user !== null;
+    // Check admin session cookie
+    const adminSession = request.cookies.get('admin_session')?.value;
+    const isAdmin = adminSession === 'authenticated';
 
     let articles;
     if (isAdmin) {
@@ -27,8 +27,9 @@ export async function GET(request: NextRequest) {
 // POST /api/articles - Admin only
 export async function POST(request: NextRequest) {
   try {
-    const user = getCurrentUser();
-    if (!user) {
+    // Check admin session cookie
+    const adminSession = request.cookies.get('admin_session')?.value;
+    if (adminSession !== 'authenticated') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

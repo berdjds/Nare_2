@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getCurrentUser } from '@/lib/admin-users';
 import { getArticleById, updateArticle, deleteArticle } from '@/lib/articles-storage';
 
 // GET /api/articles/[id]
@@ -15,8 +14,8 @@ export async function GET(
     }
 
     // Check if article is published or user is admin
-    const user = getCurrentUser();
-    const isAdmin = user !== null;
+    const adminSession = request.cookies.get('admin_session')?.value;
+    const isAdmin = adminSession === 'authenticated';
 
     if (article.status !== 'published' && !isAdmin) {
       return NextResponse.json({ error: 'Article not found' }, { status: 404 });
@@ -35,8 +34,9 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const user = getCurrentUser();
-    if (!user) {
+    // Check admin session cookie
+    const adminSession = request.cookies.get('admin_session')?.value;
+    if (adminSession !== 'authenticated') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -60,8 +60,9 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const user = getCurrentUser();
-    if (!user) {
+    // Check admin session cookie
+    const adminSession = request.cookies.get('admin_session')?.value;
+    if (adminSession !== 'authenticated') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
