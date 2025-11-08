@@ -33,6 +33,7 @@ export default function HotNewsManager() {
   const [banners, setBanners] = useState<HotNewsBanner[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [autoTranslating, setAutoTranslating] = useState(false);
   const [mode, setMode] = useState<'list' | 'create' | 'edit'>('list');
   const [selectedBanner, setSelectedBanner] = useState<HotNewsBanner | null>(null);
   
@@ -77,11 +78,107 @@ export default function HotNewsManager() {
     }
 
     setSaving(true);
+    let dataToSave = { ...formData };
+
     try {
+      // Check if auto-translate is enabled
+      const settingsResponse = await fetch('/api/admin/settings');
+      if (settingsResponse.ok) {
+        const settings = await settingsResponse.json();
+        
+        if (settings.autoTranslate && settings.enableAITranslation) {
+          setAutoTranslating(true);
+          
+          try {
+            // Auto-translate missing title translations
+            if (formData.title.en && !formData.title.hy) {
+              const hyResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.title.en, targetLanguage: 'hy', context: 'Hot news banner title' })
+              });
+              if (hyResponse.ok) {
+                const data = await hyResponse.json();
+                dataToSave.title.hy = data.translatedText;
+              }
+            }
+            
+            if (formData.title.en && !formData.title.ru) {
+              const ruResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.title.en, targetLanguage: 'ru', context: 'Hot news banner title' })
+              });
+              if (ruResponse.ok) {
+                const data = await ruResponse.json();
+                dataToSave.title.ru = data.translatedText;
+              }
+            }
+            
+            if (formData.title.en && !formData.title.ar) {
+              const arResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.title.en, targetLanguage: 'ar', context: 'Hot news banner title' })
+              });
+              if (arResponse.ok) {
+                const data = await arResponse.json();
+                dataToSave.title.ar = data.translatedText;
+              }
+            }
+            
+            // Auto-translate missing message translations
+            if (formData.message.en && !formData.message.hy) {
+              const hyResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.message.en, targetLanguage: 'hy', context: 'Hot news promotional message' })
+              });
+              if (hyResponse.ok) {
+                const data = await hyResponse.json();
+                dataToSave.message.hy = data.translatedText;
+              }
+            }
+            
+            if (formData.message.en && !formData.message.ru) {
+              const ruResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.message.en, targetLanguage: 'ru', context: 'Hot news promotional message' })
+              });
+              if (ruResponse.ok) {
+                const data = await ruResponse.json();
+                dataToSave.message.ru = data.translatedText;
+              }
+            }
+            
+            if (formData.message.en && !formData.message.ar) {
+              const arResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.message.en, targetLanguage: 'ar', context: 'Hot news promotional message' })
+              });
+              if (arResponse.ok) {
+                const data = await arResponse.json();
+                dataToSave.message.ar = data.translatedText;
+              }
+            }
+            
+            toast.success('Auto-translated missing languages!');
+          } catch (error) {
+            console.error('Auto-translate error:', error);
+            toast.error('Auto-translation partially failed, but saving...');
+          } finally {
+            setAutoTranslating(false);
+          }
+        }
+      }
+
+      // Save the banner
       const response = await fetch('/api/hot-news', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSave),
       });
 
       if (!response.ok) {
@@ -123,11 +220,107 @@ export default function HotNewsManager() {
     }
 
     setSaving(true);
+    let dataToSave = { ...formData };
+
     try {
+      // Check if auto-translate is enabled
+      const settingsResponse = await fetch('/api/admin/settings');
+      if (settingsResponse.ok) {
+        const settings = await settingsResponse.json();
+        
+        if (settings.autoTranslate && settings.enableAITranslation) {
+          setAutoTranslating(true);
+          
+          try {
+            // Auto-translate missing title translations
+            if (formData.title.en && !formData.title.hy) {
+              const hyResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.title.en, targetLanguage: 'hy', context: 'Hot news banner title' })
+              });
+              if (hyResponse.ok) {
+                const data = await hyResponse.json();
+                dataToSave.title.hy = data.translatedText;
+              }
+            }
+            
+            if (formData.title.en && !formData.title.ru) {
+              const ruResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.title.en, targetLanguage: 'ru', context: 'Hot news banner title' })
+              });
+              if (ruResponse.ok) {
+                const data = await ruResponse.json();
+                dataToSave.title.ru = data.translatedText;
+              }
+            }
+            
+            if (formData.title.en && !formData.title.ar) {
+              const arResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.title.en, targetLanguage: 'ar', context: 'Hot news banner title' })
+              });
+              if (arResponse.ok) {
+                const data = await arResponse.json();
+                dataToSave.title.ar = data.translatedText;
+              }
+            }
+            
+            // Auto-translate missing message translations
+            if (formData.message.en && !formData.message.hy) {
+              const hyResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.message.en, targetLanguage: 'hy', context: 'Hot news promotional message' })
+              });
+              if (hyResponse.ok) {
+                const data = await hyResponse.json();
+                dataToSave.message.hy = data.translatedText;
+              }
+            }
+            
+            if (formData.message.en && !formData.message.ru) {
+              const ruResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.message.en, targetLanguage: 'ru', context: 'Hot news promotional message' })
+              });
+              if (ruResponse.ok) {
+                const data = await ruResponse.json();
+                dataToSave.message.ru = data.translatedText;
+              }
+            }
+            
+            if (formData.message.en && !formData.message.ar) {
+              const arResponse = await fetch('/api/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: formData.message.en, targetLanguage: 'ar', context: 'Hot news promotional message' })
+              });
+              if (arResponse.ok) {
+                const data = await arResponse.json();
+                dataToSave.message.ar = data.translatedText;
+              }
+            }
+            
+            toast.success('Auto-translated missing languages!');
+          } catch (error) {
+            console.error('Auto-translate error:', error);
+            toast.error('Auto-translation partially failed, but saving...');
+          } finally {
+            setAutoTranslating(false);
+          }
+        }
+      }
+
+      // Update the banner
       const response = await fetch(`/api/hot-news/${selectedBanner.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSave),
       });
 
       if (!response.ok) {
@@ -315,12 +508,12 @@ export default function HotNewsManager() {
 
         {/* Actions */}
         <div className="flex gap-2 justify-end">
-          <Button variant="outline" onClick={() => { setMode('list'); resetForm(); }} disabled={saving}>
+          <Button variant="outline" onClick={() => { setMode('list'); resetForm(); }} disabled={saving || autoTranslating}>
             Cancel
           </Button>
-          <Button onClick={mode === 'create' ? saveBanner : updateBanner} disabled={saving}>
+          <Button onClick={mode === 'create' ? saveBanner : updateBanner} disabled={saving || autoTranslating}>
             <Save className="w-4 h-4 mr-2" />
-            {saving ? 'Saving...' : (mode === 'create' ? 'Create' : 'Update')}
+            {autoTranslating ? 'Auto-translating...' : saving ? 'Saving...' : (mode === 'create' ? 'Create' : 'Update')}
           </Button>
         </div>
       </CardContent>
