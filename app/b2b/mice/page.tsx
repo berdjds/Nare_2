@@ -8,6 +8,7 @@ import { Users2, Building2, Calendar, Globe2, Presentation, Coffee, MapPin, Trop
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/hooks/use-language';
 import { useImages } from '@/hooks/use-images';
+import { PageBanner } from '@/components/page-banner';
 
 const services = [
   {
@@ -73,28 +74,9 @@ export default function MICEServices() {
   };
 
   return (
-    <div>
-      <section className="page-hero-section">
-        <Image
-          src={getImageUrl('serviceMice')}
-          alt={t('b2b.mice.hero.title')}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative container text-center text-white"
-        >
-          <h1 className="text-4xl font-bold mb-4">{t('b2b.mice.hero.title')}</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            {t('b2b.mice.hero.subtitle')}
-          </p>
-        </motion.div>
-      </section>
-
+    <>
+      <PageBanner pageId="b2b-mice" />
+      
       <section className="container py-12">
         <motion.div
           variants={containerVariants}
@@ -170,6 +152,6 @@ export default function MICEServices() {
           </Button>
         </motion.div>
       </section>
-    </div>
+    </>
   );
 }

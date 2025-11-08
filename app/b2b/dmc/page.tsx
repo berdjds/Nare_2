@@ -8,6 +8,7 @@ import { Building2, Globe2, MapPin, Users2, Clock, Shield, Briefcase, Plane } fr
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/hooks/use-language';
 import { useImages } from '@/hooks/use-images';
+import { PageBanner } from '@/components/page-banner';
 
 const services = [
   {
@@ -73,28 +74,9 @@ export default function DMCServices() {
   };
 
   return (
-    <div>
-      <section className="relative h-[40vh] flex items-center justify-center">
-        <Image
-          src={getImageUrl('serviceDmc')}
-          alt={t('b2b.dmc.hero.title')}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative container text-center text-white"
-        >
-          <h1 className="text-4xl font-bold mb-4">{t('b2b.dmc.hero.title')}</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            {t('b2b.dmc.hero.subtitle')}
-          </p>
-        </motion.div>
-      </section>
-
+    <>
+      <PageBanner pageId="b2b-dmc" />
+      
       <section className="container py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -182,6 +164,6 @@ export default function DMCServices() {
           </Button>
         </motion.div>
       </section>
-    </div>
+    </>
   );
 }
