@@ -211,23 +211,23 @@ export function Navbar() {
           <LanguageSwitcher />
         </div>
 
-        {/* Mobile Navigation */}
-        <Button
-          variant="ghost"
-          size="icon"
+        {/* Mobile Menu Button */}
+        <button
           className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileMenuOpen}
         >
-          {isMenuOpen ? (
-            <X className="h-5 w-5" />
+          {mobileMenuOpen ? (
+            <X className="h-6 w-6" aria-hidden="true" />
           ) : (
-            <Menu className="h-5 w-5" />
+            <Menu className="h-6 w-6" aria-hidden="true" />
           )}
-        </Button>
+        </button>
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
+      {mobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}

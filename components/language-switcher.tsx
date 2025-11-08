@@ -19,19 +19,21 @@ export function LanguageSwitcher() {
   // Get current language display name
   const currentLang = languages.find(lang => lang.code === currentLanguage);
 
+  function getCurrentLanguageLabel() {
+    return currentLang?.name;
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button 
-          variant="outline" 
-          className="min-w-[120px] justify-between gap-2 px-3 py-2"
+          variant="ghost" 
+          size="sm" 
+          className="gap-2"
+          aria-label={`Current language: ${getCurrentLanguageLabel()}. Click to return to default language`}
         >
-          <div className="flex items-center gap-2">
-            <span className="text-2xl" role="img" aria-label="flag">
-              {getFlagEmoji(currentLanguage)}
-            </span>
-            <span className="font-medium">{currentLang?.name}</span>
-          </div>
+          <Globe className="h-4 w-4" aria-hidden="true" />
+          <span className="text-sm font-medium">{getCurrentLanguageLabel()}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

@@ -74,16 +74,22 @@ export function PageBanner({ pageId, fallbackTitle, fallbackSubtitle, fallbackIm
   const displayImage = banner?.backgroundImage || fallbackImage || getImageUrl('heroNoravank');
 
   return (
-    <section className="hero-section">
-      <Image
-        src={displayImage}
-        alt={displayTitle}
-        fill
-        className="object-cover"
-        priority
-      />
-      <div className="hero-overlay" />
-      <div className="hero-content">
+    <section 
+      className="relative h-[400px] w-full overflow-hidden bg-gradient-to-r from-primary/90 to-primary/70"
+      aria-labelledby="page-banner-title"
+    >
+      {banner.backgroundImage && (
+        <Image
+          src={banner.backgroundImage}
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          role="presentation"
+        />
+      )}
+      <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
+      <div className="relative container mx-auto h-full flex items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
