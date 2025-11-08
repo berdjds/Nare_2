@@ -93,18 +93,57 @@ export default function HotNewsManager() {
       const results = await translateParallel(fields, [targetLang]);
 
       if (results && results[targetLang]) {
-        setFormData({
-          ...formData,
-          title: { ...formData.title, [targetLang]: results[targetLang].title || '' },
-          message: { ...formData.message, [targetLang]: results[targetLang].message || '' },
-        });
-
-        const langNames = { hy: 'Armenian', ru: 'Russian', ar: 'Arabic' };
-        toast.success(`Translated to ${langNames[targetLang]}!`);
+        const translatedTitle = results[targetLang].title || '';
+        const translatedMessage = results[targetLang].message || '';
+        
+        setFormData(prev => ({
+          ...prev,
+          title: { ...prev.title, [targetLang]: translatedTitle },
+          message: { ...prev.message, [targetLang]: translatedMessage },
+        }));
+      } else {
+        toast.error('Translation returned no results');
       }
     } catch (error: any) {
       console.error('Error translating:', error);
       toast.error(error.message || 'Failed to translate');
+    }
+  };
+
+  const translateAllLanguages = async () => {
+    if (!formData.title.en || !formData.message.en) {
+      toast.error('Please fill English title and message first');
+      return;
+    }
+
+    try {
+      // Use unified translation service to translate all languages in parallel
+      const fields = {
+        title: formData.title.en,
+        message: formData.message.en,
+      };
+
+      const results = await translateParallel(fields, ['hy', 'ru', 'ar']);
+
+      // Apply all translations at once
+      setFormData(prev => ({
+        ...prev,
+        title: {
+          ...prev.title,
+          hy: results.hy?.title || prev.title.hy,
+          ru: results.ru?.title || prev.title.ru,
+          ar: results.ar?.title || prev.title.ar,
+        },
+        message: {
+          ...prev.message,
+          hy: results.hy?.message || prev.message.hy,
+          ru: results.ru?.message || prev.message.ru,
+          ar: results.ar?.message || prev.message.ar,
+        },
+      }));
+    } catch (error: any) {
+      console.error('Error translating:', error);
+      toast.error(error.message || 'Failed to translate all languages');
     }
   };
 
@@ -315,6 +354,23 @@ export default function HotNewsManager() {
             checked={formData.isActive}
             onCheckedChange={(checked) => setFormData({ ...formData, isActive: checked })}
           />
+        </div>
+
+        {/* Translate All Languages Button */}
+        <div className="flex items-center justify-between p-4 border rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50">
+          <div>
+            <Label>Auto-Translate to All Languages</Label>
+            <p className="text-sm text-gray-500">Translate title and message to Armenian, Russian, and Arabic at once</p>
+          </div>
+          <Button
+            variant="default"
+            size="sm"
+            onClick={translateAllLanguages}
+            disabled={translating || !formData.title.en || !formData.message.en}
+          >
+            <Zap className="w-4 h-4 mr-2" />
+            {translating ? 'Translating...' : 'Translate All'}
+          </Button>
         </div>
 
         {/* Language Tabs */}
