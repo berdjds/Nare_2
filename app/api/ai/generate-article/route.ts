@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { validateAdminSession } from '@/lib/auth';
+import { getCurrentUser } from '@/lib/admin-users';
 import { getApiKey } from '@/lib/settings-storage';
 import { generateArticleFromNews, generateArticleFromTopic } from '@/lib/ai-news-harvester';
 
 // POST /api/ai/generate-article - Admin only
 export async function POST(request: NextRequest) {
   try {
-    const token = request.cookies.get('admin_token')?.value;
-    if (!token || !validateAdminSession(token)) {
+    const user = getCurrentUser();
+    if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
