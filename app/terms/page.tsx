@@ -88,7 +88,6 @@ export default function TermsOfService() {
     </>
   );
 }
-            <h2>{t('terms.title')}</h2>
             <p className="text-gray-600">{t('terms.lastUpdated')}: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
             
             <p>{t('terms.intro')}</p>
