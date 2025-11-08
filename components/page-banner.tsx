@@ -39,14 +39,9 @@ export function PageBanner({ pageId, fallbackTitle, fallbackSubtitle, fallbackIm
         const response = await fetch('/api/content/pageBanners');
         if (response.ok) {
           const banners: PageBanner[] = await response.json();
-          console.log('📋 All banners:', banners);
-          console.log('🔍 Looking for pageId:', pageId);
-          
           const foundBanner = banners.find(
             (b) => b.pageId === pageId && b.isActive !== false
           );
-          
-          console.log('✅ Found banner:', foundBanner);
           setBanner(foundBanner || null);
         }
       } catch (error) {
@@ -77,12 +72,6 @@ export function PageBanner({ pageId, fallbackTitle, fallbackSubtitle, fallbackIm
   const displayTitle = localizedBanner?.title || fallbackTitle || 'Page';
   const displaySubtitle = localizedBanner?.subtitle || fallbackSubtitle || '';
   const displayImage = banner?.backgroundImage || fallbackImage || getImageUrl('heroNoravank');
-  
-  console.log('🌍 Current Language:', currentLanguage);
-  console.log('📝 Banner data:', banner);
-  console.log('🔄 Localized banner:', localizedBanner);
-  console.log('📋 Display Title:', displayTitle);
-  console.log('📋 Display Subtitle:', displaySubtitle);
 
   return (
     <section 
