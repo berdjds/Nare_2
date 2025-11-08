@@ -63,7 +63,7 @@ export default function AdventureTours() {
       <PageBanner pageId="armenia-tours-adventure" />
       
       <div className="min-h-screen py-20">
-      <section className="page-hero-section">
+      <div className="container mx-auto px-4 py-16">
         <Image
           src={images.adventureHiking}
           alt={t('armeniaTours.tours.adventureTitle')}

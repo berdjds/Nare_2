@@ -63,7 +63,7 @@ export default function CulturalTours() {
       <PageBanner pageId="armenia-tours-cultural" />
       
       <div className="min-h-screen py-20">
-      <section className="page-hero-section">
+      <div className="container mx-auto px-4 py-16">
         <Image
           src={images.culturalMonastery}
           alt={t('armeniaTours.tours.culturalTitle')}
