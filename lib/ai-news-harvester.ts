@@ -280,6 +280,9 @@ No markdown, no code blocks, just the raw JSON.`;
     throw new Error(`Failed to generate article: ${error.message}`);
   }
 }
+
+/**
+ * Translate article content to target language
  */
 export async function translateArticleContent(
   apiKey: string,
