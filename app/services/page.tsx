@@ -64,11 +64,7 @@ export default function ServicesPage() {
 
   return (
     <div className="flex flex-col w-full">
-      <PageBanner
-        pageId="services"
-        fallbackTitle={t('services.title')}
-        fallbackSubtitle={t('services.subtitle')}
-      />
+      <PageBanner pageId="services" />
       
       <section className="w-full px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="max-w-7xl mx-auto">

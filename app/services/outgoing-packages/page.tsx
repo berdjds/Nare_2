@@ -72,12 +72,7 @@ export default function OutgoingPackages() {
 
   return (
     <div>
-      <PageBanner
-        pageId="outgoing-packages"
-        fallbackTitle={t('services.outgoingPackages.hero.title')}
-        fallbackSubtitle={t('services.outgoingPackages.hero.subtitle')}
-        fallbackImage={images.destinationDubai}
-      />
+      <PageBanner pageId="outgoing-packages" />
 
       <section className="container py-12">
         {loading ? (

@@ -97,12 +97,7 @@ export default function AirTickets() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <PageBanner
-        pageId="air-tickets"
-        fallbackTitle={t('airTickets.hero.title')}
-        fallbackSubtitle={t('airTickets.hero.subtitle')}
-        fallbackImage={getImageUrl('serviceFlight')}
-      />
+      <PageBanner pageId="air-tickets" fallbackImage={getImageUrl('serviceFlight')} />
 
       {/* Features Section */}
       <section className="container mx-auto px-4 py-12">
