@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
+import { Switch } from '@/components/ui/switch';
 import { 
   Select,
   SelectContent,
@@ -16,23 +16,35 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { 
-  Newspaper, 
+  Tabs, 
+  TabsContent, 
+  TabsList, 
+  TabsTrigger 
+} from '@/components/ui/tabs';
+import { 
   Plus, 
-  Sparkles, 
-  Save, 
+  Edit, 
+  Trash2, 
   Eye, 
-  Trash2,
-  RefreshCw,
-  Globe,
-  Image as ImageIcon,
-  Youtube,
-  Calendar,
-  Tag,
-  Loader2,
-  Edit
+  EyeOff, 
+  Save, 
+  X, 
+  Sparkles, 
+  Newspaper, 
+  Image as ImageIcon, 
+  Film, 
+  Globe, 
+  ExternalLink, 
+  Youtube, 
+  Calendar, 
+  Tag, 
+  Loader2, 
+  RefreshCw
 } from 'lucide-react';
 import { toast } from 'sonner';
-import { ImageUpload } from '@/components/admin/image-upload';
+import { ImageUpload } from './image-upload';
+import { useTranslation } from '@/hooks/use-translation';
+import { getMissingLanguages, SupportedLanguage } from '@/lib/translation-service';
 
 interface Article {
   id: string;
