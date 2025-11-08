@@ -4,10 +4,11 @@ import { getArticleById, updateArticle, deleteArticle } from '@/lib/articles-sto
 // GET /api/articles/[id]
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const article = await getArticleById(params.id);
+    const { id } = await params;
+    const article = await getArticleById(id);
 
     if (!article) {
       return NextResponse.json({ error: 'Article not found' }, { status: 404 });
@@ -31,9 +32,12 @@ export async function GET(
 // PUT /api/articles/[id] - Admin only
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Await params for Next.js 15+
+    const { id } = await params;
+    
     // Check admin session cookie
     const adminSession = request.cookies.get('admin_session')?.value;
     if (adminSession !== 'authenticated') {
@@ -41,16 +45,16 @@ export async function PUT(
     }
 
     const updates = await request.json();
-    console.log('Updating article:', params.id, 'with updates:', JSON.stringify(updates).substring(0, 200));
+    console.log('Updating article:', id, 'with updates:', JSON.stringify(updates).substring(0, 200));
     
-    const article = await updateArticle(params.id, updates);
+    const article = await updateArticle(id, updates);
 
     if (!article) {
-      console.error('Article not found for update:', params.id);
+      console.error('Article not found for update:', id);
       return NextResponse.json({ error: 'Article not found' }, { status: 404 });
     }
 
-    console.log('Article updated successfully:', params.id);
+    console.log('Article updated successfully:', id);
     return NextResponse.json(article);
   } catch (error: any) {
     console.error('Error updating article:', error);
@@ -65,16 +69,18 @@ export async function PUT(
 // DELETE /api/articles/[id] - Admin only
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
+    
     // Check admin session cookie
     const adminSession = request.cookies.get('admin_session')?.value;
     if (adminSession !== 'authenticated') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const success = await deleteArticle(params.id);
+    const success = await deleteArticle(id);
 
     if (!success) {
       return NextResponse.json({ error: 'Article not found' }, { status: 404 });
