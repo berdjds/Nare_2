@@ -29,6 +29,8 @@ const PREDEFINED_PAGES = [
   { id: 'outgoing-packages', label: 'Outgoing Packages' },
   { id: 'air-tickets', label: 'Air Tickets' },
   { id: 'visa-assistance', label: 'Visa Assistance' },
+  { id: 'insights', label: 'Travel Insights' },
+  { id: 'insights-detail', label: 'Insights Detail' },
   { id: 'armenia-tours', label: 'Armenia Tours' },
   { id: 'armenia-tours-daily', label: 'Daily Tours' },
   { id: 'armenia-tours-cultural', label: 'Cultural Tours' },
