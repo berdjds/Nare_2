@@ -28,7 +28,8 @@ import {
   Youtube,
   Calendar,
   Tag,
-  Loader2
+  Loader2,
+  Edit
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { ImageUpload } from '@/components/admin/image-upload';
@@ -291,6 +292,60 @@ export default function ArticlesManager() {
     }
   };
 
+  const editArticle = async (article: Article) => {
+    // Load article data into form
+    setFormData({
+      title: article.title,
+      excerpt: article.excerpt,
+      content: article.content,
+      category: article.category as any,
+      tags: article.tags.join(', '),
+      author: article.author,
+      imageUrl: article.imageUrl || '',
+      videoUrl: article.videoUrl || '',
+      status: article.status,
+      sourceUrl: article.sourceUrl || '',
+    });
+    setSelectedArticle(article);
+    setMode('edit');
+  };
+
+  const updateArticle = async () => {
+    if (!selectedArticle) return;
+
+    try {
+      const tagsArray = formData.tags.split(',').map(t => t.trim()).filter(Boolean);
+      
+      const articleData = {
+        ...formData,
+        tags: tagsArray,
+        slug: formData.title.en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+        publishedAt: formData.status === 'published' && !selectedArticle.publishedAt
+          ? new Date().toISOString()
+          : selectedArticle.publishedAt,
+      };
+
+      const response = await fetch(`/api/articles/${selectedArticle.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(articleData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update article');
+      }
+
+      toast.success('Article updated successfully!');
+      await loadArticles();
+      setMode('list');
+      setSelectedArticle(null);
+      resetForm();
+    } catch (error) {
+      console.error('Error updating article:', error);
+      toast.error('Failed to update article');
+    }
+  };
+
   const deleteArticle = async (id: string) => {
     if (!confirm('Are you sure you want to delete this article?')) return;
 
@@ -414,12 +469,12 @@ export default function ArticlesManager() {
       )}
 
       {/* Create/Edit Mode */}
-      {mode === 'create' && (
+      {(mode === 'create' || mode === 'edit') && (
         <Card>
           <CardHeader>
-            <CardTitle>Create New Article</CardTitle>
+            <CardTitle>{mode === 'edit' ? 'Edit Article' : 'Create New Article'}</CardTitle>
             <CardDescription>
-              Write or generate content with AI assistance
+              {mode === 'edit' ? 'Update article content and settings' : 'Write or generate content with AI assistance'}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -621,12 +676,12 @@ export default function ArticlesManager() {
 
             {/* Actions */}
             <div className="flex gap-2 justify-end">
-              <Button variant="outline" onClick={() => setMode('list')}>
+              <Button variant="outline" onClick={() => { setMode('list'); setSelectedArticle(null); resetForm(); }}>
                 Cancel
               </Button>
-              <Button onClick={saveArticle}>
+              <Button onClick={mode === 'edit' ? updateArticle : saveArticle}>
                 <Save className="w-4 h-4 mr-2" />
-                Save Article
+                {mode === 'edit' ? 'Update Article' : 'Save Article'}
               </Button>
             </div>
           </CardContent>
@@ -678,13 +733,23 @@ export default function ArticlesManager() {
                           variant="ghost"
                           size="sm"
                           onClick={() => window.open(`/insights/${article.slug}`, '_blank')}
+                          title="Preview"
                         >
                           <Eye className="w-4 h-4" />
                         </Button>
                         <Button
                           variant="ghost"
                           size="sm"
+                          onClick={() => editArticle(article)}
+                          title="Edit"
+                        >
+                          <Edit className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
                           onClick={() => deleteArticle(article.id)}
+                          title="Delete"
                         >
                           <Trash2 className="w-4 h-4" />
                         </Button>
