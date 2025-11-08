@@ -205,6 +205,7 @@ export const translations = {
     menu: {
       home: "Home",
       about: "About",
+      insights: "Travel Insights",
       services: "Services",
       armeniaTours: "Armenia Tours",
       b2bServices: "B2B Services",
@@ -982,6 +983,7 @@ export const translations = {
     menu: {
       home: "Գլխավոր",
       about: "Մեր Մասին",
+      insights: "Ճամփորդական Պատմություններ",
       services: "Ծառայություններ",
       armeniaTours: "Տուրեր Հայաստանում",
       b2bServices: "B2B Ծառայություններ",
@@ -1567,11 +1569,12 @@ export const translations = {
     menu: {
       home: "Главная",
       about: "О Нас",
+      insights: "Путеводитель",
       services: "Услуги",
       armeniaTours: "Туры по Армении",
       b2bServices: "B2B Услуги",
-      contact: "Контакты",
-      tourPackages: 'Турпакеты',
+      contact: "Контакт",
+      tourPackages: "Турпакеты",
       tourPackagesDesc: 'Международные турпакеты в Дубай, Шарм-эль-Шейх, Мальдивы и другие направления',
       flightTickets: 'Авиабилеты',
       flightTicketsDesc: 'Бронируйте авиабилеты с помощью наших специалистов',
@@ -2031,6 +2034,7 @@ export const translations = {
   menu: {
     home: "الرئيسية",
     about: "من نحن",
+    insights: "رؤى السفر",
     services: "الخدمات",
     armeniaTours: "جولات أرمينيا",
     b2bServices: "خدمات B2B",

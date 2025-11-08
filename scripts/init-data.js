@@ -55,7 +55,8 @@ const files = [
   { name: 'pageBanners.json', data: {} },
   { name: 'socialLinks.json', data: [] },
   { name: 'contactInfo.json', data: {} },
-  { name: 'translations.json', data: [] }
+  { name: 'translations.json', data: [] },
+  { name: 'articles.json', data: [] }
 ];
 
 console.log('\n📦 Initializing data files...\n');

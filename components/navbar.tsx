@@ -181,6 +181,16 @@ export function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link 
+                  href="/insights" 
+                  className={cn(
+                    "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-blue-600 rounded-md inline-flex items-center justify-center"
+                  )}
+                >
+                  {t('menu.insights')}
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link 
                   href="/contact" 
                   className={cn(
                     "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-blue-600 rounded-md inline-flex items-center justify-center"

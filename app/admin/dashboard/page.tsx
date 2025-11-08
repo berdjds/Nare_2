@@ -21,7 +21,8 @@ import {
   Layout,
   Shield,
   MessageSquare,
-  Mail
+  Mail,
+  Newspaper
 } from 'lucide-react';
 import HeroSlidesManager from '@/components/admin/hero-slides-manager';
 import TourPackagesManager from '@/components/admin/tour-packages-manager';
@@ -36,6 +37,7 @@ import TranslationsManager from '@/components/admin/translations-manager';
 import UsersManager from '@/components/admin/users-manager';
 import InquiriesManager from '@/components/admin/inquiries-manager';
 import EmailSettings from '@/components/admin/email-settings';
+import ArticlesManager from '@/components/admin/articles-manager';
 import { getCurrentUser, canAccessConfiguration } from '@/lib/admin-users';
 
 export default function AdminDashboard() {
@@ -149,6 +151,13 @@ export default function AdminDashboard() {
                       <MessageSquare className="h-6 w-6" />
                       <span className="text-xs font-semibold">Inquiries</span>
                     </TabsTrigger>
+                    <TabsTrigger 
+                      value="articles" 
+                      className="flex flex-col items-center gap-2 py-4 px-4 rounded-xl border-2 border-gray-200 bg-white data-[state=active]:border-orange-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-orange-50 data-[state=active]:to-blue-50 data-[state=active]:text-orange-700 data-[state=active]:shadow-md hover:border-orange-300 hover:shadow-sm transition-all duration-200"
+                    >
+                      <Newspaper className="h-6 w-6" />
+                      <span className="text-xs font-semibold">Travel Insights</span>
+                    </TabsTrigger>
                   </TabsList>
                 </div>
 
@@ -236,6 +245,10 @@ export default function AdminDashboard() {
 
           <TabsContent value="inquiries">
             <InquiriesManager />
+          </TabsContent>
+
+          <TabsContent value="articles">
+            <ArticlesManager />
           </TabsContent>
 
           {canAccessConfig && (
