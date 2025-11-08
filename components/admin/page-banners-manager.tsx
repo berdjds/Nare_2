@@ -23,10 +23,14 @@ const PAGE_OPTIONS = [
   { id: 'services', label: 'Services' },
   { id: 'outgoing-packages', label: 'Outgoing Packages' },
   { id: 'air-tickets', label: 'Air Tickets' },
+  { id: 'visa-assistance', label: 'Visa Assistance' },
   { id: 'armenia-tours', label: 'Armenia Tours' },
-  { id: 'daily-tours', label: 'Daily Tours' },
-  { id: 'cultural-tours', label: 'Cultural Tours' },
-  { id: 'adventure-tours', label: 'Adventure Tours' },
+  { id: 'armenia-tours-daily', label: 'Daily Tours' },
+  { id: 'armenia-tours-cultural', label: 'Cultural Tours' },
+  { id: 'armenia-tours-adventure', label: 'Adventure Tours' },
+  { id: 'b2b', label: 'B2B Services' },
+  { id: 'b2b-dmc', label: 'DMC Services' },
+  { id: 'b2b-mice', label: 'MICE Services' },
 ];
 
 export default function PageBannersManager() {
