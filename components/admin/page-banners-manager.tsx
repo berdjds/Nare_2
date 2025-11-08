@@ -17,7 +17,12 @@ import { TranslationTabs } from './translation-tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 
-const PAGE_OPTIONS = [
+/**
+ * AUTOMATIC PAGE DETECTION
+ * Pages are automatically detected from existing banners + predefined pages
+ * No need to manually update this list when adding new pages!
+ */
+const PREDEFINED_PAGES = [
   { id: 'about', label: 'About Us' },
   { id: 'contact', label: 'Contact' },
   { id: 'services', label: 'Services' },
@@ -32,6 +37,37 @@ const PAGE_OPTIONS = [
   { id: 'b2b-dmc', label: 'DMC Services' },
   { id: 'b2b-mice', label: 'MICE Services' },
 ];
+
+/**
+ * Generate page label from pageId
+ * Converts 'armenia-tours-daily' -> 'Armenia Tours Daily'
+ */
+function generatePageLabel(pageId: string): string {
+  return pageId
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
+/**
+ * Get all unique pages (predefined + existing banners)
+ * Automatically includes any pageId found in banners
+ */
+function getAllPageOptions(existingBanners: PageBanner[]) {
+  const predefinedMap = new Map(PREDEFINED_PAGES.map(p => [p.id, p.label]));
+  
+  // Add any pageIds from existing banners that aren't predefined
+  existingBanners.forEach(banner => {
+    if (!predefinedMap.has(banner.pageId)) {
+      predefinedMap.set(banner.pageId, generatePageLabel(banner.pageId));
+    }
+  });
+  
+  // Convert back to array and sort
+  return Array.from(predefinedMap.entries())
+    .map(([id, label]) => ({ id, label }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+}
 
 export default function PageBannersManager() {
   const { toast } = useToast();
@@ -423,9 +459,9 @@ function BannerForm({ banner: initialBanner, existingPages, onSave, onCancel }: 
             <SelectValue placeholder="Select a page" />
           </SelectTrigger>
           <SelectContent>
-            {PAGE_OPTIONS.map((page) => (
-              <SelectItem key={page.id} value={page.id}>
-                {page.label}
+            {getAllPageOptions(banners).map(option => (
+              <SelectItem key={option.id} value={option.id}>
+                {option.label}
               </SelectItem>
             ))}
           </SelectContent>
