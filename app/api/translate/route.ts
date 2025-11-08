@@ -6,8 +6,8 @@ import { translateWithAI, translateMultipleFields } from '@/lib/ai-translation';
 export async function POST(request: NextRequest) {
   try {
     // Check authentication
-    const token = request.cookies.get('admin_token')?.value;
-    if (!token || !validateAdminSession(token)) {
+    const adminSession = request.cookies.get('admin_session')?.value;
+    if (adminSession !== 'authenticated') {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
