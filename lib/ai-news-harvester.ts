@@ -188,25 +188,27 @@ export async function generateArticleFromTopic(
 
 Write a comprehensive, engaging article about: "${topic}"
 
-Suggested Category: ${category}
-
 Requirements:
-- Title: Catchy and SEO-friendly (60-80 characters)
-- Excerpt: Compelling 2-3 sentence summary (150-200 characters)
-- Content: Well-structured article (400-600 words)
-- Tone: Professional, upbeat, and tourist-friendly
-- Style: Informative yet engaging
-- Include practical information where relevant
-- Use vivid descriptions
-- Structure: Introduction, body paragraphs, conclusion
+- Length: 400-600 words
+- Style: Professional, informative, and engaging
+- Tone: Enthusiastic but authentic
+- Include specific details, practical information, and cultural insights
+- Make it SEO-friendly with relevant keywords
 - Category: Choose the most appropriate from: news, events, culture, food-drinks, destinations
 - Tags: Generate 4-6 relevant keywords (lowercase, single words or short phrases)
+
+IMPORTANT FORMATTING:
+- Structure the content with 4-5 clear paragraphs
+- Separate each paragraph with TWO newline characters (\\n\\n)
+- Each paragraph should be 3-4 sentences
+- Use proper sentence structure with periods
+- NO single continuous block of text
 
 Return ONLY a JSON object with this exact structure:
 {
   "title": "Article title here",
   "excerpt": "Brief summary here",
-  "content": "Full article content here with proper paragraphs",
+  "content": "Paragraph 1 text here.\\n\\nParagraph 2 text here.\\n\\nParagraph 3 text here.",
   "category": "most appropriate category",
   "tags": ["tag1", "tag2", "tag3", "tag4"]
 }
@@ -225,7 +227,7 @@ No markdown, no code blocks, just the raw JSON.`;
         messages: [
           {
             role: 'system',
-            content: 'You are a professional travel writer specializing in Armenia and Georgia. Always respond with valid JSON only.'
+            content: 'You are a professional travel writer specializing in Armenia and Georgia. You MUST format content with proper paragraph breaks using \\n\\n between paragraphs. Always respond with valid JSON only.'
           },
           {
             role: 'user',
@@ -242,27 +244,42 @@ No markdown, no code blocks, just the raw JSON.`;
     }
 
     const data = await response.json();
-    const content = data.choices[0].message.content;
+    const result = data.choices[0]?.message?.content;
+    if (!result) {
+      throw new Error('No content in response');
+    }
 
-    // Clean and parse JSON
-    const cleanedContent = content.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-    const result = JSON.parse(cleanedContent);
+    // Parse JSON response
+    const parsed = JSON.parse(result);
+    
+    // Post-process content to ensure proper formatting
+    let content = parsed.content || '';
+    
+    // If content doesn't have proper line breaks, add them
+    if (!content.includes('\n\n')) {
+      // Split by sentence endings and group into paragraphs
+      const sentences = content.match(/[^.!?]+[.!?]+/g) || [content];
+      const paragraphs: string[] = [];
+      
+      for (let i = 0; i < sentences.length; i += 3) {
+        const paragraph = sentences.slice(i, i + 3).join(' ').trim();
+        if (paragraph) paragraphs.push(paragraph);
+      }
+      
+      content = paragraphs.join('\n\n');
+    }
     
     return {
-      title: result.title,
-      excerpt: result.excerpt,
-      content: result.content,
-      category: result.category || category,
-      tags: result.tags || [],
+      title: parsed.title,
+      excerpt: parsed.excerpt,
+      content: content,
+      category: parsed.category || category,
+      tags: parsed.tags || []
     };
-  } catch (error) {
-    console.error('Error generating article from topic:', error);
-    throw error;
+  } catch (error: any) {
+    throw new Error(`Failed to generate article: ${error.message}`);
   }
 }
-
-/**
- * Translate article content to target language
  */
 export async function translateArticleContent(
   apiKey: string,
