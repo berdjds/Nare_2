@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Plus, Edit, Trash2, Eye, EyeOff, Globe, Zap, Save, X } from 'lucide-react';
 import { toast } from 'sonner';
 import { AIAssistButton } from './ai-assist-button';
+import { useTranslation } from '@/hooks/use-translation';
 
 interface HotNewsBanner {
   id: string;
@@ -36,7 +37,6 @@ export default function HotNewsManager() {
   const [banners, setBanners] = useState<HotNewsBanner[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [translating, setTranslating] = useState(false);
   const [mode, setMode] = useState<'list' | 'create' | 'edit'>('list');
   const [selectedBanner, setSelectedBanner] = useState<HotNewsBanner | null>(null);
   
@@ -45,6 +45,9 @@ export default function HotNewsManager() {
     title: { en: '', hy: '', ru: '', ar: '' },
     message: { en: '', hy: '', ru: '', ar: '' },
   });
+
+  // Use unified translation service
+  const { translating, translateParallel } = useTranslation();
 
   useEffect(() => {
     loadBanners();
@@ -80,37 +83,28 @@ export default function HotNewsManager() {
       return;
     }
 
-    setTranslating(true);
     try {
-      const response = await fetch('/api/ai/translate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          text: `Title: ${formData.title.en}\nMessage: ${formData.message.en}`,
-          targetLang,
-        }),
-      });
+      // Use unified translation service with parallel translation
+      const fields = {
+        title: formData.title.en,
+        message: formData.message.en,
+      };
 
-      if (!response.ok) throw new Error('Translation failed');
+      const results = await translateParallel(fields, [targetLang]);
 
-      const data = await response.json();
-      const lines = data.translatedText.split('\n');
-      const translatedTitle = lines[0].replace('Title: ', '').replace(/^[^:]+:\s*/, '');
-      const translatedMessage = lines.slice(1).join('\n').replace('Message: ', '').replace(/^[^:]+:\s*/, '').trim();
+      if (results && results[targetLang]) {
+        setFormData({
+          ...formData,
+          title: { ...formData.title, [targetLang]: results[targetLang].title || '' },
+          message: { ...formData.message, [targetLang]: results[targetLang].message || '' },
+        });
 
-      setFormData({
-        ...formData,
-        title: { ...formData.title, [targetLang]: translatedTitle },
-        message: { ...formData.message, [targetLang]: translatedMessage },
-      });
-
-      const langNames = { hy: 'Armenian', ru: 'Russian', ar: 'Arabic' };
-      toast.success(`Translated to ${langNames[targetLang]}!`);
+        const langNames = { hy: 'Armenian', ru: 'Russian', ar: 'Arabic' };
+        toast.success(`Translated to ${langNames[targetLang]}!`);
+      }
     } catch (error: any) {
       console.error('Error translating:', error);
       toast.error(error.message || 'Failed to translate');
-    } finally {
-      setTranslating(false);
     }
   };
 
