@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { validateAdminSession } from '@/lib/auth';
 import { readContent, writeContent, AirTicket } from '@/lib/content-storage';
 
 // Check if user is admin

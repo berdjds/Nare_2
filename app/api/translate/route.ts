@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { validateAdminSession } from '@/lib/auth';
 import { getApiKey } from '@/lib/settings-storage';
 import { translateWithAI, translateMultipleFields } from '@/lib/ai-translation';
 

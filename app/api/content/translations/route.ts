@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { validateAdminSession } from '@/lib/auth';
 import { readTranslations, writeTranslations } from '@/lib/translations-storage';
 
 // Check if user is admin
