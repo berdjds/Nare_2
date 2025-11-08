@@ -214,11 +214,11 @@ export function Navbar() {
         {/* Mobile Menu Button */}
         <button
           className="md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileMenuOpen}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
         >
-          {mobileMenuOpen ? (
+          {isMenuOpen ? (
             <X className="h-6 w-6" aria-hidden="true" />
           ) : (
             <Menu className="h-6 w-6" aria-hidden="true" />
@@ -227,7 +227,7 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
+      {isMenuOpen && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}

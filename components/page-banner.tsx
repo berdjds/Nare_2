@@ -92,10 +92,13 @@ export function PageBanner({ pageId, fallbackTitle, fallbackSubtitle, fallbackIm
       <div className="relative container mx-auto h-full flex items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-3xl text-white text-center"
+          transition={{ duration: 0.5 }}
+          className="text-center text-white"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 
+            id="page-banner-title"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg"
+          >
             {displayTitle}
           </h1>
           {displaySubtitle && (

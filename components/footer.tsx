@@ -111,7 +111,7 @@ const FooterTitle = ({ children }: { children: React.ReactNode }) => (
 );
 
 export function Footer() {
-  const { currentLanguage } = useLanguage();
+  const { t } = useLanguage();
   const [contactInfo, setContactInfo] = useState({
     phone: '+374 XX XXX XXX',
     email: 'info@filarche.com',
