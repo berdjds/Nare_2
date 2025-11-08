@@ -41,8 +41,7 @@ export async function POST(request: NextRequest) {
       result = await generateArticleFromTopic(
         apiKey,
         data.topic,
-        data.category,
-        data.additionalNotes
+        data.category
       );
     } else {
       return NextResponse.json({ error: 'Invalid generation type' }, { status: 400 });

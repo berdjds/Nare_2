@@ -44,7 +44,7 @@ export function useTranslation(options: UseTranslationOptions = {}) {
     setProgress(prev => ({ ...prev, [targetLang]: 'translating' }));
 
     try {
-      const result = await translateText(text, targetLang);
+      const result = await translateSingleText(text, targetLang);
       
       setProgress(prev => ({ ...prev, [targetLang]: 'completed' }));
       
@@ -54,8 +54,8 @@ export function useTranslation(options: UseTranslationOptions = {}) {
       
       options.onSuccess?.(targetLang);
       return result;
-    } catch (error: any) {
-      const errorMsg = error.message || 'Translation failed';
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : 'Translation failed';
       
       setProgress(prev => ({ ...prev, [targetLang]: 'error' }));
       

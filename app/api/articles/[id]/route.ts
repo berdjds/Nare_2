@@ -55,9 +55,10 @@ export async function PUT(
   } catch (error) {
     console.error('Error updating article:', error);
     const errorMessage = error instanceof Error ? error.message : 'Failed to update article';
+    const errorStack = error instanceof Error ? error.stack : undefined;
     return NextResponse.json({ 
       error: errorMessage,
-      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+      details: process.env.NODE_ENV === 'development' ? errorStack : undefined
     }, { status: 500 });
   }
 }

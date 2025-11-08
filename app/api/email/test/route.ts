@@ -55,11 +55,12 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Email test error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Failed to send test email';
+    const errorCode = (error as any)?.code || 'Unknown error';
     return NextResponse.json(
       { 
         success: false,
         error: errorMessage,
-        details: error.code || 'Unknown error'
+        details: errorCode
       },
       { status: 500 }
     );
