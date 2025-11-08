@@ -88,12 +88,6 @@ export default function TermsOfService() {
     </>
   );
 }
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="prose prose-lg max-w-none"
-          >
             <h2>{t('terms.title')}</h2>
             <p className="text-gray-600">{t('terms.lastUpdated')}: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
             
