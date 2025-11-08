@@ -37,13 +37,15 @@ export default function InsightsPage() {
   const [loading, setLoading] = useState(true);
   const { currentLanguage } = useLanguage();
 
+  const { t } = useLanguage();
+
   const categories = [
-    { value: 'all', label: { en: 'All', hy: 'Բոլորը', ru: 'Все', ar: 'الكل' } },
-    { value: 'news', label: { en: 'News', hy: 'Նորություններ', ru: 'Новости', ar: 'أخبار' } },
-    { value: 'events', label: { en: 'Events', hy: 'Միջոցառումներ', ru: 'События', ar: 'فعاليات' } },
-    { value: 'culture', label: { en: 'Culture', hy: 'Մշակույթ', ru: 'Культура', ar: 'ثقافة' } },
-    { value: 'food-drinks', label: { en: 'Food & Drinks', hy: 'Կերակուր և Խմիչքներ', ru: 'Еда и Напитки', ar: 'طعام ومشروبات' } },
-    { value: 'destinations', label: { en: 'Destinations', hy: 'Ուղղություններ', ru: 'Направления', ar: 'وجهات' } },
+    { value: 'all', key: 'insights.category.all' },
+    { value: 'news', key: 'insights.category.news' },
+    { value: 'events', key: 'insights.category.events' },
+    { value: 'culture', key: 'insights.category.culture' },
+    { value: 'food-drinks', key: 'insights.category.food-drinks' },
+    { value: 'destinations', key: 'insights.category.destinations' },
   ];
 
   useEffect(() => {
@@ -105,7 +107,7 @@ export default function InsightsPage() {
 
   const getCategoryLabel = (category: string) => {
     const cat = categories.find(c => c.value === category);
-    return cat ? cat.label[currentLanguage] || cat.label.en : category;
+    return cat ? t(cat.key) : category;
   };
 
   if (loading) {
@@ -113,12 +115,7 @@ export default function InsightsPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <Newspaper className="w-12 h-12 mx-auto mb-4 animate-pulse text-primary" />
-          <p className="text-gray-600">
-            {currentLanguage === 'en' && 'Loading articles...'}
-            {currentLanguage === 'hy' && 'Բեռնում են հոդվածները...'}
-            {currentLanguage === 'ru' && 'Загрузка статей...'}
-            {currentLanguage === 'ar' && 'جاري تحميل المقالات...'}
-          </p>
+          <p className="text-gray-600">{t('insights.loading')}</p>
         </div>
       </div>
     );
@@ -128,18 +125,12 @@ export default function InsightsPage() {
     <div className="min-h-screen py-20">
       {/* Header */}
       <div className="container mb-12">
-        <div className="text-center mb-8">
+        <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            {currentLanguage === 'en' && 'Travel Insights'}
-            {currentLanguage === 'hy' && 'Ճամփորդական Պատմություններ'}
-            {currentLanguage === 'ru' && 'Путеводитель'}
-            {currentLanguage === 'ar' && 'رؤى السفر'}
+            {t('insights.title')}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            {currentLanguage === 'en' && 'Discover Armenia and Georgia through our latest stories, events, and cultural insights'}
-            {currentLanguage === 'hy' && 'Բացահայտեք Հայաստանը և Վրաստանը մեր վերջին պատմությունների, միջոցառումների և մշակութային պատմությունների միջոցով'}
-            {currentLanguage === 'ru' && 'Откройте для себя Армению и Грузию через наши последние истории, события и культурные открытия'}
-            {currentLanguage === 'ar' && 'اكتشف أرمينيا وجورجيا من خلال أحدث قصصنا وفعالياتنا ورؤى ثقافية'}
+            {t('insights.subtitle')}
           </p>
         </div>
 
@@ -148,15 +139,11 @@ export default function InsightsPage() {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <Input
+              type="text"
+              placeholder={t('insights.search.placeholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={
-                currentLanguage === 'en' ? 'Search articles...' :
-                currentLanguage === 'hy' ? 'Փնտրել հոդվածներ...' :
-                currentLanguage === 'ru' ? 'Поиск статей...' :
-                'بحث في المقالات...'
-              }
-              className="pl-10"
+              className="max-w-md"
             />
           </div>
 
@@ -168,7 +155,7 @@ export default function InsightsPage() {
                 size="sm"
                 onClick={() => setSelectedCategory(cat.value)}
               >
-                {cat.label[currentLanguage] || cat.label.en}
+                {t(cat.key)}
               </Button>
             ))}
           </div>
@@ -178,14 +165,9 @@ export default function InsightsPage() {
       {/* Articles Grid */}
       <div className="container">
         {filteredArticles.length === 0 ? (
-          <div className="text-center py-20">
-            <Newspaper className="w-16 h-16 mx-auto mb-4 opacity-20" />
-            <p className="text-xl text-gray-500">
-              {currentLanguage === 'en' && 'No articles found'}
-              {currentLanguage === 'hy' && 'Հոդվածներ չեն գտնվել'}
-              {currentLanguage === 'ru' && 'Статьи не найдены'}
-              {currentLanguage === 'ar' && 'لم يتم العثور على مقالات'}
-            </p>
+          <div className="text-center">
+            <Newspaper className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+            <div className="animate-pulse">{t('insights.noArticles')}</div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -227,13 +209,12 @@ export default function InsightsPage() {
                         <User className="w-4 h-4" />
                         <span>{article.author}</span>
                       </div>
-                      <div className="flex items-center gap-1 text-primary font-medium text-sm group-hover:gap-2 transition-all">
-                        {currentLanguage === 'en' && 'Read more'}
-                        {currentLanguage === 'hy' && 'Կարդալ ավելին'}
-                        {currentLanguage === 'ru' && 'Читать далее'}
-                        {currentLanguage === 'ar' && 'اقرأ المزيد'}
-                        <ArrowRight className="w-4 h-4" />
-                      </div>
+                      <Button asChild size="sm">
+                        <Link href={`/insights/${article.slug}`}>
+                          {t('insights.readMore')}
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      </Button>
                     </div>
 
                     {article.tags.length > 0 && (
