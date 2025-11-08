@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { PageBanner } from '@/components/page-banner';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Search, 
   Calendar, 
@@ -178,11 +179,13 @@ export default function InsightsPage() {
               <Card key={article.id} className="h-full hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
                 {article.imageUrl && (
                   <Link href={`/insights/${article.slug}`}>
-                    <div className="aspect-video overflow-hidden">
-                      <img
+                    <div className="aspect-video overflow-hidden relative">
+                      <Image
                         src={article.imageUrl}
                         alt={article.title[currentLanguage] || article.title.en}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
                   </Link>

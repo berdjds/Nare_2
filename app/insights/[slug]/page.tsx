@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { PageBanner } from '@/components/page-banner';
+import Image from 'next/image';
 import { 
   Calendar, 
   User, 
@@ -174,11 +175,14 @@ export default function ArticlePage() {
 
         {/* Featured Image */}
         {article.imageUrl && (
-          <div className="mb-8 rounded-xl overflow-hidden">
-            <img
+          <div className="mb-8 rounded-xl overflow-hidden relative aspect-video">
+            <Image
               src={article.imageUrl}
               alt={article.title[currentLanguage] || article.title.en}
-              className="w-full h-auto"
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1200px) 100vw, 1200px"
             />
           </div>
         )}

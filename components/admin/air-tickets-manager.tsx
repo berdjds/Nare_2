@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Plus, Edit, Trash2, Eye, EyeOff, Search, Filter } from 'lucide-react';
@@ -249,9 +250,9 @@ export default function AirTicketsManager() {
               <CardContent className="p-4">
                 <div className="flex gap-4">
                   {/* Image */}
-                  <div className="w-32 h-32 bg-gray-100 rounded flex-shrink-0 overflow-hidden">
+                  <div className="w-32 h-32 bg-gray-100 rounded flex-shrink-0 overflow-hidden relative">
                     {ticket.image ? (
-                      <img src={ticket.image} alt={ticket.title} className="w-full h-full object-cover" />
+                      <Image src={ticket.image} alt={ticket.title} fill className="object-cover" sizes="128px" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
                         No Image

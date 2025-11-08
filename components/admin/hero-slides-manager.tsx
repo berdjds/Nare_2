@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Card, CardContent } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Plus, Edit, Trash2, Eye, EyeOff, Search, MoveUp, MoveDown } from 'lucide-react';
 import { HeroSlide } from '@/lib/content-storage';
 import { ImageUpload } from './image-upload';
@@ -234,10 +237,12 @@ export default function HeroSlidesManager() {
                   {/* Slide Preview */}
                   <div className="relative w-64 h-40 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
                     {slide.backgroundImage ? (
-                      <img 
+                      <Image 
                         src={slide.backgroundImage} 
-                        alt={slide.title} 
-                        className="w-full h-full object-cover"
+                        alt={slide.title}
+                        fill
+                        className="object-cover"
+                        sizes="256px"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-gray-400">
@@ -246,10 +251,12 @@ export default function HeroSlidesManager() {
                     )}
                     {slide.cardImage && (
                       <div className="absolute bottom-2 right-2 w-16 h-20 rounded border-2 border-white overflow-hidden">
-                        <img 
+                        <Image 
                           src={slide.cardImage} 
-                          alt="Card" 
-                          className="w-full h-full object-cover"
+                          alt="Card"
+                          fill
+                          className="object-cover"
+                          sizes="64px"
                         />
                       </div>
                     )}

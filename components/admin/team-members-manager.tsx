@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -231,10 +232,12 @@ export default function TeamMembersManager() {
                   {/* Member Photo */}
                   <div className="relative w-40 h-48 flex-shrink-0 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                     {member.image ? (
-                      <img 
+                      <Image 
                         src={member.image} 
-                        alt={member.name} 
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        alt={member.name}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-300"
+                        sizes="160px"
                       />
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center text-gray-400">

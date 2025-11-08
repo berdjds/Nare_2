@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/hooks/use-language';
 import { LanguageSwitcher } from '@/components/language-switcher';
@@ -135,11 +136,14 @@ export function Navbar() {
     >
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center group">
-          <div className="relative h-16 w-auto flex-shrink-0">
-            <img 
+          <div className="relative h-16 w-40 flex-shrink-0">
+            <Image 
               src="/logo/Nare_logo_menu_web.webp" 
-              alt="Nare Travel and Tours" 
-              className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              alt="Nare Travel and Tours"
+              fill
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
+              priority
+              sizes="160px"
             />
           </div>
         </Link>

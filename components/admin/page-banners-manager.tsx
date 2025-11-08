@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Textarea } from '@/components/ui/textarea';
+import { toast } from 'sonner';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
 import { Plus, Edit, Eye, EyeOff } from 'lucide-react';
 import { PageBanner } from '@/lib/content-storage';
 import { ImageUpload } from './image-upload';
@@ -180,9 +183,9 @@ export default function PageBannersManager() {
             <CardContent className="p-4">
               <div className="flex gap-4">
                 {/* Image Preview */}
-                <div className="w-48 h-32 bg-gray-100 rounded flex-shrink-0 overflow-hidden">
+                <div className="w-48 h-32 bg-gray-100 rounded flex-shrink-0 overflow-hidden relative">
                   {banner.backgroundImage ? (
-                    <img src={banner.backgroundImage} alt={banner.title} className="w-full h-full object-cover" />
+                    <Image src={banner.backgroundImage} alt={banner.title} fill className="object-cover" sizes="192px" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
                       No Image

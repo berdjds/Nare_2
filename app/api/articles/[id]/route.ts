@@ -45,20 +45,15 @@ export async function PUT(
     }
 
     const updates = await request.json();
-    console.log('Updating article:', id, 'with updates:', JSON.stringify(updates).substring(0, 200));
-    
     const article = await updateArticle(id, updates);
 
     if (!article) {
-      console.error('Article not found for update:', id);
       return NextResponse.json({ error: 'Article not found' }, { status: 404 });
     }
 
-    console.log('Article updated successfully:', id);
     return NextResponse.json(article);
   } catch (error: any) {
     console.error('Error updating article:', error);
-    console.error('Error stack:', error.stack);
     return NextResponse.json({ 
       error: error.message || 'Failed to update article',
       details: process.env.NODE_ENV === 'development' ? error.stack : undefined

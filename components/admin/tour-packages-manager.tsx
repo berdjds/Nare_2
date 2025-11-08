@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -252,10 +253,12 @@ export default function TourPackagesManager() {
                   {/* Tour Image */}
                   <div className="relative w-48 h-32 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
                     {tour.image ? (
-                      <img 
+                      <Image 
                         src={tour.image} 
-                        alt={tour.title} 
-                        className="w-full h-full object-cover"
+                        alt={tour.title}
+                        fill
+                        className="object-cover"
+                        sizes="192px"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-gray-400">
