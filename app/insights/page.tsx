@@ -170,64 +170,64 @@ export default function InsightsPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredArticles.map((article) => (
-              <Link key={article.id} href={`/insights/${article.slug}`}>
-                <Card className="h-full hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
-                  {article.imageUrl && (
+              <Card key={article.id} className="h-full hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+                {article.imageUrl && (
+                  <Link href={`/insights/${article.slug}`}>
                     <div className="aspect-video overflow-hidden">
                       <img
                         src={article.imageUrl}
                         alt={article.title[currentLanguage] || article.title.en}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                  )}
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Badge variant="secondary">{getCategoryLabel(article.category)}</Badge>
-                      <span className="text-xs text-gray-500 flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {new Date(article.publishedAt || article.createdAt).toLocaleDateString(
-                          currentLanguage === 'ar' ? 'ar-AE' : 
-                          currentLanguage === 'hy' ? 'hy-AM' :
-                          currentLanguage === 'ru' ? 'ru-RU' : 'en-US'
-                        )}
-                      </span>
-                    </div>
+                  </Link>
+                )}
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Badge variant="secondary">
+                      {getCategoryLabel(article.category)}
+                    </Badge>
+                    <span className="text-sm text-gray-500 flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      {new Date(article.publishedAt || article.createdAt).toLocaleDateString()}
+                    </span>
+                  </div>
 
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                  <Link href={`/insights/${article.slug}`}>
+                    <h3 className="text-xl font-bold mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors cursor-pointer">
                       {article.title[currentLanguage] || article.title.en}
                     </h3>
+                  </Link>
 
-                    <p className="text-gray-600 mb-4 line-clamp-3">
-                      {article.excerpt[currentLanguage] || article.excerpt.en}
-                    </p>
+                  <p className="text-gray-600 mb-4 line-clamp-3">
+                    {article.excerpt[currentLanguage] || article.excerpt.en}
+                  </p>
 
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm text-gray-500">
-                        <User className="w-4 h-4" />
-                        <span>{article.author}</span>
-                      </div>
-                      <Button asChild size="sm">
-                        <Link href={`/insights/${article.slug}`}>
-                          {t('insights.readMore')}
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Link>
-                      </Button>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <User className="w-4 h-4" />
+                      <span>{article.author}</span>
                     </div>
+                    <Button asChild size="sm">
+                      <Link href={`/insights/${article.slug}`}>
+                        {t('insights.readMore')}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                  </div>
 
-                    {article.tags.length > 0 && (
-                      <div className="flex items-center gap-2 mt-4 flex-wrap">
-                        <Tag className="w-3 h-3 text-gray-400" />
-                        {article.tags.map((tag, i) => (
-                          <span key={i} className="text-xs text-gray-500">
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              </Link>
+                  {article.tags.length > 0 && (
+                    <div className="flex items-center gap-2 mt-4 flex-wrap">
+                      <Tag className="w-3 h-3 text-gray-400" />
+                      {article.tags.map((tag, i) => (
+                        <span key={i} className="text-xs text-gray-500">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
             ))}
           </div>
         )}
