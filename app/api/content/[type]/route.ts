@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { validateAdminSession } from '@/lib/auth';
 import { 
   readContent, 
   writeContent, 
@@ -10,10 +9,8 @@ import {
 
 // Check if user is admin
 function checkAuth(request: NextRequest): boolean {
-  const token = request.cookies.get('admin_token')?.value;
-  if (!token) return false;
-  const user = validateAdminSession(token);
-  return user !== null;
+  const adminSession = request.cookies.get('admin_session')?.value;
+  return adminSession === 'authenticated';
 }
 
 // GET content
