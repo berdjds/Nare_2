@@ -93,12 +93,7 @@ export default function Contact() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <PageBanner
-        pageId="contact"
-        fallbackTitle={t('contact.hero.title')}
-        fallbackSubtitle={t('contact.hero.subtitle')}
-        fallbackImage={images.teamOffice}
-      />
+      <PageBanner pageId="contact" />
 
       {/* Contact Information */}
       <section className="py-16">

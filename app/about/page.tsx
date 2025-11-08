@@ -94,12 +94,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <PageBanner
-        pageId="about"
-        fallbackTitle={t('about.hero.title')}
-        fallbackSubtitle={t('about.hero.subtitle')}
-        fallbackImage={getImageUrl('teamOffice')}
-      />
+      <PageBanner pageId="about" />
 
       {/* Stats Section */}
       <section className="bg-muted section-padding">
