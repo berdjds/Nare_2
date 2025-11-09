@@ -183,25 +183,28 @@ export function InsightsCarousel() {
           {/* Cards Container - Continuous Sliding Belt */}
           <div className="relative h-[500px] overflow-hidden">
             <div className="h-full relative w-full">
-              {[-1, 0, 1].map((offset) => {
+              {[-2, -1, 0, 1].map((offset) => {
                 const articleIndex = getCardIndex(offset);
                 const article = articles[articleIndex];
                 const isCenter = offset === 0;
                 const isLeft = offset === -1;
                 const isRight = offset === 1;
+                const isExiting = offset === -2;
                 
-                // Positions: Left(0%), Center(20%), Right(80%)
-                // Widths: Left(20%), Center(60%), Right(20%)
+                // Positions: Exiting(-20%), Left(0%), Center(20%), Right(80%)
+                // Widths: Exiting(20%), Left(20%), Center(60%), Right(20%)
                 const positions = {
-                  '-1': 0,   // Left position
-                  '0': 20,   // Center position
-                  '1': 80,   // Right position
+                  '-2': -25,  // Exiting position (off-screen left)
+                  '-1': 0,    // Left position
+                  '0': 20,    // Center position
+                  '1': 80,    // Right position
                 };
                 
                 const widths = {
-                  '-1': 20,  // Left width
-                  '0': 60,   // Center width
-                  '1': 20,   // Right width
+                  '-2': 20,   // Exiting width
+                  '-1': 20,   // Left width
+                  '0': 60,    // Center width
+                  '1': 20,    // Right width
                 };
                 
                 const leftPos = positions[String(offset) as keyof typeof positions];
@@ -211,26 +214,29 @@ export function InsightsCarousel() {
                   <motion.div
                     key={`card-${articleIndex}`}
                     className="absolute h-full cursor-pointer"
+                    initial={false}
                     animate={{
                       left: `${leftPos}%`,
                       width: `${cardWidth}%`,
+                      opacity: isExiting ? 0 : 1,
                       zIndex: isCenter ? 20 : 10,
                     }}
                     transition={{ 
-                      duration: 1.2, 
-                      ease: [0.25, 0.1, 0.25, 1],
+                      duration: 0.8,
+                      ease: [0.4, 0.0, 0.2, 1],
+                      opacity: { duration: 0.6 }
                     }}
-                    onClick={() => !isCenter && setCurrentIndex(articleIndex)}
+                    onClick={() => !isCenter && !isExiting && setCurrentIndex(articleIndex)}
                   >
                     <Link href={`/insights/${article.slug}`} className={isCenter ? '' : 'pointer-events-none'}>
                       <div className="relative w-full h-full overflow-hidden group">
                         <motion.div
                           className="absolute inset-0"
                           animate={{
-                            filter: isCenter ? 'grayscale(0)' : 'grayscale(0.4)',
-                            opacity: isCenter ? 1 : 0.6,
+                            filter: isCenter ? 'grayscale(0)' : isExiting ? 'grayscale(0.8)' : 'grayscale(0.4)',
+                            opacity: isCenter ? 1 : isExiting ? 0.3 : 0.6,
                           }}
-                          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+                          transition={{ duration: 0.8, ease: [0.4, 0.0, 0.2, 1] }}
                         >
                         {/* Background Image */}
                         {article.imageUrl ? (
@@ -263,16 +269,23 @@ export function InsightsCarousel() {
                         )}
                         
                         {/* Content Overlaid on Image */}
-                        <div className={`absolute inset-0 flex flex-col justify-end transition-all duration-1200 ${
-                          isCenter ? 'p-8' : 'p-6'
-                        }`}>
-                          <h3 className={`font-bold mb-3 text-white drop-shadow-2xl transition-all duration-500 ${
-                            isCenter 
-                              ? 'text-3xl md:text-5xl line-clamp-2 mb-4' 
-                              : 'text-xl line-clamp-3'
-                          }`}>
+                        <motion.div 
+                          className="absolute inset-0 flex flex-col justify-end"
+                          animate={{
+                            padding: isCenter ? '2rem' : '1.5rem'
+                          }}
+                          transition={{ duration: 0.8, ease: [0.4, 0.0, 0.2, 1] }}
+                        >
+                          <motion.h3 
+                            className="font-bold text-white drop-shadow-2xl line-clamp-2"
+                            animate={{
+                              fontSize: isCenter ? 'clamp(1.875rem, 4vw, 3rem)' : '1.25rem',
+                              marginBottom: isCenter ? '1rem' : '0.75rem'
+                            }}
+                            transition={{ duration: 0.8, ease: [0.4, 0.0, 0.2, 1] }}
+                          >
                             {article.title[currentLanguage]}
-                          </h3>
+                          </motion.h3>
                           
                           {isCenter && (
                             <>
@@ -298,7 +311,7 @@ export function InsightsCarousel() {
                               </div>
                             </>
                           )}
-                        </div>
+                        </motion.div>
                         </motion.div>
                       </div>
                     </Link>
