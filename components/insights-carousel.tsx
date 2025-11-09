@@ -269,29 +269,33 @@ export function InsightsCarousel() {
                         )}
                         
                         {/* Content Overlaid on Image */}
-                        <motion.div 
-                          className="absolute inset-0 flex flex-col justify-end"
-                          animate={{
-                            padding: isCenter ? '2rem' : '1.5rem'
-                          }}
-                          transition={{ duration: 0.8, ease: [0.4, 0.0, 0.2, 1] }}
-                        >
-                          <motion.h3 
-                            className="font-bold text-white drop-shadow-2xl line-clamp-2"
+                        <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                          <div className="overflow-hidden">
+                            <motion.h3 
+                              className="font-bold text-white drop-shadow-2xl origin-left line-clamp-2"
+                              style={{ fontSize: '1.5rem' }}
+                              animate={{
+                                scale: isCenter ? 1.8 : 1,
+                                opacity: 1,
+                              }}
+                              transition={{ duration: 0.8, ease: [0.4, 0.0, 0.2, 1] }}
+                            >
+                              {article.title[currentLanguage]}
+                            </motion.h3>
+                          </div>
+                          
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
                             animate={{
-                              fontSize: isCenter ? 'clamp(1.875rem, 4vw, 3rem)' : '1.25rem',
-                              marginBottom: isCenter ? '1rem' : '0.75rem'
+                              opacity: isCenter ? 1 : 0,
+                              height: isCenter ? 'auto' : 0,
+                              marginTop: isCenter ? '1rem' : 0,
                             }}
                             transition={{ duration: 0.8, ease: [0.4, 0.0, 0.2, 1] }}
                           >
-                            {article.title[currentLanguage]}
-                          </motion.h3>
-                          
-                          {isCenter && (
-                            <>
-                              <p className="text-lg md:text-xl text-white/95 line-clamp-2 mb-6 leading-relaxed drop-shadow-lg">
-                                {article.excerpt[currentLanguage]}
-                              </p>
+                            <p className="text-lg md:text-xl text-white/95 line-clamp-2 mb-6 leading-relaxed drop-shadow-lg">
+                              {article.excerpt[currentLanguage]}
+                            </p>
                               
                               {/* Footer */}
                               <div className="flex items-center justify-between">
@@ -309,9 +313,8 @@ export function InsightsCarousel() {
                                   <ArrowRight className="w-5 h-5" />
                                 </motion.div>
                               </div>
-                            </>
-                          )}
-                        </motion.div>
+                          </motion.div>
+                        </div>
                         </motion.div>
                       </div>
                     </Link>
