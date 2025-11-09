@@ -264,9 +264,9 @@ export function HeroSlider() {
           {/* Text Area with Gradient Background */}
           <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:mr-16 lg:ml-0' : 'lg:ml-16'}`}>
             {/* Gradient Background for Text Area */}
-            <div className={`absolute inset-0 -left-8 -right-8 bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
+            <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-right-8 left-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
-            <div className="relative z-10 p-8 pr-16">
+            <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'max-w-lg mr-auto' : 'max-w-2xl'}`}>
               <motion.h1
                 key={`title-${currentIndex}`}
                 initial={{ opacity: 0, y: 40 }}
