@@ -259,9 +259,9 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className={`flex ${currentLanguage === 'ar' ? 'flex-row-reverse' : 'flex-row'} w-full px-8 lg:px-16 py-20 gap-0`}>
+        <div className={`flex flex-col lg:flex-row ${currentLanguage === 'ar' ? 'lg:flex-row-reverse' : ''} w-full px-8 lg:px-16 py-20 gap-0`}>
           {/* Text Area with Gradient Background - 60% */}
-          <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%]">
+          <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] shrink-0">
             {/* Gradient Background for Text Area */}
             <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-right-8 left-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
@@ -319,7 +319,7 @@ export function HeroSlider() {
           </div>
 
           {/* Carousel Section - 40% */}
-          <div className="relative flex items-center justify-start w-full lg:w-[40%]">
+          <div className="relative flex items-center justify-start w-full lg:w-[40%] shrink-0">
             <div className="relative w-full h-[450px] overflow-visible">
               <AnimatePresence initial={false}>
                 {[0, 1, 2].map((offset) => {
