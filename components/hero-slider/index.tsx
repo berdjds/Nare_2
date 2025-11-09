@@ -272,7 +272,7 @@ export function HeroSlider() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className={`text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight drop-shadow-lg ${currentLanguage === 'ar' ? 'text-right' : ''}`}
+                className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight drop-shadow-lg ${currentLanguage === 'ar' ? 'text-right' : ''}`}
                 dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
               >
                 {getLocalizedField(destinations[currentIndex], 'title', currentLanguage) || 
@@ -284,7 +284,7 @@ export function HeroSlider() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className={`text-xl md:text-2xl text-white/90 drop-shadow-md mt-6 leading-relaxed ${currentLanguage === 'ar' ? 'text-right' : ''}`}
+                className={`text-lg md:text-xl text-white/90 drop-shadow-md mt-6 leading-relaxed ${currentLanguage === 'ar' ? 'text-right' : ''}`}
                 dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
               >
                 {getLocalizedField(destinations[currentIndex], 'description', currentLanguage) || 
