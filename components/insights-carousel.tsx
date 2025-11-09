@@ -180,46 +180,48 @@ export function InsightsCarousel() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Cards Container - Full Width */}
-          <div className="relative h-[500px] flex items-center justify-center overflow-hidden">
-            {[-1, 0, 1].map((offset) => {
-              const articleIndex = getCardIndex(offset);
-              const article = articles[articleIndex];
-              const isCenter = offset === 0;
-              const isLeft = offset === -1;
-              const isRight = offset === 1;
-              
-              // Calculate positions for 20% - 60% - 20% layout
-              let xPosition = 0;
-              let widthPercent = '20%';
-              
-              if (isLeft) {
-                xPosition = 0; // Far left
-                widthPercent = '20%';
-              } else if (isCenter) {
-                xPosition = 20; // 20% from left
-                widthPercent = '60%';
-              } else if (isRight) {
-                xPosition = 80; // 80% from left (20% width)
-                widthPercent = '20%';
-              }
-              
-              return (
-                <motion.div
-                  key={`card-${articleIndex}`}
-                  className="absolute h-full cursor-pointer"
-                  animate={{
-                    left: `${xPosition}%`,
-                    width: widthPercent,
-                    zIndex: isCenter ? 20 : 10,
-                  }}
-                  transition={{ 
-                    duration: 1.2, 
-                    ease: [0.25, 0.1, 0.25, 1],
-                    type: "tween"
-                  }}
-                  onClick={() => !isCenter && setCurrentIndex(articleIndex)}
-                >
+          {/* Cards Container - Continuous Sliding Belt */}
+          <div className="relative h-[500px] overflow-hidden">
+            <div className="h-full relative w-full">
+              {[-1, 0, 1].map((offset) => {
+                const articleIndex = getCardIndex(offset);
+                const article = articles[articleIndex];
+                const isCenter = offset === 0;
+                const isLeft = offset === -1;
+                const isRight = offset === 1;
+                
+                // Positions: Left(0%), Center(20%), Right(80%)
+                // Widths: Left(20%), Center(60%), Right(20%)
+                const positions = {
+                  '-1': 0,   // Left position
+                  '0': 20,   // Center position
+                  '1': 80,   // Right position
+                };
+                
+                const widths = {
+                  '-1': 20,  // Left width
+                  '0': 60,   // Center width
+                  '1': 20,   // Right width
+                };
+                
+                const leftPos = positions[String(offset) as keyof typeof positions];
+                const cardWidth = widths[String(offset) as keyof typeof widths];
+                
+                return (
+                  <motion.div
+                    key={`card-${articleIndex}`}
+                    className="absolute h-full cursor-pointer"
+                    animate={{
+                      left: `${leftPos}%`,
+                      width: `${cardWidth}%`,
+                      zIndex: isCenter ? 20 : 10,
+                    }}
+                    transition={{ 
+                      duration: 1.2, 
+                      ease: [0.25, 0.1, 0.25, 1],
+                    }}
+                    onClick={() => !isCenter && setCurrentIndex(articleIndex)}
+                  >
                     <Link href={`/insights/${article.slug}`} className={isCenter ? '' : 'pointer-events-none'}>
                       <div className="relative w-full h-full overflow-hidden group">
                         <motion.div
@@ -303,6 +305,7 @@ export function InsightsCarousel() {
                   </motion.div>
                 );
               })}
+            </div>
           </div>
 
           {/* Dots Indicator */}
