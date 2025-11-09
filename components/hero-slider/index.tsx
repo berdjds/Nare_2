@@ -259,11 +259,11 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className={`grid w-full grid-cols-1 lg:grid-cols-[1fr,400px] px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
+        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[400px,1fr]' : 'lg:grid-cols-[1fr,400px]'} px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
           {/* Text Area with Gradient Background */}
-          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:mr-16 lg:ml-0' : 'lg:ml-16'}`}>
+          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2 lg:ml-16 lg:mr-0' : 'lg:order-1 lg:ml-16'}`}>
             {/* Gradient Background for Text Area */}
-            <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-right-8 left-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
+            <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-left-8 right-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
             <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'max-w-lg mr-auto' : 'max-w-2xl'}`}>
               <motion.h1
@@ -321,7 +321,7 @@ export function HeroSlider() {
           </div>
 
           {/* Carousel Section */}
-          <div className="relative flex items-center justify-end">
+          <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-end'}`}>
             <div className="relative w-[1000px] h-[450px]">
               {[0, 1, 2].map((offset) => {
                 const index = (currentIndex + offset) % destinations.length;
