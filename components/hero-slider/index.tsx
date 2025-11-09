@@ -38,6 +38,7 @@ export function HeroSlider() {
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [direction, setDirection] = React.useState(0);
   const [destinations, setDestinations] = React.useState<Destination[]>([]);
+  const isArabic = currentLanguage === 'ar' || currentLanguage === ('ar' as any);
   const [loading, setLoading] = React.useState(true);
 
   // Fetch hero slides from admin API
@@ -251,7 +252,7 @@ export function HeroSlider() {
           </div>
 
           {/* Side Counter - Mirrored for RTL */}
-          <div className={`absolute top-[80%] ${currentLanguage === 'ar' ? 'right-1/2 translate-x-1/2 rotate-90' : 'left-1/2 -translate-x-1/2 -rotate-90'} origin-center transform text-sm font-medium tracking-wider whitespace-nowrap`}>
+          <div className={`absolute top-[80%] ${isArabic ? 'right-1/2 translate-x-1/2 rotate-90' : 'left-1/2 -translate-x-1/2 -rotate-90'} origin-center transform text-sm font-medium tracking-wider whitespace-nowrap`}>
             <span className="text-white/80">{String(currentIndex + 1).padStart(2, '0')}</span>
             <span className="text-white/40 mx-1">/</span>
             <span className="text-white/40">{String(destinations.length).padStart(2, '0')}</span>
@@ -262,7 +263,7 @@ export function HeroSlider() {
         <div className="flex flex-col lg:flex-row w-full max-w-full px-8 lg:px-16 py-20 gap-0">
           
           {/* ARABIC LAYOUT: Thumbnails FIRST (LEFT), then Text (RIGHT) */}
-          {currentLanguage === 'ar' && (
+          {isArabic && (
             <>
               {/* Carousel Section - 40% LEFT */}
               <div className="relative flex items-center justify-start w-full lg:w-[40%] lg:max-w-[40%] shrink-0">
@@ -338,7 +339,7 @@ export function HeroSlider() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
+                            dir="rtl"
                           >
                             <div className="flex items-center gap-1 mb-1">
                               {[...Array(5)].map((_, i) => (
@@ -356,8 +357,8 @@ export function HeroSlider() {
                   })}
                   </AnimatePresence>
                 
-                  {/* Navigation Buttons - Positioned properly for LTR/RTL */}
-                  <div className={`absolute ${currentLanguage === 'ar' ? 'left-0' : 'left-[403px]'} flex gap-4 z-40`} style={{ top: 'calc(390px + 15px)' }}>
+                  {/* Navigation Buttons - LEFT for Arabic */}
+                  <div className="absolute left-0 flex gap-4 z-40" style={{ top: 'calc(390px + 15px)' }}>
                     <button
                       onClick={() => {
                         setDirection(-1);
@@ -365,7 +366,7 @@ export function HeroSlider() {
                       }}
                       className="h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
                     >
-                      {currentLanguage === 'ar' ? <ChevronRight className="w-6 h-6 text-white/80" /> : <ChevronLeft className="w-6 h-6 text-white/80" />}
+                      <ChevronRight className="w-6 h-6 text-white/80" />
                     </button>
                     <button
                       onClick={() => {
@@ -374,7 +375,7 @@ export function HeroSlider() {
                       }}
                       className="h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
                     >
-                      {currentLanguage === 'ar' ? <ChevronLeft className="w-6 h-6 text-white/80" /> : <ChevronRight className="w-6 h-6 text-white/80" />}
+                      <ChevronLeft className="w-6 h-6 text-white/80" />
                     </button>
                   </div>
                 </div>
@@ -421,7 +422,7 @@ export function HeroSlider() {
                     className="group flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
                   >
                     <span>{getLocalizedField(destinations[currentIndex], 'button1Text', currentLanguage) || 'View All Tours'}</span>
-                    <ChevronRight className={`w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300 ${currentLanguage === 'ar' ? 'rotate-180' : ''}`} />
+                    <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300 rotate-180" />
                   </Link>
                 )}
                 
@@ -441,7 +442,7 @@ export function HeroSlider() {
           )}
           
           {/* ENGLISH LAYOUT: Text FIRST (LEFT), then Thumbnails (RIGHT) */}
-          {currentLanguage !== 'ar' && (
+          {!isArabic && (
             <>
               {/* Text Area - 60% LEFT */}
               <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pl-8">
