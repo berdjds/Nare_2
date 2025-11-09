@@ -260,20 +260,21 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className="grid w-full grid-cols-1 lg:grid-cols-[1fr,400px] px-8 lg:px-16 py-20">
+        <div className={`grid w-full grid-cols-1 lg:grid-cols-[1fr,400px] px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
           {/* Text Area with Gradient Background */}
-          <div className="flex flex-col justify-center space-y-6 lg:ml-16 relative">
+          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:mr-16 lg:ml-0' : 'lg:ml-16'}`}>
             {/* Gradient Background for Text Area */}
-            <div className="absolute inset-0 -left-8 -right-8 bg-gradient-to-r from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm" />
+            <div className={`absolute inset-0 -left-8 -right-8 bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
-            <div className="relative z-10 p-8">
+            <div className="relative z-10 p-8 pr-16">
               <motion.h1
                 key={`title-${currentIndex}`}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter drop-shadow-lg"
+                className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter drop-shadow-lg max-w-xl ${currentLanguage === 'ar' ? 'text-right' : ''}`}
+                dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
               >
                 {getLocalizedField(destinations[currentIndex], 'title', currentLanguage) || 
                   (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.title`) : 'Destination')}
@@ -284,7 +285,8 @@ export function HeroSlider() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className="text-lg text-white/90 max-w-2xl drop-shadow-md mt-6"
+                className={`text-lg text-white/90 max-w-xl drop-shadow-md mt-6 ${currentLanguage === 'ar' ? 'text-right' : ''}`}
+                dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
               >
                 {getLocalizedField(destinations[currentIndex], 'description', currentLanguage) || 
                   (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.description`) : '')}
