@@ -216,13 +216,13 @@ export function InsightsCarousel() {
                     }}
                     initial={false}
                     animate={{
-                      opacity: 1,
-                      scale: isCenter ? 1 : 0.98,
+                      opacity: isCenter ? 1 : 0.7,
+                      scale: isCenter ? 1 : 0.97,
                       zIndex: isCenter ? 20 : 10,
                     }}
                     transition={{ 
-                      duration: 1.0,
-                      ease: [0.25, 0.46, 0.45, 0.94],
+                      duration: 1.2,
+                      ease: [0.33, 1, 0.68, 1],
                     }}
                     onClick={() => !isCenter && setCurrentIndex(articleIndex)}
                   >
@@ -231,10 +231,9 @@ export function InsightsCarousel() {
                         <motion.div
                           className="absolute inset-0"
                           animate={{
-                            filter: isCenter ? 'grayscale(0) brightness(1)' : 'grayscale(0.5) brightness(0.85)',
-                            opacity: isCenter ? 1 : 0.6,
+                            filter: isCenter ? 'grayscale(0) brightness(1)' : 'grayscale(0.4) brightness(0.9)',
                           }}
-                          transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
+                          transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
                         >
                         {/* Background Image */}
                         {article.imageUrl ? (
@@ -253,7 +252,7 @@ export function InsightsCarousel() {
                         )}
                         
                         {/* Dark Gradient Overlay - Stronger on sides */}
-                        <div className={`absolute inset-0 transition-all duration-1000 ease-out ${
+                        <div className={`absolute inset-0 transition-all duration-[1200ms] ease-out ${
                           isCenter 
                             ? 'bg-gradient-to-t from-black/70 via-black/30 to-transparent' 
                             : 'bg-gradient-to-t from-black/80 via-black/50 to-black/20'
@@ -262,10 +261,10 @@ export function InsightsCarousel() {
                         {/* Category Badge - Only on center */}
                         {isCenter && (
                           <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
                             className="absolute top-6 left-6"
                           >
                             <Badge className={`${getCategoryColor(article.category)} text-white border-0 px-5 py-2 text-sm font-bold uppercase tracking-widest shadow-2xl`}>
@@ -276,24 +275,18 @@ export function InsightsCarousel() {
                         
                         {/* Content Overlaid on Image */}
                         <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-                          <motion.h3 
-                            className={`font-bold text-white drop-shadow-2xl transition-all duration-1000 ${
-                              isCenter ? 'text-3xl md:text-4xl lg:text-5xl' : 'text-lg md:text-xl'
-                            }`}
-                          >
+                          <h3 className="font-bold text-white drop-shadow-2xl text-2xl md:text-3xl mb-4">
                             {article.title[currentLanguage]}
-                          </motion.h3>
+                          </h3>
                           
-                          {isCenter && (
-                            <motion.div
-                              initial={{ opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: 10 }}
-                              transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
-                            >
-                              <p className="text-lg md:text-xl text-white/95 mt-4 mb-6 leading-relaxed drop-shadow-lg line-clamp-2">
-                                {article.excerpt[currentLanguage]}
-                              </p>
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: isCenter ? 1 : 0 }}
+                            transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
+                          >
+                            <p className="text-base md:text-lg text-white/95 mb-6 leading-relaxed drop-shadow-lg line-clamp-2">
+                              {article.excerpt[currentLanguage]}
+                            </p>
                               
                               {/* Footer */}
                               <div className="flex items-center justify-between">
@@ -311,8 +304,7 @@ export function InsightsCarousel() {
                                   <ArrowRight className="w-5 h-5" />
                                 </motion.div>
                               </div>
-                            </motion.div>
-                          )}
+                          </motion.div>
                         </div>
                         </motion.div>
                       </div>
