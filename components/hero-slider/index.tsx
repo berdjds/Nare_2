@@ -259,9 +259,9 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[40%,60%]' : 'lg:grid-cols-[60%,40%]'} gap-0 px-8 lg:px-16 py-20`} dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
+        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[60%,40%]' : 'lg:grid-cols-[60%,40%]'} gap-0 px-8 lg:px-16 py-20`} dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
           {/* Text Area with Gradient Background */}
-          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2' : 'lg:order-1'}`}>
+          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-1' : 'lg:order-1'}`}>
             {/* Gradient Background for Text Area */}
             <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-right-8 left-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
@@ -319,7 +319,7 @@ export function HeroSlider() {
           </div>
 
           {/* Carousel Section */}
-          <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-center'}`}>
+          <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-2 justify-start' : 'lg:order-2 justify-center'}`}>
             <div className="relative w-full h-[450px] overflow-visible">
               <AnimatePresence initial={false}>
                 {[0, 1, 2].map((offset) => {
