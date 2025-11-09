@@ -328,8 +328,9 @@ export function HeroSlider() {
                   const index = (currentIndex + offset) % destinations.length;
                   const isRTL = currentLanguage === 'ar';
                   
-                  // Positions: Thumbnail 1 (0), Thumbnail 2 (280), Thumbnail 3 (560)
-                  const positions = [0, 280, 560];
+                  // Positions: Shifted right + tighter spacing
+                  // Gap between cards: 265px spacing - 250px width = 15px
+                  const positions = [60, 325, 590];
                   
                   return (
                     <motion.div
@@ -348,8 +349,8 @@ export function HeroSlider() {
                         zIndex: offset === 0 ? 20 : 10,
                       }}
                       exit={{
-                        // First card exits to CENTER with fade
-                        x: isRTL ? 840 : -135,
+                        // First card exits to LEFT with fade
+                        x: isRTL ? 860 : -75,
                         opacity: 0,
                         scale: 0.9,
                         transition: { 
@@ -413,7 +414,7 @@ export function HeroSlider() {
             </div>
             
             {/* Navigation Buttons */}
-            <div className={`absolute bottom-20 flex gap-4 ${currentLanguage === 'ar' ? 'right-[280px]' : 'left-[280px]'}`}>
+            <div className={`absolute bottom-20 flex gap-4 ${currentLanguage === 'ar' ? 'right-[325px]' : 'left-[325px]'}`}>
               <button
                 onClick={() => {
                   setDirection(-1);
