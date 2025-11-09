@@ -79,13 +79,13 @@ export function InsightsCarousel() {
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
-      news: 'bg-red-600',
-      events: 'bg-rose-600',
-      culture: 'bg-pink-600',
-      'food-drinks': 'bg-red-500',
-      destinations: 'bg-rose-500',
+      news: 'bg-[#722F37]',        // Wine color
+      events: 'bg-[#8B4049]',      // Lighter wine
+      culture: 'bg-[#9B5563]',     // Rose wine
+      'food-drinks': 'bg-[#722F37]',
+      destinations: 'bg-[#8B4049]',
     };
-    return colors[category] || 'bg-red-600';
+    return colors[category] || 'bg-[#722F37]';
   };
 
   if (loading) {
@@ -152,7 +152,7 @@ export function InsightsCarousel() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/90 backdrop-blur-md border border-rose-200 text-gray-800 mb-6 shadow-xl"
           >
-            <Newspaper className="w-5 h-5 text-red-600" />
+            <Newspaper className="w-5 h-5 text-[#722F37]" />
             <span className="text-sm font-semibold tracking-wide">{t('home.insights.badge')}</span>
           </motion.div>
           <motion.h2 
@@ -175,66 +175,63 @@ export function InsightsCarousel() {
           </motion.p>
         </motion.div>
 
-        {/* Carousel - Center Focused Layout */}
+        {/* Carousel - Full Width Layout */}
         <div 
-          className="relative max-w-7xl mx-auto"
+          className="relative w-full"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Navigation Buttons */}
-          <motion.button
-            whileHover={{ scale: 1.1, x: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white backdrop-blur-xl border-2 border-rose-200 flex items-center justify-center shadow-2xl hover:bg-rose-50 transition-all group"
-            onClick={prevSlide}
-          >
-            <ChevronLeft className="h-6 w-6 text-gray-700 group-hover:text-red-600 transition-colors" />
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.1, x: 5 }}
-            whileTap={{ scale: 0.95 }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white backdrop-blur-xl border-2 border-rose-200 flex items-center justify-center shadow-2xl hover:bg-rose-50 transition-all group"
-            onClick={nextSlide}
-          >
-            <ChevronRight className="h-6 w-6 text-gray-700 group-hover:text-red-600 transition-colors" />
-          </motion.button>
-
-          {/* Cards Container */}
-          <div className="relative h-[550px] flex items-center justify-center overflow-hidden">
+          {/* Cards Container - Full Width */}
+          <div className="relative h-[500px] flex items-center justify-center overflow-hidden">
             <AnimatePresence mode="wait" initial={false}>
               {[-1, 0, 1].map((offset) => {
                 const articleIndex = getCardIndex(offset);
                 const article = articles[articleIndex];
                 const isCenter = offset === 0;
+                const isLeft = offset === -1;
+                const isRight = offset === 1;
+                
+                // Calculate positions for 20% - 60% - 20% layout
+                let xPosition = 0;
+                let widthPercent = '20%';
+                
+                if (isLeft) {
+                  xPosition = 0; // Far left
+                  widthPercent = '20%';
+                } else if (isCenter) {
+                  xPosition = 20; // 20% from left
+                  widthPercent = '60%';
+                } else if (isRight) {
+                  xPosition = 80; // 80% from left (20% width)
+                  widthPercent = '20%';
+                }
                 
                 return (
                   <motion.div
                     key={`card-${currentIndex}-${offset}`}
-                    className="absolute"
+                    className="absolute h-full cursor-pointer"
                     initial={{
-                      x: offset * 600,
-                      scale: isCenter ? 1 : 0.8,
-                      opacity: isCenter ? 1 : 0.4,
-                      zIndex: isCenter ? 20 : 10,
+                      left: `${xPosition}%`,
+                      width: widthPercent,
+                      opacity: 0,
                     }}
                     animate={{
-                      x: offset * 480,
-                      scale: isCenter ? 1 : 0.8,
-                      opacity: isCenter ? 1 : 0.4,
+                      left: `${xPosition}%`,
+                      width: widthPercent,
+                      opacity: 1,
                       zIndex: isCenter ? 20 : 10,
                     }}
                     exit={{
-                      x: offset * 300,
                       opacity: 0,
                     }}
-                    transition={{ duration: 0.7, ease: [0.43, 0.13, 0.23, 0.96] }}
-                    style={{ width: '600px', height: '450px' }}
+                    transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
+                    onClick={() => !isCenter && setCurrentIndex(articleIndex)}
                   >
                     <Link href={`/insights/${article.slug}`} className={isCenter ? '' : 'pointer-events-none'}>
-                      <div className={`relative w-full h-full rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 group ${
+                      <div className={`relative w-full h-full overflow-hidden transition-all duration-500 group ${
                         isCenter 
-                          ? 'ring-2 ring-white/50 hover:ring-white/80 hover:shadow-[0_30px_100px_rgba(225,29,72,0.4)]' 
-                          : ''
+                          ? 'shadow-[0_25px_80px_rgba(114,47,55,0.3)]' 
+                          : 'opacity-70 grayscale-[0.3]'
                       }`}>
                         {/* Background Image */}
                         {article.imageUrl ? (
@@ -242,50 +239,66 @@ export function InsightsCarousel() {
                             src={article.imageUrl}
                             alt={article.title[currentLanguage]}
                             fill
-                            className={`object-cover transition-all duration-700 ${isCenter ? 'group-hover:scale-110' : ''}`}
-                            sizes="600px"
+                            className={`object-cover transition-all duration-700 ${isCenter ? 'group-hover:scale-105' : ''}`}
+                            sizes="(max-width: 768px) 100vw, 60vw"
+                            priority={isCenter}
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-rose-100 to-pink-100">
-                            <Newspaper className="w-32 h-32 text-rose-300" />
+                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                            <Newspaper className="w-32 h-32 text-gray-300" />
                           </div>
                         )}
                         
-                        {/* Dark Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                        {/* Dark Gradient Overlay - Stronger on sides */}
+                        <div className={`absolute inset-0 transition-all duration-500 ${
+                          isCenter 
+                            ? 'bg-gradient-to-t from-black/70 via-black/30 to-transparent' 
+                            : 'bg-gradient-to-t from-black/80 via-black/50 to-black/20'
+                        }`} />
                         
-                        {/* Category Badge */}
-                        <Badge className={`absolute top-6 left-6 ${getCategoryColor(article.category)} text-white border-0 px-5 py-2 text-xs font-bold uppercase tracking-wider shadow-xl`}>
-                          {t(`insights.category.${article.category}`)}
-                        </Badge>
+                        {/* Category Badge - Only on center */}
+                        {isCenter && (
+                          <Badge className={`absolute top-6 left-6 ${getCategoryColor(article.category)} text-white border-0 px-5 py-2 text-sm font-bold uppercase tracking-widest shadow-2xl`}>
+                            {t(`insights.category.${article.category}`)}
+                          </Badge>
+                        )}
                         
                         {/* Content Overlaid on Image */}
-                        <div className="absolute inset-0 flex flex-col justify-end p-8">
-                          <h3 className="text-3xl md:text-4xl font-bold mb-4 line-clamp-2 text-white drop-shadow-2xl">
+                        <div className={`absolute inset-0 flex flex-col justify-end transition-all duration-500 ${
+                          isCenter ? 'p-8' : 'p-6'
+                        }`}>
+                          <h3 className={`font-bold mb-3 text-white drop-shadow-2xl transition-all duration-500 ${
+                            isCenter 
+                              ? 'text-3xl md:text-5xl line-clamp-2 mb-4' 
+                              : 'text-xl line-clamp-3'
+                          }`}>
                             {article.title[currentLanguage]}
                           </h3>
-                          <p className="text-lg text-white/90 line-clamp-3 mb-6 leading-relaxed drop-shadow-lg">
-                            {article.excerpt[currentLanguage]}
-                          </p>
                           
-                          {/* Footer */}
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2 text-white/80 text-sm">
-                              <Calendar className="w-4 h-4" />
-                              <span>
-                                {new Date(article.publishedAt || article.createdAt).toLocaleDateString(currentLanguage)}
-                              </span>
-                            </div>
-                            {isCenter && (
-                              <motion.div 
-                                className="flex items-center gap-2 text-white font-semibold bg-red-600 px-6 py-3 rounded-full shadow-lg"
-                                whileHover={{ scale: 1.05, x: 5 }}
-                              >
-                                <span>{t('home.insights.readMore')}</span>
-                                <ArrowRight className="w-5 h-5" />
-                              </motion.div>
-                            )}
-                          </div>
+                          {isCenter && (
+                            <>
+                              <p className="text-lg md:text-xl text-white/95 line-clamp-2 mb-6 leading-relaxed drop-shadow-lg">
+                                {article.excerpt[currentLanguage]}
+                              </p>
+                              
+                              {/* Footer */}
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2 text-white/90 text-sm">
+                                  <Calendar className="w-4 h-4" />
+                                  <span>
+                                    {new Date(article.publishedAt || article.createdAt).toLocaleDateString(currentLanguage)}
+                                  </span>
+                                </div>
+                                <motion.div 
+                                  className="flex items-center gap-2 text-white font-semibold bg-[#722F37] hover:bg-[#8B4049] px-6 py-3 rounded-lg shadow-lg transition-colors"
+                                  whileHover={{ scale: 1.05, x: 5 }}
+                                >
+                                  <span>{t('home.insights.readMore')}</span>
+                                  <ArrowRight className="w-5 h-5" />
+                                </motion.div>
+                              </div>
+                            </>
+                          )}
                         </div>
                       </div>
                     </Link>
@@ -296,17 +309,17 @@ export function InsightsCarousel() {
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center gap-3 mt-10">
+          <div className="flex justify-center gap-3 mt-12">
             {articles.map((_, index) => (
               <motion.button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
-                className={`h-2.5 rounded-full transition-all duration-500 ${
+                className={`h-3 rounded-full transition-all duration-500 ${
                   index === currentIndex
-                    ? 'w-12 bg-gradient-to-r from-red-500 to-rose-500 shadow-lg shadow-red-500/50'
-                    : 'w-2.5 bg-rose-300/50 hover:bg-rose-400/70'
+                    ? 'w-16 bg-gradient-to-r from-[#722F37] to-[#8B4049] shadow-lg shadow-[#722F37]/50'
+                    : 'w-3 bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -326,9 +339,9 @@ export function InsightsCarousel() {
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative px-10 py-5 bg-gradient-to-r from-red-600 to-rose-600 rounded-full text-white font-bold text-lg shadow-2xl shadow-red-500/50 hover:shadow-red-600/70 transition-all duration-300 overflow-hidden"
+              className="group relative px-10 py-5 bg-gradient-to-r from-[#722F37] to-[#8B4049] rounded-full text-white font-bold text-lg shadow-2xl shadow-[#722F37]/40 hover:shadow-[#722F37]/60 transition-all duration-300 overflow-hidden"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-rose-700 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="absolute inset-0 bg-gradient-to-r from-[#8B4049] to-[#722F37] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative flex items-center gap-3">
                 {t('home.insights.viewAll')}
                 <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
