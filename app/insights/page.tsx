@@ -126,35 +126,74 @@ export default function InsightsPage() {
       {/* Page Banner - Managed in Admin > Page Banners */}
       <PageBanner pageId="insights" />
       
-      <div className="min-h-screen py-20">
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
         {/* Search and Filters */}
-        <div className="container mb-12">
-        <div className="max-w-4xl mx-auto mb-8 space-y-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <Input
-              type="text"
-              placeholder={t('insights.search.placeholder')}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="max-w-md"
-            />
-          </div>
+        <div className="container py-12">
+          <div className="max-w-5xl mx-auto space-y-8">
+            {/* Search Bar */}
+            <div className="relative group">
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors">
+                <Search className="w-5 h-5" />
+              </div>
+              <Input
+                type="text"
+                placeholder={t('insights.search.placeholder')}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="h-14 pl-12 pr-4 text-base border-2 focus:border-primary shadow-sm hover:shadow-md transition-all"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <span className="sr-only">Clear search</span>
+                  ✕
+                </button>
+              )}
+            </div>
 
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <Button
-                key={cat.value}
-                variant={selectedCategory === cat.value ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setSelectedCategory(cat.value)}
-              >
-                {t(cat.key)}
-              </Button>
-            ))}
+            {/* Category Filters */}
+            <div className="flex flex-wrap gap-3 items-center">
+              <span className="text-sm font-medium text-muted-foreground mr-2">
+                {t('insights.filterBy')}:
+              </span>
+              {categories.map((cat) => (
+                <Button
+                  key={cat.value}
+                  variant={selectedCategory === cat.value ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setSelectedCategory(cat.value)}
+                  className={`rounded-full transition-all ${
+                    selectedCategory === cat.value
+                      ? 'shadow-md scale-105'
+                      : 'hover:scale-105'
+                  }`}
+                >
+                  {t(cat.key)}
+                  {selectedCategory === cat.value && filteredArticles.length > 0 && (
+                    <span className="ml-2 px-1.5 py-0.5 bg-primary-foreground/20 rounded-full text-xs">
+                      {filteredArticles.length}
+                    </span>
+                  )}
+                </Button>
+              ))}
+            </div>
+
+            {/* Results Count */}
+            {searchQuery && (
+              <div className="text-sm text-muted-foreground">
+                {filteredArticles.length > 0 ? (
+                  <span>
+                    {t('insights.resultsFound')}: <strong>{filteredArticles.length}</strong>
+                  </span>
+                ) : (
+                  <span>{t('insights.noResults')}</span>
+                )}
+              </div>
+            )}
           </div>
         </div>
-      </div>
 
       {/* Articles Grid */}
       <div className="container">
@@ -164,64 +203,81 @@ export default function InsightsPage() {
             <div className="animate-pulse">{t('insights.noArticles')}</div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
             {filteredArticles.map((article) => (
-              <Card key={article.id} className="h-full hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
-                {article.imageUrl && (
-                  <Link href={`/insights/${article.slug}`}>
-                    <div className="aspect-video overflow-hidden relative">
+              <Card key={article.id} className="h-full border-2 hover:border-primary/50 hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <Link href={`/insights/${article.slug}`} className="block">
+                  {article.imageUrl ? (
+                    <div className="aspect-video overflow-hidden relative bg-muted">
                       <Image
                         src={article.imageUrl}
                         alt={article.title[currentLanguage] || article.title.en}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
+                      {/* Overlay gradient for better readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                  </Link>
-                )}
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Badge variant="secondary">
+                  ) : (
+                    <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                      <Newspaper className="w-16 h-16 text-primary/30" />
+                    </div>
+                  )}
+                </Link>
+
+                <CardContent className="p-6 space-y-4">
+                  {/* Category and Date */}
+                  <div className="flex items-center justify-between gap-2">
+                    <Badge className="bg-primary/10 text-primary hover:bg-primary/20 border-0">
                       {getCategoryLabel(article.category)}
                     </Badge>
-                    <span className="text-sm text-gray-500 flex items-center gap-1">
+                    <span className="text-xs text-muted-foreground flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
-                      {new Date(article.publishedAt || article.createdAt).toLocaleDateString()}
+                      {new Date(article.publishedAt || article.createdAt).toLocaleDateString(currentLanguage)}
                     </span>
                   </div>
 
+                  {/* Title */}
                   <Link href={`/insights/${article.slug}`}>
-                    <h3 className="text-xl font-bold mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors cursor-pointer">
+                    <h3 className="text-xl font-bold line-clamp-2 group-hover:text-primary transition-colors cursor-pointer leading-tight">
                       {article.title[currentLanguage] || article.title.en}
                     </h3>
                   </Link>
 
-                  <p className="text-gray-600 mb-4 line-clamp-3">
+                  {/* Excerpt */}
+                  <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed">
                     {article.excerpt[currentLanguage] || article.excerpt.en}
                   </p>
 
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <User className="w-4 h-4" />
-                      <span>{article.author}</span>
+                  {/* Author and Read More */}
+                  <div className="flex items-center justify-between pt-2 border-t">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <User className="w-3 h-3" />
+                      <span className="font-medium">{article.author}</span>
                     </div>
-                    <Button asChild size="sm">
-                      <Link href={`/insights/${article.slug}`}>
-                        {t('insights.readMore')}
-                        <ArrowRight className="w-4 h-4 ml-2" />
+                    <Button asChild size="sm" variant="ghost" className="group/btn">
+                      <Link href={`/insights/${article.slug}`} className="flex items-center gap-1">
+                        <span className="text-xs font-semibold">{t('insights.readMore')}</span>
+                        <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
                       </Link>
                     </Button>
                   </div>
 
+                  {/* Tags */}
                   {article.tags.length > 0 && (
-                    <div className="flex items-center gap-2 mt-4 flex-wrap">
-                      <Tag className="w-3 h-3 text-gray-400" />
-                      {article.tags.map((tag, i) => (
-                        <span key={i} className="text-xs text-gray-500">
+                    <div className="flex items-center gap-2 flex-wrap pt-2">
+                      <Tag className="w-3 h-3 text-muted-foreground/50" />
+                      {article.tags.slice(0, 3).map((tag, i) => (
+                        <span key={i} className="text-xs px-2 py-1 bg-muted rounded-full text-muted-foreground hover:bg-muted/80 transition-colors">
                           #{tag}
                         </span>
                       ))}
+                      {article.tags.length > 3 && (
+                        <span className="text-xs text-muted-foreground">
+                          +{article.tags.length - 3}
+                        </span>
+                      )}
                     </div>
                   )}
                 </CardContent>
