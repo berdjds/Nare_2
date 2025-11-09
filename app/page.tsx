@@ -16,6 +16,7 @@ import { TrustBadges } from '@/components/trust-badges';
 import { WhatsAppButton } from '@/components/whatsapp-button';
 import { UrgencyBanner } from '@/components/urgency-banner';
 import { DMCSection } from '@/components/dmc-section';
+import { InsightsCarousel } from '@/components/insights-carousel';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -65,6 +66,9 @@ export default function Home() {
       <Suspense fallback={<div className="h-96 animate-pulse bg-gray-100" />}>
         <Features />
       </Suspense>
+
+      {/* Travel Insights Carousel */}
+      <InsightsCarousel />
 
       <Suspense fallback={<div className="h-96 animate-pulse bg-gray-100" />}>
         <Services />
