@@ -65,13 +65,13 @@ export function InsightsCarousel() {
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
-      news: 'bg-blue-500',
-      events: 'bg-purple-500',
-      culture: 'bg-pink-500',
-      'food-drinks': 'bg-orange-500',
-      destinations: 'bg-green-500',
+      news: 'bg-red-600',
+      events: 'bg-rose-600',
+      culture: 'bg-pink-600',
+      'food-drinks': 'bg-red-500',
+      destinations: 'bg-rose-500',
     };
-    return colors[category] || 'bg-gray-500';
+    return colors[category] || 'bg-red-600';
   };
 
   if (loading) {
@@ -89,13 +89,13 @@ export function InsightsCarousel() {
   }
 
   return (
-    <section className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
+    <section className="py-24 relative overflow-hidden bg-gradient-to-br from-rose-50 via-pink-50 to-rose-100">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 pointer-events-none" />
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-secondary/15 rounded-full blur-[120px] animate-pulse delay-1000" />
-        <div className="absolute bottom-0 left-1/2 w-[600px] h-[600px] bg-accent/15 rounded-full blur-[120px] animate-pulse delay-2000" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-200/30 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-pink-200/30 rounded-full blur-[120px] animate-pulse delay-1000" />
+        <div className="absolute bottom-0 left-1/2 w-[600px] h-[600px] bg-red-200/30 rounded-full blur-[120px] animate-pulse delay-2000" />
       </div>
       
       {/* Floating particles */}
@@ -103,7 +103,7 @@ export function InsightsCarousel() {
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-white/20 rounded-full"
+            className="absolute w-2 h-2 bg-rose-300/40 rounded-full"
             animate={{
               y: [0, -100, 0],
               x: [0, Math.random() * 100 - 50, 0],
@@ -136,9 +136,9 @@ export function InsightsCarousel() {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-6 shadow-xl"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/90 backdrop-blur-md border border-rose-200 text-gray-800 mb-6 shadow-xl"
           >
-            <Newspaper className="w-5 h-5 text-primary" />
+            <Newspaper className="w-5 h-5 text-red-600" />
             <span className="text-sm font-semibold tracking-wide">{t('home.insights.badge')}</span>
           </motion.div>
           <motion.h2 
@@ -146,7 +146,7 @@ export function InsightsCarousel() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-accent to-secondary/80 bg-clip-text text-transparent drop-shadow-2xl"
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-gray-900"
           >
             {t('home.insights.title')}
           </motion.h2>
@@ -155,7 +155,7 @@ export function InsightsCarousel() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
           >
             {t('home.insights.subtitle')}
           </motion.p>
@@ -169,18 +169,18 @@ export function InsightsCarousel() {
               <motion.button
                 whileHover={{ scale: 1.1, x: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border-2 border-white/20 flex items-center justify-center shadow-2xl hover:bg-white/20 transition-all group"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-14 h-14 rounded-full bg-white backdrop-blur-xl border-2 border-rose-200 flex items-center justify-center shadow-2xl hover:bg-rose-50 transition-all group"
                 onClick={prevSlide}
               >
-                <ChevronLeft className="h-6 w-6 text-white group-hover:text-primary transition-colors" />
+                <ChevronLeft className="h-6 w-6 text-gray-700 group-hover:text-red-600 transition-colors" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.1, x: 5 }}
                 whileTap={{ scale: 0.95 }}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border-2 border-white/20 flex items-center justify-center shadow-2xl hover:bg-white/20 transition-all group"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-14 h-14 rounded-full bg-white backdrop-blur-xl border-2 border-rose-200 flex items-center justify-center shadow-2xl hover:bg-rose-50 transition-all group"
                 onClick={nextSlide}
               >
-                <ChevronRight className="h-6 w-6 text-white group-hover:text-primary transition-colors" />
+                <ChevronRight className="h-6 w-6 text-gray-700 group-hover:text-red-600 transition-colors" />
               </motion.button>
             </>
           )}
@@ -214,9 +214,9 @@ export function InsightsCarousel() {
                   style={{ perspective: "1000px" }}
                 >
                   <Link href={`/insights/${article.slug}`}>
-                    <Card className="h-full border-0 bg-white/5 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 hover:shadow-[0_20px_80px_hsl(var(--primary)/0.4)] group overflow-hidden relative">
+                    <Card className="h-full border border-rose-100 bg-white hover:bg-rose-50/30 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(225,29,72,0.15)] group overflow-hidden relative">
                       {/* Glow effect on hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-secondary/0 to-accent/0 group-hover:from-primary/20 group-hover:via-secondary/10 group-hover:to-accent/20 transition-all duration-500 pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-rose-500/0 to-red-500/0 group-hover:from-rose-500/5 group-hover:to-red-500/5 transition-all duration-500 pointer-events-none" />
                       
                       {/* Image */}
                       <div className="relative h-52 overflow-hidden">
@@ -229,12 +229,12 @@ export function InsightsCarousel() {
                             sizes="(max-width: 768px) 100vw, 33vw"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
-                            <Newspaper className="w-20 h-20 text-white/40" />
+                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-rose-100 to-pink-100">
+                            <Newspaper className="w-20 h-20 text-rose-300" />
                           </div>
                         )}
                         {/* Overlay gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
                         
                         {/* Category Badge */}
                         <motion.div
@@ -250,7 +250,7 @@ export function InsightsCarousel() {
                       {/* Content */}
                       <CardContent className="p-7 relative">
                         <motion.h3 
-                          className="text-2xl font-bold mb-3 line-clamp-2 text-white group-hover:text-primary transition-colors duration-300"
+                          className="text-2xl font-bold mb-3 line-clamp-2 text-gray-900 group-hover:text-red-600 transition-colors duration-300"
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
                           transition={{ delay: 0.2 }}
@@ -258,7 +258,7 @@ export function InsightsCarousel() {
                           {article.title[currentLanguage]}
                         </motion.h3>
                         <motion.p 
-                          className="text-white/70 text-base line-clamp-3 mb-6 leading-relaxed"
+                          className="text-gray-600 text-base line-clamp-3 mb-6 leading-relaxed"
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
                           transition={{ delay: 0.3 }}
@@ -267,15 +267,15 @@ export function InsightsCarousel() {
                         </motion.p>
                         
                         {/* Footer */}
-                        <div className="flex items-center justify-between text-sm border-t border-white/10 pt-4">
-                          <div className="flex items-center gap-2 text-white/60">
+                        <div className="flex items-center justify-between text-sm border-t border-rose-100 pt-4">
+                          <div className="flex items-center gap-2 text-gray-500">
                             <Calendar className="w-4 h-4" />
                             <span>
                               {new Date(article.publishedAt || article.createdAt).toLocaleDateString(currentLanguage)}
                             </span>
                           </div>
                           <motion.div 
-                            className="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all"
+                            className="flex items-center gap-2 text-red-600 font-semibold group-hover:gap-3 transition-all"
                             whileHover={{ x: 5 }}
                           >
                             <span>{t('home.insights.readMore')}</span>
@@ -301,8 +301,8 @@ export function InsightsCarousel() {
                   whileTap={{ scale: 0.9 }}
                   className={`h-2.5 rounded-full transition-all duration-500 ${
                     index === currentIndex
-                      ? 'w-12 bg-gradient-to-r from-primary to-secondary shadow-lg shadow-primary/50'
-                      : 'w-2.5 bg-white/30 hover:bg-white/50'
+                      ? 'w-12 bg-gradient-to-r from-red-500 to-rose-500 shadow-lg shadow-red-500/50'
+                      : 'w-2.5 bg-rose-300/50 hover:bg-rose-400/70'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -323,9 +323,9 @@ export function InsightsCarousel() {
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative px-10 py-5 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-bold text-lg shadow-2xl shadow-primary/50 hover:shadow-primary/70 transition-all duration-300 overflow-hidden"
+              className="group relative px-10 py-5 bg-gradient-to-r from-red-600 to-rose-600 rounded-full text-white font-bold text-lg shadow-2xl shadow-red-500/50 hover:shadow-red-600/70 transition-all duration-300 overflow-hidden"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="absolute inset-0 bg-gradient-to-r from-rose-700 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative flex items-center gap-3">
                 {t('home.insights.viewAll')}
                 <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
