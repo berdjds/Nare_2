@@ -250,8 +250,8 @@ export function HeroSlider() {
             ))}
           </div>
 
-          {/* Side Counter */}
-          <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -rotate-90 origin-center transform text-sm font-medium tracking-wider whitespace-nowrap">
+          {/* Side Counter - Mirrored for RTL */}
+          <div className={`absolute top-[80%] ${currentLanguage === 'ar' ? 'right-1/2 translate-x-1/2 rotate-90' : 'left-1/2 -translate-x-1/2 -rotate-90'} origin-center transform text-sm font-medium tracking-wider whitespace-nowrap`}>
             <span className="text-white/80">{String(currentIndex + 1).padStart(2, '0')}</span>
             <span className="text-white/40 mx-1">/</span>
             <span className="text-white/40">{String(destinations.length).padStart(2, '0')}</span>
@@ -410,7 +410,7 @@ export function HeroSlider() {
               </AnimatePresence>
             
               {/* Navigation Buttons - Positioned properly for LTR/RTL */}
-              <div className={`absolute ${currentLanguage === 'ar' ? 'right-[403px]' : 'left-[403px]'} flex gap-4 z-40`} style={{ top: 'calc(390px + 15px)' }}>
+              <div className={`absolute ${currentLanguage === 'ar' ? 'left-0' : 'left-[403px]'} flex gap-4 z-40`} style={{ top: 'calc(390px + 15px)' }}>
                 <button
                   onClick={() => {
                     setDirection(-1);
