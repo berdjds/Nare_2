@@ -247,44 +247,49 @@ export function HeroSlider() {
 
         {/* Main Content */}
         <div className="grid w-full grid-cols-1 lg:grid-cols-[1fr,400px] px-8 lg:px-16 py-20">
-          {/* Text Area */}
-          <div className="flex flex-col justify-center space-y-6 lg:ml-16">
-            <motion.h1
-              key={`title-${currentIndex}`}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter"
-            >
-              {getLocalizedField(destinations[currentIndex], 'title', currentLanguage) || 
-                (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.title`) : 'Destination')}
-            </motion.h1>
-            <motion.p
-              key={`description-${currentIndex}`}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="text-lg text-white/80 max-w-2xl"
-            >
-              {getLocalizedField(destinations[currentIndex], 'description', currentLanguage) || 
-                (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.description`) : '')}
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-wrap gap-4"
-            >
-              <button className="group flex items-center space-x-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
-                <span>View All Tours</span>
-                <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
-              <button className="group flex items-center space-x-2 bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
-                <span>Contact Us</span>
-              </button>
-            </motion.div>
+          {/* Text Area with Gradient Background */}
+          <div className="flex flex-col justify-center space-y-6 lg:ml-16 relative">
+            {/* Gradient Background for Text Area */}
+            <div className="absolute inset-0 -left-8 -right-8 bg-gradient-to-r from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm" />
+            
+            <div className="relative z-10 p-8">
+              <motion.h1
+                key={`title-${currentIndex}`}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter drop-shadow-lg"
+              >
+                {getLocalizedField(destinations[currentIndex], 'title', currentLanguage) || 
+                  (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.title`) : 'Destination')}
+              </motion.h1>
+              <motion.p
+                key={`description-${currentIndex}`}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+                className="text-lg text-white/90 max-w-2xl drop-shadow-md mt-6"
+              >
+                {getLocalizedField(destinations[currentIndex], 'description', currentLanguage) || 
+                  (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.description`) : '')}
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-wrap gap-4 mt-6"
+              >
+                <button className="group flex items-center space-x-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
+                  <span>View All Tours</span>
+                  <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
+                <button className="group flex items-center space-x-2 bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
+                  <span>Contact Us</span>
+                </button>
+              </motion.div>
+            </div>
           </div>
 
           {/* Carousel Section */}
