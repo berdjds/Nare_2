@@ -322,41 +322,43 @@ export function HeroSlider() {
 
           {/* Carousel Section */}
           <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-end'}`}>
-            <div className="relative w-[1000px] h-[450px] overflow-hidden">
+            <div className="relative w-[800px] h-[450px]">
               <AnimatePresence initial={false}>
                 {[0, 1, 2].map((offset) => {
                   const index = (currentIndex + offset) % destinations.length;
                   const isRTL = currentLanguage === 'ar';
                   
-                  // Smooth conveyor belt positions
-                  const basePositions = [0, 270, 540];
+                  // Positions: Thumbnail 1 (0), Thumbnail 2 (270), Thumbnail 3 (540)
+                  const positions = [0, 270, 540];
                   
                   return (
                     <motion.div
                       key={`${index}`}
-                      className="absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl"
+                      className={`absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl ${offset === 0 ? 'ring-2 ring-white/30' : ''}`}
                       initial={{
-                        x: isRTL ? basePositions[2] + 270 : -270,
-                        opacity: isRTL ? 0 : 1,
-                        scale: 1,
+                        // New card enters from RIGHT
+                        x: isRTL ? -270 : 810,
+                        opacity: 0,
+                        scale: 0.95,
                       }}
                       animate={{
-                        x: isRTL ? basePositions[2 - offset] : basePositions[offset],
+                        x: isRTL ? positions[2 - offset] : positions[offset],
                         opacity: 1,
-                        scale: 1,
-                        zIndex: 10 + offset,
+                        scale: offset === 0 ? 1.05 : 1,
+                        zIndex: offset === 0 ? 20 : 10,
                       }}
                       exit={{
-                        x: isRTL ? -270 : basePositions[2] + 270,
-                        opacity: isRTL ? 1 : 0,
-                        scale: 1,
+                        // First card exits to CENTER with fade
+                        x: isRTL ? 810 : -135,
+                        opacity: 0,
+                        scale: 0.9,
                         transition: { 
-                          duration: 0.6,
+                          duration: 0.7,
                           ease: [0.43, 0.13, 0.23, 0.96]
                         }
                       }}
                       transition={{
-                        duration: 0.6,
+                        duration: 0.7,
                         ease: [0.43, 0.13, 0.23, 0.96],
                       }}
                     >
@@ -411,7 +413,7 @@ export function HeroSlider() {
             </div>
             
             {/* Navigation Buttons */}
-            <div className={`absolute bottom-20 flex gap-4 ${currentLanguage === 'ar' ? 'right-[300px]' : 'left-[300px]'}`}>
+            <div className={`absolute bottom-20 flex gap-4 ${currentLanguage === 'ar' ? 'right-[150px]' : 'left-[150px]'}`}>
               <button
                 onClick={() => {
                   setDirection(-1);
