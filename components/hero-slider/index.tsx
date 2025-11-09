@@ -259,13 +259,13 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[minmax(880px,1fr),1fr]' : 'lg:grid-cols-[1fr,minmax(880px,1fr)]'} gap-8 px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
+        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[minmax(840px,1fr),1fr]' : 'lg:grid-cols-[1fr,minmax(840px,1fr)]'} gap-8 px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
           {/* Text Area with Gradient Background */}
-          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2 lg:ml-0 lg:mr-0' : 'lg:order-1 lg:ml-0 lg:mr-12'}`}>
+          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2 lg:ml-0 lg:mr-0' : 'lg:order-1 lg:ml-20 lg:mr-8'}`}>
             {/* Gradient Background for Text Area */}
             <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-left-8 right-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
-            <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'max-w-lg mr-auto' : 'max-w-2xl'}`}>
+            <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'max-w-lg mr-auto' : 'max-w-xl'}`}>
               <motion.h1
                 key={`title-${currentIndex}`}
                 initial={{ opacity: 0, y: 40 }}
@@ -322,15 +322,16 @@ export function HeroSlider() {
 
           {/* Carousel Section */}
           <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-end'}`}>
-            <div className="relative w-full max-w-[880px] h-[450px] overflow-visible">
+            <div className="relative w-full max-w-[840px] h-[450px] overflow-visible">
               <AnimatePresence initial={false}>
                 {[0, 1, 2].map((offset) => {
                   const index = (currentIndex + offset) % destinations.length;
                   const isRTL = currentLanguage === 'ar';
                   
-                  // Maximum right positioning
-                  // Positions: 100, 365, 630 (15px gaps between cards)
-                  const positions = [100, 365, 630];
+                  // Equal 15px spacing, pushed right
+                  // Card width: 250px, gap: 15px
+                  // Positions: 50, 315, 580 (exactly 15px gaps)
+                  const positions = [50, 315, 580];
                   
                   return (
                     <motion.div
@@ -350,7 +351,7 @@ export function HeroSlider() {
                       }}
                       exit={{
                         // First card exits to LEFT with fade
-                        x: isRTL ? 900 : -35,
+                        x: isRTL ? 850 : -85,
                         opacity: 0,
                         scale: 0.9,
                         transition: { 
@@ -412,7 +413,7 @@ export function HeroSlider() {
               </AnimatePresence>
             
               {/* Navigation Buttons - 15px below third thumbnail */}
-              <div className="absolute left-[705px] flex gap-4 z-40" style={{ top: 'calc(390px + 15px)' }}>
+              <div className="absolute left-[655px] flex gap-4 z-40" style={{ top: 'calc(390px + 15px)' }}>
                 <button
                   onClick={() => {
                     setDirection(-1);
