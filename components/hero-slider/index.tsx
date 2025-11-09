@@ -259,13 +259,133 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className={`flex flex-col lg:flex-row ${currentLanguage === 'ar' ? 'lg:flex-row-reverse' : ''} w-full max-w-full px-8 lg:px-16 py-20 gap-0`}>
-          {/* Text Area with Gradient Background - 60% */}
-          <div className={`flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 ${currentLanguage === 'ar' ? 'lg:pr-8' : 'lg:pl-8'}`}>
-            {/* Gradient Background for Text Area */}
-            <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-right-8' : '-left-8'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
-            
-            <div className={`relative z-10 p-8`} dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
+        <div className="flex flex-col lg:flex-row w-full max-w-full px-8 lg:px-16 py-20 gap-0">
+          
+          {/* ARABIC LAYOUT: Thumbnails FIRST (LEFT), then Text (RIGHT) */}
+          {currentLanguage === 'ar' && (
+            <>
+              {/* Carousel Section - 40% LEFT */}
+              <div className="relative flex items-center justify-start w-full lg:w-[40%] lg:max-w-[40%] shrink-0">
+                <div className="relative w-full h-[450px] overflow-visible">
+                  <AnimatePresence initial={false}>
+                    {[0, 1, 2].map((offset) => {
+                      const index = (currentIndex + offset) % destinations.length;
+                      const isRTL = true; // Always RTL for Arabic section
+                      
+                      // Thumbnails within 40% column, equal spacing
+                      // Card width: 250px, gap: 15px between cards
+                      const positions = [0, 265, 530];
+                      
+                      return (
+                        <motion.div
+                          key={`${index}`}
+                          className={`absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl ${offset === 0 ? 'ring-2 ring-white/30' : ''}`}
+                          initial={{
+                            // New card enters from RIGHT
+                            x: isRTL ? -265 : 800,
+                            opacity: 0,
+                            scale: 0.95,
+                          }}
+                          animate={{
+                            x: isRTL ? positions[2 - offset] : positions[offset],
+                            opacity: 1,
+                            scale: offset === 0 ? 1.05 : 1,
+                            zIndex: offset === 0 ? 20 : 10,
+                          }}
+                          exit={{
+                            // First card exits to LEFT with fade
+                            x: isRTL ? 800 : -265,
+                            opacity: 0,
+                            scale: 0.9,
+                            transition: { 
+                              duration: 0.7,
+                              ease: [0.43, 0.13, 0.23, 0.96]
+                            }
+                          }}
+                          transition={{
+                            duration: 0.7,
+                            ease: [0.43, 0.13, 0.23, 0.96],
+                          }}
+                        >
+                        <div className="relative w-full h-full group cursor-pointer">
+                          {destinations[index].cardImage && (
+                            <Image
+                              src={destinations[index].cardImage}
+                              alt={destinations[index].title || t(`home.destinations.${destinations[index].key}.title`)}
+                              fill
+                              sizes="250px"
+                              className="object-cover transform group-hover:scale-110 transition-transform duration-700"
+                              priority={index === 0}
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                          <div className="absolute top-3 right-3">
+                            <button 
+                              className="w-7 h-7 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                              }}
+                            >
+                              <motion.div
+                                whileHover={{ scale: 1.2 }}
+                                className="w-3.5 h-3.5 border-[1.5px] border-white rounded"
+                              />
+                            </button>
+                          </div>
+                          <motion.div 
+                            className="absolute bottom-0 left-0 right-0 p-3"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
+                          >
+                            <div className="flex items-center gap-1 mb-1">
+                              {[...Array(5)].map((_, i) => (
+                                <div key={i} className="w-1 h-1 rounded-full bg-white/60" />
+                              ))}
+                            </div>
+                            <h3 className="text-white text-sm font-medium tracking-wide">
+                              {getLocalizedField(destinations[index], 'title', currentLanguage) || 
+                                (destinations[index].key ? t(`home.destinations.${destinations[index].key}.title`) : '')}
+                            </h3>
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                  </AnimatePresence>
+                
+                  {/* Navigation Buttons - Positioned properly for LTR/RTL */}
+                  <div className={`absolute ${currentLanguage === 'ar' ? 'left-0' : 'left-[403px]'} flex gap-4 z-40`} style={{ top: 'calc(390px + 15px)' }}>
+                    <button
+                      onClick={() => {
+                        setDirection(-1);
+                        setCurrentIndex((prev) => (prev === 0 ? destinations.length - 1 : prev - 1));
+                      }}
+                      className="h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
+                    >
+                      {currentLanguage === 'ar' ? <ChevronRight className="w-6 h-6 text-white/80" /> : <ChevronLeft className="w-6 h-6 text-white/80" />}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setDirection(1);
+                        setCurrentIndex((prev) => (prev === destinations.length - 1 ? 0 : prev + 1));
+                      }}
+                      className="h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
+                    >
+                      {currentLanguage === 'ar' ? <ChevronLeft className="w-6 h-6 text-white/80" /> : <ChevronRight className="w-6 h-6 text-white/80" />}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Text Area - 60% RIGHT */}
+              <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pr-8">
+                {/* Gradient Background for Text Area */}
+                <div className="absolute inset-0 -right-8 bg-gradient-to-l from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm" />
+                
+                <div className="relative z-10 p-8" dir="rtl">
               <motion.h1
                 key={`title-${currentIndex}`}
                 initial={{ opacity: 0, y: 40 }}
@@ -317,14 +437,77 @@ export function HeroSlider() {
               </motion.div>
             </div>
           </div>
-
-          {/* Carousel Section - 40% */}
-          <div className="relative flex items-center justify-start w-full lg:w-[40%] lg:max-w-[40%] shrink-0">
+            </>
+          )}
+          
+          {/* ENGLISH LAYOUT: Text FIRST (LEFT), then Thumbnails (RIGHT) */}
+          {currentLanguage !== 'ar' && (
+            <>
+              {/* Text Area - 60% LEFT */}
+              <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pl-8">
+                {/* Gradient Background for Text Area */}
+                <div className="absolute inset-0 -left-8 bg-gradient-to-r from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm" />
+                
+                <div className="relative z-10 p-8" dir="ltr">
+              <motion.h1
+                key={`title-${currentIndex}`}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight drop-shadow-lg"
+              >
+                {getLocalizedField(destinations[currentIndex], 'title', currentLanguage) || 
+                  (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.title`) : 'Destination')}
+              </motion.h1>
+              <motion.p
+                key={`description-${currentIndex}`}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+                className="text-lg md:text-xl text-white/90 drop-shadow-md mt-6 leading-relaxed"
+              >
+                {getLocalizedField(destinations[currentIndex], 'description', currentLanguage) || 
+                  (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.description`) : '')}
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-wrap gap-4 mt-6"
+              >
+                {/* Primary Button */}
+                {(destinations[currentIndex].button1Enabled !== false) && (destinations[currentIndex].button1Text || destinations[currentIndex].button1Link) && (
+                  <Link 
+                    href={destinations[currentIndex].button1Link || '#'}
+                    className="group flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                  >
+                    <span>{getLocalizedField(destinations[currentIndex], 'button1Text', currentLanguage) || 'View All Tours'}</span>
+                    <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                )}
+                
+                {/* Secondary Button */}
+                {(destinations[currentIndex].button2Enabled !== false) && (destinations[currentIndex].button2Text || destinations[currentIndex].button2Link) && (
+                  <Link 
+                    href={destinations[currentIndex].button2Link || '#'}
+                    className="group flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                  >
+                    <span>{getLocalizedField(destinations[currentIndex], 'button2Text', currentLanguage) || 'Contact Us'}</span>
+                  </Link>
+                )}
+              </motion.div>
+            </div>
+          </div>
+          
+              {/* Carousel Section - 40% RIGHT */}
+              <div className="relative flex items-center justify-start w-full lg:w-[40%] lg:max-w-[40%] shrink-0">
             <div className="relative w-full h-[450px] overflow-visible">
               <AnimatePresence initial={false}>
                 {[0, 1, 2].map((offset) => {
                   const index = (currentIndex + offset) % destinations.length;
-                  const isRTL = currentLanguage === 'ar';
+                  const isRTL = false; // Always LTR for English section
                   
                   // Thumbnails within 40% column, equal spacing
                   // Card width: 250px, gap: 15px between cards
@@ -392,7 +575,7 @@ export function HeroSlider() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
+                        dir="ltr"
                       >
                         <div className="flex items-center gap-1 mb-1">
                           {[...Array(5)].map((_, i) => (
@@ -410,8 +593,8 @@ export function HeroSlider() {
               })}
               </AnimatePresence>
             
-              {/* Navigation Buttons - Positioned properly for LTR/RTL */}
-              <div className={`absolute ${currentLanguage === 'ar' ? 'left-0' : 'left-[403px]'} flex gap-4 z-40`} style={{ top: 'calc(390px + 15px)' }}>
+              {/* Navigation Buttons */}
+              <div className="absolute left-[403px] flex gap-4 z-40" style={{ top: 'calc(390px + 15px)' }}>
                 <button
                   onClick={() => {
                     setDirection(-1);
@@ -419,7 +602,7 @@ export function HeroSlider() {
                   }}
                   className="h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
                 >
-                  {currentLanguage === 'ar' ? <ChevronRight className="w-6 h-6 text-white/80" /> : <ChevronLeft className="w-6 h-6 text-white/80" />}
+                  <ChevronLeft className="w-6 h-6 text-white/80" />
                 </button>
                 <button
                   onClick={() => {
@@ -428,11 +611,13 @@ export function HeroSlider() {
                   }}
                   className="h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
                 >
-                  {currentLanguage === 'ar' ? <ChevronLeft className="w-6 h-6 text-white/80" /> : <ChevronRight className="w-6 h-6 text-white/80" />}
+                  <ChevronRight className="w-6 h-6 text-white/80" />
                 </button>
               </div>
             </div>
           </div>
+            </>
+          )}
         </div>
       </div>
     </section>
