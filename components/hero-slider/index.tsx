@@ -322,45 +322,42 @@ export function HeroSlider() {
 
           {/* Carousel Section */}
           <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-end'}`}>
-            <div className="relative w-[1000px] h-[450px]">
-              <AnimatePresence mode="popLayout" initial={false}>
+            <div className="relative w-[1000px] h-[450px] overflow-hidden">
+              <AnimatePresence initial={false}>
                 {[0, 1, 2].map((offset) => {
                   const index = (currentIndex + offset) % destinations.length;
                   const isRTL = currentLanguage === 'ar';
                   
-                  // Calculate x positions based on direction
-                  const xPositions = isRTL 
-                    ? [520, 260, 0]  // RTL: right to left
-                    : [0, 260, 520]; // LTR: left to right
+                  // Smooth conveyor belt positions
+                  const basePositions = [0, 270, 540];
                   
                   return (
                     <motion.div
-                      key={`${index}-${offset}`}
+                      key={`${index}`}
                       className="absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl"
                       initial={{
-                        x: isRTL ? 800 : -800,
-                        opacity: 0,
-                        scale: 0.8,
+                        x: isRTL ? basePositions[2] + 270 : -270,
+                        opacity: isRTL ? 0 : 1,
+                        scale: 1,
                       }}
                       animate={{
-                        x: xPositions[offset],
+                        x: isRTL ? basePositions[2 - offset] : basePositions[offset],
                         opacity: 1,
                         scale: 1,
-                        zIndex: 3 - offset,
+                        zIndex: 10 + offset,
                       }}
                       exit={{
-                        x: isRTL ? -800 : 800,
-                        opacity: 0,
-                        scale: 0.8,
+                        x: isRTL ? -270 : basePositions[2] + 270,
+                        opacity: isRTL ? 1 : 0,
+                        scale: 1,
                         transition: { 
-                          duration: 0.5,
-                          ease: [0.4, 0, 0.2, 1]
+                          duration: 0.6,
+                          ease: [0.43, 0.13, 0.23, 0.96]
                         }
                       }}
                       transition={{
-                        duration: 0.7,
-                        ease: [0.4, 0, 0.2, 1],
-                        delay: offset * 0.05,
+                        duration: 0.6,
+                        ease: [0.43, 0.13, 0.23, 0.96],
                       }}
                     >
                     <div className="relative w-full h-full group cursor-pointer">
