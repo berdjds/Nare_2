@@ -259,21 +259,20 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[40%,60%]' : 'lg:grid-cols-[60%,40%]'} gap-0 px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
+        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[40%,60%]' : 'lg:grid-cols-[60%,40%]'} gap-0 px-8 lg:px-16 py-20`} dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
           {/* Text Area with Gradient Background */}
-          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2 lg:ml-0 lg:mr-0' : 'lg:order-1 lg:ml-16 lg:mr-8'}`}>
+          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2' : 'lg:order-1'}`}>
             {/* Gradient Background for Text Area */}
-            <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-left-8 right-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
+            <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-right-8 left-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
-            <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'max-w-2xl mr-auto' : 'w-full max-w-none pr-16'}`}>
+            <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'text-right' : ''}`}>
               <motion.h1
                 key={`title-${currentIndex}`}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight drop-shadow-lg ${currentLanguage === 'ar' ? 'text-right' : ''}`}
-                dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight drop-shadow-lg"
               >
                 {getLocalizedField(destinations[currentIndex], 'title', currentLanguage) || 
                   (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.title`) : 'Destination')}
@@ -284,8 +283,7 @@ export function HeroSlider() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className={`text-lg md:text-xl text-white/90 drop-shadow-md mt-6 leading-relaxed ${currentLanguage === 'ar' ? 'text-right' : ''}`}
-                dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
+                className="text-lg md:text-xl text-white/90 drop-shadow-md mt-6 leading-relaxed"
               >
                 {getLocalizedField(destinations[currentIndex], 'description', currentLanguage) || 
                   (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.description`) : '')}
@@ -300,10 +298,10 @@ export function HeroSlider() {
                 {(destinations[currentIndex].button1Enabled !== false) && (destinations[currentIndex].button1Text || destinations[currentIndex].button1Link) && (
                   <Link 
                     href={destinations[currentIndex].button1Link || '#'}
-                    className="group flex items-center space-x-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                    className="group flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
                   >
                     <span>{getLocalizedField(destinations[currentIndex], 'button1Text', currentLanguage) || 'View All Tours'}</span>
-                    <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    <ChevronRight className={`w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300 ${currentLanguage === 'ar' ? 'rotate-180' : ''}`} />
                   </Link>
                 )}
                 
@@ -311,7 +309,7 @@ export function HeroSlider() {
                 {(destinations[currentIndex].button2Enabled !== false) && (destinations[currentIndex].button2Text || destinations[currentIndex].button2Link) && (
                   <Link 
                     href={destinations[currentIndex].button2Link || '#'}
-                    className="group flex items-center space-x-2 bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                    className="group flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
                   >
                     <span>{getLocalizedField(destinations[currentIndex], 'button2Text', currentLanguage) || 'Contact Us'}</span>
                   </Link>
@@ -390,12 +388,12 @@ export function HeroSlider() {
                         </button>
                       </div>
                       <motion.div 
-                        className="absolute bottom-0 left-0 right-0 p-3"
+                        className={`absolute bottom-0 left-0 right-0 p-3 ${currentLanguage === 'ar' ? 'text-right' : ''}`}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                       >
-                        <div className="flex items-center space-x-1 mb-1">
+                        <div className={`flex items-center gap-1 mb-1 ${currentLanguage === 'ar' ? 'justify-end' : ''}`}>
                           {[...Array(5)].map((_, i) => (
                             <div key={i} className="w-1 h-1 rounded-full bg-white/60" />
                           ))}
@@ -411,8 +409,8 @@ export function HeroSlider() {
               })}
               </AnimatePresence>
             
-              {/* Navigation Buttons - Right aligned with 2nd thumbnail */}
-              <div className="absolute left-[403px] flex gap-4 z-40" style={{ top: 'calc(390px + 15px)' }}>
+              {/* Navigation Buttons - Positioned properly for LTR/RTL */}
+              <div className={`absolute ${currentLanguage === 'ar' ? 'right-[403px]' : 'left-[403px]'} flex gap-4 z-40`} style={{ top: 'calc(390px + 15px)' }}>
                 <button
                   onClick={() => {
                     setDirection(-1);
@@ -420,7 +418,7 @@ export function HeroSlider() {
                   }}
                   className="h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
                 >
-                  <ChevronLeft className="w-6 h-6 text-white/80" />
+                  {currentLanguage === 'ar' ? <ChevronRight className="w-6 h-6 text-white/80" /> : <ChevronLeft className="w-6 h-6 text-white/80" />}
                 </button>
                 <button
                   onClick={() => {
@@ -429,7 +427,7 @@ export function HeroSlider() {
                   }}
                   className="h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
                 >
-                  <ChevronRight className="w-6 h-6 text-white/80" />
+                  {currentLanguage === 'ar' ? <ChevronLeft className="w-6 h-6 text-white/80" /> : <ChevronRight className="w-6 h-6 text-white/80" />}
                 </button>
               </div>
             </div>
