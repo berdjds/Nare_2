@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useImages } from "@/hooks/use-images";
@@ -16,6 +17,19 @@ interface Destination {
   backgroundImage: string;
   cardImage: string;
   order?: number;
+  // CTA Buttons
+  button1Text?: string;
+  button1TextHy?: string;
+  button1TextRu?: string;
+  button1TextAr?: string;
+  button1Link?: string;
+  button1Enabled?: boolean;
+  button2Text?: string;
+  button2TextHy?: string;
+  button2TextRu?: string;
+  button2TextAr?: string;
+  button2Link?: string;
+  button2Enabled?: boolean;
 }
 
 export function HeroSlider() {
@@ -281,13 +295,26 @@ export function HeroSlider() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="flex flex-wrap gap-4 mt-6"
               >
-                <button className="group flex items-center space-x-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
-                  <span>View All Tours</span>
-                  <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
-                <button className="group flex items-center space-x-2 bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
-                  <span>Contact Us</span>
-                </button>
+                {/* Primary Button */}
+                {(destinations[currentIndex].button1Enabled !== false) && (destinations[currentIndex].button1Text || destinations[currentIndex].button1Link) && (
+                  <Link 
+                    href={destinations[currentIndex].button1Link || '#'}
+                    className="group flex items-center space-x-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                  >
+                    <span>{getLocalizedField(destinations[currentIndex], 'button1Text', currentLanguage) || 'View All Tours'}</span>
+                    <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                )}
+                
+                {/* Secondary Button */}
+                {(destinations[currentIndex].button2Enabled !== false) && (destinations[currentIndex].button2Text || destinations[currentIndex].button2Link) && (
+                  <Link 
+                    href={destinations[currentIndex].button2Link || '#'}
+                    className="group flex items-center space-x-2 bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                  >
+                    <span>{getLocalizedField(destinations[currentIndex], 'button2Text', currentLanguage) || 'Contact Us'}</span>
+                  </Link>
+                )}
               </motion.div>
             </div>
           </div>

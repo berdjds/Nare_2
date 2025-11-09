@@ -9,7 +9,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Plus, Edit, Trash2, Eye, EyeOff, Search, MoveUp, MoveDown } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, Search, MoveUp, MoveDown, MousePointerClick } from 'lucide-react';
+import { Switch } from '@/components/ui/switch';
 import { HeroSlide } from '@/lib/content-storage';
 import { ImageUpload } from './image-upload';
 import { TranslationTabs } from './translation-tabs';
@@ -533,6 +534,100 @@ function SlideForm({ slide: initialSlide, onSave, onCancel }: SlideFormProps) {
         canGenerateFromTitle={true}
         titleValue={slide.title}
       />
+
+      {/* Call-to-Action Buttons */}
+      <div className="space-y-6 p-6 border rounded-lg bg-muted/30">
+        <div className="flex items-center gap-2 mb-4">
+          <MousePointerClick className="w-5 h-5 text-primary" />
+          <h3 className="text-lg font-semibold">Call-to-Action Buttons</h3>
+        </div>
+        
+        {/* Button 1 */}
+        <div className="space-y-4 p-4 border rounded-lg bg-background">
+          <div className="flex items-center justify-between">
+            <Label className="text-base font-semibold">Primary Button</Label>
+            <div className="flex items-center gap-2">
+              <Label htmlFor="button1-enabled" className="text-sm text-muted-foreground">Show Button</Label>
+              <Switch
+                id="button1-enabled"
+                checked={slide.button1Enabled ?? true}
+                onCheckedChange={(checked) => updateField('button1Enabled', checked)}
+              />
+            </div>
+          </div>
+          
+          <TranslationTabs
+            fieldName="Button 1 Text"
+            englishValue={slide.button1Text || ''}
+            armenianValue={slide.button1TextHy || ''}
+            russianValue={slide.button1TextRu || ''}
+            arabicValue={slide.button1TextAr || ''}
+            onEnglishChange={(value) => updateField('button1Text', value)}
+            onArmenianChange={(value) => updateField('button1TextHy', value)}
+            onRussianChange={(value) => updateField('button1TextRu', value)}
+            onArabicChange={(value) => updateField('button1TextAr', value)}
+            context="Call-to-action button text (e.g., View All Tours, Explore Packages)"
+          />
+          
+          <div>
+            <Label htmlFor="button1-link">Button Link/URL</Label>
+            <Input
+              id="button1-link"
+              type="text"
+              value={slide.button1Link || ''}
+              onChange={(e) => updateField('button1Link', e.target.value)}
+              placeholder="/services/outgoing-packages or https://example.com"
+              className="mt-2"
+            />
+            <p className="text-xs text-muted-foreground mt-1">
+              Use relative paths (/about) or full URLs (https://example.com)
+            </p>
+          </div>
+        </div>
+
+        {/* Button 2 */}
+        <div className="space-y-4 p-4 border rounded-lg bg-background">
+          <div className="flex items-center justify-between">
+            <Label className="text-base font-semibold">Secondary Button</Label>
+            <div className="flex items-center gap-2">
+              <Label htmlFor="button2-enabled" className="text-sm text-muted-foreground">Show Button</Label>
+              <Switch
+                id="button2-enabled"
+                checked={slide.button2Enabled ?? true}
+                onCheckedChange={(checked) => updateField('button2Enabled', checked)}
+              />
+            </div>
+          </div>
+          
+          <TranslationTabs
+            fieldName="Button 2 Text"
+            englishValue={slide.button2Text || ''}
+            armenianValue={slide.button2TextHy || ''}
+            russianValue={slide.button2TextRu || ''}
+            arabicValue={slide.button2TextAr || ''}
+            onEnglishChange={(value) => updateField('button2Text', value)}
+            onArmenianChange={(value) => updateField('button2TextHy', value)}
+            onRussianChange={(value) => updateField('button2TextRu', value)}
+            onArabicChange={(value) => updateField('button2TextAr', value)}
+            context="Call-to-action button text (e.g., Contact Us, Learn More)"
+          />
+          
+          <div>
+            <Label htmlFor="button2-link">Button Link/URL</Label>
+            <Input
+              id="button2-link"
+              type="text"
+              value={slide.button2Link || ''}
+              onChange={(e) => updateField('button2Link', e.target.value)}
+              placeholder="/contact or https://example.com"
+              className="mt-2"
+            />
+            <p className="text-xs text-muted-foreground mt-1">
+              Use relative paths (/contact) or full URLs (https://example.com)
+            </p>
+          </div>
+        </div>
+      </div>
 
       {/* Images */}
       <div className="space-y-4">

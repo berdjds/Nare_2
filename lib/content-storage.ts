@@ -20,6 +20,19 @@ export interface HeroSlide {
   cardImage: string;
   order: number;
   isActive?: boolean;     // For activating/deactivating slides
+  // Call-to-Action Buttons (customizable per slide)
+  button1Text?: string;    // Primary button text (English)
+  button1TextHy?: string;  // Armenian translation
+  button1TextRu?: string;  // Russian translation
+  button1TextAr?: string;  // Arabic translation
+  button1Link?: string;    // Primary button link/URL
+  button1Enabled?: boolean; // Whether to show button 1
+  button2Text?: string;    // Secondary button text (English)
+  button2TextHy?: string;  // Armenian translation
+  button2TextRu?: string;  // Russian translation
+  button2TextAr?: string;  // Arabic translation
+  button2Link?: string;    // Secondary button link/URL
+  button2Enabled?: boolean; // Whether to show button 2
 }
 
 export interface TourPackage {
