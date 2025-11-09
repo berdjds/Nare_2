@@ -1,13 +1,12 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
+import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/hooks/use-language';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ChevronLeft, ChevronRight, Newspaper, Calendar } from 'lucide-react';
+import { ArrowRight, Newspaper, Calendar } from 'lucide-react';
 
 interface Article {
   id: string;
@@ -183,56 +182,54 @@ export function InsightsCarousel() {
         >
           {/* Cards Container - Full Width */}
           <div className="relative h-[500px] flex items-center justify-center overflow-hidden">
-            <AnimatePresence mode="wait" initial={false}>
-              {[-1, 0, 1].map((offset) => {
-                const articleIndex = getCardIndex(offset);
-                const article = articles[articleIndex];
-                const isCenter = offset === 0;
-                const isLeft = offset === -1;
-                const isRight = offset === 1;
-                
-                // Calculate positions for 20% - 60% - 20% layout
-                let xPosition = 0;
-                let widthPercent = '20%';
-                
-                if (isLeft) {
-                  xPosition = 0; // Far left
-                  widthPercent = '20%';
-                } else if (isCenter) {
-                  xPosition = 20; // 20% from left
-                  widthPercent = '60%';
-                } else if (isRight) {
-                  xPosition = 80; // 80% from left (20% width)
-                  widthPercent = '20%';
-                }
-                
-                return (
-                  <motion.div
-                    key={`card-${currentIndex}-${offset}`}
-                    className="absolute h-full cursor-pointer"
-                    initial={{
-                      left: `${xPosition}%`,
-                      width: widthPercent,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      left: `${xPosition}%`,
-                      width: widthPercent,
-                      opacity: 1,
-                      zIndex: isCenter ? 20 : 10,
-                    }}
-                    exit={{
-                      opacity: 0,
-                    }}
-                    transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
-                    onClick={() => !isCenter && setCurrentIndex(articleIndex)}
-                  >
+            {[-1, 0, 1].map((offset) => {
+              const articleIndex = getCardIndex(offset);
+              const article = articles[articleIndex];
+              const isCenter = offset === 0;
+              const isLeft = offset === -1;
+              const isRight = offset === 1;
+              
+              // Calculate positions for 20% - 60% - 20% layout
+              let xPosition = 0;
+              let widthPercent = '20%';
+              
+              if (isLeft) {
+                xPosition = 0; // Far left
+                widthPercent = '20%';
+              } else if (isCenter) {
+                xPosition = 20; // 20% from left
+                widthPercent = '60%';
+              } else if (isRight) {
+                xPosition = 80; // 80% from left (20% width)
+                widthPercent = '20%';
+              }
+              
+              return (
+                <motion.div
+                  key={`card-${articleIndex}`}
+                  className="absolute h-full cursor-pointer"
+                  animate={{
+                    left: `${xPosition}%`,
+                    width: widthPercent,
+                    zIndex: isCenter ? 20 : 10,
+                  }}
+                  transition={{ 
+                    duration: 1.2, 
+                    ease: [0.25, 0.1, 0.25, 1],
+                    type: "tween"
+                  }}
+                  onClick={() => !isCenter && setCurrentIndex(articleIndex)}
+                >
                     <Link href={`/insights/${article.slug}`} className={isCenter ? '' : 'pointer-events-none'}>
-                      <div className={`relative w-full h-full overflow-hidden transition-all duration-500 group ${
-                        isCenter 
-                          ? 'shadow-[0_25px_80px_rgba(114,47,55,0.3)]' 
-                          : 'opacity-70 grayscale-[0.3]'
-                      }`}>
+                      <div className="relative w-full h-full overflow-hidden group">
+                        <motion.div
+                          className="absolute inset-0"
+                          animate={{
+                            filter: isCenter ? 'grayscale(0)' : 'grayscale(0.4)',
+                            opacity: isCenter ? 1 : 0.6,
+                          }}
+                          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+                        >
                         {/* Background Image */}
                         {article.imageUrl ? (
                           <Image
@@ -264,7 +261,7 @@ export function InsightsCarousel() {
                         )}
                         
                         {/* Content Overlaid on Image */}
-                        <div className={`absolute inset-0 flex flex-col justify-end transition-all duration-500 ${
+                        <div className={`absolute inset-0 flex flex-col justify-end transition-all duration-1200 ${
                           isCenter ? 'p-8' : 'p-6'
                         }`}>
                           <h3 className={`font-bold mb-3 text-white drop-shadow-2xl transition-all duration-500 ${
@@ -300,12 +297,12 @@ export function InsightsCarousel() {
                             </>
                           )}
                         </div>
+                        </motion.div>
                       </div>
                     </Link>
                   </motion.div>
                 );
               })}
-            </AnimatePresence>
           </div>
 
           {/* Dots Indicator */}
