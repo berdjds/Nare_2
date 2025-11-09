@@ -175,22 +175,22 @@ export function Navbar() {
               ))}
               <NavigationMenuItem>
                 <Link 
-                  href="/about" 
-                  className={cn(
-                    "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-blue-600 rounded-md inline-flex items-center justify-center"
-                  )}
-                >
-                  {t('menu.about')}
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link 
                   href="/insights" 
                   className={cn(
                     "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-blue-600 rounded-md inline-flex items-center justify-center"
                   )}
                 >
                   {t('menu.insights')}
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link 
+                  href="/about" 
+                  className={cn(
+                    "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-blue-600 rounded-md inline-flex items-center justify-center"
+                  )}
+                >
+                  {t('menu.about')}
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -256,6 +256,12 @@ export function Navbar() {
                 </div>
               </div>
             ))}
+            <Link 
+              href="/insights"
+              className="block px-4 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 hover:text-blue-600"
+            >
+              {t('menu.insights')}
+            </Link>
             <Link 
               href="/about"
               className="block px-4 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 hover:text-blue-600"
