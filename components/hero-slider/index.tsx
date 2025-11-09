@@ -203,9 +203,8 @@ export function HeroSlider() {
           style={{
             backgroundImage: destinations[currentIndex].backgroundImage ? `url(${destinations[currentIndex].backgroundImage})` : 'none',
           }}
-        >
-          <div className="absolute inset-0 bg-black/50" />
-        </motion.div>
+        />
+
       </AnimatePresence>
 
       {/* Content Section */}
