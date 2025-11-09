@@ -89,30 +89,76 @@ export function InsightsCarousel() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none" />
-      <div className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none" />
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[120px] animate-pulse delay-1000" />
+        <div className="absolute bottom-0 left-1/2 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] animate-pulse delay-2000" />
+      </div>
+      
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-white/20 rounded-full"
+            animate={{
+              y: [0, -100, 0],
+              x: [0, Math.random() * 100 - 50, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 10,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+            }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+          />
+        ))}
+      </div>
 
       <div className="container relative">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4">
-            <Newspaper className="w-4 h-4" />
-            <span className="text-sm font-medium">{t('home.insights.badge')}</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <motion.div 
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-6 shadow-xl"
+          >
+            <Newspaper className="w-5 h-5 text-cyan-400" />
+            <span className="text-sm font-semibold tracking-wide">{t('home.insights.badge')}</span>
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-cyan-200 to-purple-200 bg-clip-text text-transparent drop-shadow-2xl"
+          >
             {t('home.insights.title')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed"
+          >
             {t('home.insights.subtitle')}
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Carousel */}
@@ -120,22 +166,22 @@ export function InsightsCarousel() {
           {/* Navigation Buttons */}
           {articles.length > 3 && (
             <>
-              <Button
-                variant="outline"
-                size="icon"
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 rounded-full shadow-lg bg-background/80 backdrop-blur-sm hover:bg-background"
+              <motion.button
+                whileHover={{ scale: 1.1, x: -5 }}
+                whileTap={{ scale: 0.95 }}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border-2 border-white/20 flex items-center justify-center shadow-2xl hover:bg-white/20 transition-all group"
                 onClick={prevSlide}
               >
-                <ChevronLeft className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 rounded-full shadow-lg bg-background/80 backdrop-blur-sm hover:bg-background"
+                <ChevronLeft className="h-6 w-6 text-white group-hover:text-cyan-400 transition-colors" />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, x: 5 }}
+                whileTap={{ scale: 0.95 }}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border-2 border-white/20 flex items-center justify-center shadow-2xl hover:bg-white/20 transition-all group"
                 onClick={nextSlide}
               >
-                <ChevronRight className="h-5 w-5" />
-              </Button>
+                <ChevronRight className="h-6 w-6 text-white group-hover:text-cyan-400 transition-colors" />
+              </motion.button>
             </>
           )}
 
@@ -146,57 +192,95 @@ export function InsightsCarousel() {
               animate={{ x: `${-currentIndex * (100 / 3)}%` }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-              {articles.map((article) => (
+              {articles.map((article, index) => (
                 <motion.div
                   key={article.id}
                   className="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]"
-                  whileHover={{ y: -8 }}
-                  transition={{ duration: 0.3 }}
+                  initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.15,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{ 
+                    y: -15, 
+                    scale: 1.02,
+                    rotateY: 2,
+                    transition: { duration: 0.3 }
+                  }}
+                  style={{ perspective: "1000px" }}
                 >
                   <Link href={`/insights/${article.slug}`}>
-                    <Card className="h-full border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl group overflow-hidden">
+                    <Card className="h-full border-0 bg-white/5 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 hover:shadow-[0_20px_80px_rgba(0,255,255,0.3)] group overflow-hidden relative">
+                      {/* Glow effect on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-cyan-500/20 group-hover:via-purple-500/20 group-hover:to-blue-500/20 transition-all duration-500 pointer-events-none" />
+                      
                       {/* Image */}
-                      <div className="relative h-48 overflow-hidden bg-muted">
+                      <div className="relative h-52 overflow-hidden">
                         {article.imageUrl ? (
                           <Image
                             src={article.imageUrl}
                             alt={article.title[currentLanguage]}
                             fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            className="object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-2"
                             sizes="(max-width: 768px) 100vw, 33vw"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
-                            <Newspaper className="w-16 h-16 text-primary/30" />
+                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-500/20 to-purple-500/20">
+                            <Newspaper className="w-20 h-20 text-white/40" />
                           </div>
                         )}
+                        {/* Overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                        
                         {/* Category Badge */}
-                        <Badge className={`absolute top-3 left-3 ${getCategoryColor(article.category)} text-white border-0`}>
-                          {t(`insights.category.${article.category}`)}
-                        </Badge>
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          className="absolute top-4 left-4"
+                        >
+                          <Badge className={`${getCategoryColor(article.category)} text-white border-0 px-4 py-1.5 text-xs font-bold uppercase tracking-wider shadow-lg`}>
+                            {t(`insights.category.${article.category}`)}
+                          </Badge>
+                        </motion.div>
                       </div>
 
                       {/* Content */}
-                      <CardContent className="p-6">
-                        <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                      <CardContent className="p-7 relative">
+                        <motion.h3 
+                          className="text-2xl font-bold mb-3 line-clamp-2 text-white group-hover:text-cyan-300 transition-colors duration-300"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ delay: 0.2 }}
+                        >
                           {article.title[currentLanguage]}
-                        </h3>
-                        <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
+                        </motion.h3>
+                        <motion.p 
+                          className="text-white/70 text-base line-clamp-3 mb-6 leading-relaxed"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ delay: 0.3 }}
+                        >
                           {article.excerpt[currentLanguage]}
-                        </p>
+                        </motion.p>
                         
                         {/* Footer */}
-                        <div className="flex items-center justify-between text-xs text-muted-foreground">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
+                        <div className="flex items-center justify-between text-sm border-t border-white/10 pt-4">
+                          <div className="flex items-center gap-2 text-white/60">
+                            <Calendar className="w-4 h-4" />
                             <span>
                               {new Date(article.publishedAt || article.createdAt).toLocaleDateString(currentLanguage)}
                             </span>
                           </div>
-                          <div className="flex items-center gap-1 text-primary font-medium group-hover:gap-2 transition-all">
+                          <motion.div 
+                            className="flex items-center gap-2 text-cyan-400 font-semibold group-hover:gap-3 transition-all"
+                            whileHover={{ x: 5 }}
+                          >
                             <span>{t('home.insights.readMore')}</span>
-                            <ArrowRight className="w-4 h-4" />
-                          </div>
+                            <ArrowRight className="w-5 h-5" />
+                          </motion.div>
                         </div>
                       </CardContent>
                     </Card>
@@ -208,15 +292,17 @@ export function InsightsCarousel() {
 
           {/* Dots Indicator */}
           {articles.length > 3 && (
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-3 mt-10">
               {Array.from({ length: Math.max(1, articles.length - 2) }).map((_, index) => (
-                <button
+                <motion.button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`h-2.5 rounded-full transition-all duration-500 ${
                     index === currentIndex
-                      ? 'w-8 bg-primary'
-                      : 'w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                      ? 'w-12 bg-gradient-to-r from-cyan-400 to-purple-400 shadow-lg shadow-cyan-500/50'
+                      : 'w-2.5 bg-white/30 hover:bg-white/50'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -227,16 +313,24 @@ export function InsightsCarousel() {
 
         {/* View All Button */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, scale: 0.9 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-16"
         >
           <Link href="/insights">
-            <Button size="lg" className="group">
-              {t('home.insights.viewAll')}
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <motion.button
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative px-10 py-5 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold text-lg shadow-2xl shadow-cyan-500/50 hover:shadow-cyan-500/70 transition-all duration-300 overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative flex items-center gap-3">
+                {t('home.insights.viewAll')}
+                <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
+              </span>
+            </motion.button>
           </Link>
         </motion.div>
       </div>
