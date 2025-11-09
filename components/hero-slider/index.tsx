@@ -323,37 +323,46 @@ export function HeroSlider() {
           {/* Carousel Section */}
           <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-end'}`}>
             <div className="relative w-[1000px] h-[450px]">
-              {[0, 1, 2].map((offset) => {
-                const index = (currentIndex + offset) % destinations.length;
-                
-                return (
-                  <motion.div
-                    key={`slide-${currentIndex}-${offset}`}
-                    className="absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl"
-                    style={{ 
-                      originX: 0.5,
-                      originY: 0.5,
-                    }}
-                    animate={{
-                      x: offset === 0 ? 0 : offset === 1 ? 260 : 520,
-                      opacity: 1,
-                      zIndex: 1,
-                      scale: 1,
-                    }}
-                    exit={{
-                      x: -100,
-                      opacity: 0,
-                      scale: 0.95,
-                      transition: { 
-                        duration: 0.5,
-                        ease: [0.32, 0.72, 0, 1]
-                      }
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.32, 0.72, 0, 1]
-                    }}
-                  >
+              <AnimatePresence mode="popLayout" initial={false}>
+                {[0, 1, 2].map((offset) => {
+                  const index = (currentIndex + offset) % destinations.length;
+                  const isRTL = currentLanguage === 'ar';
+                  
+                  // Calculate x positions based on direction
+                  const xPositions = isRTL 
+                    ? [520, 260, 0]  // RTL: right to left
+                    : [0, 260, 520]; // LTR: left to right
+                  
+                  return (
+                    <motion.div
+                      key={`${index}-${offset}`}
+                      className="absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl"
+                      initial={{
+                        x: isRTL ? 800 : -800,
+                        opacity: 0,
+                        scale: 0.8,
+                      }}
+                      animate={{
+                        x: xPositions[offset],
+                        opacity: 1,
+                        scale: 1,
+                        zIndex: 3 - offset,
+                      }}
+                      exit={{
+                        x: isRTL ? -800 : 800,
+                        opacity: 0,
+                        scale: 0.8,
+                        transition: { 
+                          duration: 0.5,
+                          ease: [0.4, 0, 0.2, 1]
+                        }
+                      }}
+                      transition={{
+                        duration: 0.7,
+                        ease: [0.4, 0, 0.2, 1],
+                        delay: offset * 0.05,
+                      }}
+                    >
                     <div className="relative w-full h-full group cursor-pointer">
                       {destinations[index].cardImage && (
                         <Image
@@ -400,50 +409,18 @@ export function HeroSlider() {
                   </motion.div>
                 );
               })}
-
-              {/* Exiting Card */}
-              <AnimatePresence mode="wait">
-                {direction === 1 && destinations[(currentIndex - 1 + destinations.length) % destinations.length].cardImage && (
-                  <motion.div
-                    key="exit-card"
-                    className="absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl"
-                    initial={{ x: 0, opacity: 1, scale: 1 }}
-                    animate={{ 
-                      x: -100,
-                      opacity: 0,
-                      scale: 0.95,
-                      transition: { 
-                        duration: 0.5,
-                        ease: [0.32, 0.72, 0, 1]
-                      }
-                    }}
-                    style={{
-                      zIndex: 0
-                    }}
-                  >
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={destinations[(currentIndex - 1 + destinations.length) % destinations.length].cardImage}
-                        alt={t(`home.destinations.${destinations[(currentIndex - 1 + destinations.length) % destinations.length].key}.title`)}
-                        fill
-                        sizes="250px"
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    </div>
-                  </motion.div>
-                )}
               </AnimatePresence>
+
             </div>
             
             {/* Navigation Buttons */}
-            <div className="absolute left-[300px] bottom-20 flex space-x-4">
+            <div className={`absolute bottom-20 flex gap-4 ${currentLanguage === 'ar' ? 'right-[300px]' : 'left-[300px]'}`}>
               <button
                 onClick={() => {
                   setDirection(-1);
                   setCurrentIndex((prev) => (prev === 0 ? destinations.length - 1 : prev - 1));
                 }}
-                className="group h-12 w-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors"
+                className="group h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110"
               >
                 <ChevronLeft className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
               </button>
@@ -452,7 +429,7 @@ export function HeroSlider() {
                   setDirection(1);
                   setCurrentIndex((prev) => (prev === destinations.length - 1 ? 0 : prev + 1));
                 }}
-                className="group h-12 w-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors"
+                className="group h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110"
               >
                 <ChevronRight className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
               </button>
