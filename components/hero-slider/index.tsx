@@ -411,8 +411,8 @@ export function HeroSlider() {
               })}
               </AnimatePresence>
             
-              {/* Navigation Buttons - Absolutely positioned, outside AnimatePresence */}
-              <div className="absolute bottom-8 left-[705px] flex gap-4 z-40">
+              {/* Navigation Buttons - 15px below third thumbnail */}
+              <div className="absolute left-[705px] flex gap-4 z-40" style={{ top: 'calc(390px + 15px)' }}>
                 <button
                   onClick={() => {
                     setDirection(-1);
