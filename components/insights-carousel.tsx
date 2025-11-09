@@ -180,31 +180,27 @@ export function InsightsCarousel() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Cards Container - Continuous Sliding Belt */}
+          {/* Cards Container - Overlapping Fade Effect */}
           <div className="relative h-[500px] overflow-hidden">
             <div className="h-full relative w-full">
-              {[-2, -1, 0, 1].map((offset) => {
+              {[-1, 0, 1].map((offset) => {
                 const articleIndex = getCardIndex(offset);
                 const article = articles[articleIndex];
                 const isCenter = offset === 0;
                 const isLeft = offset === -1;
                 const isRight = offset === 1;
-                const isExiting = offset === -2;
                 
-                // Positions: Exiting(-20%), Left(0%), Center(20%), Right(80%)
-                // Widths: Exiting(20%), Left(20%), Center(60%), Right(20%)
+                // Fixed positions - no movement, just opacity changes
                 const positions = {
-                  '-2': -25,  // Exiting position (off-screen left)
-                  '-1': 0,    // Left position
-                  '0': 20,    // Center position
-                  '1': 80,    // Right position
+                  '-1': 0,   // Left: 0%
+                  '0': 20,   // Center: 20%
+                  '1': 80,   // Right: 80%
                 };
                 
                 const widths = {
-                  '-2': 20,   // Exiting width
-                  '-1': 20,   // Left width
-                  '0': 60,    // Center width
-                  '1': 20,    // Right width
+                  '-1': 20,  // Left: 20%
+                  '0': 60,   // Center: 60%
+                  '1': 20,   // Right: 20%
                 };
                 
                 const leftPos = positions[String(offset) as keyof typeof positions];
@@ -214,29 +210,31 @@ export function InsightsCarousel() {
                   <motion.div
                     key={`card-${articleIndex}`}
                     className="absolute h-full cursor-pointer"
-                    initial={false}
-                    animate={{
+                    style={{
                       left: `${leftPos}%`,
                       width: `${cardWidth}%`,
-                      opacity: isExiting ? 0 : 1,
+                    }}
+                    initial={false}
+                    animate={{
+                      opacity: 1,
+                      scale: isCenter ? 1 : 0.95,
                       zIndex: isCenter ? 20 : 10,
                     }}
                     transition={{ 
-                      duration: 0.8,
+                      duration: 0.6,
                       ease: [0.4, 0.0, 0.2, 1],
-                      opacity: { duration: 0.6 }
                     }}
-                    onClick={() => !isCenter && !isExiting && setCurrentIndex(articleIndex)}
+                    onClick={() => !isCenter && setCurrentIndex(articleIndex)}
                   >
                     <Link href={`/insights/${article.slug}`} className={isCenter ? '' : 'pointer-events-none'}>
                       <div className="relative w-full h-full overflow-hidden group">
                         <motion.div
                           className="absolute inset-0"
                           animate={{
-                            filter: isCenter ? 'grayscale(0)' : isExiting ? 'grayscale(0.8)' : 'grayscale(0.4)',
-                            opacity: isCenter ? 1 : isExiting ? 0.3 : 0.6,
+                            filter: isCenter ? 'grayscale(0)' : 'grayscale(0.5)',
+                            opacity: isCenter ? 1 : 0.5,
                           }}
-                          transition={{ duration: 0.8, ease: [0.4, 0.0, 0.2, 1] }}
+                          transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
                         >
                         {/* Background Image */}
                         {article.imageUrl ? (
@@ -270,32 +268,28 @@ export function InsightsCarousel() {
                         
                         {/* Content Overlaid on Image */}
                         <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-                          <div className="overflow-hidden">
-                            <motion.h3 
-                              className="font-bold text-white drop-shadow-2xl origin-left line-clamp-2"
-                              style={{ fontSize: '1.5rem' }}
-                              animate={{
-                                scale: isCenter ? 1.8 : 1,
-                                opacity: 1,
-                              }}
-                              transition={{ duration: 0.8, ease: [0.4, 0.0, 0.2, 1] }}
-                            >
-                              {article.title[currentLanguage]}
-                            </motion.h3>
-                          </div>
-                          
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
+                          <motion.h3 
+                            className={`font-bold text-white drop-shadow-2xl ${
+                              isCenter ? 'text-3xl md:text-4xl lg:text-5xl' : 'text-lg md:text-xl'
+                            }`}
                             animate={{
-                              opacity: isCenter ? 1 : 0,
-                              height: isCenter ? 'auto' : 0,
-                              marginTop: isCenter ? '1rem' : 0,
+                              opacity: 1,
                             }}
-                            transition={{ duration: 0.8, ease: [0.4, 0.0, 0.2, 1] }}
+                            transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
                           >
-                            <p className="text-lg md:text-xl text-white/95 line-clamp-2 mb-6 leading-relaxed drop-shadow-lg">
-                              {article.excerpt[currentLanguage]}
-                            </p>
+                            {article.title[currentLanguage]}
+                          </motion.h3>
+                          
+                          {isCenter && (
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.6 }}
+                            >
+                              <p className="text-lg md:text-xl text-white/95 mt-4 mb-6 leading-relaxed drop-shadow-lg line-clamp-2">
+                                {article.excerpt[currentLanguage]}
+                              </p>
                               
                               {/* Footer */}
                               <div className="flex items-center justify-between">
@@ -313,7 +307,8 @@ export function InsightsCarousel() {
                                   <ArrowRight className="w-5 h-5" />
                                 </motion.div>
                               </div>
-                          </motion.div>
+                            </motion.div>
+                          )}
                         </div>
                         </motion.div>
                       </div>
