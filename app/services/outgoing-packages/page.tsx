@@ -113,7 +113,7 @@ export default function OutgoingPackages() {
                     )}
                     <CardHeader>
                       <CardTitle>{localizedPkg.title}</CardTitle>
-                      <CardDescription>{localizedPkg.description}</CardDescription>
+                      <CardDescription className="line-clamp-2">{localizedPkg.description}</CardDescription>
                     </CardHeader>
                 <CardContent>
                   <div className="space-y-2 text-sm">

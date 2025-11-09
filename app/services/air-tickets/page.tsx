@@ -164,7 +164,7 @@ export default function AirTickets() {
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-4">
-                        <p className="text-muted-foreground">{localizedTicket.description}</p>
+                        <p className="text-muted-foreground line-clamp-3">{localizedTicket.description}</p>
                         <div className="space-y-2">
                           <div className="flex items-center gap-2">
                             <MapPin className="h-4 w-4" />

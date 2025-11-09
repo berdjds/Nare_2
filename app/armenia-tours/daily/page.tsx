@@ -105,7 +105,7 @@ export default function DailyTours() {
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-4">
-                        <p className="text-muted-foreground">{localizedTour.description}</p>
+                        <p className="text-muted-foreground line-clamp-3">{localizedTour.description}</p>
                         <div className="space-y-2">
                           <div className="flex items-center gap-2">
                             <Clock className="h-4 w-4" />
