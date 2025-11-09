@@ -261,7 +261,7 @@ export function HeroSlider() {
         {/* Main Content */}
         <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[minmax(850px,1fr),1fr]' : 'lg:grid-cols-[1fr,minmax(850px,1fr)]'} gap-8 px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
           {/* Text Area with Gradient Background */}
-          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2 lg:ml-16 lg:mr-0' : 'lg:order-1 lg:ml-16'}`}>
+          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2 lg:ml-8 lg:mr-0' : 'lg:order-1 lg:ml-8 lg:mr-8'}`}>
             {/* Gradient Background for Text Area */}
             <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-left-8 right-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
@@ -420,7 +420,7 @@ export function HeroSlider() {
                   setDirection(-1);
                   setCurrentIndex((prev) => (prev === 0 ? destinations.length - 1 : prev - 1));
                 }}
-                className="group h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110"
+                className="group h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110 active:scale-105 transform-gpu select-none"
               >
                 <ChevronLeft className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
               </button>
@@ -429,7 +429,7 @@ export function HeroSlider() {
                   setDirection(1);
                   setCurrentIndex((prev) => (prev === destinations.length - 1 ? 0 : prev + 1));
                 }}
-                className="group h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110"
+                className="group h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110 active:scale-105 transform-gpu select-none"
               >
                 <ChevronRight className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
               </button>
