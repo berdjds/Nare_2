@@ -393,7 +393,8 @@ export function HeroSlider() {
                           ))}
                         </div>
                         <h3 className="text-white text-sm font-medium tracking-wide">
-                          {destinations[index].title || t(`home.destinations.${destinations[index].key}.title`)}
+                          {getLocalizedField(destinations[index], 'title', currentLanguage) || 
+                            (destinations[index].key ? t(`home.destinations.${destinations[index].key}.title`) : '')}
                         </h3>
                       </motion.div>
                     </div>
