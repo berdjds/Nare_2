@@ -414,6 +414,16 @@ export default function HotNewsManager() {
                       </Badge>
                     </div>
                     <p className="text-sm text-gray-600">{banner.message.en}</p>
+                    
+                    {/* Translation Status */}
+                    <div className="flex gap-2 mt-3">
+                      <span className="text-xs text-gray-500">Translations:</span>
+                      <span className="text-xs">🇬🇧 {banner.title.en ? '✓' : '○'}</span>
+                      <span className="text-xs">🇦🇲 {banner.title.hy ? '✓' : '○'}</span>
+                      <span className="text-xs">🇷🇺 {banner.title.ru ? '✓' : '○'}</span>
+                      <span className="text-xs">🇦🇪 {banner.title.ar ? '✓' : '○'}</span>
+                    </div>
+                    
                     <p className="text-xs text-gray-400 mt-2">
                       Updated: {new Date(banner.updatedAt).toLocaleString()}
                     </p>
