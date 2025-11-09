@@ -259,7 +259,7 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[400px,1fr]' : 'lg:grid-cols-[1fr,400px]'} px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
+        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[minmax(850px,1fr),1fr]' : 'lg:grid-cols-[1fr,minmax(850px,1fr)]'} gap-8 px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
           {/* Text Area with Gradient Background */}
           <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2 lg:ml-16 lg:mr-0' : 'lg:order-1 lg:ml-16'}`}>
             {/* Gradient Background for Text Area */}
@@ -322,14 +322,14 @@ export function HeroSlider() {
 
           {/* Carousel Section */}
           <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-end'}`}>
-            <div className="relative w-[800px] h-[450px]">
+            <div className="relative w-full max-w-[850px] h-[450px] overflow-visible">
               <AnimatePresence initial={false}>
                 {[0, 1, 2].map((offset) => {
                   const index = (currentIndex + offset) % destinations.length;
                   const isRTL = currentLanguage === 'ar';
                   
-                  // Positions: Thumbnail 1 (0), Thumbnail 2 (270), Thumbnail 3 (540)
-                  const positions = [0, 270, 540];
+                  // Positions: Thumbnail 1 (0), Thumbnail 2 (280), Thumbnail 3 (560)
+                  const positions = [0, 280, 560];
                   
                   return (
                     <motion.div
@@ -337,7 +337,7 @@ export function HeroSlider() {
                       className={`absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl ${offset === 0 ? 'ring-2 ring-white/30' : ''}`}
                       initial={{
                         // New card enters from RIGHT
-                        x: isRTL ? -270 : 810,
+                        x: isRTL ? -280 : 840,
                         opacity: 0,
                         scale: 0.95,
                       }}
@@ -349,7 +349,7 @@ export function HeroSlider() {
                       }}
                       exit={{
                         // First card exits to CENTER with fade
-                        x: isRTL ? 810 : -135,
+                        x: isRTL ? 840 : -135,
                         opacity: 0,
                         scale: 0.9,
                         transition: { 
@@ -413,7 +413,7 @@ export function HeroSlider() {
             </div>
             
             {/* Navigation Buttons */}
-            <div className={`absolute bottom-20 flex gap-4 ${currentLanguage === 'ar' ? 'right-[150px]' : 'left-[150px]'}`}>
+            <div className={`absolute bottom-20 flex gap-4 ${currentLanguage === 'ar' ? 'right-[280px]' : 'left-[280px]'}`}>
               <button
                 onClick={() => {
                   setDirection(-1);
