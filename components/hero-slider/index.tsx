@@ -259,13 +259,13 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[60%,40%]' : 'lg:grid-cols-[60%,40%]'} gap-0 px-8 lg:px-16 py-20`} dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
+        <div className={`grid w-full grid-cols-1 lg:grid-cols-[60%,40%] gap-0 px-8 lg:px-16 py-20`}>
           {/* Text Area with Gradient Background */}
-          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-1' : 'lg:order-1'}`}>
+          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2' : 'lg:order-1'}`}>
             {/* Gradient Background for Text Area */}
             <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-right-8 left-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
-            <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'text-right' : ''}`}>
+            <div className={`relative z-10 p-8`} dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
               <motion.h1
                 key={`title-${currentIndex}`}
                 initial={{ opacity: 0, y: 40 }}
@@ -319,7 +319,7 @@ export function HeroSlider() {
           </div>
 
           {/* Carousel Section */}
-          <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-2 justify-start' : 'lg:order-2 justify-center'}`}>
+          <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-center'}`}>
             <div className="relative w-full h-[450px] overflow-visible">
               <AnimatePresence initial={false}>
                 {[0, 1, 2].map((offset) => {
@@ -388,12 +388,13 @@ export function HeroSlider() {
                         </button>
                       </div>
                       <motion.div 
-                        className={`absolute bottom-0 left-0 right-0 p-3 ${currentLanguage === 'ar' ? 'text-right' : ''}`}
+                        className="absolute bottom-0 left-0 right-0 p-3"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
+                        dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
                       >
-                        <div className={`flex items-center gap-1 mb-1 ${currentLanguage === 'ar' ? 'justify-end' : ''}`}>
+                        <div className="flex items-center gap-1 mb-1">
                           {[...Array(5)].map((_, i) => (
                             <div key={i} className="w-1 h-1 rounded-full bg-white/60" />
                           ))}
