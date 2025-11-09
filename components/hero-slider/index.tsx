@@ -259,7 +259,7 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[minmax(850px,1fr),1fr]' : 'lg:grid-cols-[1fr,minmax(850px,1fr)]'} gap-8 px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
+        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[minmax(880px,1fr),1fr]' : 'lg:grid-cols-[1fr,minmax(880px,1fr)]'} gap-8 px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
           {/* Text Area with Gradient Background */}
           <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2 lg:ml-0 lg:mr-0' : 'lg:order-1 lg:ml-0 lg:mr-12'}`}>
             {/* Gradient Background for Text Area */}
@@ -322,15 +322,15 @@ export function HeroSlider() {
 
           {/* Carousel Section */}
           <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-end'}`}>
-            <div className="relative w-full max-w-[850px] h-[450px] overflow-visible">
+            <div className="relative w-full max-w-[880px] h-[450px] overflow-visible">
               <AnimatePresence initial={false}>
                 {[0, 1, 2].map((offset) => {
                   const index = (currentIndex + offset) % destinations.length;
                   const isRTL = currentLanguage === 'ar';
                   
-                  // Tighter layout with minimal right spacing
-                  // Positions: 80, 345, 610 (15px gaps, tight to right)
-                  const positions = [80, 345, 610];
+                  // Maximum right positioning
+                  // Positions: 100, 365, 630 (15px gaps between cards)
+                  const positions = [100, 365, 630];
                   
                   return (
                     <motion.div
@@ -350,7 +350,7 @@ export function HeroSlider() {
                       }}
                       exit={{
                         // First card exits to LEFT with fade
-                        x: isRTL ? 880 : -55,
+                        x: isRTL ? 900 : -35,
                         opacity: 0,
                         scale: 0.9,
                         transition: { 
@@ -410,31 +410,28 @@ export function HeroSlider() {
                 );
               })}
               </AnimatePresence>
-
-            </div>
             
-            {/* Navigation Buttons - Below third thumbnail */}
-            <div className={`absolute bottom-8 flex gap-4 ${currentLanguage === 'ar' ? 'right-[85px]' : 'left-[685px]'}`} style={{ transform: 'translateZ(0)' }}>
-              <button
-                onClick={() => {
-                  setDirection(-1);
-                  setCurrentIndex((prev) => (prev === 0 ? destinations.length - 1 : prev - 1));
-                }}
-                className="group h-12 w-12 flex-shrink-0 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-300 select-none touch-none"
-                style={{ transform: 'translateZ(0)' }}
-              >
-                <ChevronLeft className="w-6 h-6 text-white/80 group-hover:text-white transition-colors pointer-events-none" />
-              </button>
-              <button
-                onClick={() => {
-                  setDirection(1);
-                  setCurrentIndex((prev) => (prev === destinations.length - 1 ? 0 : prev + 1));
-                }}
-                className="group h-12 w-12 flex-shrink-0 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-300 select-none touch-none"
-                style={{ transform: 'translateZ(0)' }}
-              >
-                <ChevronRight className="w-6 h-6 text-white/80 group-hover:text-white transition-colors pointer-events-none" />
-              </button>
+              {/* Navigation Buttons - Absolutely positioned, outside AnimatePresence */}
+              <div className="absolute bottom-8 left-[705px] flex gap-4 z-40">
+                <button
+                  onClick={() => {
+                    setDirection(-1);
+                    setCurrentIndex((prev) => (prev === 0 ? destinations.length - 1 : prev - 1));
+                  }}
+                  className="h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
+                >
+                  <ChevronLeft className="w-6 h-6 text-white/80" />
+                </button>
+                <button
+                  onClick={() => {
+                    setDirection(1);
+                    setCurrentIndex((prev) => (prev === destinations.length - 1 ? 0 : prev + 1));
+                  }}
+                  className="h-12 w-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10 transition-colors duration-200"
+                >
+                  <ChevronRight className="w-6 h-6 text-white/80" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
