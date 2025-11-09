@@ -213,14 +213,14 @@ export function InsightsCarousel() {
                     className="absolute"
                     initial={{
                       x: offset * 600,
-                      scale: isCenter ? 1 : 0.75,
-                      opacity: isCenter ? 1 : 0.3,
+                      scale: isCenter ? 1 : 0.8,
+                      opacity: isCenter ? 1 : 0.4,
                       zIndex: isCenter ? 20 : 10,
                     }}
                     animate={{
-                      x: offset * 450,
-                      scale: isCenter ? 1 : 0.75,
-                      opacity: isCenter ? 1 : 0.3,
+                      x: offset * 480,
+                      scale: isCenter ? 1 : 0.8,
+                      opacity: isCenter ? 1 : 0.4,
                       zIndex: isCenter ? 20 : 10,
                     }}
                     exit={{
@@ -228,67 +228,66 @@ export function InsightsCarousel() {
                       opacity: 0,
                     }}
                     transition={{ duration: 0.7, ease: [0.43, 0.13, 0.23, 0.96] }}
-                    style={{ width: '500px' }}
+                    style={{ width: '600px', height: '450px' }}
                   >
-                    <Link href={`/insights/${article.slug}`}>
-                      <Card className={`h-full border bg-white transition-all duration-500 group overflow-hidden relative ${
+                    <Link href={`/insights/${article.slug}`} className={isCenter ? '' : 'pointer-events-none'}>
+                      <div className={`relative w-full h-full rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 group ${
                         isCenter 
-                          ? 'border-rose-200 shadow-[0_25px_80px_rgba(225,29,72,0.25)] hover:shadow-[0_30px_100px_rgba(225,29,72,0.35)]' 
-                          : 'border-rose-100 shadow-lg pointer-events-none'
+                          ? 'ring-2 ring-white/50 hover:ring-white/80 hover:shadow-[0_30px_100px_rgba(225,29,72,0.4)]' 
+                          : ''
                       }`}>
-                        {/* Glow effect on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-rose-500/0 to-red-500/0 group-hover:from-rose-500/5 group-hover:to-red-500/5 transition-all duration-500 pointer-events-none" />
+                        {/* Background Image */}
+                        {article.imageUrl ? (
+                          <Image
+                            src={article.imageUrl}
+                            alt={article.title[currentLanguage]}
+                            fill
+                            className={`object-cover transition-all duration-700 ${isCenter ? 'group-hover:scale-110' : ''}`}
+                            sizes="600px"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-rose-100 to-pink-100">
+                            <Newspaper className="w-32 h-32 text-rose-300" />
+                          </div>
+                        )}
                         
-                        {/* Image */}
-                        <div className="relative h-80 overflow-hidden">
-                          {article.imageUrl ? (
-                            <Image
-                              src={article.imageUrl}
-                              alt={article.title[currentLanguage]}
-                              fill
-                              className={`object-cover transition-all duration-700 ${isCenter ? 'group-hover:scale-110' : ''}`}
-                              sizes="500px"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-rose-100 to-pink-100">
-                              <Newspaper className="w-24 h-24 text-rose-300" />
-                            </div>
-                          )}
-                          {/* Overlay gradient */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-                          
-                          {/* Category Badge */}
-                          <Badge className={`absolute top-4 left-4 ${getCategoryColor(article.category)} text-white border-0 px-4 py-1.5 text-xs font-bold uppercase tracking-wider shadow-lg`}>
-                            {t(`insights.category.${article.category}`)}
-                          </Badge>
-                        </div>
-
-                        {/* Content */}
-                        <CardContent className="p-6">
-                          <h3 className={`text-2xl font-bold mb-3 line-clamp-2 text-gray-900 transition-colors duration-300 ${isCenter ? 'group-hover:text-red-600' : ''}`}>
+                        {/* Dark Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                        
+                        {/* Category Badge */}
+                        <Badge className={`absolute top-6 left-6 ${getCategoryColor(article.category)} text-white border-0 px-5 py-2 text-xs font-bold uppercase tracking-wider shadow-xl`}>
+                          {t(`insights.category.${article.category}`)}
+                        </Badge>
+                        
+                        {/* Content Overlaid on Image */}
+                        <div className="absolute inset-0 flex flex-col justify-end p-8">
+                          <h3 className="text-3xl md:text-4xl font-bold mb-4 line-clamp-2 text-white drop-shadow-2xl">
                             {article.title[currentLanguage]}
                           </h3>
-                          <p className="text-gray-600 text-base line-clamp-2 mb-4 leading-relaxed">
+                          <p className="text-lg text-white/90 line-clamp-3 mb-6 leading-relaxed drop-shadow-lg">
                             {article.excerpt[currentLanguage]}
                           </p>
                           
                           {/* Footer */}
-                          <div className="flex items-center justify-between text-sm border-t border-rose-100 pt-4">
-                            <div className="flex items-center gap-2 text-gray-500">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2 text-white/80 text-sm">
                               <Calendar className="w-4 h-4" />
                               <span>
                                 {new Date(article.publishedAt || article.createdAt).toLocaleDateString(currentLanguage)}
                               </span>
                             </div>
                             {isCenter && (
-                              <div className="flex items-center gap-2 text-red-600 font-semibold">
+                              <motion.div 
+                                className="flex items-center gap-2 text-white font-semibold bg-red-600 px-6 py-3 rounded-full shadow-lg"
+                                whileHover={{ scale: 1.05, x: 5 }}
+                              >
                                 <span>{t('home.insights.readMore')}</span>
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                              </div>
+                                <ArrowRight className="w-5 h-5" />
+                              </motion.div>
                             )}
                           </div>
-                        </CardContent>
-                      </Card>
+                        </div>
+                      </div>
                     </Link>
                   </motion.div>
                 );
