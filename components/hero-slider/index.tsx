@@ -259,13 +259,13 @@ export function HeroSlider() {
         </div>
 
         {/* Main Content */}
-        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[minmax(1100px,1fr),1fr]' : 'lg:grid-cols-[1fr,minmax(1100px,1fr)]'} gap-0 px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
+        <div className={`grid w-full grid-cols-1 ${currentLanguage === 'ar' ? 'lg:grid-cols-[40%,60%]' : 'lg:grid-cols-[60%,40%]'} gap-0 px-8 lg:px-16 py-20 ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
           {/* Text Area with Gradient Background */}
-          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2 lg:ml-0 lg:mr-0' : 'lg:order-1 lg:ml-20 lg:mr-0'}`}>
+          <div className={`flex flex-col justify-center space-y-6 relative ${currentLanguage === 'ar' ? 'lg:order-2 lg:ml-0 lg:mr-0' : 'lg:order-1 lg:ml-16 lg:mr-8'}`}>
             {/* Gradient Background for Text Area */}
             <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-left-8 right-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
-            <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'max-w-lg mr-auto' : 'max-w-xl'}`}>
+            <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'max-w-2xl mr-auto' : 'w-full pr-12'}`}>
               <motion.h1
                 key={`title-${currentIndex}`}
                 initial={{ opacity: 0, y: 40 }}
@@ -321,17 +321,16 @@ export function HeroSlider() {
           </div>
 
           {/* Carousel Section */}
-          <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-end'}`}>
-            <div className="relative w-full max-w-[1100px] h-[450px] overflow-visible">
+          <div className={`relative flex items-center ${currentLanguage === 'ar' ? 'lg:order-1 justify-start' : 'lg:order-2 justify-center'}`}>
+            <div className="relative w-full h-[450px] overflow-visible">
               <AnimatePresence initial={false}>
                 {[0, 1, 2].map((offset) => {
                   const index = (currentIndex + offset) % destinations.length;
                   const isRTL = currentLanguage === 'ar';
                   
-                  // Positioned far right with equal spacing
+                  // Thumbnails within 40% column, equal spacing
                   // Card width: 250px, gap: 15px between cards
-                  // Starting from center-right of screen
-                  const positions = [280, 545, 810];
+                  const positions = [0, 265, 530];
                   
                   return (
                     <motion.div
@@ -339,7 +338,7 @@ export function HeroSlider() {
                       className={`absolute w-[250px] h-[390px] rounded-[6px] overflow-hidden shadow-2xl ${offset === 0 ? 'ring-2 ring-white/30' : ''}`}
                       initial={{
                         // New card enters from RIGHT
-                        x: isRTL ? 15 : 1080,
+                        x: isRTL ? -265 : 800,
                         opacity: 0,
                         scale: 0.95,
                       }}
@@ -351,7 +350,7 @@ export function HeroSlider() {
                       }}
                       exit={{
                         // First card exits to LEFT with fade
-                        x: isRTL ? 1080 : 45,
+                        x: isRTL ? 800 : -265,
                         opacity: 0,
                         scale: 0.9,
                         transition: { 
@@ -413,7 +412,7 @@ export function HeroSlider() {
               </AnimatePresence>
             
               {/* Navigation Buttons - 15px below third thumbnail */}
-              <div className="absolute left-[885px] flex gap-4 z-40" style={{ top: 'calc(390px + 15px)' }}>
+              <div className="absolute left-[605px] flex gap-4 z-40" style={{ top: 'calc(390px + 15px)' }}>
                 <button
                   onClick={() => {
                     setDirection(-1);
