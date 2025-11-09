@@ -265,14 +265,14 @@ export function HeroSlider() {
             {/* Gradient Background for Text Area */}
             <div className={`absolute inset-0 ${currentLanguage === 'ar' ? '-left-8 right-0' : '-left-8 right-0'} bg-gradient-to-${currentLanguage === 'ar' ? 'l' : 'r'} from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm`} />
             
-            <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'max-w-2xl mr-auto' : 'w-full pr-12'}`}>
+            <div className={`relative z-10 p-8 ${currentLanguage === 'ar' ? 'max-w-2xl mr-auto' : 'w-full max-w-none pr-16'}`}>
               <motion.h1
                 key={`title-${currentIndex}`}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter drop-shadow-lg max-w-xl ${currentLanguage === 'ar' ? 'text-right' : ''}`}
+                className={`text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight drop-shadow-lg ${currentLanguage === 'ar' ? 'text-right' : ''}`}
                 dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
               >
                 {getLocalizedField(destinations[currentIndex], 'title', currentLanguage) || 
@@ -284,7 +284,7 @@ export function HeroSlider() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className={`text-lg text-white/90 max-w-xl drop-shadow-md mt-6 ${currentLanguage === 'ar' ? 'text-right' : ''}`}
+                className={`text-xl md:text-2xl text-white/90 drop-shadow-md mt-6 leading-relaxed ${currentLanguage === 'ar' ? 'text-right' : ''}`}
                 dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
               >
                 {getLocalizedField(destinations[currentIndex], 'description', currentLanguage) || 
@@ -411,8 +411,8 @@ export function HeroSlider() {
               })}
               </AnimatePresence>
             
-              {/* Navigation Buttons - 15px below third thumbnail */}
-              <div className="absolute left-[605px] flex gap-4 z-40" style={{ top: 'calc(390px + 15px)' }}>
+              {/* Navigation Buttons - Right aligned with 2nd thumbnail */}
+              <div className="absolute left-[403px] flex gap-4 z-40" style={{ top: 'calc(390px + 15px)' }}>
                 <button
                   onClick={() => {
                     setDirection(-1);
