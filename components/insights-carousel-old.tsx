@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/hooks/use-language';
 import Link from 'next/link';
@@ -47,6 +48,7 @@ export function InsightsCarousel() {
       const response = await fetch('/api/articles');
       if (response.ok) {
         const data = await response.json();
+        // Get the 6 latest published articles
         const latestArticles = data
           .filter((article: Article & { status: string }) => article.status === 'published')
           .sort((a: Article, b: Article) => {
@@ -200,119 +202,129 @@ export function InsightsCarousel() {
           </motion.button>
 
           {/* Cards Container */}
-          <div className="relative h-[550px] flex items-center justify-center overflow-hidden">
-            <AnimatePresence mode="wait" initial={false}>
-              {[-1, 0, 1].map((offset) => {
-                const articleIndex = getCardIndex(offset);
-                const article = articles[articleIndex];
-                const isCenter = offset === 0;
-                
-                return (
-                  <motion.div
-                    key={`card-${currentIndex}-${offset}`}
-                    className="absolute"
-                    initial={{
-                      x: offset * 600,
-                      scale: isCenter ? 1 : 0.75,
-                      opacity: isCenter ? 1 : 0.3,
-                      zIndex: isCenter ? 20 : 10,
-                    }}
-                    animate={{
-                      x: offset * 450,
-                      scale: isCenter ? 1 : 0.75,
-                      opacity: isCenter ? 1 : 0.3,
-                      zIndex: isCenter ? 20 : 10,
-                    }}
-                    exit={{
-                      x: offset * 300,
-                      opacity: 0,
-                    }}
-                    transition={{ duration: 0.7, ease: [0.43, 0.13, 0.23, 0.96] }}
-                    style={{ width: '500px' }}
-                  >
-                    <Link href={`/insights/${article.slug}`}>
-                      <Card className={`h-full border bg-white transition-all duration-500 group overflow-hidden relative ${
-                        isCenter 
-                          ? 'border-rose-200 shadow-[0_25px_80px_rgba(225,29,72,0.25)] hover:shadow-[0_30px_100px_rgba(225,29,72,0.35)]' 
-                          : 'border-rose-100 shadow-lg pointer-events-none'
-                      }`}>
-                        {/* Glow effect on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-rose-500/0 to-red-500/0 group-hover:from-rose-500/5 group-hover:to-red-500/5 transition-all duration-500 pointer-events-none" />
+          <div className="relative h-[600px] flex items-center justify-center overflow-hidden px-16">
+            {[-1, 0, 1].map((offset) => {
+              const articleIndex = getCardIndex(offset);
+              const article = articles[articleIndex];
+              const isCenter = offset === 0;
+              
+              return (
+                <motion.div
+                  key={article.id}
+                  className="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]"
+                  initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.15,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{ 
+                    y: -15, 
+                    scale: 1.02,
+                    rotateY: 2,
+                    transition: { duration: 0.3 }
+                  }}
+                  style={{ perspective: "1000px" }}
+                >
+                  <Link href={`/insights/${article.slug}`}>
+                    <Card className="h-full border border-rose-100 bg-white hover:bg-rose-50/30 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(225,29,72,0.15)] group overflow-hidden relative">
+                      {/* Glow effect on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-rose-500/0 to-red-500/0 group-hover:from-rose-500/5 group-hover:to-red-500/5 transition-all duration-500 pointer-events-none" />
+                      
+                      {/* Image */}
+                      <div className="relative h-52 overflow-hidden">
+                        {article.imageUrl ? (
+                          <Image
+                            src={article.imageUrl}
+                            alt={article.title[currentLanguage]}
+                            fill
+                            className="object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-2"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-rose-100 to-pink-100">
+                            <Newspaper className="w-20 h-20 text-rose-300" />
+                          </div>
+                        )}
+                        {/* Overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
                         
-                        {/* Image */}
-                        <div className="relative h-80 overflow-hidden">
-                          {article.imageUrl ? (
-                            <Image
-                              src={article.imageUrl}
-                              alt={article.title[currentLanguage]}
-                              fill
-                              className={`object-cover transition-all duration-700 ${isCenter ? 'group-hover:scale-110' : ''}`}
-                              sizes="500px"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-rose-100 to-pink-100">
-                              <Newspaper className="w-24 h-24 text-rose-300" />
-                            </div>
-                          )}
-                          {/* Overlay gradient */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-                          
-                          {/* Category Badge */}
-                          <Badge className={`absolute top-4 left-4 ${getCategoryColor(article.category)} text-white border-0 px-4 py-1.5 text-xs font-bold uppercase tracking-wider shadow-lg`}>
+                        {/* Category Badge */}
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          className="absolute top-4 left-4"
+                        >
+                          <Badge className={`${getCategoryColor(article.category)} text-white border-0 px-4 py-1.5 text-xs font-bold uppercase tracking-wider shadow-lg`}>
                             {t(`insights.category.${article.category}`)}
                           </Badge>
-                        </div>
+                        </motion.div>
+                      </div>
 
-                        {/* Content */}
-                        <CardContent className="p-6">
-                          <h3 className={`text-2xl font-bold mb-3 line-clamp-2 text-gray-900 transition-colors duration-300 ${isCenter ? 'group-hover:text-red-600' : ''}`}>
-                            {article.title[currentLanguage]}
-                          </h3>
-                          <p className="text-gray-600 text-base line-clamp-2 mb-4 leading-relaxed">
-                            {article.excerpt[currentLanguage]}
-                          </p>
-                          
-                          {/* Footer */}
-                          <div className="flex items-center justify-between text-sm border-t border-rose-100 pt-4">
-                            <div className="flex items-center gap-2 text-gray-500">
-                              <Calendar className="w-4 h-4" />
-                              <span>
-                                {new Date(article.publishedAt || article.createdAt).toLocaleDateString(currentLanguage)}
-                              </span>
-                            </div>
-                            {isCenter && (
-                              <div className="flex items-center gap-2 text-red-600 font-semibold">
-                                <span>{t('home.insights.readMore')}</span>
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                              </div>
-                            )}
+                      {/* Content */}
+                      <CardContent className="p-7 relative">
+                        <motion.h3 
+                          className="text-2xl font-bold mb-3 line-clamp-2 text-gray-900 group-hover:text-red-600 transition-colors duration-300"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          {article.title[currentLanguage]}
+                        </motion.h3>
+                        <motion.p 
+                          className="text-gray-600 text-base line-clamp-3 mb-6 leading-relaxed"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          {article.excerpt[currentLanguage]}
+                        </motion.p>
+                        
+                        {/* Footer */}
+                        <div className="flex items-center justify-between text-sm border-t border-rose-100 pt-4">
+                          <div className="flex items-center gap-2 text-gray-500">
+                            <Calendar className="w-4 h-4" />
+                            <span>
+                              {new Date(article.publishedAt || article.createdAt).toLocaleDateString(currentLanguage)}
+                            </span>
                           </div>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
+                          <motion.div 
+                            className="flex items-center gap-2 text-red-600 font-semibold group-hover:gap-3 transition-all"
+                            whileHover={{ x: 5 }}
+                          >
+                            <span>{t('home.insights.readMore')}</span>
+                            <ArrowRight className="w-5 h-5" />
+                          </motion.div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center gap-3 mt-10">
-            {articles.map((_, index) => (
-              <motion.button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                className={`h-2.5 rounded-full transition-all duration-500 ${
-                  index === currentIndex
-                    ? 'w-12 bg-gradient-to-r from-red-500 to-rose-500 shadow-lg shadow-red-500/50'
-                    : 'w-2.5 bg-rose-300/50 hover:bg-rose-400/70'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+          {articles.length > 3 && (
+            <div className="flex justify-center gap-3 mt-10">
+              {Array.from({ length: Math.max(1, articles.length - 2) }).map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`h-2.5 rounded-full transition-all duration-500 ${
+                    index === currentIndex
+                      ? 'w-12 bg-gradient-to-r from-red-500 to-rose-500 shadow-lg shadow-red-500/50'
+                      : 'w-2.5 bg-rose-300/50 hover:bg-rose-400/70'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* View All Button */}
