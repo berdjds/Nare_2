@@ -71,12 +71,28 @@ export default function Services() {
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="container">
-        <motion.div className="text-center mb-16" variants={itemVariants}>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+        <motion.div className="text-center mb-16 max-w-4xl mx-auto" variants={itemVariants}>
+          {/* Tagline Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm mb-4"
+          >
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            {t('home.services.tagline')}
+          </motion.div>
+          
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">
             {t('home.services.title')}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-6">
             {t('home.services.subtitle')}
+          </p>
+          {/* Description paragraph */}
+          <p className="text-base text-gray-500 leading-relaxed max-w-3xl mx-auto">
+            {t('home.services.description')}
           </p>
         </motion.div>
 
