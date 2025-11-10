@@ -1,10 +1,14 @@
 import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/hooks/use-language'
 import { useImages } from '@/lib/hooks/use-images'
 import { ImageWithFallback } from '@/components/image-with-fallback'
 import Link from 'next/link'
-import { MapPin, Globe, Briefcase, ArrowRight } from 'lucide-react'
+import { MapPin, Globe, Briefcase, ArrowRight, Sparkles } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 const containerVariants = {
   hidden: {},
@@ -76,16 +80,17 @@ export default function Services() {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
       <div className="container relative z-10">
         <motion.div className="text-center mb-16 max-w-4xl mx-auto" variants={itemVariants}>
-          {/* Tagline Badge */}
+          {/* Tagline Badge using shadcn */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm mb-6 shadow-lg shadow-primary/20"
           >
-            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-            {t('home.services.tagline') || 'What We Offer'}
+            <Badge className="px-5 py-2.5 text-sm font-semibold bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0 shadow-lg shadow-primary/20 gap-2">
+              <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+              {t('home.services.tagline') || 'What We Offer'}
+            </Badge>
           </motion.div>
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
@@ -99,11 +104,11 @@ export default function Services() {
             {t('home.services.description') || 'From exploring ancient wonders to planning your dream getaway, we provide comprehensive travel solutions tailored to your needs. With over a decade of expertise, we turn your travel aspirations into unforgettable experiences.'}
           </p>
           
-          {/* Decorative line */}
+          {/* Decorative separator using shadcn */}
           <div className="mt-10 flex items-center justify-center gap-3">
-            <div className="w-16 h-1 bg-gradient-to-r from-transparent via-primary to-primary rounded-full" />
-            <div className="w-3 h-3 rounded-full bg-gradient-to-br from-primary to-secondary" />
-            <div className="w-16 h-1 bg-gradient-to-l from-transparent via-secondary to-secondary rounded-full" />
+            <Separator className="w-16 bg-gradient-to-r from-transparent via-primary to-primary h-1 rounded-full" />
+            <div className="w-3 h-3 rounded-full bg-gradient-to-br from-primary to-secondary shadow-lg" />
+            <Separator className="w-16 bg-gradient-to-l from-transparent via-secondary to-secondary h-1 rounded-full" />
           </div>
         </motion.div>
 
@@ -117,10 +122,10 @@ export default function Services() {
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
-                <Link href={service.href} className="block h-full">
-                  <Card className="group cursor-pointer overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 h-full bg-white relative">
+                <Link href={service.href} className="block h-full group/card">
+                  <Card className="cursor-pointer overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 h-full bg-white relative group-hover/card:scale-[1.02]">
                     {/* Background gradient on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/5 group-hover:to-secondary/5 transition-all duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover/card:from-primary/5 group-hover/card:to-secondary/5 transition-all duration-700" />
                     
                     <div className="relative">
                       {/* Image section */}
@@ -129,7 +134,7 @@ export default function Services() {
                           src={service.image}
                           fallbackKey="heroVernissage"
                           alt={service.title}
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                          className="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-700"
                           width={500}
                           height={312}
                           priority={index === 0}
@@ -140,7 +145,12 @@ export default function Services() {
                         
                         {/* Icon badge - brand colors */}
                         <div className={`absolute top-6 ${isArabic ? 'right-6' : 'left-6'} z-10`}>
-                          <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color === 'bg-primary' ? 'from-primary to-primary/80' : service.color === 'bg-blue-500' ? 'from-blue-500 to-blue-600' : 'from-secondary to-secondary/80'} shadow-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                          <div className={cn(
+                            "relative w-14 h-14 rounded-2xl bg-gradient-to-br shadow-2xl flex items-center justify-center transform group-hover/card:scale-110 group-hover/card:rotate-6 transition-all duration-500",
+                            service.color === 'bg-primary' ? 'from-primary to-primary/80' : 
+                            service.color === 'bg-blue-500' ? 'from-blue-500 to-blue-600' : 
+                            'from-secondary to-secondary/80'
+                          )}>
                             <Icon className="w-7 h-7 text-white" />
                             {/* Pulse effect */}
                             <div className="absolute inset-0 rounded-2xl bg-white/20 animate-ping" style={{ animationDuration: '2s' }} />
@@ -148,14 +158,14 @@ export default function Services() {
                         </div>
                         
                         {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
                       </div>
                       
                       {/* Content section */}
                       <CardContent className="p-8">
                         <div className="space-y-4">
                           {/* Title with brand color on hover */}
-                          <h3 className="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">
+                          <h3 className="text-2xl font-bold text-gray-900 group-hover/card:text-primary transition-colors duration-300">
                             {service.title}
                           </h3>
                           
@@ -164,19 +174,26 @@ export default function Services() {
                             {service.description}
                           </p>
                           
-                          {/* CTA section */}
-                          <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                          {/* CTA section with shadcn Button */}
+                          <Separator className="my-4" />
+                          <div className="flex items-center justify-between pt-2">
                             {/* Animated progress bar */}
                             <div className="flex-1 mr-4">
-                              <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
-                                <div className="h-full bg-gradient-to-r from-primary to-secondary w-0 group-hover:w-full transition-all duration-700 ease-out" />
+                              <div className="h-1 bg-muted rounded-full overflow-hidden">
+                                <div className="h-full bg-gradient-to-r from-primary to-secondary rounded-full w-0 group-hover/card:w-full transition-all duration-700 ease-out" />
                               </div>
                             </div>
                             
-                            {/* Arrow button with brand gradient */}
-                            <div className="w-12 h-12 rounded-xl bg-gray-50 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-primary/20">
-                              <ArrowRight className={`w-6 h-6 text-gray-600 group-hover:text-white transition-colors duration-300 ${isArabic ? 'rotate-180' : ''}`} />
-                            </div>
+                            {/* shadcn Button with brand gradient */}
+                            <Button
+                              size="icon"
+                              className={cn(
+                                "w-12 h-12 rounded-xl bg-secondary/10 hover:bg-gradient-to-br hover:from-primary hover:to-secondary transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-primary/20 border-0",
+                                isArabic && "rotate-180"
+                              )}
+                            >
+                              <ArrowRight className="w-5 h-5 text-gray-600 group-hover/card:text-white transition-colors duration-300" />
+                            </Button>
                           </div>
                         </div>
                       </CardContent>
