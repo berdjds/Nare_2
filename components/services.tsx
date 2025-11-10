@@ -78,22 +78,29 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-primary font-semibold text-sm mb-6 shadow-sm"
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            {t('home.services.tagline')}
+            {t('home.services.tagline') || 'What We Offer'}
           </motion.div>
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">
-            {t('home.services.title')}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+            {t('home.services.title') || 'Our Services'}
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-6">
-            {t('home.services.subtitle')}
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-6 font-medium">
+            {t('home.services.subtitle') || 'Experience excellence in travel with our dedicated services'}
           </p>
           {/* Description paragraph */}
           <p className="text-base text-gray-500 leading-relaxed max-w-3xl mx-auto">
-            {t('home.services.description')}
+            {t('home.services.description') || 'From exploring ancient wonders to planning your dream getaway, we provide comprehensive travel solutions tailored to your needs. With over a decade of expertise, we turn your travel aspirations into unforgettable experiences.'}
           </p>
+          
+          {/* Decorative line */}
+          <div className="mt-8 flex items-center justify-center gap-2">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary" />
+            <div className="w-2 h-2 rounded-full bg-primary" />
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-primary" />
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
