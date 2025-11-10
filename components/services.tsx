@@ -1,4 +1,4 @@
-import { Card } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/hooks/use-language'
 import { useImages } from '@/lib/hooks/use-images'
@@ -41,7 +41,7 @@ export default function Services() {
       description: t('home.services.daily.description'),
       image: images.tourGarni,
       href: '/armenia-tours/daily',
-      color: 'from-primary/20 to-primary/5'
+      color: 'bg-primary'
     },
     {
       icon: Globe,
@@ -49,7 +49,7 @@ export default function Services() {
       description: t('home.services.international.description'),
       image: images.destinationDubai,
       href: '/services/outgoing-packages',
-      color: 'from-secondary/20 to-secondary/5'
+      color: 'bg-blue-500'
     },
     {
       icon: Briefcase,
@@ -57,7 +57,7 @@ export default function Services() {
       description: t('home.services.business.description'),
       image: images.serviceMice,
       href: '/b2b',
-      color: 'from-primary/20 to-primary/5'
+      color: 'bg-secondary'
     }
   ]
 
@@ -86,31 +86,24 @@ export default function Services() {
             return (
               <motion.div key={index} variants={itemVariants}>
                 <Link href={service.href}>
-                  <Card className="group cursor-pointer h-full overflow-hidden border-0 bg-white shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    {/* Image Section */}
+                  <Card className="group cursor-pointer overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 h-full">
                     <div className="relative overflow-hidden aspect-[4/3]">
                       <ImageWithFallback
                         src={service.image}
                         fallbackKey="heroVernissage"
                         alt={service.title}
-                        className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700"
+                        className="transform group-hover:scale-110 transition-transform duration-700 object-cover"
                         width={400}
                         height={300}
                         priority={index === 0}
-                        loading={index === 0 ? 'eager' : 'lazy'}
+                        loading={index === 0 ? "eager" : "lazy"}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                      
                       {/* Icon Badge */}
-                      <div className={`absolute top-4 ${isArabic ? 'right-4' : 'left-4'}`}>
-                        <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${service.color} backdrop-blur-sm flex items-center justify-center border border-white/20 shadow-lg`}>
-                          <Icon className="w-6 h-6 text-primary" />
-                        </div>
+                      <div className={`absolute top-4 ${isArabic ? 'right-4' : 'left-4'} w-12 h-12 ${service.color} rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-6 h-6 text-white" />
                       </div>
                     </div>
-
-                    {/* Content Section */}
-                    <div className="p-6">
+                    <CardContent className="p-6">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
                           <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">
@@ -122,7 +115,7 @@ export default function Services() {
                         </div>
                         <ArrowRight className={`w-5 h-5 text-primary flex-shrink-0 mt-1 transform group-hover:translate-x-1 transition-transform duration-300 ${isArabic ? 'rotate-180' : ''}`} />
                       </div>
-                    </div>
+                    </CardContent>
                   </Card>
                 </Link>
               </motion.div>
