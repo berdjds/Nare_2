@@ -1,16 +1,17 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+'use client'
+
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/hooks/use-language'
 import { useImages } from '@/lib/hooks/use-images'
 import { ImageWithFallback } from '@/components/image-with-fallback'
 import Link from 'next/link'
-import { MapPin, Globe, Briefcase, ArrowRight, Sparkles, Star, TrendingUp, Award } from 'lucide-react'
+import { MapPin, Globe, Briefcase, ArrowRight, Sparkles, Star, TrendingUp, Award, Check } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useState } from 'react'
 
 const containerVariants = {
   hidden: {},
@@ -39,16 +40,17 @@ export default function Services() {
   const { t, currentLanguage } = useLanguage()
   const { images } = useImages()
   const isArabic = currentLanguage === 'ar' || currentLanguage === ('ar' as any)
+  const [expandedCard, setExpandedCard] = useState<number | null>(null)
 
   const services = [
     {
       icon: MapPin,
       title: t('home.services.daily.title') || 'Daily Tours',
-      description: t('home.services.daily.description') || 'Discover Armenia\'s most beautiful destinations with expert local guides',
+      description: t('home.services.daily.description') || 'Discover Armenia\'s most beautiful destinations',
       image: images.tourGarni,
       href: '/armenia-tours/daily',
       color: 'orange',
-      stats: { icon: Star, label: t('home.services.daily.stats') || '500+ Tours', value: '4.9/5' },
+      stats: { icon: Star, value: '4.9/5', label: t('home.services.daily.stats') || '500+ Tours' },
       features: [
         t('home.services.daily.feature1') || 'Expert Guides',
         t('home.services.daily.feature2') || 'Small Groups',
@@ -58,11 +60,11 @@ export default function Services() {
     {
       icon: Globe,
       title: t('home.services.international.title') || 'International Travel',
-      description: t('home.services.international.description') || 'Explore worldwide destinations with our curated travel packages',
+      description: t('home.services.international.description') || 'Explore worldwide destinations',
       image: images.destinationDubai,
       href: '/services/outgoing-packages',
       color: 'blue',
-      stats: { icon: TrendingUp, label: t('home.services.international.stats') || '50+ Destinations', value: '10K+' },
+      stats: { icon: TrendingUp, value: '10K+', label: t('home.services.international.stats') || '50+ Destinations' },
       features: [
         t('home.services.international.feature1') || 'Visa Support',
         t('home.services.international.feature2') || 'Best Deals',
@@ -72,11 +74,11 @@ export default function Services() {
     {
       icon: Briefcase,
       title: t('home.services.business.title') || 'Business Travel',
-      description: t('home.services.business.description') || 'Professional MICE and DMC services for corporate clients',
+      description: t('home.services.business.description') || 'Professional MICE and DMC services',
       image: images.serviceMice,
       href: '/b2b',
       color: 'purple',
-      stats: { icon: Award, label: t('home.services.business.stats') || 'Corporate Events', value: '200+' },
+      stats: { icon: Award, value: '200+', label: t('home.services.business.stats') || 'Corporate Events' },
       features: [
         t('home.services.business.feature1') || 'MICE Services',
         t('home.services.business.feature2') || 'DMC Solutions',
@@ -85,239 +87,183 @@ export default function Services() {
     }
   ]
 
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case 'orange':
+        return {
+          gradient: 'from-[#FF6B35] to-[#FF5722]',
+          bg: 'bg-[#FF6B35]/10',
+          text: 'text-[#FF6B35]',
+          border: 'border-[#FF6B35]/20',
+          hover: 'hover:border-[#FF6B35]',
+          lightBg: 'bg-[#FF6B35]/5'
+        }
+      case 'blue':
+        return {
+          gradient: 'from-[#2196F3] to-[#1976D2]',
+          bg: 'bg-[#2196F3]/10',
+          text: 'text-[#2196F3]',
+          border: 'border-[#2196F3]/20',
+          hover: 'hover:border-[#2196F3]',
+          lightBg: 'bg-[#2196F3]/5'
+        }
+      case 'purple':
+        return {
+          gradient: 'from-[#7C3AED] to-[#6D28D9]',
+          bg: 'bg-[#7C3AED]/10',
+          text: 'text-[#7C3AED]',
+          border: 'border-[#7C3AED]/20',
+          hover: 'hover:border-[#7C3AED]',
+          lightBg: 'bg-[#7C3AED]/5'
+        }
+      default:
+        return {
+          gradient: 'from-[#FF6B35] to-[#FF5722]',
+          bg: 'bg-[#FF6B35]/10',
+          text: 'text-[#FF6B35]',
+          border: 'border-[#FF6B35]/20',
+          hover: 'hover:border-[#FF6B35]',
+          lightBg: 'bg-[#FF6B35]/5'
+        }
+    }
+  }
+
   return (
     <motion.section 
-      className="py-24 bg-white relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-100px" }}
       dir={isArabic ? 'rtl' : 'ltr'}
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      {/* Modern background decoration */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-50 via-transparent to-transparent opacity-70" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-50 via-transparent to-transparent opacity-70" />
+      
       <div className="container relative z-10">
-        <motion.div className="text-center mb-16 max-w-4xl mx-auto" variants={itemVariants}>
-          {/* Tagline Badge using shadcn */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <Badge className="px-4 py-2 text-sm font-semibold bg-gradient-to-r from-[#FF6B35] to-[#FF8F6B] hover:from-[#FF5722] hover:to-[#FF6B35] text-white border-0 shadow-lg gap-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              {t('home.services.tagline') || 'What We Offer'}
-            </Badge>
-          </motion.div>
+        {/* Header Section */}
+        <motion.div className="text-center mb-20 max-w-4xl mx-auto" variants={itemVariants}>
+          <Badge className="mb-6 px-5 py-2.5 text-sm font-semibold bg-gradient-to-r from-[#FF6B35] to-[#2196F3] text-white border-0 shadow-lg">
+            <Sparkles className="w-4 h-4 mr-2" />
+            {t('home.services.tagline') || 'What We Offer'}
+          </Badge>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
             {t('home.services.title') || 'Our Services'}
           </h2>
-          <p className="text-xl md:text-2xl text-gray-700 max-w-2xl mx-auto mb-6 font-medium">
-            {t('home.services.subtitle') || 'Experience excellence in travel with our dedicated services'}
-          </p>
-          {/* Description paragraph */}
-          <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            {t('home.services.description') || 'From exploring ancient wonders to planning your dream getaway, we provide comprehensive travel solutions tailored to your needs. With over a decade of expertise, we turn your travel aspirations into unforgettable experiences.'}
+          
+          <p className="text-xl md:text-2xl text-gray-600 mb-4 font-medium">
+            {t('home.services.subtitle') || 'Experience excellence in travel'}
           </p>
           
-          {/* Decorative separator using shadcn */}
-          <div className="mt-10 flex items-center justify-center gap-3">
-            <Separator className="w-16 bg-gradient-to-r from-transparent via-[#FF6B35] to-[#FF6B35] h-1 rounded-full" />
-            <div className="w-3 h-3 rounded-full bg-gradient-to-br from-[#FF6B35] to-[#2196F3] shadow-lg" />
-            <Separator className="w-16 bg-gradient-to-l from-transparent via-[#2196F3] to-[#2196F3] h-1 rounded-full" />
-          </div>
+          <Separator className="w-24 mx-auto h-1 bg-gradient-to-r from-[#FF6B35] to-[#2196F3]" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const Icon = service.icon
             const StatIcon = service.stats.icon
+            const colors = getColorClasses(service.color)
+            const isExpanded = expandedCard === index
+
             return (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 variants={itemVariants}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="group"
               >
-                <TooltipProvider>
-                  <HoverCard openDelay={200}>
-                    <HoverCardTrigger asChild>
-                      <Link href={service.href} className="block h-full group/card">
-                  <Card className="cursor-pointer overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 h-full bg-white relative group-hover/card:scale-[1.02]">
-                    {/* Background gradient on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover/card:from-primary/5 group-hover/card:to-secondary/5 transition-all duration-700" />
+                <Card className={cn(
+                  "overflow-hidden border-2 transition-all duration-500 h-full flex flex-col",
+                  colors.border,
+                  colors.hover,
+                  "hover:shadow-2xl shadow-lg bg-white"
+                )}>
+                  {/* Image Header */}
+                  <div className="relative h-64 overflow-hidden">
+                    <ImageWithFallback
+                      src={service.image}
+                      fallbackKey="heroVernissage"
+                      alt={service.title}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                      width={600}
+                      height={400}
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
                     
-                    <div className="relative">
-                      {/* Image section */}
-                      <div className="relative overflow-hidden aspect-[16/10]">
-                        <ImageWithFallback
-                          src={service.image}
-                          fallbackKey="heroVernissage"
-                          alt={service.title}
-                          className="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-700"
-                          width={500}
-                          height={312}
-                          priority={index === 0}
-                          loading={index === 0 ? "eager" : "lazy"}
-                        />
-                        {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent" />
-                        
-                        {/* Icon badge with tooltip - brand colors */}
-                        <div className={`absolute top-6 ${isArabic ? 'right-6' : 'left-6'} z-10`}>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <div className={cn(
-                                "relative w-14 h-14 rounded-2xl bg-gradient-to-br shadow-2xl flex items-center justify-center transform group-hover/card:scale-110 group-hover/card:rotate-6 transition-all duration-500 cursor-pointer",
-                                service.color === 'orange' ? 'from-[#FF6B35] to-[#FF5722]' : 
-                                service.color === 'blue' ? 'from-[#2196F3] to-[#1976D2]' : 
-                                'from-[#7C3AED] to-[#6D28D9]'
-                              )}>
-                                <Icon className="w-7 h-7 text-white" />
-                                {/* Pulse effect */}
-                                <div className="absolute inset-0 rounded-2xl bg-white/20 animate-ping" style={{ animationDuration: '2s' }} />
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent side="right" className="bg-gray-900 text-white border-0">
-                              <p className="font-semibold">{service.title}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </div>
-                        
-                        {/* Stats badge */}
-                        <div className="absolute top-6 right-6 z-10">
-                          <Badge className="bg-white/95 backdrop-blur-sm text-gray-900 border-0 shadow-lg hover:bg-white gap-1.5 px-3">
-                            <StatIcon className="w-3.5 h-3.5" />
-                            <span className="text-xs font-semibold">{service.stats.value}</span>
-                          </Badge>
-                        </div>
-                        
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
-                      </div>
-                      
-                      {/* Content section */}
-                      <CardContent className="p-8">
-                        <div className="space-y-4">
-                          {/* Title with brand color on hover */}
-                          <h3 className="text-2xl font-bold text-gray-900 group-hover/card:text-primary transition-colors duration-300">
-                            {service.title}
-                          </h3>
-                          
-                          {/* Description */}
-                          <p className="text-gray-600 leading-relaxed min-h-[48px]">
-                            {service.description}
-                          </p>
-                          
-                          {/* Feature tags */}
-                          <div className="flex flex-wrap gap-2 pt-2">
-                            {service.features.slice(0, 2).map((feature, idx) => (
-                              <Badge key={idx} className={cn(
-                                "text-xs font-normal border-0",
-                                service.color === 'orange' ? 'bg-[#FF6B35]/10 text-[#FF6B35]' :
-                                service.color === 'blue' ? 'bg-[#2196F3]/10 text-[#2196F3]' :
-                                'bg-[#7C3AED]/10 text-[#7C3AED]'
-                              )}>
-                                {feature}
-                              </Badge>
-                            ))}
-                          </div>
-                          
-                          {/* CTA section with shadcn Button */}
-                          <Separator className="my-4" />
-                          <div className="flex items-center justify-between pt-2">
-                            {/* Animated progress bar */}
-                            <div className="flex-1 mr-4">
-                              <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                                <div className={cn(
-                                  "h-full bg-gradient-to-r rounded-full w-0 group-hover/card:w-full transition-all duration-700 ease-out",
-                                  service.color === 'orange' ? 'from-[#FF6B35] to-[#FF8F6B]' :
-                                  service.color === 'blue' ? 'from-[#2196F3] to-[#64B5F6]' :
-                                  'from-[#7C3AED] to-[#A78BFA]'
-                                )} />
-                              </div>
-                            </div>
-                            
-                            {/* shadcn Button with brand gradient */}
-                            <Button
-                              size="icon"
-                              className={cn(
-                                "w-12 h-12 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 transition-all duration-300 shadow-md hover:shadow-lg border-0",
-                                service.color === 'orange' && "hover:from-[#FF6B35] hover:to-[#FF8F6B]",
-                                service.color === 'blue' && "hover:from-[#2196F3] hover:to-[#64B5F6]",
-                                service.color === 'purple' && "hover:from-[#7C3AED] hover:to-[#A78BFA]",
-                                isArabic && "rotate-180"
-                              )}
-                            >
-                              <ArrowRight className="w-6 h-6 text-gray-700 group-hover/card:text-white transition-colors duration-300" />
-                            </Button>
-                          </div>
-                        </div>
-                      </CardContent>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    
+                    {/* Icon Badge */}
+                    <div className={cn(
+                      "absolute top-6 left-6 w-16 h-16 rounded-2xl bg-gradient-to-br flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500",
+                      colors.gradient
+                    )}>
+                      <Icon className="w-8 h-8 text-white" />
                     </div>
-                  </Card>
-                      </Link>
-                    </HoverCardTrigger>
                     
-                    {/* Rich hover preview */}
-                    <HoverCardContent 
-                      side="top" 
-                      align="center"
-                      className="w-80 p-0 border-0 shadow-2xl"
-                    >
-                      <Card className="border-0">
-                        <CardHeader className="space-y-3 pb-4">
-                          <div className="flex items-start justify-between">
-                            <div className="flex items-center gap-3">
-                              <div className={cn(
-                                "w-10 h-10 rounded-xl bg-gradient-to-br flex items-center justify-center",
-                                service.color === 'orange' ? 'from-[#FF6B35] to-[#FF5722]' : 
-                                service.color === 'blue' ? 'from-[#2196F3] to-[#1976D2]' : 
-                                'from-[#7C3AED] to-[#6D28D9]'
-                              )}>
-                                <Icon className="w-5 h-5 text-white" />
-                              </div>
-                              <div>
-                                <CardTitle className="text-lg">{service.title}</CardTitle>
-                                <CardDescription className="text-xs flex items-center gap-1 mt-1">
-                                  <StatIcon className="w-3 h-3" />
-                                  {service.stats.label}
-                                </CardDescription>
-                              </div>
+                    {/* Stats Badge */}
+                    <div className="absolute top-6 right-6">
+                      <Badge className="bg-white/95 backdrop-blur-sm text-gray-900 border-0 shadow-lg gap-2 px-4 py-2">
+                        <StatIcon className="w-4 h-4" />
+                        <span className="font-bold">{service.stats.value}</span>
+                      </Badge>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <CardHeader className="pb-4">
+                    <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
+                    <CardDescription className="text-base text-gray-600">
+                      {service.description}
+                    </CardDescription>
+                  </CardHeader>
+
+                  <CardContent className="flex-1 space-y-4">
+                    {/* Stats Label */}
+                    <div className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg", colors.lightBg)}>
+                      <StatIcon className={cn("w-4 h-4", colors.text)} />
+                      <span className={cn("text-sm font-semibold", colors.text)}>
+                        {service.stats.label}
+                      </span>
+                    </div>
+
+                    {/* Features */}
+                    <div className="space-y-3">
+                      <p className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
+                        {t('home.services.keyFeatures') || 'Key Features'}
+                      </p>
+                      <div className="space-y-2">
+                        {service.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-center gap-3">
+                            <div className={cn("w-5 h-5 rounded-full flex items-center justify-center", colors.bg)}>
+                              <Check className={cn("w-3 h-3", colors.text)} />
                             </div>
-                            <Badge variant="secondary" className="text-xs">
-                              {service.stats.value}
-                            </Badge>
+                            <span className="text-sm text-gray-700">{feature}</span>
                           </div>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          <p className="text-sm text-muted-foreground leading-relaxed">
-                            {service.description}
-                          </p>
-                          <Separator />
-                          <div className="space-y-2">
-                            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">{t('home.services.keyFeatures') || 'Key Features'}</p>
-                            <div className="flex flex-wrap gap-2">
-                              {service.features.map((feature, idx) => (
-                                <Badge key={idx} variant="outline" className="text-xs">
-                                  {feature}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-                          <Button className="w-full bg-gradient-to-r from-[#FF6B35] to-[#2196F3] hover:from-[#FF5722] hover:to-[#1976D2] text-white border-0 shadow-lg" size="sm">
-                            {t('home.services.learnMore') || 'Learn More'}
-                            <ArrowRight className={cn("w-4 h-4 ml-2", isArabic && "rotate-180")} />
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </HoverCardContent>
-                  </HoverCard>
-                </TooltipProvider>
+                        ))}
+                      </div>
+                    </div>
+                  </CardContent>
+
+                  {/* Footer with CTA */}
+                  <CardFooter className="pt-6 border-t">
+                    <Link href={service.href} className="w-full">
+                      <Button className={cn(
+                        "w-full bg-gradient-to-r text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group/btn",
+                        colors.gradient
+                      )}>
+                        {t('home.services.learnMore') || 'Explore Now'}
+                        <ArrowRight className={cn(
+                          "w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform",
+                          isArabic && "rotate-180 group-hover/btn:-translate-x-1"
+                        )} />
+                      </Button>
+                    </Link>
+                  </CardFooter>
+                </Card>
               </motion.div>
             )
           })}
