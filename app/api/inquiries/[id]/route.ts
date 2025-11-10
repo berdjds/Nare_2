@@ -4,10 +4,11 @@ import { getInquiryById, updateInquiry, deleteInquiry, InquiryUpdate } from '@/l
 // GET - Get single inquiry
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const inquiry = await getInquiryById(params.id);
+    const { id } = await params;
+    const inquiry = await getInquiryById(id);
     
     if (!inquiry) {
       return NextResponse.json(
@@ -32,12 +33,13 @@ export async function GET(
 // PATCH - Update inquiry
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const updates: InquiryUpdate = await request.json();
     
-    const inquiry = await updateInquiry(params.id, updates);
+    const inquiry = await updateInquiry(id, updates);
     
     if (!inquiry) {
       return NextResponse.json(
@@ -63,10 +65,11 @@ export async function PATCH(
 // DELETE - Delete inquiry
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const success = await deleteInquiry(params.id);
+    const { id } = await params;
+    const success = await deleteInquiry(id);
     
     if (!success) {
       return NextResponse.json(

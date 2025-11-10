@@ -38,8 +38,10 @@ dist
 *.md
 docs/
 
-# Scripts
-scripts/
+# Scripts (keep init-data.js for postinstall)
+scripts/*.sh
+scripts/optimize*.js
+scripts/sync*.js
 
 # TypeScript build info
 *.tsbuildinfo
