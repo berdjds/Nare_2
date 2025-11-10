@@ -382,7 +382,7 @@ export function HeroSlider() {
               </div>
               
               {/* Text Area - 60% RIGHT */}
-              <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pr-12">
+              <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pr-12 lg:pl-12">
                 {/* Gradient Background for Text Area */}
                 <div className="absolute inset-0 right-0 bg-gradient-to-l from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm" />
                 
@@ -445,7 +445,7 @@ export function HeroSlider() {
           {!isArabic && (
             <>
               {/* Text Area - 60% LEFT */}
-              <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pl-12">
+              <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pl-12 lg:pr-12">
                 {/* Gradient Background for Text Area */}
                 <div className="absolute inset-0 left-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm" />
                 
