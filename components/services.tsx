@@ -1,9 +1,10 @@
 import { Card } from '@/components/ui/card'
 import { motion } from 'framer-motion'
-import { useLanguage } from '@/components/language-provider'
+import { useLanguage } from '@/hooks/use-language'
 import { useImages } from '@/lib/hooks/use-images'
 import { ImageWithFallback } from '@/components/image-with-fallback'
 import Link from 'next/link'
+import { MapPin, Globe, Briefcase, ArrowRight } from 'lucide-react'
 
 const containerVariants = {
   hidden: {},
@@ -29,16 +30,45 @@ const itemVariants = {
 }
 
 export default function Services() {
-  const { t } = useLanguage()
+  const { t, currentLanguage } = useLanguage()
   const { images } = useImages()
+  const isArabic = currentLanguage === 'ar' || currentLanguage === ('ar' as any)
+
+  const services = [
+    {
+      icon: MapPin,
+      title: t('home.services.daily.title'),
+      description: t('home.services.daily.description'),
+      image: images.tourGarni,
+      href: '/armenia-tours/daily',
+      color: 'from-primary/20 to-primary/5'
+    },
+    {
+      icon: Globe,
+      title: t('home.services.international.title'),
+      description: t('home.services.international.description'),
+      image: images.destinationDubai,
+      href: '/services/outgoing-packages',
+      color: 'from-secondary/20 to-secondary/5'
+    },
+    {
+      icon: Briefcase,
+      title: t('home.services.business.title'),
+      description: t('home.services.business.description'),
+      image: images.serviceMice,
+      href: '/b2b',
+      color: 'from-primary/20 to-primary/5'
+    }
+  ]
 
   return (
     <motion.section 
-      className="py-20 bg-gray-50"
+      className="py-20 bg-gradient-to-b from-gray-50 to-white"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
+      dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="container">
         <motion.div className="text-center mb-16" variants={itemVariants}>
@@ -51,75 +81,53 @@ export default function Services() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <motion.div variants={itemVariants}>
-            <Link href="/armenia-tours/daily">
-              <Card className="service-card group cursor-pointer hover:shadow-xl transition-shadow duration-300">
-                <div className="relative overflow-hidden aspect-[4/3]">
-                  <ImageWithFallback
-                    src={images.tourGarni}
-                    fallbackKey="heroVernissage"
-                    alt={t('home.services.daily.title')}
-                    className="transform group-hover:scale-110 transition-transform duration-500"
-                    width={400}
-                    height={300}
-                    priority={true}
-                    loading="eager"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <h3 className="text-xl font-semibold">{t('home.services.daily.title')}</h3>
-                    <p className="mt-2 text-sm text-white/80">{t('home.services.daily.description')}</p>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-          </motion.div>
+          {services.map((service, index) => {
+            const Icon = service.icon
+            return (
+              <motion.div key={index} variants={itemVariants}>
+                <Link href={service.href}>
+                  <Card className="group cursor-pointer h-full overflow-hidden border-0 bg-white shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    {/* Image Section */}
+                    <div className="relative overflow-hidden aspect-[4/3]">
+                      <ImageWithFallback
+                        src={service.image}
+                        fallbackKey="heroVernissage"
+                        alt={service.title}
+                        className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700"
+                        width={400}
+                        height={300}
+                        priority={index === 0}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                      
+                      {/* Icon Badge */}
+                      <div className={`absolute top-4 ${isArabic ? 'right-4' : 'left-4'}`}>
+                        <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${service.color} backdrop-blur-sm flex items-center justify-center border border-white/20 shadow-lg`}>
+                          <Icon className="w-6 h-6 text-primary" />
+                        </div>
+                      </div>
+                    </div>
 
-          <motion.div variants={itemVariants}>
-            <Link href="/services/outgoing-packages">
-              <Card className="service-card group cursor-pointer hover:shadow-xl transition-shadow duration-300">
-                <div className="relative overflow-hidden aspect-[4/3]">
-                  <ImageWithFallback
-                    src={images.destinationDubai}
-                    fallbackKey="heroVernissage"
-                    alt={t('home.services.international.title')}
-                    className="transform group-hover:scale-110 transition-transform duration-500"
-                    width={400}
-                    height={300}
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <h3 className="text-xl font-semibold">{t('home.services.international.title')}</h3>
-                    <p className="mt-2 text-sm text-white/80">{t('home.services.international.description')}</p>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <Link href="/b2b">
-              <Card className="service-card group cursor-pointer hover:shadow-xl transition-shadow duration-300">
-                <div className="relative overflow-hidden aspect-[4/3]">
-                  <ImageWithFallback
-                    src={images.serviceMice}
-                    fallbackKey="heroVernissage"
-                    alt={t('home.services.business.title')}
-                    className="transform group-hover:scale-110 transition-transform duration-500"
-                    width={400}
-                    height={300}
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <h3 className="text-xl font-semibold">{t('home.services.business.title')}</h3>
-                    <p className="mt-2 text-sm text-white/80">{t('home.services.business.description')}</p>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-          </motion.div>
+                    {/* Content Section */}
+                    <div className="p-6">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">
+                            {service.title}
+                          </h3>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {service.description}
+                          </p>
+                        </div>
+                        <ArrowRight className={`w-5 h-5 text-primary flex-shrink-0 mt-1 transform group-hover:translate-x-1 transition-transform duration-300 ${isArabic ? 'rotate-180' : ''}`} />
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </motion.section>
