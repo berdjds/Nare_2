@@ -382,18 +382,18 @@ export function HeroSlider() {
               </div>
               
               {/* Text Area - 60% RIGHT */}
-              <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pr-20">
+              <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pr-12">
                 {/* Gradient Background for Text Area */}
                 <div className="absolute inset-0 right-0 bg-gradient-to-l from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm" />
                 
-                <div className="relative z-10 p-8" dir="rtl">
+                <div className="relative z-10 px-6 py-8" dir="rtl">
               <motion.h1
                 key={`title-${currentIndex}`}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight drop-shadow-lg"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight drop-shadow-lg"
               >
                 {getLocalizedField(destinations[currentIndex], 'title', currentLanguage) || 
                   (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.title`) : 'Destination')}
@@ -404,7 +404,7 @@ export function HeroSlider() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className="text-lg md:text-xl text-white/90 drop-shadow-md mt-6 leading-relaxed"
+                className="text-base md:text-lg text-white/90 drop-shadow-md mt-4 leading-relaxed"
               >
                 {getLocalizedField(destinations[currentIndex], 'description', currentLanguage) || 
                   (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.description`) : '')}
@@ -445,18 +445,18 @@ export function HeroSlider() {
           {!isArabic && (
             <>
               {/* Text Area - 60% LEFT */}
-              <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pl-20">
+              <div className="flex flex-col justify-center space-y-6 relative w-full lg:w-[60%] lg:max-w-[60%] shrink-0 lg:pl-12">
                 {/* Gradient Background for Text Area */}
                 <div className="absolute inset-0 left-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent rounded-2xl backdrop-blur-sm" />
                 
-                <div className="relative z-10 p-8" dir="ltr">
+                <div className="relative z-10 px-6 py-8" dir="ltr">
               <motion.h1
                 key={`title-${currentIndex}`}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight drop-shadow-lg"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight drop-shadow-lg"
               >
                 {getLocalizedField(destinations[currentIndex], 'title', currentLanguage) || 
                   (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.title`) : 'Destination')}
@@ -467,7 +467,7 @@ export function HeroSlider() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className="text-lg md:text-xl text-white/90 drop-shadow-md mt-6 leading-relaxed"
+                className="text-base md:text-lg text-white/90 drop-shadow-md mt-4 leading-relaxed"
               >
                 {getLocalizedField(destinations[currentIndex], 'description', currentLanguage) || 
                   (destinations[currentIndex].key ? t(`home.destinations.${destinations[currentIndex].key}.description`) : '')}
