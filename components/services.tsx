@@ -47,7 +47,7 @@ export default function Services() {
       description: t('home.services.daily.description') || 'Discover Armenia\'s most beautiful destinations with expert local guides',
       image: images.tourGarni,
       href: '/armenia-tours/daily',
-      color: 'primary',
+      color: 'orange',
       stats: { icon: Star, label: t('home.services.daily.stats') || '500+ Tours', value: '4.9/5' },
       features: [
         t('home.services.daily.feature1') || 'Expert Guides',
@@ -75,7 +75,7 @@ export default function Services() {
       description: t('home.services.business.description') || 'Professional MICE and DMC services for corporate clients',
       image: images.serviceMice,
       href: '/b2b',
-      color: 'secondary',
+      color: 'purple',
       stats: { icon: Award, label: t('home.services.business.stats') || 'Corporate Events', value: '200+' },
       features: [
         t('home.services.business.feature1') || 'MICE Services',
@@ -107,7 +107,7 @@ export default function Services() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <Badge className="px-4 py-2 text-sm font-semibold bg-gradient-to-r from-[#FF6B35] to-[#4CAF50] hover:from-[#FF6B35]/90 hover:to-[#4CAF50]/90 text-white border-0 shadow-lg gap-2">
+            <Badge className="px-4 py-2 text-sm font-semibold bg-gradient-to-r from-[#FF6B35] to-[#FF8F6B] hover:from-[#FF5722] hover:to-[#FF6B35] text-white border-0 shadow-lg gap-2">
               <Sparkles className="w-3.5 h-3.5" />
               {t('home.services.tagline') || 'What We Offer'}
             </Badge>
@@ -127,8 +127,8 @@ export default function Services() {
           {/* Decorative separator using shadcn */}
           <div className="mt-10 flex items-center justify-center gap-3">
             <Separator className="w-16 bg-gradient-to-r from-transparent via-[#FF6B35] to-[#FF6B35] h-1 rounded-full" />
-            <div className="w-3 h-3 rounded-full bg-gradient-to-br from-[#FF6B35] to-[#4CAF50] shadow-lg" />
-            <Separator className="w-16 bg-gradient-to-l from-transparent via-[#4CAF50] to-[#4CAF50] h-1 rounded-full" />
+            <div className="w-3 h-3 rounded-full bg-gradient-to-br from-[#FF6B35] to-[#2196F3] shadow-lg" />
+            <Separator className="w-16 bg-gradient-to-l from-transparent via-[#2196F3] to-[#2196F3] h-1 rounded-full" />
           </div>
         </motion.div>
 
@@ -173,9 +173,9 @@ export default function Services() {
                             <TooltipTrigger asChild>
                               <div className={cn(
                                 "relative w-14 h-14 rounded-2xl bg-gradient-to-br shadow-2xl flex items-center justify-center transform group-hover/card:scale-110 group-hover/card:rotate-6 transition-all duration-500 cursor-pointer",
-                                service.color === 'primary' ? 'from-[#FF6B35] to-[#FF5722]' : 
+                                service.color === 'orange' ? 'from-[#FF6B35] to-[#FF5722]' : 
                                 service.color === 'blue' ? 'from-[#2196F3] to-[#1976D2]' : 
-                                'from-[#4CAF50] to-[#388E3C]'
+                                'from-[#7C3AED] to-[#6D28D9]'
                               )}>
                                 <Icon className="w-7 h-7 text-white" />
                                 {/* Pulse effect */}
@@ -218,9 +218,9 @@ export default function Services() {
                             {service.features.slice(0, 2).map((feature, idx) => (
                               <Badge key={idx} className={cn(
                                 "text-xs font-normal border-0",
-                                service.color === 'primary' ? 'bg-[#FF6B35]/10 text-[#FF6B35]' :
+                                service.color === 'orange' ? 'bg-[#FF6B35]/10 text-[#FF6B35]' :
                                 service.color === 'blue' ? 'bg-[#2196F3]/10 text-[#2196F3]' :
-                                'bg-[#4CAF50]/10 text-[#4CAF50]'
+                                'bg-[#7C3AED]/10 text-[#7C3AED]'
                               )}>
                                 {feature}
                               </Badge>
@@ -233,7 +233,12 @@ export default function Services() {
                             {/* Animated progress bar */}
                             <div className="flex-1 mr-4">
                               <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                                <div className="h-full bg-gradient-to-r from-[#FF6B35] to-[#4CAF50] rounded-full w-0 group-hover/card:w-full transition-all duration-700 ease-out" />
+                                <div className={cn(
+                                  "h-full bg-gradient-to-r rounded-full w-0 group-hover/card:w-full transition-all duration-700 ease-out",
+                                  service.color === 'orange' ? 'from-[#FF6B35] to-[#FF8F6B]' :
+                                  service.color === 'blue' ? 'from-[#2196F3] to-[#64B5F6]' :
+                                  'from-[#7C3AED] to-[#A78BFA]'
+                                )} />
                               </div>
                             </div>
                             
@@ -241,7 +246,10 @@ export default function Services() {
                             <Button
                               size="icon"
                               className={cn(
-                                "w-12 h-12 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-[#FF6B35] hover:to-[#4CAF50] transition-all duration-300 shadow-md hover:shadow-lg border-0",
+                                "w-12 h-12 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 transition-all duration-300 shadow-md hover:shadow-lg border-0",
+                                service.color === 'orange' && "hover:from-[#FF6B35] hover:to-[#FF8F6B]",
+                                service.color === 'blue' && "hover:from-[#2196F3] hover:to-[#64B5F6]",
+                                service.color === 'purple' && "hover:from-[#7C3AED] hover:to-[#A78BFA]",
                                 isArabic && "rotate-180"
                               )}
                             >
@@ -267,9 +275,9 @@ export default function Services() {
                             <div className="flex items-center gap-3">
                               <div className={cn(
                                 "w-10 h-10 rounded-xl bg-gradient-to-br flex items-center justify-center",
-                                service.color === 'primary' ? 'from-[#FF6B35] to-[#FF5722]' : 
+                                service.color === 'orange' ? 'from-[#FF6B35] to-[#FF5722]' : 
                                 service.color === 'blue' ? 'from-[#2196F3] to-[#1976D2]' : 
-                                'from-[#4CAF50] to-[#388E3C]'
+                                'from-[#7C3AED] to-[#6D28D9]'
                               )}>
                                 <Icon className="w-5 h-5 text-white" />
                               </div>
@@ -301,7 +309,7 @@ export default function Services() {
                               ))}
                             </div>
                           </div>
-                          <Button className="w-full bg-gradient-to-r from-[#FF6B35] to-[#4CAF50] hover:from-[#FF5722] hover:to-[#388E3C] text-white border-0 shadow-lg" size="sm">
+                          <Button className="w-full bg-gradient-to-r from-[#FF6B35] to-[#2196F3] hover:from-[#FF5722] hover:to-[#1976D2] text-white border-0 shadow-lg" size="sm">
                             {t('home.services.learnMore') || 'Learn More'}
                             <ArrowRight className={cn("w-4 h-4 ml-2", isArabic && "rotate-180")} />
                           </Button>
