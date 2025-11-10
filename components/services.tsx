@@ -144,7 +144,7 @@ export default function Services() {
       <div className="container relative z-10">
         {/* Header Section */}
         <motion.div className="text-center mb-20 max-w-4xl mx-auto" variants={itemVariants}>
-          <Badge className="mb-6 px-5 py-2.5 text-sm font-semibold bg-gradient-to-r from-[#FF6B35] to-[#2196F3] text-white border-0 shadow-lg">
+          <Badge className="mb-6 px-5 py-2.5 text-sm font-semibold bg-[#FF6B35] text-white border-0 shadow-lg">
             <Sparkles className="w-4 h-4 mr-2" />
             {t('home.services.tagline') || 'What We Offer'}
           </Badge>
@@ -157,7 +157,7 @@ export default function Services() {
             {t('home.services.subtitle') || 'Experience excellence in travel'}
           </p>
           
-          <Separator className="w-24 mx-auto h-1 bg-gradient-to-r from-[#FF6B35] to-[#2196F3]" />
+          <Separator className="w-24 mx-auto h-1 bg-[#FF6B35]" />
         </motion.div>
 
         {/* Services Grid */}
