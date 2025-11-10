@@ -30,13 +30,23 @@ export const translations = {
         title: "Our Services",
         subtitle: "Experience excellence in travel with our dedicated services",
         description: "From exploring Armenia's ancient wonders to planning your dream international getaway, we provide comprehensive travel solutions tailored to your needs. With over a decade of expertise, we turn your travel aspirations into unforgettable experiences.",
+        keyFeatures: "Key Features",
+        learnMore: "Learn More",
         daily: {
           title: "Daily Tours",
-          description: "Discover Armenia's most beautiful destinations with expert local guides"
+          description: "Discover Armenia's most beautiful destinations with expert local guides",
+          stats: "500+ Tours",
+          feature1: "Expert Guides",
+          feature2: "Small Groups",
+          feature3: "Flexible Schedule"
         },
         international: {
           title: "International Travel",
-          description: "Explore worldwide destinations with our curated travel packages"
+          description: "Explore worldwide destinations with our curated travel packages",
+          stats: "50+ Destinations",
+          feature1: "Visa Support",
+          feature2: "Best Deals",
+          feature3: "Custom Packages"
         },
         b2b: {
           title: "B2B Services",
@@ -44,7 +54,11 @@ export const translations = {
         },
         business: {
           title: "Business Travel",
-          description: "Professional MICE and DMC services for corporate clients"
+          description: "Professional MICE and DMC services for corporate clients",
+          stats: "Corporate Events",
+          feature1: "MICE Services",
+          feature2: "DMC Solutions",
+          feature3: "24/7 Support"
         }
       },
       whyChooseUs: {
@@ -876,13 +890,23 @@ export const translations = {
         title: "Մեր Ծառայությունները",
         subtitle: "Փորձառու ճամփորդական ծառայություններ",
         description: "Հայաստանի հնագույն հրաշալիքների հետազոտությունից մինչև ձեր երազանքի միջազգային ճանապարհորդության պլանավորում՝ մենք տրամադրում ենք ձեր կարիքներին համապատասխան համապարփակ ճամփորդական լուծումներ։ Ունենալով ավելի քան տասնամյակ փորձ՝ մենք ձեր ճամփորդական ձգտումները վերածում ենք անմոռանալի փորձառությունների։",
+        keyFeatures: "Հիմնական Հատկություններ",
+        learnMore: "Իմանալ Ավելին",
         daily: {
           title: "Օրական Տուրեր",
-          description: "Բացահայտեք Հայաստանի ամենագեղեցիկ վայրերը փորձառու տեղական գիդերի հետ"
+          description: "Բացահայտեք Հայաստանի ամենագեղեցիկ վայրերը փորձառու տեղական գիդերի հետ",
+          stats: "500+ Տուրեր",
+          feature1: "Փորձառու Գիդեր",
+          feature2: "Փոքր Խմբեր",
+          feature3: "Ճկուն Ժամանակացույց"
         },
         international: {
           title: "Միջազգային Ճամփորդություն",
-          description: "Հետազոտեք աշխարհի տարբեր վայրեր մեր ընտրված ճամփորդական փաթեթներով"
+          description: "Հետազոտեք աշխարհի տարբեր վայրեր մեր ընտրված ճամփորդական փաթեթներով",
+          stats: "50+ Ուղղություններ",
+          feature1: "Վիզայի Աջակցություն",
+          feature2: "Լավագույն Առաջարկներ",
+          feature3: "Անհատական Փաթեթներ"
         },
         b2b: {
           title: "B2B Ծառայություններ",
@@ -890,7 +914,11 @@ export const translations = {
         },
         business: {
           title: "Բիզնես Ճամփորդություն",
-          description: "Պրոֆեսիոնալ MICE և DMC ծառայություններ կորպորատիվ հաճախորդների համար"
+          description: "Պրոֆեսիոնալ MICE և DMC ծառայություններ կորպորատիվ հաճախորդների համար",
+          stats: "Կորպորատիվ Միջոցառումներ",
+          feature1: "MICE Ծառայություններ",
+          feature2: "DMC Լուծումներ",
+          feature3: "24/7 Աջակցություն"
         }
       },
       whyChooseUs: {

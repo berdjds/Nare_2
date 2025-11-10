@@ -43,33 +43,45 @@ export default function Services() {
   const services = [
     {
       icon: MapPin,
-      title: t('home.services.daily.title'),
-      description: t('home.services.daily.description'),
+      title: t('home.services.daily.title') || 'Daily Tours',
+      description: t('home.services.daily.description') || 'Discover Armenia\'s most beautiful destinations with expert local guides',
       image: images.tourGarni,
       href: '/armenia-tours/daily',
-      color: 'bg-primary',
-      stats: { icon: Star, label: '500+ Tours', value: '4.9/5' },
-      features: ['Expert Guides', 'Small Groups', 'Flexible Schedule']
+      color: 'primary',
+      stats: { icon: Star, label: t('home.services.daily.stats') || '500+ Tours', value: '4.9/5' },
+      features: [
+        t('home.services.daily.feature1') || 'Expert Guides',
+        t('home.services.daily.feature2') || 'Small Groups',
+        t('home.services.daily.feature3') || 'Flexible Schedule'
+      ]
     },
     {
       icon: Globe,
-      title: t('home.services.international.title'),
-      description: t('home.services.international.description'),
+      title: t('home.services.international.title') || 'International Travel',
+      description: t('home.services.international.description') || 'Explore worldwide destinations with our curated travel packages',
       image: images.destinationDubai,
       href: '/services/outgoing-packages',
-      color: 'bg-blue-500',
-      stats: { icon: TrendingUp, label: '50+ Destinations', value: '10K+ Travelers' },
-      features: ['Visa Support', 'Best Deals', 'Custom Packages']
+      color: 'blue',
+      stats: { icon: TrendingUp, label: t('home.services.international.stats') || '50+ Destinations', value: '10K+' },
+      features: [
+        t('home.services.international.feature1') || 'Visa Support',
+        t('home.services.international.feature2') || 'Best Deals',
+        t('home.services.international.feature3') || 'Custom Packages'
+      ]
     },
     {
       icon: Briefcase,
-      title: t('home.services.business.title'),
-      description: t('home.services.business.description'),
+      title: t('home.services.business.title') || 'Business Travel',
+      description: t('home.services.business.description') || 'Professional MICE and DMC services for corporate clients',
       image: images.serviceMice,
       href: '/b2b',
-      color: 'bg-secondary',
-      stats: { icon: Award, label: 'Corporate Events', value: '200+ Clients' },
-      features: ['MICE Services', 'DMC Solutions', '24/7 Support']
+      color: 'secondary',
+      stats: { icon: Award, label: t('home.services.business.stats') || 'Corporate Events', value: '200+' },
+      features: [
+        t('home.services.business.feature1') || 'MICE Services',
+        t('home.services.business.feature2') || 'DMC Solutions',
+        t('home.services.business.feature3') || '24/7 Support'
+      ]
     }
   ]
 
@@ -95,8 +107,8 @@ export default function Services() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <Badge className="px-5 py-2.5 text-sm font-semibold bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0 shadow-lg shadow-primary/20 gap-2">
-              <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+            <Badge className="px-4 py-2 text-sm font-semibold bg-gradient-to-r from-[#FF6B35] to-[#4CAF50] hover:from-[#FF6B35]/90 hover:to-[#4CAF50]/90 text-white border-0 shadow-lg gap-2">
+              <Sparkles className="w-3.5 h-3.5" />
               {t('home.services.tagline') || 'What We Offer'}
             </Badge>
           </motion.div>
@@ -114,9 +126,9 @@ export default function Services() {
           
           {/* Decorative separator using shadcn */}
           <div className="mt-10 flex items-center justify-center gap-3">
-            <Separator className="w-16 bg-gradient-to-r from-transparent via-primary to-primary h-1 rounded-full" />
-            <div className="w-3 h-3 rounded-full bg-gradient-to-br from-primary to-secondary shadow-lg" />
-            <Separator className="w-16 bg-gradient-to-l from-transparent via-secondary to-secondary h-1 rounded-full" />
+            <Separator className="w-16 bg-gradient-to-r from-transparent via-[#FF6B35] to-[#FF6B35] h-1 rounded-full" />
+            <div className="w-3 h-3 rounded-full bg-gradient-to-br from-[#FF6B35] to-[#4CAF50] shadow-lg" />
+            <Separator className="w-16 bg-gradient-to-l from-transparent via-[#4CAF50] to-[#4CAF50] h-1 rounded-full" />
           </div>
         </motion.div>
 
@@ -161,9 +173,9 @@ export default function Services() {
                             <TooltipTrigger asChild>
                               <div className={cn(
                                 "relative w-14 h-14 rounded-2xl bg-gradient-to-br shadow-2xl flex items-center justify-center transform group-hover/card:scale-110 group-hover/card:rotate-6 transition-all duration-500 cursor-pointer",
-                                service.color === 'bg-primary' ? 'from-primary to-primary/80' : 
-                                service.color === 'bg-blue-500' ? 'from-blue-500 to-blue-600' : 
-                                'from-secondary to-secondary/80'
+                                service.color === 'primary' ? 'from-[#FF6B35] to-[#FF5722]' : 
+                                service.color === 'blue' ? 'from-[#2196F3] to-[#1976D2]' : 
+                                'from-[#4CAF50] to-[#388E3C]'
                               )}>
                                 <Icon className="w-7 h-7 text-white" />
                                 {/* Pulse effect */}
@@ -204,7 +216,12 @@ export default function Services() {
                           {/* Feature tags */}
                           <div className="flex flex-wrap gap-2 pt-2">
                             {service.features.slice(0, 2).map((feature, idx) => (
-                              <Badge key={idx} variant="secondary" className="text-xs font-normal">
+                              <Badge key={idx} className={cn(
+                                "text-xs font-normal border-0",
+                                service.color === 'primary' ? 'bg-[#FF6B35]/10 text-[#FF6B35]' :
+                                service.color === 'blue' ? 'bg-[#2196F3]/10 text-[#2196F3]' :
+                                'bg-[#4CAF50]/10 text-[#4CAF50]'
+                              )}>
                                 {feature}
                               </Badge>
                             ))}
@@ -215,8 +232,8 @@ export default function Services() {
                           <div className="flex items-center justify-between pt-2">
                             {/* Animated progress bar */}
                             <div className="flex-1 mr-4">
-                              <div className="h-1 bg-muted rounded-full overflow-hidden">
-                                <div className="h-full bg-gradient-to-r from-primary to-secondary rounded-full w-0 group-hover/card:w-full transition-all duration-700 ease-out" />
+                              <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                <div className="h-full bg-gradient-to-r from-[#FF6B35] to-[#4CAF50] rounded-full w-0 group-hover/card:w-full transition-all duration-700 ease-out" />
                               </div>
                             </div>
                             
@@ -224,11 +241,11 @@ export default function Services() {
                             <Button
                               size="icon"
                               className={cn(
-                                "w-12 h-12 rounded-xl bg-secondary/10 hover:bg-gradient-to-br hover:from-primary hover:to-secondary transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-primary/20 border-0",
+                                "w-12 h-12 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-[#FF6B35] hover:to-[#4CAF50] transition-all duration-300 shadow-md hover:shadow-lg border-0",
                                 isArabic && "rotate-180"
                               )}
                             >
-                              <ArrowRight className="w-5 h-5 text-gray-600 group-hover/card:text-white transition-colors duration-300" />
+                              <ArrowRight className="w-6 h-6 text-gray-700 group-hover/card:text-white transition-colors duration-300" />
                             </Button>
                           </div>
                         </div>
@@ -250,9 +267,9 @@ export default function Services() {
                             <div className="flex items-center gap-3">
                               <div className={cn(
                                 "w-10 h-10 rounded-xl bg-gradient-to-br flex items-center justify-center",
-                                service.color === 'bg-primary' ? 'from-primary to-primary/80' : 
-                                service.color === 'bg-blue-500' ? 'from-blue-500 to-blue-600' : 
-                                'from-secondary to-secondary/80'
+                                service.color === 'primary' ? 'from-[#FF6B35] to-[#FF5722]' : 
+                                service.color === 'blue' ? 'from-[#2196F3] to-[#1976D2]' : 
+                                'from-[#4CAF50] to-[#388E3C]'
                               )}>
                                 <Icon className="w-5 h-5 text-white" />
                               </div>
@@ -275,7 +292,7 @@ export default function Services() {
                           </p>
                           <Separator />
                           <div className="space-y-2">
-                            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Key Features</p>
+                            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">{t('home.services.keyFeatures') || 'Key Features'}</p>
                             <div className="flex flex-wrap gap-2">
                               {service.features.map((feature, idx) => (
                                 <Badge key={idx} variant="outline" className="text-xs">
@@ -284,9 +301,9 @@ export default function Services() {
                               ))}
                             </div>
                           </div>
-                          <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90" size="sm">
-                            Learn More
-                            <ArrowRight className="w-4 h-4 ml-2" />
+                          <Button className="w-full bg-gradient-to-r from-[#FF6B35] to-[#4CAF50] hover:from-[#FF5722] hover:to-[#388E3C] text-white border-0 shadow-lg" size="sm">
+                            {t('home.services.learnMore') || 'Learn More'}
+                            <ArrowRight className={cn("w-4 h-4 ml-2", isArabic && "rotate-180")} />
                           </Button>
                         </CardContent>
                       </Card>
