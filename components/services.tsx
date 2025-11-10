@@ -1,13 +1,15 @@
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/hooks/use-language'
 import { useImages } from '@/lib/hooks/use-images'
 import { ImageWithFallback } from '@/components/image-with-fallback'
 import Link from 'next/link'
-import { MapPin, Globe, Briefcase, ArrowRight, Sparkles } from 'lucide-react'
+import { MapPin, Globe, Briefcase, ArrowRight, Sparkles, Star, TrendingUp, Award } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const containerVariants = {
@@ -45,7 +47,9 @@ export default function Services() {
       description: t('home.services.daily.description'),
       image: images.tourGarni,
       href: '/armenia-tours/daily',
-      color: 'bg-primary'
+      color: 'bg-primary',
+      stats: { icon: Star, label: '500+ Tours', value: '4.9/5' },
+      features: ['Expert Guides', 'Small Groups', 'Flexible Schedule']
     },
     {
       icon: Globe,
@@ -53,7 +57,9 @@ export default function Services() {
       description: t('home.services.international.description'),
       image: images.destinationDubai,
       href: '/services/outgoing-packages',
-      color: 'bg-blue-500'
+      color: 'bg-blue-500',
+      stats: { icon: TrendingUp, label: '50+ Destinations', value: '10K+ Travelers' },
+      features: ['Visa Support', 'Best Deals', 'Custom Packages']
     },
     {
       icon: Briefcase,
@@ -61,7 +67,9 @@ export default function Services() {
       description: t('home.services.business.description'),
       image: images.serviceMice,
       href: '/b2b',
-      color: 'bg-secondary'
+      color: 'bg-secondary',
+      stats: { icon: Award, label: 'Corporate Events', value: '200+ Clients' },
+      features: ['MICE Services', 'DMC Solutions', '24/7 Support']
     }
   ]
 
@@ -115,6 +123,7 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, index) => {
             const Icon = service.icon
+            const StatIcon = service.stats.icon
             return (
               <motion.div 
                 key={index} 
@@ -122,7 +131,10 @@ export default function Services() {
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
-                <Link href={service.href} className="block h-full group/card">
+                <TooltipProvider>
+                  <HoverCard openDelay={200}>
+                    <HoverCardTrigger asChild>
+                      <Link href={service.href} className="block h-full group/card">
                   <Card className="cursor-pointer overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 h-full bg-white relative group-hover/card:scale-[1.02]">
                     {/* Background gradient on hover */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover/card:from-primary/5 group-hover/card:to-secondary/5 transition-all duration-700" />
@@ -143,18 +155,33 @@ export default function Services() {
                         {/* Gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent" />
                         
-                        {/* Icon badge - brand colors */}
+                        {/* Icon badge with tooltip - brand colors */}
                         <div className={`absolute top-6 ${isArabic ? 'right-6' : 'left-6'} z-10`}>
-                          <div className={cn(
-                            "relative w-14 h-14 rounded-2xl bg-gradient-to-br shadow-2xl flex items-center justify-center transform group-hover/card:scale-110 group-hover/card:rotate-6 transition-all duration-500",
-                            service.color === 'bg-primary' ? 'from-primary to-primary/80' : 
-                            service.color === 'bg-blue-500' ? 'from-blue-500 to-blue-600' : 
-                            'from-secondary to-secondary/80'
-                          )}>
-                            <Icon className="w-7 h-7 text-white" />
-                            {/* Pulse effect */}
-                            <div className="absolute inset-0 rounded-2xl bg-white/20 animate-ping" style={{ animationDuration: '2s' }} />
-                          </div>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div className={cn(
+                                "relative w-14 h-14 rounded-2xl bg-gradient-to-br shadow-2xl flex items-center justify-center transform group-hover/card:scale-110 group-hover/card:rotate-6 transition-all duration-500 cursor-pointer",
+                                service.color === 'bg-primary' ? 'from-primary to-primary/80' : 
+                                service.color === 'bg-blue-500' ? 'from-blue-500 to-blue-600' : 
+                                'from-secondary to-secondary/80'
+                              )}>
+                                <Icon className="w-7 h-7 text-white" />
+                                {/* Pulse effect */}
+                                <div className="absolute inset-0 rounded-2xl bg-white/20 animate-ping" style={{ animationDuration: '2s' }} />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent side="right" className="bg-gray-900 text-white border-0">
+                              <p className="font-semibold">{service.title}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </div>
+                        
+                        {/* Stats badge */}
+                        <div className="absolute top-6 right-6 z-10">
+                          <Badge className="bg-white/95 backdrop-blur-sm text-gray-900 border-0 shadow-lg hover:bg-white gap-1.5 px-3">
+                            <StatIcon className="w-3.5 h-3.5" />
+                            <span className="text-xs font-semibold">{service.stats.value}</span>
+                          </Badge>
                         </div>
                         
                         {/* Hover overlay */}
@@ -173,6 +200,15 @@ export default function Services() {
                           <p className="text-gray-600 leading-relaxed min-h-[48px]">
                             {service.description}
                           </p>
+                          
+                          {/* Feature tags */}
+                          <div className="flex flex-wrap gap-2 pt-2">
+                            {service.features.slice(0, 2).map((feature, idx) => (
+                              <Badge key={idx} variant="secondary" className="text-xs font-normal">
+                                {feature}
+                              </Badge>
+                            ))}
+                          </div>
                           
                           {/* CTA section with shadcn Button */}
                           <Separator className="my-4" />
@@ -199,7 +235,64 @@ export default function Services() {
                       </CardContent>
                     </div>
                   </Card>
-                </Link>
+                      </Link>
+                    </HoverCardTrigger>
+                    
+                    {/* Rich hover preview */}
+                    <HoverCardContent 
+                      side="top" 
+                      align="center"
+                      className="w-80 p-0 border-0 shadow-2xl"
+                    >
+                      <Card className="border-0">
+                        <CardHeader className="space-y-3 pb-4">
+                          <div className="flex items-start justify-between">
+                            <div className="flex items-center gap-3">
+                              <div className={cn(
+                                "w-10 h-10 rounded-xl bg-gradient-to-br flex items-center justify-center",
+                                service.color === 'bg-primary' ? 'from-primary to-primary/80' : 
+                                service.color === 'bg-blue-500' ? 'from-blue-500 to-blue-600' : 
+                                'from-secondary to-secondary/80'
+                              )}>
+                                <Icon className="w-5 h-5 text-white" />
+                              </div>
+                              <div>
+                                <CardTitle className="text-lg">{service.title}</CardTitle>
+                                <CardDescription className="text-xs flex items-center gap-1 mt-1">
+                                  <StatIcon className="w-3 h-3" />
+                                  {service.stats.label}
+                                </CardDescription>
+                              </div>
+                            </div>
+                            <Badge variant="secondary" className="text-xs">
+                              {service.stats.value}
+                            </Badge>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {service.description}
+                          </p>
+                          <Separator />
+                          <div className="space-y-2">
+                            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Key Features</p>
+                            <div className="flex flex-wrap gap-2">
+                              {service.features.map((feature, idx) => (
+                                <Badge key={idx} variant="outline" className="text-xs">
+                                  {feature}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                          <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90" size="sm">
+                            Learn More
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </HoverCardContent>
+                  </HoverCard>
+                </TooltipProvider>
               </motion.div>
             )
           })}
