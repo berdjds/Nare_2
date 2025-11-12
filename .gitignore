@@ -38,3 +38,9 @@ next-env.d.ts
 data/settings.json
 data/*.json
 !data/.gitkeep
+
+# Credentials and server information (NEVER COMMIT)
+CREDENTIALS*.md
+SERVER_*.md
+VPS_*.md
+*.credentials.md
