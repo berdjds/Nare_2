@@ -17,8 +17,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://filarche.com'),
   title: {
-    default: 'Filarche - Your Travel Partner',
-    template: '%s | Filarche',
+    default: 'Nare Travel and Tours - Your Travel Partner',
+    template: '%s | Nare Travel and Tours',
   },
   description: 'Professional travel services, DMC, MICE, and tour packages',
   keywords: ['travel', 'tourism', 'Armenia', 'DMC', 'MICE', 'tours', 'packages'],

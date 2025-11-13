@@ -114,6 +114,20 @@ export function getLocalizedOfficeHours(officeHours: any, field: string, languag
 }
 
 /**
+ * Get localized office title
+ */
+export function getLocalizedOfficeTitle(contactInfo: any, language: Language): string {
+  return getLocalizedField(contactInfo, 'officeTitle', language);
+}
+
+/**
+ * Get localized office description
+ */
+export function getLocalizedOfficeDescription(contactInfo: any, language: Language): string {
+  return getLocalizedField(contactInfo, 'officeDescription', language);
+}
+
+/**
  * Get localized page banner
  */
 export function getLocalizedPageBanner(banner: any, language: Language) {

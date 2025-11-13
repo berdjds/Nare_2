@@ -24,6 +24,8 @@ import {
   Wine,
   Twitter,
   Youtube,
+  Music,
+  Star,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/hooks/use-language';
@@ -114,7 +116,7 @@ export function Footer() {
   const { t, currentLanguage } = useLanguage();
   const [contactInfo, setContactInfo] = useState({
     phone: '+374 XX XXX XXX',
-    email: 'info@filarche.com',
+    email: 'info@naretravel.com',
     address: 'Yerevan, Armenia',
     addressHy: undefined as string | undefined,
     addressRu: undefined as string | undefined,
@@ -145,6 +147,8 @@ export function Footer() {
           if (data.twitter) links.push({ Icon: Twitter, href: data.twitter, color: '#1da1f2', label: 'Twitter' });
           if (data.linkedin) links.push({ Icon: Linkedin, href: data.linkedin, color: '#0A66C2', label: 'LinkedIn' });
           if (data.youtube) links.push({ Icon: Youtube, href: data.youtube, color: '#ff0000', label: 'YouTube' });
+          if (data.tiktok) links.push({ Icon: Music, href: data.tiktok, color: '#000000', label: 'TikTok' });
+          if (data.tripadvisor) links.push({ Icon: Star, href: data.tripadvisor, color: '#34e0a1', label: 'TripAdvisor' });
           if (links.length > 0) setSocialLinks(links);
         }
       })
@@ -419,7 +423,7 @@ export function Footer() {
                   text: contactInfo.phone || '+374 XX XXX XXX',
                   href: contactInfo.phone ? `tel:${contactInfo.phone.replace(/\s/g, '')}` : undefined
                 },
-                { Icon: Mail, text: contactInfo.email || 'info@filarche.com', href: contactInfo.email ? `mailto:${contactInfo.email}` : undefined }
+                { Icon: Mail, text: contactInfo.email || 'info@naretravel.com', href: contactInfo.email ? `mailto:${contactInfo.email}` : undefined }
               ].map((contact, index) => (
                 <motion.div
                   key={index}

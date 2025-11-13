@@ -285,6 +285,40 @@ export default function ContactInfoManager() {
         </div>
       </div>
 
+      {/* Office Section */}
+      <div className="space-y-4 mt-6">
+        <h3 className="text-lg font-semibold">Office Location Information</h3>
+        <p className="text-sm text-gray-500">This content will appear on the Contact page</p>
+        
+        <div className="space-y-6">
+          <TranslationTabs
+            fieldName="Office Title"
+            englishValue={info.officeTitle || ''}
+            armenianValue={info.officeTitleHy || ''}
+            russianValue={info.officeTitleRu || ''}
+            arabicValue={info.officeTitleAr || ''}
+            onEnglishChange={(value) => updateInfo('officeTitle', value)}
+            onArmenianChange={(value) => updateInfo('officeTitleHy', value)}
+            onRussianChange={(value) => updateInfo('officeTitleRu', value)}
+            onArabicChange={(value) => updateInfo('officeTitleAr', value)}
+            context="Office section title (e.g., 'Our Office')"
+          />
+
+          <TranslationTabs
+            fieldName="Office Description"
+            englishValue={info.officeDescription || ''}
+            armenianValue={info.officeDescriptionHy || ''}
+            russianValue={info.officeDescriptionRu || ''}
+            arabicValue={info.officeDescriptionAr || ''}
+            onEnglishChange={(value) => updateInfo('officeDescription', value)}
+            onArmenianChange={(value) => updateInfo('officeDescriptionHy', value)}
+            onRussianChange={(value) => updateInfo('officeDescriptionRu', value)}
+            onArabicChange={(value) => updateInfo('officeDescriptionAr', value)}
+            context="Office location description"
+          />
+        </div>
+      </div>
+
       {/* Office Hours Section */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Office Hours</h3>

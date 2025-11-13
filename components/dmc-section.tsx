@@ -1,9 +1,71 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { Building2, Globe, Users, Briefcase, Award, HeadphonesIcon, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useLanguage } from '@/hooks/use-language';
+import { useEffect, useState, useRef } from 'react';
+
+function AnimatedNumber({ value }: { value: string }) {
+  const [displayValue, setDisplayValue] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true });
+
+  // Extract numeric value from string like "500+" or "10,000+" or "100%" or "24/7"
+  const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+  const hasPlus = value.includes('+');
+  const hasPercent = value.includes('%');
+  const hasSlash = value.includes('/');
+  const hasComma = value.includes(',');
+
+  useEffect(() => {
+    if (!isInView || isNaN(numericValue)) return;
+
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const increment = numericValue / steps;
+    const stepDuration = duration / steps;
+
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= numericValue) {
+        setDisplayValue(numericValue);
+        clearInterval(timer);
+      } else {
+        setDisplayValue(current);
+      }
+    }, stepDuration);
+
+    return () => clearInterval(timer);
+  }, [isInView, numericValue]);
+
+  if (isNaN(numericValue)) {
+    return <span>{value}</span>;
+  }
+
+  const formatValue = () => {
+    if (hasSlash) {
+      // For "24/7" format - just show the first number
+      return Math.floor(displayValue).toString() + '/7';
+    }
+    if (hasComma && displayValue >= 1000) {
+      // For "10,000+" format
+      return Math.floor(displayValue).toLocaleString();
+    }
+    if (hasPercent) {
+      // For "100%" format
+      return Math.floor(displayValue).toString();
+    }
+    return Math.floor(displayValue).toString();
+  };
+
+  return (
+    <span ref={ref}>
+      {formatValue()}{hasPlus ? '+' : ''}{hasPercent ? '%' : ''}
+    </span>
+  );
+}
 
 export function DMCSection() {
   const { t } = useLanguage();
@@ -94,7 +156,7 @@ export function DMCSection() {
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">
-                {stat.number}
+                <AnimatedNumber value={stat.number} />
               </div>
               <div className="text-gray-400 text-sm">
                 {stat.label}

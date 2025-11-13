@@ -12,7 +12,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
 import { useImages } from '@/hooks/use-images';
 import Image from 'next/image';
-import { getLocalizedAddress, getLocalizedOfficeHours } from '@/lib/localization-helper';
+import { getLocalizedAddress, getLocalizedOfficeHours, getLocalizedOfficeTitle, getLocalizedOfficeDescription } from '@/lib/localization-helper';
 import { PageBanner } from '@/components/page-banner';
 
 interface ContactInfo {
@@ -212,10 +212,16 @@ export default function Contact() {
               transition={{ delay: 0.3 }}
             >
               <Card className="p-6 h-full">
-                <h2 className="text-2xl font-bold mb-6">{t('contact.office.title')}</h2>
+                <h2 className="text-2xl font-bold mb-6">
+                  {contactInfo && getLocalizedOfficeTitle(contactInfo, currentLanguage) 
+                    ? getLocalizedOfficeTitle(contactInfo, currentLanguage)
+                    : t('contact.office.title')}
+                </h2>
                 <div className="space-y-4">
                   <p className="text-muted-foreground">
-                    {t('contact.office.description')}
+                    {contactInfo && getLocalizedOfficeDescription(contactInfo, currentLanguage)
+                      ? getLocalizedOfficeDescription(contactInfo, currentLanguage)
+                      : t('contact.office.description')}
                   </p>
                   {contactInfo?.mapEmbedUrl && (
                     <div className="aspect-video relative rounded-lg overflow-hidden">

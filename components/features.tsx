@@ -41,10 +41,10 @@ export default function Features() {
     >
       <div className="container">
         <motion.div className="text-center mb-16" variants={itemVariants}>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-gray-900">
             {t('home.features.title')}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             {t('home.features.subtitle')}
           </p>
         </motion.div>

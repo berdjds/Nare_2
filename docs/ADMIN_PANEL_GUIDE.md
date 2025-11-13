@@ -1,5 +1,5 @@
 # Admin Control Panel - Complete Guide
-## Filarche Travel Website
+## Nare Travel and Tours Website
 
 ## 📋 Table of Contents
 1. [Overview](#overview)
@@ -13,7 +13,7 @@
 
 ## Overview
 
-The Admin Control Panel is a comprehensive content management system that allows you to manage all dynamic content on the Filarche Travel website without touching code.
+The Admin Control Panel is a comprehensive content management system that allows you to manage all dynamic content on the Nare Travel and Tours website without touching code.
 
 **Admin Panel URL**: `http://localhost:3000/admin/login`
 

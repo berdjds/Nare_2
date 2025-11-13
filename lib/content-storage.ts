@@ -82,6 +82,14 @@ export interface ContactInfo {
   mapEmbedUrl?: string;     // Google Maps embed URL (for iframe)
   whatsapp: string;
   telegram: string;
+  officeTitle?: string;     // e.g., "Our Office"
+  officeTitleHy?: string;   // Armenian translation
+  officeTitleRu?: string;   // Russian translation
+  officeTitleAr?: string;   // Arabic translation
+  officeDescription?: string; // e.g., "Visit us at our office..."
+  officeDescriptionHy?: string; // Armenian translation
+  officeDescriptionRu?: string; // Russian translation
+  officeDescriptionAr?: string; // Arabic translation
   officeHours?: {
     weekdays?: string;      // e.g., "Monday - Friday: 9:30 AM - 5:30 PM"
     weekdaysHy?: string;    // Armenian translation
@@ -108,6 +116,8 @@ export interface SocialLinks {
   twitter: string;
   linkedin: string;
   youtube: string;
+  tiktok: string;
+  tripadvisor: string;
 }
 
 export interface PageBanner {
@@ -242,18 +252,20 @@ export async function initializeDefaultContent(): Promise<void> {
 
   const defaultContactInfo: ContactInfo = {
     phone: '+374 XX XXX XXX',
-    email: 'info@filarche.com',
+    email: 'info@naretravel.com',
     address: 'Yerevan, Armenia',
     whatsapp: '+374 XX XXX XXX',
-    telegram: '@filarche',
+    telegram: '@naretravel',
   };
 
   const defaultSocialLinks: SocialLinks = {
-    facebook: 'https://facebook.com/filarche',
-    instagram: 'https://instagram.com/filarche',
-    twitter: 'https://twitter.com/filarche',
-    linkedin: 'https://linkedin.com/company/filarche',
-    youtube: 'https://youtube.com/@filarche',
+    facebook: 'https://facebook.com/naretravel',
+    instagram: 'https://instagram.com/naretravel',
+    twitter: 'https://twitter.com/naretravel',
+    linkedin: 'https://linkedin.com/company/naretravel',
+    youtube: 'https://youtube.com/@naretravel',
+    tiktok: 'https://tiktok.com/@naretravel',
+    tripadvisor: 'https://tripadvisor.com/naretravel',
   };
 
   await writeSingleContent('contactInfo', defaultContactInfo);

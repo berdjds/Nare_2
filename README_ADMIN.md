@@ -1,6 +1,6 @@
 # 🎛️ Admin Control Panel
 
-A comprehensive content management system for the Filarche Travel website.
+A comprehensive content management system for the Nare Travel and Tours website.
 
 ## ✨ Features
 

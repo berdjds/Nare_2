@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/hooks/use-language';
 import { LanguageSwitcher } from '@/components/language-switcher';
@@ -122,17 +123,45 @@ export function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useLanguage();
+  const pathname = usePathname();
 
   useEffect(() => setMounted(true), []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  // Close menu on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isMenuOpen]);
 
   if (!mounted) return null;
 
   return (
+    <>
+      {/* Skip to main content - Accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md focus:shadow-lg"
+      >
+        Skip to main content
+      </a>
+      
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className="sticky top-0 z-50 w-full border-b border-gray-200/10 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60"
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center group">
@@ -152,10 +181,27 @@ export function Navbar() {
         <div className="hidden md:flex md:items-center md:space-x-6">
           <NavigationMenu>
             <NavigationMenuList className="flex items-center space-x-2">
-              {menuItems.map((item) => (
+              <NavigationMenuItem>
+                <Link 
+                  href="/" 
+                  className={cn(
+                    "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-primary bg-white/50 rounded-md inline-flex items-center justify-center border border-gray-200/50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                    pathname === '/' && "bg-primary text-white hover:bg-primary hover:text-white"
+                  )}
+                  aria-current={pathname === '/' ? 'page' : undefined}
+                >
+                  {t('menu.home')}
+                </Link>
+              </NavigationMenuItem>
+              {menuItems.map((item) => {
+                const isActive = pathname?.startsWith(item.href);
+                return (
                 <NavigationMenuItem key={item.trigger}>
                   <NavigationMenuTrigger 
-                    className="h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-primary data-[state=open]:bg-gray-100 data-[state=open]:text-primary"
+                    className={cn(
+                      "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-primary bg-white/50 rounded-md border border-gray-200/50 data-[state=open]:bg-primary data-[state=open]:text-white",
+                      isActive && "bg-primary text-white hover:bg-primary hover:text-white"
+                    )}
                   >
                     {t(`menu.${item.trigger}`)}
                   </NavigationMenuTrigger>
@@ -172,13 +218,16 @@ export function Navbar() {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-              ))}
+                );
+              })}
               <NavigationMenuItem>
                 <Link 
                   href="/insights" 
                   className={cn(
-                    "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-blue-600 rounded-md inline-flex items-center justify-center"
+                    "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-primary bg-white/50 rounded-md inline-flex items-center justify-center border border-gray-200/50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                    pathname === '/insights' && "bg-primary text-white hover:bg-primary hover:text-white"
                   )}
+                  aria-current={pathname === '/insights' ? 'page' : undefined}
                 >
                   {t('menu.insights')}
                 </Link>
@@ -187,8 +236,10 @@ export function Navbar() {
                 <Link 
                   href="/about" 
                   className={cn(
-                    "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-blue-600 rounded-md inline-flex items-center justify-center"
+                    "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-primary bg-white/50 rounded-md inline-flex items-center justify-center border border-gray-200/50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                    pathname === '/about' && "bg-primary text-white hover:bg-primary hover:text-white"
                   )}
+                  aria-current={pathname === '/about' ? 'page' : undefined}
                 >
                   {t('menu.about')}
                 </Link>
@@ -197,8 +248,10 @@ export function Navbar() {
                 <Link 
                   href="/contact" 
                   className={cn(
-                    "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-blue-600 rounded-md inline-flex items-center justify-center"
+                    "h-9 px-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-primary bg-white/50 rounded-md inline-flex items-center justify-center border border-gray-200/50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                    pathname === '/contact' && "bg-primary text-white hover:bg-primary hover:text-white"
                   )}
+                  aria-current={pathname === '/contact' ? 'page' : undefined}
                 >
                   {t('menu.contact')}
                 </Link>
@@ -235,6 +288,12 @@ export function Navbar() {
           className="md:hidden border-t border-gray-200/20 bg-white"
         >
           <div className="container py-4 space-y-1">
+            <Link 
+              href="/"
+              className="block px-4 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 hover:text-blue-600"
+            >
+              {t('menu.home')}
+            </Link>
             {menuItems.map((item) => (
               <div key={item.trigger} className="space-y-2 py-2">
                 <Link 
@@ -278,5 +337,6 @@ export function Navbar() {
         </motion.div>
       )}
     </motion.nav>
+    </>
   );
 }

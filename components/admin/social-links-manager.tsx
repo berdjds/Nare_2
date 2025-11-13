@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
-import { Save, Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { Save, Facebook, Instagram, Twitter, Linkedin, Youtube, Music, Star } from 'lucide-react';
 import { SocialLinks } from '@/lib/content-storage';
 import { useToast } from '@/hooks/use-toast';
 
@@ -17,6 +17,8 @@ export default function SocialLinksManager() {
     twitter: '',
     linkedin: '',
     youtube: '',
+    tiktok: '',
+    tripadvisor: '',
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -148,6 +150,30 @@ export default function SocialLinksManager() {
             value={links.youtube}
             onChange={(e) => updateLink('youtube', e.target.value)}
             placeholder="https://youtube.com/@yourpage"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label className="flex items-center gap-2">
+            <Music className="h-4 w-4" />
+            TikTok
+          </Label>
+          <Input
+            value={links.tiktok}
+            onChange={(e) => updateLink('tiktok', e.target.value)}
+            placeholder="https://tiktok.com/@yourpage"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label className="flex items-center gap-2">
+            <Star className="h-4 w-4" />
+            TripAdvisor
+          </Label>
+          <Input
+            value={links.tripadvisor}
+            onChange={(e) => updateLink('tripadvisor', e.target.value)}
+            placeholder="https://tripadvisor.com/yourpage"
           />
         </div>
       </div>

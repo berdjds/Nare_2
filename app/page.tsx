@@ -56,6 +56,8 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Urgency Banner */}
       <UrgencyBanner />
+      
+      <div id="main-content"></div>
 
       {/* Hero Section */}
       <HeroSlider />
