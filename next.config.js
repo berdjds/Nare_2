@@ -22,6 +22,16 @@ const nextConfig = {
         hostname: 'fonts.gstatic.com',
         pathname: '/**',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'berdjds.com',
+        pathname: '/**',
+      },
     ],
     // Enable image optimization for better performance
     unoptimized: false,

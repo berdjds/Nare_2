@@ -113,11 +113,16 @@ export function ImageUpload({ value, onChange, label, recommendedSize }: ImageUp
         <div className="relative rounded-lg border border-gray-200 overflow-hidden bg-gray-50">
           <div className="relative aspect-video w-full">
             <Image
+              key={preview}
               src={preview}
               alt="Preview"
               fill
               className="object-cover"
               unoptimized
+              onError={(e) => {
+                console.error('Image load error:', preview);
+                setError('Failed to load image preview');
+              }}
             />
           </div>
           <button

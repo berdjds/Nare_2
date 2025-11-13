@@ -1,0 +1,150 @@
+╔════════════════════════════════════════════════════════════════╗
+║   COMPLETE DEPLOYMENT GUIDE - Copy/Paste Each Command         ║
+╚════════════════════════════════════════════════════════════════╝
+
+VPS Password: dC7Be3(2u2j)
+
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Upload Docker Image
+═══════════════════════════════════════════════════════════════
+Copy and run this command from your Mac terminal:
+
+cd "/Users/bds/Documents/Programing/Lab/repeat/Nare_2-6 2"
+scp naresima-latest.tar.gz root@213.136.80.87:/tmp/
+
+Enter password when prompted: dC7Be3(2u2j)
+Wait for upload to complete (~1-2 minutes for 191MB)
+
+═══════════════════════════════════════════════════════════════
+
+STEP 2: Connect to VPS
+═══════════════════════════════════════════════════════════════
+
+ssh root@213.136.80.87
+
+Enter password: dC7Be3(2u2j)
+
+═══════════════════════════════════════════════════════════════
+
+STEP 3: Load Docker Image (On VPS - copy all lines)
+═══════════════════════════════════════════════════════════════
+
+cd /tmp
+echo "📦 Loading Docker image..."
+docker load < naresima-latest.tar.gz
+echo "✅ Image loaded"
+docker images | grep naresima
+
+═══════════════════════════════════════════════════════════════
+
+STEP 4: Stop Old Containers (On VPS - copy all lines)
+═══════════════════════════════════════════════════════════════
+
+echo "🛑 Stopping old containers..."
+docker stop naresima-app 2>/dev/null || echo "naresima-app not running"
+docker rm naresima-app 2>/dev/null || echo "removed"
+docker ps | grep -i nare
+
+═══════════════════════════════════════════════════════════════
+
+STEP 5: Start New Container (On VPS - copy as ONE command)
+═══════════════════════════════════════════════════════════════
+
+docker run -d \
+  --name naresima-app \
+  --restart always \
+  --network web \
+  -e NODE_ENV=production \
+  -v /root/productionapp/nare-travel/data:/app/data \
+  -v /root/productionapp/nare-travel/public/images/uploads:/app/public/images/uploads \
+  -l "traefik.enable=true" \
+  -l "traefik.http.routers.nare.rule=Host(\`berdjds.com\`) || Host(\`www.berdjds.com\`)" \
+  -l "traefik.http.routers.nare.entrypoints=web" \
+  -l "traefik.http.routers.nare.middlewares=redirect-to-https" \
+  -l "traefik.http.routers.nare-secure.rule=Host(\`berdjds.com\`) || Host(\`www.berdjds.com\`)" \
+  -l "traefik.http.routers.nare-secure.entrypoints=websecure" \
+  -l "traefik.http.routers.nare-secure.tls.certresolver=le" \
+  -l "traefik.http.services.nare.loadbalancer.server.port=3000" \
+  naresima:latest
+
+═══════════════════════════════════════════════════════════════
+
+STEP 6: Verify Container (On VPS - copy all lines)
+═══════════════════════════════════════════════════════════════
+
+echo "⏳ Waiting 10 seconds..."
+sleep 10
+echo "📊 Container Status:"
+docker ps | grep naresima
+echo ""
+echo "📝 Logs:"
+docker logs --tail=30 naresima-app
+
+═══════════════════════════════════════════════════════════════
+
+STEP 7: Restart Traefik (On VPS - copy all lines)
+═══════════════════════════════════════════════════════════════
+
+echo "🔧 Restarting Traefik..."
+docker restart traefik
+sleep 10
+echo "✅ Traefik restarted"
+
+═══════════════════════════════════════════════════════════════
+
+STEP 8: Test App Locally (On VPS)
+═══════════════════════════════════════════════════════════════
+
+docker exec naresima-app wget -qO- http://localhost:3000 2>&1 | head -c 300
+
+Should see HTML output with "<!DOCTYPE html>"
+
+═══════════════════════════════════════════════════════════════
+
+STEP 9: Cleanup (On VPS)
+═══════════════════════════════════════════════════════════════
+
+rm -f /tmp/naresima-latest.tar.gz
+echo "✅ Cleanup complete"
+exit
+
+═══════════════════════════════════════════════════════════════
+
+STEP 10: Test from Your Mac
+═══════════════════════════════════════════════════════════════
+
+# Wait 1-2 minutes for SSL cert, then:
+curl -I https://berdjds.com
+
+Should see: HTTP/2 200
+
+═══════════════════════════════════════════════════════════════
+
+STEP 11: Test in Browser
+═══════════════════════════════════════════════════════════════
+
+1. Open: https://berdjds.com
+2. Hard refresh: Cmd + Shift + R
+3. Check footer for TikTok & TripAdvisor icons
+4. Visit /contact - look for "Our Office" section
+5. Check images load fast
+6. Check navbar has "Home" button
+
+═══════════════════════════════════════════════════════════════
+
+✅ DEPLOYMENT CHECKLIST:
+═══════════════════════════════════════════════════════════════
+
+[ ] Image uploaded successfully
+[ ] Image loaded on VPS
+[ ] Old container stopped and removed  
+[ ] New container started (shows container ID)
+[ ] Container logs show "Ready in XXms"
+[ ] Traefik restarted
+[ ] App responds locally (HTML output)
+[ ] Website returns HTTP 200
+[ ] Browser shows new version after hard refresh
+[ ] All new features visible
+
+═══════════════════════════════════════════════════════════════
