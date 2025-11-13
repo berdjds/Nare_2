@@ -50,3 +50,6 @@ tsconfig.tsbuildinfo
 # Development files
 .eslintrc.json
 .npmrc
+
+# Uploaded images (should be volume mounted, not copied to image)
+public/images/uploads/
