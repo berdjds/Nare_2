@@ -25,6 +25,7 @@ const nextConfig = {
       {
         protocol: 'http',
         hostname: 'localhost',
+        port: '3000',
         pathname: '/**',
       },
       {
@@ -32,8 +33,13 @@ const nextConfig = {
         hostname: 'berdjds.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.berdjds.com',
+        pathname: '/**',
+      },
     ],
-    // Enable image optimization for better performance
+    // Keep optimization enabled for performance
     unoptimized: false,
     dangerouslyAllowSVG: true,
     contentDispositionType: 'inline',

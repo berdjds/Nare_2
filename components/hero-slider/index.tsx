@@ -317,7 +317,6 @@ export function HeroSlider() {
                               sizes="250px"
                               className="object-cover transform group-hover:scale-110 transition-transform duration-700"
                               priority={index === 0}
-                              unoptimized={destinations[index].cardImage?.includes('/images/uploads/')}
                             />
                           )}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -555,7 +554,6 @@ export function HeroSlider() {
                           sizes="250px"
                           className="object-cover transform group-hover:scale-110 transition-transform duration-700"
                           priority={index === 0}
-                          unoptimized={destinations[index].cardImage?.includes('/images/uploads/')}
                         />
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

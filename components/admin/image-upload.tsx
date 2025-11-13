@@ -118,7 +118,6 @@ export function ImageUpload({ value, onChange, label, recommendedSize }: ImageUp
               alt="Preview"
               fill
               className="object-cover"
-              unoptimized
               onError={(e) => {
                 console.error('Image load error:', preview);
                 setError('Failed to load image preview');
