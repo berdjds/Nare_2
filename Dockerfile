@@ -31,8 +31,11 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-# Create uploads directory with correct permissions for volume mount
-RUN mkdir -p /app/public/images/uploads && chown -R nextjs:nodejs /app/public/images/uploads
+# Create directories with correct permissions
+RUN mkdir -p /app/public/images/uploads && \
+    mkdir -p /app/.next/cache/images && \
+    chown -R nextjs:nodejs /app/public/images/uploads && \
+    chown -R nextjs:nodejs /app/.next/cache
 
 USER nextjs
 
