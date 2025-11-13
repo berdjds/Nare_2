@@ -118,14 +118,12 @@ export default function Contact() {
                   <Card className="p-6 text-center h-full">
                     <Mail className="h-12 w-12 mx-auto mb-4 text-primary" />
                     <h3 className="text-lg font-semibold mb-2">{t('contact.info.email')}</h3>
-                    {contactInfo?.email && (
-                      <a
-                        href={`mailto:${contactInfo.email}`}
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        {contactInfo.email}
-                      </a>
-                    )}
+                    <a
+                      href={`mailto:${contactInfo.email}`}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {contactInfo.email}
+                    </a>
                   </Card>
                 </motion.div>
 
@@ -134,15 +132,13 @@ export default function Contact() {
                     <Phone className="h-12 w-12 mx-auto mb-4 text-primary" />
                     <h3 className="text-lg font-semibold mb-2">{t('contact.info.phone')}</h3>
                     <div className="space-y-1">
-                      {contactInfo?.phone && (
-                        <a
-                          href={`tel:${contactInfo.phone.replace(/[^+0-9]/g, '')}`}
-                          className="block text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          {contactInfo.phone}
-                        </a>
-                      )}
-                      {contactInfo?.phone2 && (
+                      <a
+                        href={`tel:${contactInfo.phone?.replace(/[^+0-9]/g, '') || ''}`}
+                        className="block text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {contactInfo.phone}
+                      </a>
+                      {contactInfo.phone2 && (
                         <a
                           href={`tel:${contactInfo.phone2.replace(/[^+0-9]/g, '')}`}
                           className="block text-muted-foreground hover:text-primary transition-colors"
@@ -158,7 +154,7 @@ export default function Contact() {
                   <Card className="p-6 text-center h-full">
                     <MapPin className="h-12 w-12 mx-auto mb-4 text-primary" />
                     <h3 className="text-lg font-semibold mb-2">Address</h3>
-                    {contactInfo?.addressUrl ? (
+                    {contactInfo.addressUrl ? (
                       <a
                         href={contactInfo.addressUrl}
                         target="_blank"
@@ -167,9 +163,9 @@ export default function Contact() {
                       >
                         {getLocalizedAddress(contactInfo, currentLanguage)}
                       </a>
-                    ) : contactInfo ? (
+                    ) : (
                       <p className="text-muted-foreground">{getLocalizedAddress(contactInfo, currentLanguage)}</p>
-                    ) : null}
+                    )}
                   </Card>
                 </motion.div>
               </motion.div>

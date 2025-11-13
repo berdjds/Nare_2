@@ -1,0 +1,51 @@
+{
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  
+  // DEVELOPMENT RULES ENFORCEMENT
+  "files.associations": {
+    "**/*translation*.ts": "typescript",
+    "**/*translation*.tsx": "typescriptreact"
+  },
+  
+  // Custom snippets reminder
+  "editor.snippetSuggestions": "top",
+  
+  // TODO Highlights for common mistakes
+  "todohighlight.keywords": [
+    {
+      "text": "admin_token",
+      "color": "#fff",
+      "backgroundColor": "#e74c3c",
+      "overviewRulerColor": "red",
+      "diagnosticSeverity": "error"
+    },
+    {
+      "text": "validateAdminSession",
+      "color": "#fff",
+      "backgroundColor": "#e74c3c",
+      "overviewRulerColor": "red"
+    },
+    {
+      "text": "TODO: Add translation",
+      "color": "#fff",
+      "backgroundColor": "#f39c12",
+      "overviewRulerColor": "orange"
+    }
+  ]
+}
