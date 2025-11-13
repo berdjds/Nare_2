@@ -1,0 +1,66 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║        🚀 DEPLOY TO BERDJDS.COM - ONE COMMAND                  ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+COPY AND RUN THIS IN YOUR TERMINAL:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ssh root@213.136.80.87 "cd /root/productionapp && curl -sSL https://raw.githubusercontent.com/berdjds/Nare_2/main/update-nare-docker.sh | bash"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Password: dC7Be3(2u2j)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+OR IF THE ABOVE DOESN'T WORK, RUN THESE STEPS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: SSH to VPS
+------------------
+ssh root@213.136.80.87
+# Password: dC7Be3(2u2j)
+
+
+Step 2: Download and run update script
+---------------------------------------
+cd /root/productionapp
+curl -sSL https://raw.githubusercontent.com/berdjds/Nare_2/main/update-nare-docker.sh -o update.sh
+chmod +x update.sh
+./update.sh
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WHAT THE SCRIPT DOES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Finds your existing Nare Travel app directory
+✓ Pulls latest code from GitHub
+✓ Creates necessary data directories
+✓ Builds new Docker image with all updates
+✓ Stops old container
+✓ Starts new container with fresh code
+✓ Shows logs to verify deployment
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AFTER DEPLOYMENT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Visit: https://berdjds.com
+
+All new features should be live:
+✅ TikTok & TripAdvisor social icons
+✅ Office section editable from admin
+✅ Navbar improvements
+✅ Animated statistics
+✅ Contact page fixes
+✅ All fixes and updates
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
