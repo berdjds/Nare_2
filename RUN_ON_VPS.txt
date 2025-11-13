@@ -1,0 +1,91 @@
+# 🚀 COPY AND RUN THESE COMMANDS ON YOUR VPS
+
+# ============================================
+# STEP 1: Connect to VPS
+# ============================================
+ssh root@213.136.80.87
+# Password: dC7Be3(2u2j)
+
+
+# ============================================
+# STEP 2: Navigate and setup
+# ============================================
+cd /root/productionapp
+mkdir -p nare-travel
+cd nare-travel
+
+
+# ============================================
+# STEP 3: Clone or update code
+# ============================================
+# If first time:
+git clone https://github.com/berdjds/Nare_2.git .
+
+# If updating:
+# git pull origin main
+
+
+# ============================================
+# STEP 4: Create data directories
+# ============================================
+mkdir -p data public/images/uploads
+chmod 755 data public/images/uploads
+
+
+# ============================================
+# STEP 5: Build Docker image
+# ============================================
+cd /root/productionapp
+docker build -t nare-travel:latest ./nare-travel
+
+
+# ============================================
+# STEP 6: Add to docker-compose.yml
+# ============================================
+# Add this service to /root/productionapp/docker-compose.yml:
+
+nano docker-compose.yml
+
+# Paste this at the end (before the last closing brace):
+# 
+#   nare-travel:
+#     image: nare-travel:latest
+#     container_name: nare-travel
+#     restart: always
+#     networks:
+#       - web
+#     environment:
+#       - NODE_ENV=production
+#     volumes:
+#       - ./nare-travel/data:/app/data
+#       - ./nare-travel/public/images/uploads:/app/public/images/uploads
+#     labels:
+#       - "traefik.enable=true"
+#       - "traefik.http.routers.naretravel.rule=Host(`nare.am`) || Host(`www.nare.am`)"
+#       - "traefik.http.routers.naretravel.entrypoints=web"
+#       - "traefik.http.routers.naretravel.middlewares=redirect-to-https"
+#       - "traefik.http.routers.naretravel-secure.rule=Host(`nare.am`) || Host(`www.nare.am`)"
+#       - "traefik.http.routers.naretravel-secure.entrypoints=websecure"
+#       - "traefik.http.routers.naretravel-secure.tls.certresolver=le"
+#       - "traefik.http.services.naretravel.loadbalancer.server.port=3000"
+#
+# Save and exit (Ctrl+X, then Y, then Enter)
+
+
+# ============================================
+# STEP 7: Start the container
+# ============================================
+docker compose up -d nare-travel
+
+
+# ============================================
+# STEP 8: Verify deployment
+# ============================================
+docker ps | grep nare
+docker compose logs --tail=50 nare-travel
+
+
+# ============================================
+# DONE! Visit https://nare.am
+# ============================================
+# Wait 1-2 minutes for SSL certificate
