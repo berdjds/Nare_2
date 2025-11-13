@@ -42,6 +42,17 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
         />
+        {/* Preload critical images for faster loading */}
+        <link
+          rel="preload"
+          href="/logo/Nare_logo_menu_web.webp"
+          as="image"
+          type="image/webp"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://fonts.googleapis.com"
+        />
         <meta name="google" content="notranslate" />
       </head>
       <body className="min-h-screen bg-white text-gray-900 antialiased" suppressHydrationWarning>
