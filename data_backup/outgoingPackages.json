@@ -1,0 +1,36 @@
+[
+  {
+    "id": "1762197950449",
+    "title": "UAE Luxury Shopping Experience",
+    "titleHy": "ԱՄԷ-ի շքեղ շոփինգի փորձ",
+    "titleRu": "Эксклюзивный шопинг в ОАЭ",
+    "description": "Indulge in the ultimate retail therapy across the UAE's most opulent destinations. From the designer boutiques of The Dubai Mall to Abu Dhabi's luxurious Galleria, experience tax-free shopping in unparalleled style. Enjoy exclusive access, personal shoppers, and chauffeur-driven transfers for a seamless, world-class experience.",
+    "descriptionHy": "Վայելեք գնումների անսահման հաճույքը ԱՄԷ-ի ամենապերճարար վայրերում։ Դիզայներական բուտիկներից Դուբայի առևտրի կենտրոնում մինչև Աբու Դաբիի շքեղ Գալերիա առևտրի կենտրոնը, ապրեք հարկերից զերծ գնումների աննախադեպ ոճը։ Վայելեք բացառիկ մուտք, անձնական խորհրդատուների ծառայություն և վարորդով տրանսֆերներ՝ անխափան և համաշխարհային մակարդակի փորձառության համար։",
+    "descriptionRu": "Погрузитесь в мир роскошного шопинга в самых великолепных местах ОАЭ. От бутиков мировых брендов в The Dubai Mall до изысканного Galleria в Абу-Даби — насладитесь безналоговыми покупками в непревзойдённом стиле. Воспользуйтесь эксклюзивным доступом, услугами персональных шоперов и трансферами с водителем для безупречного опыта мирового уровня.",
+    "duration": "",
+    "groupSize": "",
+    "price": 1500000,
+    "image": "/images/uploads/noravank-1762225264726.webp",
+    "destination": "daily",
+    "isActive": true,
+    "titleAr": "تجربة التسوق الفاخرة في الإمارات",
+    "descriptionAr": "استمتع بتجربة التسوق الفاخرة المثلى في أرقى الوجهات بالإمارات. من متاجر المصممين الفاخرة في دبي مول إلى غاليريا أبوظبي الفاخر، عش متعة التسوق المعفاة من الضرائب بأسلوب لا مثيل له. تمتع بالوصول الحصري، وخدمة المشترين الشخصيين، والتنقل بسائق خاص لتجربة سلسة على مستوى عالمي."
+  },
+  {
+    "id": "1762198125968",
+    "title": "test",
+    "titleHy": "փորձարկում",
+    "titleRu": "тест",
+    "description": "yesy",
+    "descriptionHy": "այո",
+    "descriptionRu": "да",
+    "duration": "",
+    "groupSize": "",
+    "price": 0,
+    "image": "/images/uploads/dilijan-1762225276374.webp",
+    "destination": "daily",
+    "isActive": true,
+    "titleAr": "اختبار",
+    "descriptionAr": "نعم"
+  }
+]
