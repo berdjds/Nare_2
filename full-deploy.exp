@@ -1,0 +1,110 @@
+#!/usr/bin/expect -f
+set timeout 120
+
+# Step 1: Remove old container and image
+puts "🗑️ Step 1: Removing old version from VPS..."
+spawn ssh root@213.136.80.87
+expect "password:"
+send "dC7Be3(2u2j\r"
+expect "~]#"
+
+send "docker stop naresima-app 2>/dev/null\r"
+expect "~]#"
+
+send "docker rm naresima-app 2>/dev/null\r"
+expect "~]#"
+
+send "docker rmi naresima:latest 2>/dev/null\r"
+expect "~]#"
+
+send "echo '✅ Old version removed'\r"
+expect "~]#"
+
+send "exit\r"
+expect eof
+
+# Step 2: Upload new image
+puts "\n📤 Step 2: Uploading new Docker image..."
+spawn scp naresima-latest.tar.gz root@213.136.80.87:/tmp/
+expect "password:"
+send "dC7Be3(2u2j\r"
+expect "100%"
+puts "\n✅ Upload complete"
+
+# Step 3: Deploy
+puts "\n🚀 Step 3: Deploying on VPS..."
+spawn ssh root@213.136.80.87
+expect "password:"
+send "dC7Be3(2u2j\r"
+expect "~]#"
+
+send "cd /tmp\r"
+expect "~]#"
+
+send "echo '📦 Loading Docker image...'\r"
+expect "~]#"
+
+send "docker load < naresima-latest.tar.gz\r"
+expect -timeout 60 "~]#"
+
+send "echo '🚀 Starting container...'\r"
+expect "~]#"
+
+send "docker run -d --name naresima-app --restart always --network web -e NODE_ENV=production -v /root/productionapp/nare-travel/data:/app/data -v /root/productionapp/nare-travel/public/images/uploads:/app/public/images/uploads -l 'traefik.enable=true' -l 'traefik.http.routers.nare.rule=Host(\`berdjds.com\`) || Host(\`www.berdjds.com\`)' -l 'traefik.http.routers.nare.entrypoints=web' -l 'traefik.http.routers.nare.middlewares=redirect-to-https' -l 'traefik.http.routers.nare-secure.rule=Host(\`berdjds.com\`) || Host(\`www.berdjds.com\`)' -l 'traefik.http.routers.nare-secure.entrypoints=websecure' -l 'traefik.http.routers.nare-secure.tls.certresolver=le' -l 'traefik.http.services.nare.loadbalancer.server.port=3000' naresima:latest\r"
+expect "~]#"
+
+send "sleep 15\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '📊 Container status:'\r"
+expect "~]#"
+
+send "docker ps | grep naresima\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '📝 Logs:'\r"
+expect "~]#"
+
+send "docker logs --tail=20 naresima-app\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '🔧 Restarting Traefik...'\r"
+expect "~]#"
+
+send "docker restart traefik\r"
+expect "~]#"
+
+send "sleep 5\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '🧹 Cleanup...'\r"
+expect "~]#"
+
+send "rm -f /tmp/naresima-latest.tar.gz\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '✅ DEPLOYMENT COMPLETE!'\r"
+expect "~]#"
+
+send "echo 'Test upload at: https://berdjds.com/admin'\r"
+expect "~]#"
+
+send "exit\r"
+expect eof
+
+puts "\n\n🎉 All done! Visit https://berdjds.com/admin to test image upload"

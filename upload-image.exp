@@ -1,0 +1,19 @@
+#!/usr/bin/expect -f
+set timeout 300
+spawn scp naresima-latest.tar.gz root@213.136.80.87:/tmp/
+expect "password:"
+send "dC7Be3(2u2j\r"
+expect {
+    "100%" { 
+        puts "\n✅ Upload complete"
+        exit 0
+    }
+    eof {
+        puts "\n✅ Upload finished"
+        exit 0
+    }
+    timeout {
+        puts "\nUpload still in progress..."
+        exp_continue
+    }
+}
