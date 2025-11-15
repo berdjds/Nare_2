@@ -1,0 +1,157 @@
+#!/usr/bin/expect -f
+set timeout 120
+
+puts "\n🧪 ═══════════════════════════════════════════════════════"
+puts "   UAT DEPLOYMENT AUTOMATION"
+puts "   Target: https://uat.berdjds.com"
+puts "═══════════════════════════════════════════════════════\n"
+
+# Step 1: Build UAT image locally
+puts "🔨 Step 1: Building UAT Docker image...\n"
+system "docker buildx build --platform linux/amd64 --load -t naresima:uat . > /dev/null 2>&1"
+puts "✅ Build complete\n"
+
+puts "💾 Saving image...\n"
+system "rm -f naresima-uat.tar.gz"
+system "docker save naresima:uat | gzip > naresima-uat.tar.gz"
+system "ls -lh naresima-uat.tar.gz | awk '{print \"Size: \" \$5}'"
+
+# Step 2: Remove old UAT container (if exists)
+puts "\n🗑️ Step 2: Cleaning old UAT version from VPS...\n"
+spawn ssh root@213.136.80.87
+expect "password:"
+send "dC7Be3(2u2j\r"
+expect "~]#"
+
+send "docker stop naresima-app-uat 2>/dev/null\r"
+expect "~]#"
+
+send "docker rm naresima-app-uat 2>/dev/null\r"
+expect "~]#"
+
+send "docker rmi naresima:uat 2>/dev/null\r"
+expect "~]#"
+
+send "echo '✅ Old UAT version removed'\r"
+expect "~]#"
+
+send "exit\r"
+expect eof
+
+# Step 3: Upload new image
+puts "\n📤 Step 3: Uploading UAT Docker image to VPS...\n"
+spawn scp naresima-uat.tar.gz root@213.136.80.87:/tmp/
+expect "password:"
+send "dC7Be3(2u2j\r"
+expect "100%"
+puts "\n✅ Upload complete\n"
+
+# Step 4: Deploy UAT
+puts "🚀 Step 4: Deploying UAT on VPS...\n"
+spawn ssh root@213.136.80.87
+expect "password:"
+send "dC7Be3(2u2j\r"
+expect "~]#"
+
+send "cd /tmp\r"
+expect "~]#"
+
+send "echo '📦 Loading UAT Docker image...'\r"
+expect "~]#"
+
+send "docker load < naresima-uat.tar.gz\r"
+expect -timeout 60 "~]#"
+
+send "echo '📁 Ensuring UAT data directories exist...'\r"
+expect "~]#"
+
+send "mkdir -p /root/productionapp/nare-travel-uat/data\r"
+expect "~]#"
+
+send "mkdir -p /root/productionapp/nare-travel-uat/public/images/uploads\r"
+expect "~]#"
+
+send "chown -R 1001:1001 /root/productionapp/nare-travel-uat/public/images/uploads\r"
+expect "~]#"
+
+send "chmod -R 777 /root/productionapp/nare-travel-uat/public/images/uploads\r"
+expect "~]#"
+
+send "echo '🚀 Starting UAT container...'\r"
+expect "~]#"
+
+send "docker run -d --name naresima-app-uat --restart always --network web -e NODE_ENV=production -v /root/productionapp/nare-travel-uat/data:/app/data -v /root/productionapp/nare-travel-uat/public/images/uploads:/app/public/images/uploads -l 'traefik.enable=true' -l 'traefik.http.routers.nare-uat.rule=Host(\`uat.berdjds.com\`)' -l 'traefik.http.routers.nare-uat.entrypoints=web' -l 'traefik.http.routers.nare-uat.middlewares=redirect-to-https' -l 'traefik.http.routers.nare-uat-secure.rule=Host(\`uat.berdjds.com\`)' -l 'traefik.http.routers.nare-uat-secure.entrypoints=websecure' -l 'traefik.http.routers.nare-uat-secure.tls.certresolver=le' -l 'traefik.http.services.nare-uat.loadbalancer.server.port=3000' naresima:uat\r"
+expect "~]#"
+
+send "sleep 15\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '📊 UAT Container status:'\r"
+expect "~]#"
+
+send "docker ps | grep uat\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '📝 UAT Logs:'\r"
+expect "~]#"
+
+send "docker logs --tail=20 naresima-app-uat\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '🔧 Restarting Traefik...'\r"
+expect "~]#"
+
+send "docker restart traefik\r"
+expect "~]#"
+
+send "sleep 5\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '🧹 Cleanup...'\r"
+expect "~]#"
+
+send "rm -f /tmp/naresima-uat.tar.gz\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '✅ UAT DEPLOYMENT COMPLETE!'\r"
+expect "~]#"
+
+send "echo ''\r"
+expect "~]#"
+
+send "echo '═══════════════════════════════════════════════════════'\r"
+expect "~]#"
+
+send "echo '🧪 UAT Environment Ready'\r"
+expect "~]#"
+
+send "echo 'URL: https://uat.berdjds.com'\r"
+expect "~]#"
+
+send "echo 'Admin: https://uat.berdjds.com/admin'\r"
+expect "~]#"
+
+send "echo '═══════════════════════════════════════════════════════'\r"
+expect "~]#"
+
+send "exit\r"
+expect eof
+
+puts "\n\n🎉 UAT deployment complete!"
+puts "🧪 Access UAT at: https://uat.berdjds.com"
+puts "🔧 Admin panel: https://uat.berdjds.com/admin\n"
